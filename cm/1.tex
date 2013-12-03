@@ -30,14 +30,194 @@
 \begin{mydef}
   Deux graphes ($V$, $E$, $\varphi$) et ($V'$, $E'$, $\varphi'$) sont dits \emph{isomorphes} s'il existe des bijections $f:V \to V'$ et $g:E \to E'$ telles que :
   \begin{center}
-    $\varphi(e) = {u, v}$ ssi $\varphi(g(e)) = {f(u), f(v)}$.
+    $\varphi(e) = \{u, v\}$ ssi $\varphi(g(e)) = \{f(u), f(v)\}$.
   \end{center}
   Deux graphes sont isomorphes s'il y a une bijection entre les noeuds et les arêtes.
 \end{mydef}
 
+\begin{myexem}
+  Voici deux exemples d'isomorphisme du même graphe :
+    \begin{figure}  
+      \centering  
+	    \subfigure[]
+    	{  
+    	  \begin{tikzpicture}[scale = 0.75]  
+          \node[draw, circle] at ( 0, 1.5)  (1) {1};
+          \node[draw, circle] at ( 2, 0  )  (2) {2};
+          \node[draw, circle] at ( 1,-1.5)  (3) {3};
+          \node[draw, circle] at (-1,-1.5)  (4) {4};
+          \node[draw, circle] at (-2, 0  )  (5) {5};
 
+          \draw[-] (1) edge [bend left] node[anchor = south] {a} (2);
+          \draw[-] (2) edge [bend left] node[anchor = west]  {b} (3);
+          \draw[-] (3) edge [bend left] node[anchor = north] {c} (4);
+          \draw[-] (4) edge [bend left] node[anchor = east]  {d} (5);
+          \draw[-] (5) edge [bend left] node[anchor = east]  {e} (1);
+        \end{tikzpicture}
+      }
+      % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
+      \subfigure[]  
+      {  
+        \begin{tikzpicture}[scale = 0.75]
+          \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
+          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
+          \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
+          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
 
-\emph{}
+          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+
+          %TODO tracer les lignes qui montrent comment on passe du graphe b au graphe c (en gardant les 3 graphes sur la même ligne)
+
+        \end{tikzpicture}  
+      }
+      % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
+      \subfigure[]  
+      {  
+        \begin{tikzpicture}[scale = 0.75]
+          \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
+          \node[draw, circle] at ( 2, 0  )  (4) {$4'$};
+          \node[draw, circle] at ( 1,-1.5)  (2) {$2'$};
+          \node[draw, circle] at (-1,-1.5)  (5) {$5'$};
+          \node[draw, circle] at (-2, 0  )  (3) {$3'$};
+
+          \draw[-] (1) edge [bend left] node[anchor = south] {$e'$} (4);
+          \draw[-] (4) edge [bend left] node[anchor = west]  {$c'$} (2);
+          \draw[-] (2) edge [bend left] node[anchor = north] {$b'$} (5);
+          \draw[-] (5) edge [bend left] node[anchor = east]  {$d'$} (3);
+          \draw[-] (3) edge [bend left] node[anchor = east]  {$a'$} (1);
+        \end{tikzpicture}  
+      }
+    \end{figure}
+    Notons que les graphes \emph{b} et \emph{c} sont les mêmes, leurs noeuds ont simplement été réordonnés.\\
+    L'isomorphisme entre \emph{a} et les deux autres est donné par : \\
+    
+    \begin{tabular}{lll}
+      $f(1)=1'$ & $g(a)=e'$ \\
+      $f(2)=4'$ & $g(b)=c'$ & $\varphi(a) = \{1, 2\}$\\
+      $f(3)=2'$ & $g(c)=b'$ & $\varphi'(a') = \{1', 3'\}$\\
+      $f(4)=5'$ & $g(d)=d'$ & $\varphi'(g(a)) = \{f(1), f(2)\}$\\
+      $f(5)=3'$ & $g(e)=a'$ \\
+    \end{tabular}
+    \newline
+    \newline
+    Notons aussi que plusieurs résultats sont possibles : \\
+    \begin{figure}[!h]
+      \centering  
+      \subfigure[]
+      {  
+        \begin{tikzpicture}[scale = 0.75]  
+          \node[draw, circle] at ( 0, 1.5)  (1) {1};
+          \node[draw, circle] at ( 2, 0  )  (2) {2};
+          \node[draw, circle] at ( 1,-1.5)  (3) {3};
+          \node[draw, circle] at (-1,-1.5)  (4) {4};
+          \node[draw, circle] at (-2, 0  )  (5) {5};
+
+          \draw[-] (1) edge [bend left] node[anchor = south] {a} (2);
+          \draw[-] (2) edge [bend left] node[anchor = west]  {b} (3);
+          \draw[-] (3) edge [bend left] node[anchor = north] {c} (4);
+          \draw[-] (4) edge [bend left] node[anchor = east]  {d} (5);
+          \draw[-] (5) edge [bend left] node[anchor = east]  {e} (1);
+        \end{tikzpicture}
+      }
+      % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
+      \subfigure[]  
+      {  
+        \begin{tikzpicture}[scale = 0.75]
+          \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
+          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
+          \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
+          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
+
+          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+
+          %TODO tracer les lignes qui montrent comment on passe du graphe e au graphe f (en gardant les 3 graphes sur la même ligne)
+        \end{tikzpicture}  
+      }
+      % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
+      \subfigure[]  
+      {  
+        \begin{tikzpicture}[scale = 0.75]
+          \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
+          \node[draw, circle] at ( 2, 0  )  (3) {$3'$};
+          \node[draw, circle] at ( 1,-1.5)  (5) {$5'$};
+          \node[draw, circle] at (-1,-1.5)  (2) {$2'$};
+          \node[draw, circle] at (-2, 0  )  (4) {$4'$};
+
+          \draw[-] (1) edge [bend left] node[anchor = south] {$a'$} (3);
+          \draw[-] (3) edge [bend left] node[anchor = west]  {$d'$} (5);
+          \draw[-] (5) edge [bend left] node[anchor = north] {$b'$} (2);
+          \draw[-] (2) edge [bend left] node[anchor = east]  {$c'$} (4);
+          \draw[-] (4) edge [bend left] node[anchor = east]  {$e'$} (1);
+        \end{tikzpicture}  
+      }
+    \end{figure}
+    
+    \begin{tabular}{lll}
+      $f(1)=1'$ & $g(a)=a'$ \\
+      $f(2)=3'$ & $g(b)=b'$ \\
+      $f(3)=5'$ & $g(c)=d'$ \\
+      $f(4)=2'$ & $g(d)=c'$ \\
+      $f(5)=4'$ & $g(e)=e'$ \\
+    \end{tabular}
+    \newline
+    \newline    
+    Les six graphes de cet exemple sont isomorphes entre eux.
+\end{myexem}
+
+\subsection{Parcours eulérien}
+\begin{mydef}%TODO définir ce qu'est un parcours
+  Un \emph{parcours} est fermé si $v_0 = v_1$.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{chemin} est un parcours dont tous les sommets sont distincts.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{cycle} est un parcours fermé dont tous les sommets d'origine et intérieurs sont tous distincts.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{graphe} est \emph{connexe} si pour chaque pair de points il existe un parcours qui les relie. Les \emph{composantes connexes} d'un graphe sont ses sous-graphes connexes maximaux.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{parcours} est \emph{eulérien} s'il visite chaque arête une et une seule fois. Un \emph{graphe} est \emph{eulérien} s'il existe un parcours eulérien fermé.
+\end{mydef}
+
+\subsection{Représentation matricielle du graphe}
+\begin{mydef}
+  La \emph{matrice d'adjacence} est une matrice carrée $n$x$n$ dont l'élément $ij$ est le nombre d'arêtes entre les sommets $v_i$ et $v_j$.
+\end{mydef}
+
+\begin{mydef}
+  La \emph{matrice d'incidence} est une matrice rectangulaire $n$x$m$ dont l'élément $ij$ est le nombre de fois que le sommet $v_i$ est incident à l'arête $e_j$.
+\end{mydef}
+
+\begin{myexem}
+  Voir notes
+\end{myexem}
+
+Un parcours de longueur minimal est un chemin. (c'est quoi? c'est pas une définition, ni un lemme,...)
+
+\subsection{Graphe biparti}
+\begin{mydef}
+  Un graphe est \emph{biparti}  s'il existe une partition en deux ensembles $V_1$ et $V_2$ tels que les sommets de $V_1$ ne sont adjacents qu'à des sommets de $V_2$ et vice versa. La bipartition est $(V_1, V_2)$.
+\end{mydef}
+
+\begin{myexem}
+  Voir notes
+\end{myexem}
 
 \begin{mytheo}
   Enoncé.
