@@ -1,1 +1,47 @@
 \section{Graphes connexes, eulériens et bipartis}
+\subsection{Graphes}
+\begin{mydef}
+  Un \emph{graphe} est un triplet ($V$, $E$, $\varphi$), où :\\
+  - $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds; \\
+  - $E$ est un ensemble dont les éléments sont appelés arêtes; \\
+  - $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un sommet ou une paire de sommets. \\
+\end{mydef}
+
+\begin{mydef}
+  Deux sommets incidents à la même arête sont dits \emph{adjacents}.
+\end{mydef}
+
+\begin{mydef}
+  Une arête incidente à un seul sommet est une \emph{boucle}.
+\end{mydef}
+
+\begin{mydef}
+  Le \emph{degré} d'un sommet est le nombre d'arêtes incidentes à celui-ci.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{sous-graphe du graphe} ($V$, $E$, $\varphi$) est un graphe ($V'$, $E'$, $\varphi'$) avec : \\
+  - $V' \subseteq V$ ; \\
+  - $E' \subseteq E$ ; \\
+  - $\varphi'$ est la restriction de $\varphi'$ à $E'$.
+\end{mydef}
+
+\subsection{Isomorphisme de Graphes}
+\begin{mydef}
+  Deux graphes ($V$, $E$, $\varphi$) et ($V'$, $E'$, $\varphi'$) sont dits \emph{isomorphes} s'il existe des bijections $f:V \to V'$ et $g:E \to E'$ telles que :
+  \begin{center}
+    $\varphi(e) = {u, v}$ ssi $\varphi(g(e)) = {f(u), f(v)}$.
+  \end{center}
+  Deux graphes sont isomorphes s'il y a une bijection entre les noeuds et les arêtes.
+\end{mydef}
+
+
+
+\emph{}
+
+\begin{mytheo}
+  Enoncé.
+  \begin{proof}
+    Preuve.
+  \end{proof}
+\end{mytheo}
