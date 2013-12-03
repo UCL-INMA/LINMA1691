@@ -1,0 +1,40 @@
+\documentclass[11pt,a4paper]{article}
+
+% French
+\usepackage[utf8x]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{url}
+
+% Math symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% Theorem and definitions
+\theoremstyle{definition}
+\newtheorem{mydef}{Définition}
+\newtheorem{mynota}[mydef]{Notation}
+\newtheorem{myprop}[mydef]{Propriétés}
+\newtheorem{myrem}[mydef]{Remarque}
+\newtheorem{myform}[mydef]{Formules}
+\newtheorem{mycorr}[mydef]{Corrolaire}
+\newtheorem{mytheo}[mydef]{Théorème}
+\newtheorem{mylem}[mydef]{Lemme}
+\newtheorem{myexem}[mydef]{Exemple}
+\newtheorem{myalgo}[mydef]{Algorithme}
+
+\newcommand{\bigoh}{\mathcal{O}}
+
+\usepackage{tikz}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\tikzstyle{vertex}=[circle,fill=gray!50,minimum size=15pt,inner sep=0pt]
+\tikzstyle{visited}=[circle,fill=green!25,minimum size=15pt,inner sep=0pt]
+\tikzstyle{unvisited}=[circle,fill=blue!25,minimum size=15pt,inner sep=0pt]
+
+\newcommand{\W}{\ {\color{red} \textbf{!!}} \ }

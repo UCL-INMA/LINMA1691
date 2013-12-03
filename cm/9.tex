@@ -1,0 +1,98 @@
+\section{Graphes planaires}
+\subsection{Formule d'Euler}
+\begin{mytheo}
+  Pour tout graphe planaire \emph{simple}, il y a un noeud de degré $\leq 5$.
+  \begin{proof}
+    On va montrer que le degré moyen est $\leq 6$.
+    Donc il existe un noeud de degré $\leq 5$.
+    \[ \deg_{avg} = \frac{\sum \deg}{|V|} = 2\frac{|E|}{|V|} \stackrel{(*)}{\leq} 2\frac{3|V|-6}{|V|} = 6 - \frac{12}{|V|} < 6. \]
+    Le $(*)$ est par le théorème précédent si $|V| \geq 3$.
+    Si $|V| < 3$, l'énoncé est trivial.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  $K_5$ est non planaire.
+  \begin{proof}
+    $K_5$ a 5 noeuds et 10 arêtes.
+    On sait que $e \leq 2n - 6$.
+    Il faut donc que $10 \leq 3 \cdot 5 - 6 = 9$ ce qui est faux.
+    Le graphe est par conséquent non planaire.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  $K_{3,3}$ est non planaire.
+  \begin{proof}
+    $K_{3,3}$ a 6 noeuds et 9 arêtes.
+    C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.
+    Donc toutes les faces ont un degré $\geq 4$.
+    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) \geq 4e = 18$.
+    Donc $|F| \leq \frac{18}{4} = 4.5$.
+
+    Par la formule d'Euler, il faut que
+    $|F| - |E| + |V| = 2$.
+    Or $|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5$.
+    $K_{3,3}$ ne peut donc pas être planaire.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  Il y a 5 solides platoniciens.
+  \begin{proof}
+    Les polyèdres convexes correspondent à des graphes planaires, via projection.
+    Le fait qu'ils soient platoniciens nous dit que chaque noeud est de même degré $p$ et que chaque face est de même degré $q$.
+    \begin{center}
+      \begin{tabular}{ll}
+        La formule d'Euler & $|F| - |E| + |V| = 2$\\
+        Poignées de main & $p|V| = 2|E|$\\
+        Poignées de main dual & $q|F| = 2|E|$
+      \end{tabular}
+    \end{center}
+    Donc
+    \begin{align*}
+      \frac{2}{q}|E| - |E| + \frac{2}{p} |E| & = 2\\
+      \frac{2}{q} - 1 + \frac{2}{p} & = \frac{2}{|E|} > 0\\
+      \frac{1}{q} + \frac{1}{p} > \frac{1}{2}.
+    \end{align*}
+    On sait donc que soit $p$, soit $q$ est $< 4$ (ou les deux).
+    Or $p \geq 3$ et $q \geq 3$ (par géométrie, graphes planaires simple de dual simple).
+    Les possibilités sont
+    \begin{center}
+      \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $p$ & $q$ & $|F|$ & $|E|$ & $|V|$ & nom\\
+        \hline
+        3 & 3 & 4 & 6 & 4 & Tétraèdre\\
+        3 & 4 & 6 & 12 & 8 & Cube\\
+        4 & 3 & 8 & 12 & 6 & Octaèdre\\
+        3 & 5 & 12 & 30 & 20 & Dodécaèdre\\
+        5 & 3 & 20 & 30 & 12 & Icosaèdre\\
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  ``Toute carte peut être coloriée avec 5 couleurs''.
+  Nombre chromatique $\chi$ (graphe planaire) $\leq 5$.
+  \begin{proof}
+    Par récurrence: ``on enlève un noeud, on colorie par hyp. de récurrence, on remet le noeud.''
+    On peut supposer le graphe \emph{simple} (car arêtesmultiples n'affectent pas $\chi$).
+    Il existe un noeud $u$ de degré $\leq 5$.
+    On enlève $u$, on a encore un graphe planaire, on le colorie.
+    On rétablit $u$:
+    \begin{itemize}
+      \item si $\deg(u) < 5$: facile, on utilise une couleur non utilisée par les voisins pour $u$.
+      \item Si $\deg(u) = 5$: Si ces 5 voisins utilisent $< 5$ couleurs: facile aussi.
+        Si 5 couleurs utilisées $c_1, c_2, c_3, c_4, c_5$.
+        Regardons $v_1$ et $v_3$. Si $v_1$ et $v_3$ sont sur des composantes connexes différentes: on échange $c_1$ et $c_3$ sur
+        la composante connexe ($c_1-c_3$) de $v_3$, et on colorie $u$ en $c_1$ (sur le graphe des noeuds de couleur $c_1$ et $c_3$.
+        Si $v_1$ et $v_3$ sont dans la même composante connexe ($c_1-c_3$):
+        Maintenant $v_2$ et $v_4$ sont dans des composantes connexes
+        différentes (dans le graphe de couleurs $c_2-c_4$).
+        Même raisonnement: échanger $c_2$ et $c_4$ sur composante connexe ($v_2$).
+    \end{itemize}
+  \end{proof}
+\end{mytheo}

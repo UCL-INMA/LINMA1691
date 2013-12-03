@@ -1,0 +1,14 @@
+*.aux
+*.log
+*.toc
+*.swp
+INMA2702-exercices.pdf
+*~
+*.pdf
+
+# latexmk
+*.fdb_latexmk
+*.fls
+
+# config file for smartcp
+config.yml
