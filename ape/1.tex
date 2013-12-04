@@ -1,13 +1,18 @@
 \section{Ape 1}
 
 \subsection{Vrai ou Faux}
+Rappel : Un graphe simple est un graphe
+\begin{itemize}
+\item sans arêtes multiples
+\item sans boucles
+ \end{itemize}
 \begin{enumerate}
-	\item{L'élimination d'un sommet de degré maximum peut augmenter le degré moyen d'un graph.}
-	\item{Un graph qui ne contient pas de triangle est pibarti}
+	\item{L'élimination d'un sommet de degré maximum peut augmenter le degré moyen d'un graphe.}
+	\item{Un graphe qui ne contient pas de triangle est pibarti}
 	\item{Deux graphes qui possèdent un même nombre de sommets et dont les listes de degrés sont identiques sont isomorphes. Même question, si, en plus, les graphes sont connexes.}
 	\item{Un graphe simple de 2 sommets au moins possède toujours 2 sommets de degré identiques}
-	\item{$\exists$ un graph simple dont les degrés des sommets sont $\{1,2,2,3,3,4\}$}
-	\item{$\exists$ un graph simple dont les degrés des sommets sont $\{1,1,1,2,3,4,6\}$}	
+	\item{$\exists$ un graphe simple dont les degrés des sommets sont $\{1,2,2,3,3,4\}$}
+	\item{$\exists$ un graphe simple dont les degrés des sommets sont $\{1,1,1,2,3,4,6\}$}	
 \end{enumerate}
 
 \begin{solution}
@@ -45,6 +50,7 @@ $ \stackrel{Isomorphe}{\nRightarrow}$
 Soit $G_{i}$ le graphe dont les sommets sont des k-tuples de 0 et 1. Deux sommets de G sont adjacents si leurs k-tuples ne diffèrent qu'en une seule position. Montrez que le graphe est biparti, k-régulier et donnez son nombre arrêtes.
 
 \subsection{Parcours fermés}
+Formule : $(n-1)^{k} + (n-1)(-1)^{k}$
 \begin{enumerate}
 \item{Comptez le nombre de parcours fermés de longueur k dans $K_{n}$}
 \item{Comptez le nombre de parcours fermés de longueur k dans $K_{k,n}$}
