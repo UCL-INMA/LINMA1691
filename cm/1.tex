@@ -1,24 +1,30 @@
 \section{Graphes connexes, eulériens et bipartis}
 \subsection{Graphes}
+
+\index{graphe}
 \begin{mydef}
   Un \emph{graphe} est un triplet ($V$, $E$, $\varphi$), où :\\
   - $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds; \\
   - $E$ est un ensemble dont les éléments sont appelés arêtes; \\
-  - $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un sommet ou une paire de sommets. \\
+  - $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un sommet ou une paire de sommets.
 \end{mydef}
 
+\index{sommets adjacents}
 \begin{mydef}
   Deux sommets incidents à la même arête sont dits \emph{adjacents}.
 \end{mydef}
 
+\index{boucle}
 \begin{mydef}
   Une arête incidente à un seul sommet est une \emph{boucle}.
 \end{mydef}
 
+\index{degré}
 \begin{mydef}
   Le \emph{degré} d'un sommet est le nombre d'arêtes incidentes à celui-ci.
 \end{mydef}
 
+\index{graphe!sous-graphe}
 \begin{mydef}
   Un \emph{sous-graphe du graphe} ($V$, $E$, $\varphi$) est un graphe ($V'$, $E'$, $\varphi'$) avec : \\
   - $V' \subseteq V$ ; \\
@@ -26,6 +32,7 @@
   - $\varphi'$ est la restriction de $\varphi'$ à $E'$.
 \end{mydef}
 
+\index{isomorphisme}
 \subsection{Isomorphisme de Graphes}
 \begin{mydef}
   Deux graphes ($V$, $E$, $\varphi$) et ($V'$, $E'$, $\varphi'$) sont dits \emph{isomorphes} s'il existe des bijections $f:V \to V'$ et $g:E \to E'$ telles que :
@@ -175,22 +182,27 @@
 \end{myexem}
 
 \subsection{Parcours eulérien}
+\index{parcours}
 \begin{mydef}%TODO définir ce qu'est un parcours
   Un \emph{parcours} est fermé si $v_0 = v_1$.
 \end{mydef}
 
+\index{chemin}
 \begin{mydef}
   Un \emph{chemin} est un parcours dont tous les sommets sont distincts.
 \end{mydef}
 
+\index{cycle}
 \begin{mydef}
   Un \emph{cycle} est un parcours fermé dont tous les sommets d'origine et intérieurs sont tous distincts.
 \end{mydef}
 
+\index{graphe!graphe connexe}
 \begin{mydef}
   Un \emph{graphe} est \emph{connexe} si pour chaque pair de points il existe un parcours qui les relie. Les \emph{composantes connexes} d'un graphe sont ses sous-graphes connexes maximaux.
 \end{mydef}
 
+\index{parcours!parcours eulérien}
 \begin{mydef}
   Un \emph{parcours} est \emph{eulérien} s'il visite chaque arête une et une seule fois. Un \emph{graphe} est \emph{eulérien} s'il existe un parcours eulérien fermé.
 \end{mydef}
@@ -217,10 +229,12 @@
 \end{mytheo}
 
 \subsection{Représentation matricielle du graphe}
+\index{matrice d'adjacence}
 \begin{mydef}
   La \emph{matrice d'adjacence} est une matrice carrée $n$x$n$ dont l'élément $ij$ est le nombre d'arêtes entre les sommets $v_i$ et $v_j$.
 \end{mydef}
 
+\index{matrice d'incidence}
 \begin{mydef}
   La \emph{matrice d'incidence} est une matrice rectangulaire $n$x$m$ dont l'élément $ij$ est le nombre de fois que le sommet $v_i$ est incident à l'arête $e_j$.
 \end{mydef}
@@ -236,6 +250,7 @@
   \end{proof}
 \end{mytheo}
 
+\index{distance entre deux noeuds}
 \begin{mydef}
   La \emph{distance $d(u, v)$} entre les noeuds $u$ et $v$ d'un graphe est le nombre d'arêtes minimal d'un parcours entre ces deux noeuds.
 \end{mydef}
@@ -246,6 +261,7 @@
 \end{mylem}
 
 \subsection{Graphe biparti}
+\index{graphe!graphe biparti}
 \begin{mydef}
   Un graphe est \emph{biparti}  s'il existe une partition en deux ensembles $V_1$ et $V_2$ tels que les sommets de $V_1$ ne sont adjacents qu'à des sommets de $V_2$ et vice versa. La bipartition est $(V_1, V_2)$.
 \end{mydef}

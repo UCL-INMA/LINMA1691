@@ -3,6 +3,9 @@
 *.log
 *.toc
 *.swp
+*.idx
+*.ilg
+*.ind
 INMA2702-exercices.pdf
 *~
 *.pdf

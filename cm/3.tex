@@ -1,9 +1,13 @@
 \section{Arbres et connectivité}
 \subsection{Arbres}
+\index{arbre}
+\index{forêt}
 \begin{mydef}
   Un \emph{arbre} est un graphe connexe et sans cycle. Une \emph{forêt} est un graphe sans cycle.
 \end{mydef}
 
+\index{graphe!sous-graphe sous-tendant}
+\index{graphe!sous-graphe couvrant}
 \begin{mydef}
   Un \emph{sous-graphe sous-tendant} ou \emph{couvrant} d’un graphe $G$ est un sous-graphe qui contient tous les sommets de $G$.
 \end{mydef}
@@ -68,26 +72,32 @@
   \end{proof}
 \end{mytheo}
 
+\index{coupe de sommets}
 \begin{mydef}
   Pour un graphe connexe, une \emph{coupe de sommets} est un ensemble de sommets qui déconnecte le graphe quand on l’en retire.
 \end{mydef}
 
+\index{coupe de d'arêtes}
 \begin{mydef}
   Pour un graphe connexe, une \emph{coupe de d'arêtes} est un ensemble d’arêtes qui déconnecte le graphe quand on l’en retire.
 \end{mydef}
 
+\index{graphe!graphe k-connexe}
 \begin{mydef}
   Un graphe est dit \emph{k-connexe} si retirer $k − 1$ noeuds quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes de sommets sont de taille au moins $k$.
 \end{mydef}
 
+\index{connectivité}
 \begin{mydef}
    La \emph{connectivité} d’un graphe est la taille de la plus petite coupe de sommets. Si tous les $n$ noeuds sont voisins (ex., le graphe complet), la connectivité est définie comme $n − 1$.
 \end{mydef}
 
+\index{graphe!graphe k-arête-connexe}
 \begin{mydef}
    Un graphe est dit \emph{k-arête-connexe} si retirer $k − 1$ arêtes quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes d’arêtes sont de taille au moins $k$.
 \end{mydef}
 
+\index{connectivité!arête-connectivité}
 \begin{mydef}
    L’\emph{arête-connectivité} d’un graphe est la taille de la plus petite coupe d’arêtes.
 \end{mydef}
@@ -132,6 +142,3 @@ Ce théorème se généralise :
 \begin{myexem}
   Exemples de graphes de Harary.
 \end{myexem}
-
-
-
