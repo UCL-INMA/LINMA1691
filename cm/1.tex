@@ -37,7 +37,7 @@
 
 \begin{myexem}
   Voici deux exemples d'isomorphisme du même graphe :
-    \begin{figure}  
+    \begin{figure} [!h]
       \centering  
 	    \subfigure[]
     	{  
@@ -195,6 +195,27 @@
   Un \emph{parcours} est \emph{eulérien} s'il visite chaque arête une et une seule fois. Un \emph{graphe} est \emph{eulérien} s'il existe un parcours eulérien fermé.
 \end{mydef}
 
+\begin{mytheo} [Théorème d'Euler]
+  Un graphe connexe est eulérien ssi tous les sommets sont de degré pair.
+  \begin{proof}
+    Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Existence d’un parcours eulérien]
+  Un graphe connexe possède un parcours eulérien ssi le nombre de noeuds de degré impair est zéro ou deux.
+  \begin{proof}
+    Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème des poignées de mains]
+  La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.
+  \begin{proof}
+    Preuve.
+  \end{proof}
+\end{mytheo}
+
 \subsection{Représentation matricielle du graphe}
 \begin{mydef}
   La \emph{matrice d'adjacence} est une matrice carrée $n$x$n$ dont l'élément $ij$ est le nombre d'arêtes entre les sommets $v_i$ et $v_j$.
@@ -207,6 +228,17 @@
 \begin{myexem}
   Voir notes
 \end{myexem}
+
+\begin{mytheo} [Matrice d’adjacence et nombre de parcours]
+  Soit $A$ la matrice d'adjacence d'un graphe. Alors l'élément $ij$ de $A^k$ ($k \geq 0$) est le nombre de parcours de longueur $k$ de $v_i$ vers $v_j$.
+  \begin{proof}
+    Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mydef}
+  La \emph{distance $d(u, v)$} entre les noeuds $u$ et $v$ d'un graphe est le nombre d'arêtes minimal d'un parcours entre ces deux noeuds.
+\end{mydef}
 
 \begin{mylem}
   Si $u...u'...v'...v$ est un parcours de longeur minimale de $u$ vers $v$, alors le sous-parcours $u'...v'$ est un parcours de longeur minimale de $u'$ vers $v'$.\\
@@ -222,8 +254,8 @@
   Voir notes
 \end{myexem}
 
-\begin{mytheo}
-  Enoncé.
+\begin{mytheo} [Graphes bipartis]
+  Un graphe est biparti ssi tous ses cycles sont de longueur paire.
   \begin{proof}
     Preuve.
   \end{proof}
