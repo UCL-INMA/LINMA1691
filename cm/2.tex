@@ -1,1 +1,55 @@
 \section{Les plus courts chemins}
+\begin{mydef}
+  Une \emph{fonction de poids} sur un graphe ($V$, $E$, $\varphi$) est une fonction $E \to \mathbb{R}$. Un \emph{graphe pondéré} est un graphe muni d’une fonction de poids. Le \emph{poids} ou la \emph{longueur} d’un parcours est la somme des poids des arêtes qui le compose.
+\end{mydef}
+
+\begin{mytheo} [Plus court chemin et plus court parcours]
+  Pour un graphe avec une fonction de poids $\geq 0$, si le plus court parcours entre $u$ et $v$ est de longueur $d$, alors le plus court chemin entre $u$ et $v$ est aussi de longueur $d$.
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\subsection{Algorithme de Dijkstra}
+\begin{myalgo}[Algorithme de Dijkstra]
+\end{myalgo}
+
+\begin{myexem}
+  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+\end{myexem}
+
+\begin{mytheo} [L'algorithme de Dijkstra fonctionne]
+  Après chaque MISE A JOUR DE $\ell$ dans l’algorithme, les deux propriétés suivantes sont vérifiées :
+  \begin{itemize}
+    \item pour $v \in S$, $\ell(v) = d(u_0, v)$ et le chemin le plus court de $u_0$ à $v$ reste dans $S$;
+    \item pour $v \notin S$, $\ell(v) \geq d(u_0, v)$, et $\ell(v)$ est la longueur du plus court chemin de $u_0$ vers $v$ dont tous les noeuds internes sont dans $S$.
+  \end{itemize}
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\begin{mycorr} [L'algorithme de Dijkstra est correct]
+  L’algorithme de Dijkstra est correct.
+\end{mycorr}
+
+\begin{mytheo} [L’algorithme de Dijkstra est quadratique]
+  L’algorithme de Dijkstra sur un graphe se termine en un temps de l’ordre $n^2$ .
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\begin{mydef}
+  Un \emph{graphe dirigé} est un triplet ($V$, $E$, $\varphi$), où :\\
+  - $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds; \\
+  - $E$ est un ensemble dont les éléments sont appelés arêtes; \\
+  - $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un couple de sommets. \\
+\end{mydef}
+
+\begin{myexem}
+  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+\end{myexem}
+
+\subsection{Semi-anneaux}
+%THIS IS BULLSHIT!

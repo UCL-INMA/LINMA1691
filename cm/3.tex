@@ -1,1 +1,136 @@
 \section{Arbres et connectivité}
+\subsection{Arbres}
+\begin{mydef}
+  Un \emph{arbre} est un graphe connexe et sans cycle. Une \emph{forêt} est un graphe sans cycle.
+\end{mydef}
+
+\begin{mydef}
+  Un \emph{sous-graphe sous-tendant} ou \emph{couvrant} d’un graphe $G$ est un sous-graphe qui contient tous les sommets de $G$.
+\end{mydef}
+
+\begin{mytheo} [Arbres sous-tendants]  
+  Tout graphe connexe contient un arbre sous-tendant.
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Caractérisations des arbres]
+  Soit $G$ un graphe à $n$ sommets et $m$ arêtes. Alors les conditions suivantes sont équivalentes :
+  \begin{itemize}
+    \item $G$ est connexe et sans cycle;
+    \item $G$ est sans cycle et $m = n − 1$;
+    \item $G$ est connexe et $m = n − 1$;
+    \item $G$ est connexe et supprimer une arête quelconque déconnecte $G$;
+    \item $G$ est sans cycle et ajouter une arête quelconque crée un et un seul cycle;
+    \item Deux noeuds de $G$ sont toujours reliés par un seul chemin.
+  \end{itemize}
+  La dernière condition implique que G est sans boucle (pour deux noeuds identiques).
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\begin{myform} [Formule de Cayley]  
+  Soit $T(G)$ le nombre d’arbres sous-tendants de $G$, et $e$ une arête quelconque de $G$, qui n’est pas une boucle. \\
+  Alors $T(G) = T(G − e) + T (G.e)$.
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{myform}
+
+\begin{mytheo} [Théorème de Cayley]  
+  Le nombre d’arbres sous-tendants de $K_n$ est $n^{n−2}$ .
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\subsection{Algorithme de Kruskal}
+\begin{myalgo}[Algorithme de Kruskal]
+\end{myalgo}
+
+\begin{myexem}
+  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+\end{myexem}
+
+\begin{mytheo}
+  L’algorithme de Kruskal est correct.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [L’algorithme de Kruskal est efficace]
+  L’algorithme de Kruskal requiert un temps de calcul de l’ordre de $m.log(m)$ sur un graphe à $m$ arêtes.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\begin{mydef}
+  Pour un graphe connexe, une \emph{coupe de sommets} est un ensemble de sommets qui déconnecte le graphe quand on l’en retire.
+\end{mydef}
+
+\begin{mydef}
+  Pour un graphe connexe, une \emph{coupe de d'arêtes} est un ensemble d’arêtes qui déconnecte le graphe quand on l’en retire.
+\end{mydef}
+
+\begin{mydef}
+  Un graphe est dit \emph{k-connexe} si retirer $k − 1$ noeuds quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes de sommets sont de taille au moins $k$.
+\end{mydef}
+
+\begin{mydef}
+   La \emph{connectivité} d’un graphe est la taille de la plus petite coupe de sommets. Si tous les $n$ noeuds sont voisins (ex., le graphe complet), la connectivité est définie comme $n − 1$.
+\end{mydef}
+
+\begin{mydef}
+   Un graphe est dit \emph{k-arête-connexe} si retirer $k − 1$ arêtes quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes d’arêtes sont de taille au moins $k$.
+\end{mydef}
+
+\begin{mydef}
+   L’\emph{arête-connectivité} d’un graphe est la taille de la plus petite coupe d’arêtes.
+\end{mydef}
+
+\begin{mytheo} [Lien entre les connectivités] 
+  connectivité $\leq$ arête-connectivité $\leq$ degré minimum. %TODO center this line
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Whitney] 
+  Un graphe à au moins trois noeuds est 2-connexe ssi toute paire de noeuds distincts est reliée par au moins deux chemins dont les noeuds internes sont distincts.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+Ce théorème se généralise :
+
+\begin{mytheo} [Théorème de Menger] 
+  Un graphe à au moins $k + 1$ noeuds est k-connexe ssi toute paire de noeuds distincts est reliée par au moins deux chemins dont les noeuds internes sont distincts.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Menger] 
+  Tout graphe k-connexe à $n$ noeuds possède $kn/2$ arêtes au moins.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Harary] 
+  Le graphe de Harary $H_{k ,n}$ possède $kn/2$ arêtes et est k-connexe.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+\begin{myexem}
+  Exemples de graphes de Harary.
+\end{myexem}
+
+
+
