@@ -1,1 +1,140 @@
 \section{Cliques, ensembles indépendants et l'impossible désordre}
+\subsection{Ensembles indépendants}
+\begin{mytheo} [Théorème de l'amitié]
+  Parmi six personnes, on en trouve toujours trois qui se connaissent l’une l’autre, ou trois qui sont étrangers l’un à l’autre.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\index{ensemble indépendant}
+\begin{mydef}
+  Un \emph{ensemble indépendant} d’un graphe est un ensemble de noeuds deux à deux non adjacents.
+\end{mydef}
+
+\index{ensemble indépendant!maximum}
+\begin{mydef}
+  Un \emph{ensemble indépendant maximum} est un ensemble indépendant dont le nombre de noeuds est maximal.
+\end{mydef}
+
+\begin{mytheo}
+  Un ensemble de noeuds est indépendant si et seulement si son complémentaire est une couverture de sommets.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mycorr}
+  $|$ensemble indépendant maximum$| + |$couverture minimum$| =
+|$nombre de noeuds$|$
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mycorr}
+
+\subsection{Cliques}
+\index{clique}
+\begin{mydef}
+  Une \emph{clique} d’un graphe est un ensemble de noeuds deux à deux adjacents. Autrement dit, c’est un sous-graphe complet.
+\end{mydef}
+
+\index{clique!maximum}
+\begin{mydef}
+  Une \emph{clique maximum} est une clique dont le nombre de noeuds est maximale.
+\end{mydef}
+
+\begin{mytheo}
+  Un ensemble est indépendant dans un graphe simple si et seulement s’il est une clique dans le graphe complémentaire.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de l'amitié]
+  Tout graphe simple à six noeuds contient une clique de trois noeuds ou un ensemble indépendant de trois noeuds.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de l'amitié]
+  En coloriant, de façon arbitraire, les arêtes du graphe complet à six noeuds en bleu et rouge, on crée un triangle bleu ou un triangle rouge.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Ramsey]
+  Soit un graphe complet à $r$ noeuds. On colorie les arêtes en les couleurs $c_1$ , ..., $c_k$ . On cherche la plus petite valeur de $r$ tel que tout coloriage crée une clique à $n_1$ noeuds de couleur $c_1$ , ou une clique à $n_2$ noeuds de couleur $c_2$ , ..., ou une clique à $n_k$ noeuds de couleur $c_k$ . Cette plus petite valeur de $r$, est le nombre de Ramsey $R(n_1 , ..., n_k)$.\\
+  $R(n_1 , ..., n_k)$ existe !
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Erdös et Szekeres]
+  Pour $m, n \geq 2: R(m, n) \leq R(m, n-1) + R(m-1, n)$.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mycorr}
+  $R(m, n) \leq (
+    \begin{array}{c}
+      m+n-2 \\
+      m-1
+    \end{array})$.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mycorr}
+
+\begin{mytheo}
+  $R(n_1, ..., n_k) \leq R(n_1, ..., n_{k-2}, R(n_{k-1}, n_k))$.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de l'amitié]
+  $R(3, 3) = 6$
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Turán]
+  Si un graphe simple a strictement plus de $(1 − \frac{1}{r}) \frac{n^2}{2}$ arêtes, alors il a une clique de $r + 1$ noeuds.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Schur]
+  Pour chaque $k$ , il y a un nombre $r_k$ tel que pour toute partition des nombres $1, 2, ..., r_k$ en $k$ classes, une de ces classes contient $x, y , z$ tels que $x + y = z$.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Esther Klein]
+  Parmi cinq points arbitraires dans le plan, tels que trois d’entre eux ne sont jamais alignés, on peut toujours en choisir quatre qui déterminent un quadrilatère convexe.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Théorème de Van der Waerden]
+  Pour tout $k , l,$ il existe un nombre $W (k , l)$ tel que les nombres de $1$ à $W (k , l)$, coloriés arbitrairement en $k$ couleurs, contiennent une progression arithmétique monochrome de longueur $l$.
+  \begin{proof}
+     Preuve.
+  \end{proof}
+\end{mytheo}
+
+
+
+
+
+
+
