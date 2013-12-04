@@ -17,7 +17,37 @@
 \end{myalgo}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+  On cherche les distances à partir de $a$.\\
+	\begin{center}
+	 \begin{tikzpicture}
+    \node[vertex] at (0, 2) (a) {\tiny $A$};
+    \node[vertex] at (2, 1) (b) {\tiny $B$};
+    \node[vertex] at (1, -2) (c) {\tiny $C$};
+    \node[vertex] at (-1, -2) (d) {\tiny $D$};
+    \node[vertex] at (-2, 1) (e) {\tiny $E$};
+    \draw[->] (a) edge node[anchor = south] {\tiny $50$} (b);
+		 \draw[->] (c) edge node[anchor = north] {\tiny $5$} (b);
+		\draw[->] (c) edge node[anchor = north] {\tiny $50$} (d);
+		\draw[->] (e) edge node[anchor = south] {\tiny $10$} (d);
+		\draw[->] (a) edge node[anchor = south] {\tiny $10$} (e);
+		\draw[->] (d) edge node[anchor = north] {\tiny $5$} (a);
+		\draw[->] (a) edge node[anchor = south] {\tiny $30$} (c);
+		\draw[->] (d) edge node[anchor = north] {\tiny $20$} (b);
+		 \end{tikzpicture}
+\end{center}
+\begin{center}
+\begin{tabular}{|c|c|ccccc|}
+\hline
+$u'$ & $S$ & $l(a)$ & $l(b)$ & $l(c)$ & $l(d)$ & $l(e)$\\
+\hline
+$a$ & $\lbrace a \rbrace$ & $\boxed{0}$ & $\infty$ & $\infty$ & $\infty$ &$\infty$\\
+$a$ & $\lbrace a,e \rbrace$ && 50 & 30 & $\infty$ & $\boxed{10}$\\
+$e$ & $\lbrace a,e,d \rbrace$ && 50 & 30 & $\boxed{20}$ &\\
+$d$ & $\lbrace a,e,d,c \rbrace$ && 40 & $\boxed{30}$ & &\\
+$c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
+\hline
+\end{tabular}
+\end{center}
 \end{myexem}
 
 \begin{mytheo} [L'algorithme de Dijkstra fonctionne]
@@ -38,7 +68,11 @@
 \begin{mytheo} [L’algorithme de Dijkstra est quadratique]
   L’algorithme de Dijkstra sur un graphe se termine en un temps de l’ordre $n^2$ .
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+    \begin{itemize}
+		\item A chaque passage de boucle $\left\lbrace v \in S \right\rbrace $ décroit de 1. Ce qui implique $n$ passages de boucles.
+		\item A chaque boucle, "$\forall v \in S$" fait $O(n-|S|)$ opérations; et "trouver $v_{min}$" fait $O(n-|S|)$ opérations également.
+		\item Cela implique un temps total $O(n + (n-1) + (n-2) + ... + 1) = O\left( \frac{n(n-1)}{2} \right) = O(n^2)$ puisqu'on considère le temps à une constante près. 
+		\end{itemize}
   \end{proof}
 \end{mytheo}
 
@@ -55,4 +89,29 @@
 \end{myexem}
 
 \subsection{Semi-anneaux}
-%THIS IS BULLSHIT!
+\begin{mydef}
+Un semi-anneau est un ensemble muni de deux opérations ($\oplus,\otimes$) et ses propriétés.
+\end{mydef}
+\begin{mydef}
+Un anneau est un ensemble muni de trois opérations ($\oplus,\otimes,\ominus$) et ses propriétés.
+\end{mydef}
+\begin{mydef}
+Un corps est un ensemble muni de quatre opérations ($\oplus,\otimes,\ominus,\oslash$) et ses propriétés.
+\end{mydef}
+Par exemple, une propriété peux être la distributivité : 
+$$a\otimes (b \oplus c) = (a \otimes b)\oplus(a \otimes c) $$
+On peut par exemple définir des matrices avec un semi-anneau : 
+\begin{eqnarray}
+A \oplus B &=& (a_{ij} \oplus b_{ij})_{ij}\\
+A \otimes B &=& (\sum_k a_{ik} \otimes b_{kj})_{ij}
+\end{eqnarray}
+Le $\oplus$ définit la somme matricielle et le $\otimes$ le produit matriciel.\\
+Pour calculer le plus court chemin, on peut définir l'itération : 
+\begin{eqnarray}
+M_0 &=& I\\
+M_1 &=& I \oplus (M_0 \otimes A)\\
+M_2 &=& I \oplus (M_1 \otimes A)\\
+ &\vdots &\\
+M_{k+1} &=& I \oplus (M_k \otimes A)\\
+\end{eqnarray}
+On a fini de converger quand $M_k = M_{k+1}$. Dijkstra peut être vu comme une manière efficace d'implémenter cette itération.
