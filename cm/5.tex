@@ -1,1 +1,130 @@
 \section{Mariages, couplages et couvertures}
+\subsection{Couplage}
+\index{couplage}
+\begin{mydef}
+  Un \emph{couplage} dans un graphe est un ensemble $M$ d’arêtes tel que $M$ ne contient pas de boucles et deux arêtes de $M$ n’ont jamais d’extrêmité en commun.
+\end{mydef}
+
+\index{couplage!couplage maximum}
+\begin{mydef}
+  Un \emph{couplage maximum} est un couplage dont le nombre d’arêtes est maximal.
+\end{mydef}
+
+\index{couplage!couplage parfait}
+\begin{mydef}
+  Un \emph{couplage parfait} est un couplage qui est incident à tous les noeuds.
+\end{mydef}
+
+\begin{myrem}
+  Un couplage parfait, s’il existe, est maximum.
+\end{myrem}
+
+\index{chemin!chemin M-alterné}
+\begin{mydef}
+  Pour un couplage $M$, un \emph{chemin M-alterné} est un chemin qui passe alternativement par une arête de $M$ et par une arête hors de $M$.
+\end{mydef}
+
+\index{chemin!chemin M-augmenté}
+\begin{mydef}
+  Un \emph{chemin M-augmenté} est un chemin M-alterné dont les noeuds d’origine et de destination ne sont pas incident à une arête de $M$.
+\end{mydef}
+
+\begin{mytheo} [Berge]
+  Un couplage $M$ est maximum si et seulement s’il n’y a pas de chemin M-augmenté.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+\begin{myexem}
+  Exemple
+\end{myexem}
+
+\begin{mytheo} [Théorème du mariage ou de Hall]
+  Un graphe biparti avec bipartition $(X , Y)$ possède un couplage incident à tous les noeuds de $X$ si et seulement si pour tout ensemble $S \subseteq X$ , le nombre de voisins de $S$ est au moins $|S|$.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+\begin{myexem}
+  Exemple
+\end{myexem}
+
+\begin{myrem}
+  Un graphe est k-régulier si tous les noeuds sont de degré $k$.
+\end{myrem}
+
+\begin{mycorr}
+  Tout graphe biparti k-régulier (pour $k > 0$) possède un couplage parfait.
+\end{mycorr}
+
+\subsection{Couverture}
+\index{couverture de sommets}
+\begin{mydef}
+  Une \emph{couverture de sommets} d’un graphe est un ensemble de sommets incident à toutes les arêtes.
+\end{mydef}
+
+\index{couverture de sommets!couverture de sommets minimum}
+\begin{mydef}
+  Une \emph{couverture de sommets minimum} d’un graphe est une couverture de sommets avec un nombre minimal de sommets.
+\end{mydef}
+
+\begin{myrem}
+  Si $K$ est une couverture de sommets et $M$ un couplage, alors $|M| \leq |K|$.
+\end{myrem}
+
+\begin{myrem}
+  Si $K^*$ est une couverture de sommets minimum et $M$ un couplage maximum, alors $|M^*| \leq |K^*|$.
+\end{myrem}
+
+\begin{mylem}
+  Si $K$ est une couverture de sommets, $M$ un couplage et que $|M| = |K|$, alors $K$ est minimum et $M$ est maximum.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mylem}
+
+\begin{mytheo} [König]
+  Dans un graphe biparti, si $K^*$ est une couverture de sommets minimum et $M^*$ un couplage maximum, alors $|M^*| = |K^*|$.
+  \begin{proof}
+     Preuve
+  \end{proof}
+\end{mytheo}
+
+\subsection{L'algorithme hongrois}
+\index{algorithme!algorithme hongrois}
+\begin{myalgo}[Algorithme hongrois]
+\end{myalgo}
+\begin{myexem}
+  Exemple
+\end{myexem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
