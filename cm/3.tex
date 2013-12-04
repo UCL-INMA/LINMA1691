@@ -1,1 +1,31 @@
 \section{Arbres et connectivité}
+\subsection{Arbres}
+\begin{mydef}
+  Un \emph{arbre} est un graphe connexe et sans cycle. Une \emph{forêt} est un graphe sans cycle.
+\end{mydef}
+
+\begin{mydef}
+  Un sous-graphe sous-tendant ou couvrant d’un graphe $G$ est un sous-graphe qui contient tous les sommets de $G$.
+\end{mydef}
+
+\begin{mytheo} [Arbres sous-tendants]  
+  Tout graphe connexe contient un arbre sous-tendant.
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Caractérisations des arbres]
+  Soit $G$ un graphe à $n$ sommets et $m$ arêtes. Alors les conditions suivantes sont équivalentes :
+  \begin{itemize}
+    \item $G$ est connexe et sans cycle;
+    \item $G$ est sans cycle et $m = n − 1$;
+    \item $G$ est connexe et $m = n − 1$;
+    \item $G$ est connexe et supprimer une arête quelconque déconnecte $G$;
+    \item $G$ est sans cycle et ajouter une arête quelconque crée un et un seul cycle;
+    \item Deux noeuds de $G$ sont toujours reliés par un seul chemin.
+  \end{itemize}
+  \begin{proof}
+     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes}
+  \end{proof}
+\end{mytheo}
