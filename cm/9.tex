@@ -1,13 +1,35 @@
 \section{Graphes planaires}
 \subsection{Formule d'Euler}
 \begin{mytheo}
+  \label{theo:threensix}
+  Dans tout graphe planaire \emph{simple} à $n \geq 3$ sommets et $e$ arêtes,
+  $e \leq 3n - 6$.
+\end{mytheo}
+
+\begin{mytheo}
   Pour tout graphe planaire \emph{simple}, il y a un noeud de degré $\leq 5$.
   \begin{proof}
-    On va montrer que le degré moyen est $\leq 6$.
-    Donc il existe un noeud de degré $\leq 5$.
-    \[ \deg_{avg} = \frac{\sum \deg}{|V|} = 2\frac{|E|}{|V|} \stackrel{(*)}{\leq} 2\frac{3|V|-6}{|V|} = 6 - \frac{12}{|V|} < 6. \]
-    Le $(*)$ est par le théorème précédent si $|V| \geq 3$.
-    Si $|V| < 3$, l'énoncé est trivial.
+    On va montrer que le degré moyen est $< 6$.
+    Ce qu'il voudra dire qu'il existe un noeud de degré $\leq 5$.
+    \begin{align*}
+      \deg_{\mathrm{avg}} & = \frac{\sum_{v\in V} \deg(v)}{|V|}\\
+                          & = \frac{2|E|}{|V|}.
+    \end{align*}
+    Considérons 2 cas
+    \begin{itemize}
+      \item Si $|V| < 3$, l'énoncé est trivial car dans un graphe simple,
+        pour tout $v \in V$, $\deg(v) \leq |V|-1$ du coup
+        $\deg(v) \leq |V| - 1 < 2 \leq 5$ pour tout $v$.
+      \item
+        Comme notre graphe est simple,
+        on peut utiliser le théorème~\ref{theo:threensix},
+        on a donc $|E| \leq 3|V| - 6$.
+        Dès lors
+        \begin{align*}
+          \deg_{\mathrm{avg}} & \leq 2\frac{3|V|-6}{|V|}\\
+                              & = 6 - \frac{12}{|V|} < 6.
+        \end{align*}
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
@@ -15,8 +37,8 @@
   $K_5$ est non planaire.
   \begin{proof}
     $K_5$ a 5 noeuds et 10 arêtes.
-    On sait que $e \leq 2n - 6$.
-    Il faut donc que $10 \leq 3 \cdot 5 - 6 = 9$ ce qui est faux.
+    Par le théorème~\ref{theo:threensix}, $|E| \leq 3|V| - 6$.
+    Il faut donc que $10 \leq 3 \cdot 5 - 6 = 9$, ce qui est faux.
     Le graphe est par conséquent non planaire.
   \end{proof}
 \end{mytheo}
@@ -27,7 +49,7 @@
     $K_{3,3}$ a 6 noeuds et 9 arêtes.
     C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.
     Donc toutes les faces ont un degré $\geq 4$.
-    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) \geq 4e = 18$.
+    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) = 2|E| = 18$.
     Donc $|F| \leq \frac{18}{4} = 4.5$.
 
     Par la formule d'Euler, il faut que
@@ -36,6 +58,11 @@
     $K_{3,3}$ ne peut donc pas être planaire.
   \end{proof}
 \end{mytheo}
+
+\begin{mydef}
+  Un solide platonicien est un polyèdre convexe régulier.
+  C'est-à-dire que toutes les faces, sommets et arêtes sont identiques à une rotation près.
+\end{mydef}
 
 \begin{mytheo}
   Il y a 5 solides platoniciens.
@@ -53,7 +80,7 @@
     \begin{align*}
       \frac{2}{q}|E| - |E| + \frac{2}{p} |E| & = 2\\
       \frac{2}{q} - 1 + \frac{2}{p} & = \frac{2}{|E|} > 0\\
-      \frac{1}{q} + \frac{1}{p} > \frac{1}{2}.
+      \frac{1}{q} + \frac{1}{p} & > \frac{1}{2}.
     \end{align*}
     On sait donc que soit $p$, soit $q$ est $< 4$ (ou les deux).
     Or $p \geq 3$ et $q \geq 3$ (par géométrie, graphes planaires simple de dual simple).
@@ -61,13 +88,13 @@
     \begin{center}
       \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        $p$ & $q$ & $|F|$ & $|E|$ & $|V|$ & nom\\
+        $p$ & $q$ & $|V|$ & $|F|$ & $|E|$ & Polyèdre\\
         \hline
-        3 & 3 & 4 & 6 & 4 & Tétraèdre\\
-        3 & 4 & 6 & 12 & 8 & Cube\\
-        4 & 3 & 8 & 12 & 6 & Octaèdre\\
-        3 & 5 & 12 & 30 & 20 & Dodécaèdre\\
-        5 & 3 & 20 & 30 & 12 & Icosaèdre\\
+         3  &  3  &   4   &   4   &   6   & Tétraèdre\\
+         3  &  4  &   8   &   6   &  12   & Cube\\
+         4  &  3  &   6   &   8   &  12   & Octaèdre\\
+         3  &  5  &  20   &  12   &  30   & Dodécaèdre\\
+         5  &  3  &  12   &  20   &  30   & Icosaèdre\\
         \hline
       \end{tabular}
     \end{center}
