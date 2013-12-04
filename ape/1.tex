@@ -10,6 +10,29 @@
 	\item{$\exists$ un graph simple dont les degrés des sommets sont $\{1,1,1,2,3,4,6\}$}	
 \end{enumerate}
 
+\begin{solution}
+\begin{enumerate}
+\item{
+$d_{moyen} = \frac{\sum_{1}^{n} d_{i}}{n} \qquad d_{1} \leq d_{2} \leq ... \leq d_{n}$\\
+Si on retire $d_{n}$ :
+$d_{moyen} = \frac{1}{n-1}  (\sum_{1}^{n} d_{i} -2d_{n}) \qquad \stackrel{?}{>} \qquad \frac{\sum_{1}^{n}  d_{i}}{n}$\\
+$\sum_{1}^{n} d_{i} - 2d_{n} \qquad > \qquad \frac{n-1}{n} \sum_{1}{n} d_{i}$\\
+$\sum_{1}^{n} d_{i}(1- \frac{n-1}{n}) \qquad > \qquad 2d_{n}$\\
+$\implies \qquad \sum_{1}^{n} d_{i} \qquad > \qquad 2n d_{max}$ Impossible !\\
+Faux
+}
+\item{Faux, il peut avoir un cycle de longueur impair $\neq3$ (par exemple 5)}
+\item{Faux :\\  
+\includegraphics[scale=0.3]{graph_ape1_ex1_3_1}
+$ \stackrel{Isomorphe}{\nRightarrow}$
+\includegraphics[scale=0.3]{graph_ape1_ex1_3_2}
+}
+\item{Vrai}
+\item{Faux - \textit{Théorème poignée de main} - La somme des degrés est impaire}
+\item{Faux, le nœud de degré 6 est relié à tous les autres, donc le nœud de degré 4 et celui de degré 1 ne peuvent pas exister dans ce graphe.}
+\end{enumerate}
+\end{solution}
+
 \subsection{Démontrez}
 \begin{enumerate}
 \item{D'un sommet de degré impair, $\exists$ toujours un chemin jusqu'à un autre sommet de degré impair.}
