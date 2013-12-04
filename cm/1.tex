@@ -45,10 +45,10 @@
 \begin{myexem}
   Voici deux exemples d'isomorphisme du même graphe :
     \begin{figure} [!h]
-      \centering  
+      \centering
 	    \subfigure[]
-    	{  
-    	  \begin{tikzpicture}[scale = 0.75]  
+    	{
+    	  \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {1};
           \node[draw, circle] at ( 2, 0  )  (2) {2};
           \node[draw, circle] at ( 1,-1.5)  (3) {3};
@@ -63,8 +63,8 @@
         \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[]  
-      {  
+      \subfigure[]
+      {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
           \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
@@ -80,11 +80,11 @@
 
           %TODO tracer les lignes qui montrent comment on passe du graphe b au graphe c (en gardant les 3 graphes sur la même ligne)
 
-        \end{tikzpicture}  
+        \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[]  
-      {  
+      \subfigure[]
+      {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
           \node[draw, circle] at ( 2, 0  )  (4) {$4'$};
@@ -97,12 +97,12 @@
           \draw[-] (2) edge [bend left] node[anchor = north] {$b'$} (5);
           \draw[-] (5) edge [bend left] node[anchor = east]  {$d'$} (3);
           \draw[-] (3) edge [bend left] node[anchor = east]  {$a'$} (1);
-        \end{tikzpicture}  
+        \end{tikzpicture}
       }
     \end{figure}
     Notons que les graphes \emph{b} et \emph{c} sont les mêmes, leurs noeuds ont simplement été réordonnés.\\
     L'isomorphisme entre \emph{a} et les deux autres est donné par : \\
-    
+
     \begin{tabular}{lll}
       $f(1)=1'$ & $g(a)=e'$ \\
       $f(2)=4'$ & $g(b)=c'$ & $\varphi(a) = \{1, 2\}$\\
@@ -114,10 +114,10 @@
     \newline
     Notons aussi que plusieurs résultats sont possibles : \\
     \begin{figure}[!h]
-      \centering  
+      \centering
       \subfigure[]
-      {  
-        \begin{tikzpicture}[scale = 0.75]  
+      {
+        \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {1};
           \node[draw, circle] at ( 2, 0  )  (2) {2};
           \node[draw, circle] at ( 1,-1.5)  (3) {3};
@@ -132,8 +132,8 @@
         \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[]  
-      {  
+      \subfigure[]
+      {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
           \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
@@ -148,11 +148,11 @@
           \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
 
           %TODO tracer les lignes qui montrent comment on passe du graphe e au graphe f (en gardant les 3 graphes sur la même ligne)
-        \end{tikzpicture}  
+        \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[]  
-      {  
+      \subfigure[]
+      {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
           \node[draw, circle] at ( 2, 0  )  (3) {$3'$};
@@ -165,10 +165,10 @@
           \draw[-] (5) edge [bend left] node[anchor = north] {$b'$} (2);
           \draw[-] (2) edge [bend left] node[anchor = east]  {$c'$} (4);
           \draw[-] (4) edge [bend left] node[anchor = east]  {$e'$} (1);
-        \end{tikzpicture}  
+        \end{tikzpicture}
       }
     \end{figure}
-    
+
     \begin{tabular}{lll}
       $f(1)=1'$ & $g(a)=a'$ \\
       $f(2)=3'$ & $g(b)=b'$ \\
@@ -177,7 +177,7 @@
       $f(5)=4'$ & $g(e)=e'$ \\
     \end{tabular}
     \newline
-    \newline    
+    \newline
     Les six graphes de cet exemple sont isomorphes entre eux.
 \end{myexem}
 
