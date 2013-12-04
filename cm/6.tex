@@ -7,6 +7,16 @@ Chaque professeur doit enseigner à un certain nombre de classes pendant un cert
 un horaire sur le plus petit nombre de période possible
 \\On relie chaque professeur aux classes auxquelles il donne cours en veillant a colorier les arêtes en fonction des tranches horaires. Deux arêtes de la même couleur ne peuvent pas partir du même nœud. 
 
+\index{coloriage}
+\index{coloriage!coloriage propre}
+\begin{mydef}
+  Un \emph{coloriage} des arêtes d’un graphe en k couleurs est l’assignation à chaque arête d’une couleur 1; 2; ..., ou $k$. Ce coloriage est dit \emph{propre} si deux arêtes adjacentes sont toujours de couleurs différentes.
+\end{mydef}
+
+\index{indice chromatique}
+\begin{mydef}
+  L’\emph{indice chromatique} d’un graphe $G$, noté $\chi '$ ($G$) est le nombre minimal de couleurs nécessaire pour obtenir un coloriage propre des arêtes de $G$.
+\end{mydef}
 
 
 \begin{mytheo}[König]
@@ -28,6 +38,7 @@ un horaire sur le plus petit nombre de période possible
     \end{enumerate}
   \end{proof}
 \end{mytheo}
+
 \begin{mytheo} [Vizing]
 Pour tout graphe: $\chi ' = deg max$ ou  $\chi ' = deg max + 1$
   \begin{proof} On sait que $\chi' \ge deg max$, il faut donc prouver que $\chi ' \le deg max + 1$.
@@ -42,7 +53,5 @@ Pour tout graphe: $\chi ' = deg max$ ou  $\chi ' = deg max + 1$
 \end{mytheo}
 %il faut encore ajouter les différents exemple
 \begin{myexem}
-
-
-
+  Exemples
 \end{myexem}
