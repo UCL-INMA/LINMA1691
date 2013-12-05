@@ -1,9 +1,92 @@
 \section{Graphes planaires}
+\subsection{Graphes planaires}
+\begin{mytheo} [Fáry]
+  Tout graphe planaire simple peut être représenté en n’utilisant que des arêtes droites.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  Le graphe complet $K_5$ à cinq noeuds n’est pas planaire.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  Le graphe complet biparti $K_{3,3}$ à $3 + 3$ noeuds n’est pas planaire.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\index{subdivision}
+\begin{mydef}
+  Une \emph{subdivision} (remplacement de chaque arête par un chemin) d’un graphe non planaire est non-planaire, et un sous-graphe d’un graphe planaire est planaire.
+\end{mydef}
+
+\begin{mytheo} [Kuratowski]
+  Un graphe est non planaire si et seulement s’il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\index{face}
+\index{face!face extérieure}
+\index{face!face intérieure}
+\begin{mydef}
+  Un graphe planaire (dans une représentation sans croisement) découpe le plan en plusieurs régions connexes (au sens géométrique). Ces régions sont appelées \emph{faces}. Il y a une et une seule face non bornée, nommée \emph{face extérieure}, les autres faces sont \emph{intérieures}.
+\end{mydef}
+
+\index{face!bord d'une face}
+\index{face!face incidente}
+\index{face!degré d'une face}
+\begin{mydef}
+  On identifie le \emph{bord d’une face} au parcours fermé qui longe la face. Le bord parcourt chaque arête une ou deux fois. 
+  Une face est \emph{incidente} aux arêtes et sommets qui sont sur son bord.
+  Le \emph{degré d’une face} est la longueur du bord, donc le nombre d’arêtes incidentes (comptées une ou deux fois).
+\end{mydef}
+\begin{myexem}
+  Exemple Preuve \textcolor{red}{TODO}
+\end{myexem}
+
+\index{dual}
+\begin{mydef}
+  Etant donné un graphe planaire $G$ (dans une représentation sans croisement), construisons $G^*$ , graphe dont les sommets sont les faces de $G$, reliés si et seulement si les faces correspondantes ont dans $G$ une arête en commun. Ce graphe $G^*$ est le \emph{dual} de $G$ (dans cette représentation).
+\end{mydef}
+
+\begin{mytheo}
+  La somme des degrés des faces est deux fois le nombre d’arêtes.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  Un graphe est planaire si et seulement si il est représentable sur la sphère sans croisement d’arêtes.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
 \subsection{Formule d'Euler}
+\begin{mytheo} [Formule d'Euler]
+  Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:\\
+  $n−e+f =2$
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
 \begin{mytheo}
   \label{theo:threensix}
   Dans tout graphe planaire \emph{simple} à $n \geq 3$ sommets et $e$ arêtes,
   $e \leq 3n - 6$.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
@@ -33,7 +116,7 @@
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo}
+\begin{mycorr}
   $K_5$ est non planaire.
   \begin{proof}
     $K_5$ a 5 noeuds et 10 arêtes.
@@ -41,9 +124,9 @@
     Il faut donc que $10 \leq 3 \cdot 5 - 6 = 9$, ce qui est faux.
     Le graphe est par conséquent non planaire.
   \end{proof}
-\end{mytheo}
+\end{mycorr}
 
-\begin{mytheo}
+\begin{mycorr}
   $K_{3,3}$ est non planaire.
   \begin{proof}
     $K_{3,3}$ a 6 noeuds et 9 arêtes.
@@ -57,10 +140,12 @@
     Or $|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5$.
     $K_{3,3}$ ne peut donc pas être planaire.
   \end{proof}
-\end{mytheo}
+\end{mycorr}
 
+\subsection{Les cinq solides platoniciens}
+\index{solide platonicien}
 \begin{mydef}
-  Un solide platonicien est un polyèdre convexe régulier.
+  Un \emph{solide platonicien} est un polyèdre convexe régulier.
   C'est-à-dire que toutes les faces, sommets et arêtes sont identiques à une rotation près.
 \end{mydef}
 
@@ -101,8 +186,9 @@
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo}
-  ``Toute carte peut être coloriée avec 5 couleurs''.
+\begin{mytheo} [Kempe]
+  Tout graphe planaire possède un coloriage propre à cinq couleurs.
+  ``Toute carte peut être coloriée avec 5 couleurs''.\\
   Nombre chromatique $\chi$ (graphe planaire) $\leq 5$.
   \begin{proof}
     Par récurrence: ``on enlève un noeud, on colorie par hyp. de récurrence, on remet le noeud.''
@@ -121,5 +207,12 @@
         différentes (dans le graphe de couleurs $c_2-c_4$).
         Même raisonnement: échanger $c_2$ et $c_4$ sur composante connexe ($v_2$).
     \end{itemize}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Appel, Haken]
+  Tout graphe planaire possède un coloriage propre à quatre couleurs.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
   \end{proof}
 \end{mytheo}
