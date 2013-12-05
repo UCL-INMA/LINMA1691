@@ -1,4 +1,28 @@
 \section{Flots et coupes}
+\subsection{Flots et coupes}
+\index{flot}
+\index{capacité}
+\begin{mydef}
+  Soit un graphe dirigé, dont les noeuds sont partitionnés en sources, puits et noeuds intermédiaires, et dont chaque arête $a$ porte un nombre réel $c(a)$ nommé \emph{capacité}.\\
+  Un \emph{flot} est la donnée d’un nombre réel $f(a)$ sur chaque arête, tel que $0 \leq f(a) \leq c(a)$ et que le flot net sortant de chaque noeud intermédiaire soit nul.
+\end{mydef}
+
+\index{flot!flot net sortant}
+\index{flot!valeur du flot}
+\index{flot!flot maximum}
+\begin{mydef}
+  Le \emph{flot net sortant d’un noeud} $u$ est défini comme $\sum_{arêtes a d’origine u} f(a) − \sum_{arêtes b de destination u} f(b)$. Le \emph{flot net sortant d’un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
+  La \emph{valeur du flot} est le flot net sortant des noeuds sources.\\
+  On désire trouver le \emph{flot maximum}, c’est-à-dire le flot de valeur maximale.
+\end{mydef}
+
+\index{coupe}
+\index{coupe!coupe minimum}
+\begin{mydef}
+  Une \emph{coupe} est un ensemble d’arêtes tel qu’il n’ait plus aucun chemin d’un noeud source vers un noeud puits quand on retire cet ensemble du graphe.\\
+  On désire trouver une \emph{coupe minimum}, c’est-à-dire une coupe dont la capacité (i.e., la somme des capacités de ses arêtes) est minimale.
+\end{mydef}
+
 \begin{center}
   \begin{tikzpicture}
     \node[vertex] at (0, 0) (s) {\tiny $s$};
@@ -44,7 +68,7 @@ $\mathrm{Coupe} \mapsto S :=$ composantes connexes des sources quand on enlève 
 Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
 
 \begin{mylem}
-  Pour tout flot donné, toute coupe a le même flot net, qui est la valeur du flot.
+  Pour un flot donné, toutes les coupes ont le même flot net, qui est la valeur du flot.
   \begin{proof}
     Flot net de la coupe = Flot net(sources) + Flot net (s$\setminus$sources)
     =$f(S \to \bar{S}) - f(\bar{S} \to S)$
@@ -84,8 +108,8 @@ Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
 \end{mylem}
 
 \begin{mylem}
-  Pour tout flot, pour toute coupe $S \to \bar{S}$, val(f) $\leq$ coupe ($S \to \bar{S}$)
-  avec égalité ssi arêtes $S \to \bar{S}$ saturées $\bar{S} \to S$ nulles pour $f$.
+  Pour tout flot $f$ et toute coupe $S \to \bar{S}$, valeur($f$) $\leq$ capacité($S \to \bar{S}$). L’égalité a lieu si et seulement si toutes les arêtes $a$ de la coupe $S \to \bar{S}$ sont $f$-saturées (i.e., $f(a) = c(a)$) et toutes les arêtes $b$ de $\bar{S} \to S$ sont $f$-nulles (i.e., $f(b) = 0$).
+
   \begin{proof}
     \begin{align*}
       val(f) & = flot sur la coupe\\
@@ -143,3 +167,61 @@ Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
 
 \end{tikzpicture}
 \end{center}
+
+\begin{mycorr}
+  Si un flot et une coupe sont tels que valeur(flot) = capacité(coupe), alors ce flot est maximum et cette coupe minimum.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mycorr}
+
+\index{chemin!chemin $f$-saturé}
+\index{chemin!chemin $f$-augmentant}
+\begin{mydef}
+  Etant donné un flot $f$, à tout chemin $P$ dans le graphe non-dirigé sous-jacent associons la quantité $i(P) = min_{a \in P} i(a)$, où $i(a) = c(a) − f(a)$ pour les arêtes $a$ prises par $P$ dans le sens direct, et $i(a) = f (a)$ pour les arêtes a prises dans le sens inverse.\\
+  Un chemin $P$ est \emph{$f$-saturé} si $i(P) = 0$. Il est \emph{$f$-augmentant} s’il est non saturé, part d’un noeud source et arrive à un noeud puits.
+\end{mydef}
+
+\begin{mytheo}
+  Un flot est maximum si et seulement s’il ne contient pas de chemin $f$-augmentant.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo}
+  La valeur du flot maximum et la capacité de la coupe minimum sont toujours égales.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\index{algorithme!algorithme de Ford-Fulkerson}
+\begin{myalgo}[Algorithme de Ford-Fulkerson]
+  Algorithme \textcolor{red}{TODO}
+\end{myalgo}
+
+\begin{myexem}
+  Exemple \textcolor{red}{TODO}
+\end{myexem}
+
+\begin{mylem}
+  Dans tout graphe dirigé avec un noeud source $u$ et un noeud puits $v$ et chaque arête de capacité un, le nombre maximum de chemins dirigés de u vers v disjoints deux à deux par les arêtes est la valeur du flot maximum.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mylem}
+
+\begin{mytheo}
+  Un graphe (non-dirigé) est $k$-arête-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les arêtes.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Menger]
+  Un graphe (non-dirigé) est $k$-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les noeuds.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
