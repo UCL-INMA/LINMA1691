@@ -1,1 +1,98 @@
-\section{P, NP et NP-complétude}
+\section{$\mathcal{P}$, $\mathcal{NP}$ et $\mathcal{NP}$-complétude}
+\subsection{$\mathcal{P}$, $\mathcal{NP}$ et $\mathcal{NP}$-complétude}
+\index{problème!problème de décision}
+\index{instance}
+\begin{mydef}
+  Un \emph{problème de décision} est une liste d’objets finis appelés \emph{instances}, chacune porteuse d’un label OUI ou NON. Donc c’est une fonction des instances vers l’ensemble \{OUI, NON\}. Les instances positives sont celles de label OUI.\\
+  Un algorithme résout un problème de décision donné s’il prend en entrée une instance du problème et renvoie en sortie le label OUI ou NON correspondant à l’instance.
+\end{mydef}
+
+\index{instance!taille d'une instance}
+\begin{mydef}
+  La \emph{taille d’une instance} est le nombre de bits nécessaire pour décrire l’instance. Pour un graphe, on considère souvent que c’est son nombre d’arêtes ou son nombre de noeuds.
+\end{mydef}
+
+\index{algorithme!algorithme efficace}
+\index{algorithme!algorithme polynomial}
+\begin{mydef}
+  Un algorithme est \emph{efficace} ou \emph{polynomial} s’il produit une réponse en un temps borné par un polynôme de la taille de l’entrée.
+\end{mydef}
+
+\index{problème!classe $\mathcal{P}$}
+\begin{mydef}
+  La \emph{classe $\mathcal{P}$} est la classe des problèmes pour lesquels il existe un algorithme efficace qui les résout.\\
+  Cette classe contient par exemple le problème du graphe eulérien.
+\end{mydef}
+
+\index{problème!classe $\mathcal{NP}$}
+\begin{mydef}
+  Un problème est dans $\mathcal{NP}$ s’il existe un algorithme efficace $A$ tel que : 
+  \begin{itemize}
+    \item pour chaque instance positive $m$, il existe un objet fini $n$ tel que $A(m, n)$ renvoie OUI,
+    \item pour chaque instance négative $m$ et tout objet fini $n$, $A(m, n)$ renvoie NON.
+  \end{itemize}
+\end{mydef}
+
+\begin{mycorr}
+  $\mathcal{P} \subseteq \mathcal{NP}$
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mycorr}
+
+\index{problème!problème réductible}
+\begin{mydef}
+  Etant donnés deux problèmes $P$ et $Q$, on dit que $P$ est \emph{réductible en temps polynomial} à $Q$, ou que $P$ est \emph{réductible} à $Q$, ou plus informellement que $P$ est plus facile que $Q$, noté $P \leq Q$, s’il existe un algorithme efficace $A$ (appelé réduction) qui prenne en entrée une instance $n$ de $P$ et renvoie en sortie une instance $A(n)$ de $Q$, telle que $n$ est positive ssi $A(n)$ est positive.
+\end{mydef}
+
+\begin{mytheo}
+  Si $P \leq Q$ et $Q \in \mathcal{P}$ alors $P \in \mathcal{P}$.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\index{problème!problème $\mathcal{NP}$-complet}
+\begin{mydef}
+  On dit qu'un problème $P$ est $\mathcal{NP}$-complet si $P \in \mathcal{NP}$ et pour tout problème $Q \in \mathcal{NP}$, $Q \leq P$.\\
+  C'est donc un problème de $\mathcal{NP}$ plus difficile que tous les autres.
+\end{mydef}
+
+\begin{mytheo} [Cook]
+  SAT est $\mathcal{NP}$-complet.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Karp]
+  Déterminer si un graphe est hamiltonien est $\mathcal{NP}$-complet.
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{mytheo} [Comment prouver qu'un problème $P$ est $\mathcal{NP}$-complet?]
+  \begin{enumerate}
+    \item Prouver $P \in \mathcal{NP}$;
+    \item Choisir un problème $Q$ connu comme $\mathcal{NP}-complet$;
+    \item Prouver $Q \leq P$ en exhibant une réduction efficace.
+  \end{enumerate}
+  \begin{proof}
+     Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mytheo}
+
+\begin{myexem}
+  Quelques problèmes $\mathcal{NP}$-complets en théorie des graphes :
+  \begin{itemize}
+    \item $k$-CLIQUE
+    \item $k$-COUVERTURE
+    \item $k$-INDEPENDANT
+    \item HAMILTONIEN
+    \item $k$-COLORABILITE
+    \item $k$-ARETE-COLORABILITE
+    \item COUPE-MAX
+    \item VOYAGEUR DE COMMERCE
+  \end{itemize}
+\end{myexem}
