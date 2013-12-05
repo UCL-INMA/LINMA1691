@@ -1,13 +1,20 @@
 \section{Coloriages de sommets}
-Un \emph{coloriage de noeuds} est l’attribution à chaque noeud d’une couleur. 
 
-Le coloriage est dit \emph{propre} si des noeuds adjacents ont des couleurs différentes.
-
-Un coloriage \emph{minimum} est un coloriage propre qui emploie un nombre minimal de couleurs.
-
-Le \emph{nombre chromatique}, noté $\chi$, d’un graphe est le nombre minimal de couleurs d’un coloriage propre de sommets du graphe.
+\index{coloriage!coloriage de noeuds}
+\index{coloriage!coloriage de noeuds propre}
+\index{coloriage!coloriage minimum}
+\begin{mydef}
+  Un \emph{coloriage de noeuds} est l’attribution à chaque noeud d’une couleur.
+  Le coloriage est dit \emph{propre} si des noeuds adjacents ont des couleurs différentes. 
+  Un coloriage \emph{minimum} est un coloriage propre qui emploie un nombre minimal de couleurs.
+\end{mydef}
 
 \subsection{Nombre chromatique, cliques et degrés}
+\index{chromatique!nombre chromatique}
+\begin{mydef}
+  Le \emph{nombre chromatique}, noté $\chi$, d’un graphe est le nombre minimal de couleurs d’un coloriage propre de sommets du graphe.
+\end{mydef}
+
 \begin{mytheo}
   $|$clique max$| \leq \chi$
 \end{mytheo}
@@ -41,3 +48,10 @@ Pour un graphe $G$, le nombre de coloriage propres à $k$ couleurs est noté $\p
 	On a donc finalement $\pi_k(G-e) - \pi_k(G.e)$ est le nombre de coloriages des noeuds de $G$ à moins de $k$ couleurs qui sont propres même entre $u$ et $v$ : on doit avoir $u$ et $v$ de couleurs différentes.
   \end{proof}
 \end{mytheo}
+
+\begin{mycorr} [Birkhoff]
+  Pour un graphe $G$ à $n$ noeuds, $\pi_k (G)$ est un polynôme monique de degré $n$, de terme constant nul et dont les coefficients alternent en signe.
+  \begin{proof}
+    Preuve \textcolor{red}{TODO}
+  \end{proof}
+\end{mycorr}
