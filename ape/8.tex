@@ -1,1 +1,127 @@
-\section{TODO}
+\section{Séance 8}
+
+\textbf{Coloriage de sommets et polynôme chromatique}
+
+\paragraph{1. } Quels sont les graphes de nombre chromatique égal à 1? et égal à 2?
+
+\paragraph{2. } Trouvez le nombre chromatique du graphe de Pétersen, et du graphe biparti complet $K_{5,3}$.
+
+\paragraph{3. } Vrai ou faux? \\
+\begin{enumerate}[(a)]
+  \item Un graphe de degré maximum 3 peut être colorié avec 4 couleurs.
+  \item Un graphe de degré maximum 4 peut être colorié avec 4 couleurs.
+  \item Si $G$ contient $K_n$ comme sous-graphe, alors son nombre chromatique est supérieur ou égal à $n$.
+  \item Si $G$ est de nombre chromatique égal à $n$, alors $G$ contient $K_n$ comme sous-graphe.
+\end{enumerate}
+
+
+
+\paragraph{4. } L'algorithme glouton de coloration associé à un graphe $G$ fonctionne comme suit: on parcourt les sommets $v_1,v_2,…,v_n$ de $G$ dans un ordre fixé arbitrairement. Lorsqu'on rencontre le sommet $v_i$, on lui assigne la plus petite couleur qui n'est pas encore utilisée par un de ses voisins.
+\begin{enumerate}[(a)]
+  \item Montrez que tout graphe $G$ possède une séquence de sommets pour laquelle l'algorithme glouton utilise un nombre minimum de couleurs.
+  \item Construisez pour tout $k \geq 1$ un arbre de degré maximum $k$ et une séquence de ses sommets pour laquelle l'algorithme glouton utilise $k+1$ couleurs.
+\end{enumerate}
+
+
+
+
+\paragraph{5. } Pour les deux graphes ci-dessous appliquez l'algorithme de coloration glouton, et trouvez $\chi(G)$.
+
+
+\begin{figure}[h!]
+  \centering
+  %\begin{center}
+  \subfigure[]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=0]{1}
+      \Vertex[x=1 ,y=1]{2}
+      \Vertex[x=2,y=0]{3}
+      \Vertex[x=1 ,y=-1]{4}
+      \Vertex[x=3 ,y=1]{5}
+      \Vertex[x=3 ,y=-1]{6}
+      \Vertex[x=4 ,y=0]{7}
+
+
+
+      \path[every node/.style={font=\sffamily\small}]
+      (1) edge node [left] {} (2)
+      edge node [left] {} (5)
+      edge node [left] {} (3)
+      edge node [left] {} (4)
+      edge node [left] {} (6)
+
+      (2) edge node [right] {} (3)
+      edge node [right] {} (7)
+      edge node [right] {} (5)
+
+      (3) edge node [right] {} (4)
+      edge node [left] {} (5)
+      edge node [left] {} (6)
+      edge node [left] {} (7)
+
+      (4) edge node [right] {} (6)
+      edge node [right] {} (7)
+
+      (5) edge node [right] {} (7)
+
+      (6) edge node [right] {} (7);
+
+  \end{tikzpicture} }
+  \subfigure[]{
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=0]{1}
+      \Vertex[x=1 ,y=1]{2}
+      \Vertex[x=1,y=0]{3}
+      \Vertex[x=1 ,y=-1]{4}
+      \Vertex[x=3 ,y=1]{5}
+      \Vertex[x=3 ,y=-1]{6}
+      \Vertex[x=2 ,y=0]{7}
+
+      \path[every node/.style={font=\sffamily\small}]
+      (1) edge node [left] {} (2)
+      edge node [left] {} (3)
+      edge node [left] {} (4)
+
+      (2) edge node [right] {} (3)
+      edge node [right] {} (7)
+      edge node [right] {} (5)
+
+      (3) edge node [right] {} (4)
+      edge node [left] {} (7)
+
+      (4) edge node [right] {} (6)
+      edge node [right] {} (7)
+
+      (5) edge node [right] {} (7)
+      edge node [right] {} (6)
+
+      (6) edge node [right] {} (7);
+
+    \end{tikzpicture}
+  }
+
+\end{figure}
+
+\paragraph{6. } Sous quelle condition la somme des coefficients d'un polynôme chromatique est-elle nulle?
+
+\paragraph{7. } Trouvez le polynôme chromatique du graphe biparti complet $K_{2,2}$, et donnez le nombre de colorations possibles du cycle $C_4$ avec 5 couleurs.
+
+\paragraph{8. }
+\begin{enumerate}[(a)]
+  \item Trouvez le polynôme chromatique d'un graphe chemin de longueur $n$
+  \item Utilisez ce résultat pour trouver le polynôme chromatique d'un graphe circuit de longueur $n$.
+\end{enumerate}
+
+\paragraph{9. } Soit le graphe parallélépipède $3 \times 3 \times 2$.
+
+\begin{enumerate}[(a)]
+  \item Chaque arête du graphe est de longueur 1. On souhaite décrire un chemin qui part du sommet $s$ et arrive au sommet $t$ en passant au moins une fois par chaque arête. Quelle est la longueur minimale d'un tel chemin?
+  \item Quel est le nombre minimum de couleurs nécessaires pour colorier les sommets de façon à ce que deux sommets adjacents soient toujours de couleurs différentes?
+  \item Soit $P_G(k)$ le polynôme chromatique de ce graphe. Quel est le degré de $P_G(k)$? Que vaut $P_G(2)$?
+  \item Trouvez une expression aussi explicite que possible pour le nombre de chemins de longueur $k$ du sommet $s$ à lui-même.
+\end{enumerate}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[scale=0.7]{img_tp8.jpg}
+\end{figure}

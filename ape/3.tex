@@ -1,1 +1,51 @@
-\section{TODO}
+\section{Séance 3}
+
+\paragraph{1. } Lorsque toutes les arêtes d'un graphe sont de longueur 1, la recherche en largeur dans le graphe permet de trouver le plus court chemin du noeud $s$ au noeud $t$. Quelle est la complexité de cet algorithme? Quel est le pire cas?
+
+\paragraph{2. } Lorsque certaines longueurs dans un digraphe sont négatives il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
+
+\paragraph{3. } L'algorithme de Dijkstra ne fonctionne correctement que lorsque la longueur des arêtes est positive. Donnez un exemple d'un digraphe dont tous les cycles sont de longueur positive et pour lequel l'algorithme de Dijkstra ne fournit pas la bonne solution. (A faire chez vous) Proposez une modification de l'algorithme de Dijkstra pour qu'il donne la bonne solution, même dans le cas où certaines arêtes sont négatives, si tous les cycles sont de longueur positive.
+
+\paragraph{4. } Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
+
+\paragraph{5. } Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
+
+\begin{center}
+  \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto]
+    \Vertex[x=0 ,y=0]{1}
+    \Vertex[x=0 ,y=-2]{4}
+    \Vertex[x=2,y=1]{2}
+    \Vertex[x=2 ,y=-1]{3}
+    \Vertex[x=2 ,y=-3]{7}
+    \Vertex[x=4 ,y=0]{5}
+    \Vertex[x=4 ,y=-2]{6}
+
+    \path[every node/.style={font=\sffamily\small}]
+    (1) edge node [left] {12} (2)
+    edge node [left] {4} (4)
+
+    (2) edge node [right] {5} (5)
+
+    (3) edge node [right] {4} (2)
+    edge node [left] {7} (5)
+    edge node [right] {3} (7)
+
+    (4) edge node [left] {3} (3)
+    edge node [right] {4} (7)
+
+    (5) edge node [right] {3} (6)
+
+    (7) edge node [left] {9} (6);
+
+  \end{tikzpicture}
+\end{center}
+
+
+
+\newpage
+
+
+
+\paragraph{6. } Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
+
+\paragraph{7. } Vous possédez un billet de $p$ euros et vous souhaitez le changer en pièces de $a_1, a_2, ..., a_k$ euros (tous les montants étant entiers). Est-ce possible? Si oui, avec quel nombre de pièces? Formulez ce problème comme un problème de plus court chemin dans un graphe.
