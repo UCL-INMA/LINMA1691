@@ -1,21 +1,26 @@
 \section{Graphes planaires}
+
+% TODO Alexis, please merge BEGIN->MIDDLE and MIDDLE->END
+
+% TODO BEGIN
+
 \subsection{Graphes planaires}
 \begin{mytheo} [Fáry]
-  Tout graphe planaire simple peut être représenté en n’utilisant que des arêtes droites.
+  Tout graphe planaire simple peut être représenté en n'utilisant que des arêtes droites.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
-  Le graphe complet $K_5$ à cinq noeuds n’est pas planaire.
+  Le graphe complet $K_5$ à cinq noeuds n'est pas planaire.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
-  Le graphe complet biparti $K_{3,3}$ à $3 + 3$ noeuds n’est pas planaire.
+  Le graphe complet biparti $K_{3,3}$ à $3 + 3$ noeuds n'est pas planaire.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
@@ -23,11 +28,11 @@
 
 \index{subdivision}
 \begin{mydef}
-  Une \emph{subdivision} (remplacement de chaque arête par un chemin) d’un graphe non planaire est non-planaire, et un sous-graphe d’un graphe planaire est planaire.
+  Une \emph{subdivision} (remplacement de chaque arête par un chemin) d'un graphe non planaire est non-planaire, et un sous-graphe d'un graphe planaire est planaire.
 \end{mydef}
 
 \begin{mytheo} [Kuratowski]
-  Un graphe est non planaire si et seulement s’il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
+  Un graphe est non planaire si et seulement s'il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
@@ -44,9 +49,9 @@
 \index{face!face incidente}
 \index{face!degré d'une face}
 \begin{mydef}
-  On identifie le \emph{bord d’une face} au parcours fermé qui longe la face. Le bord parcourt chaque arête une ou deux fois. 
+  On identifie le \emph{bord d'une face} au parcours fermé qui longe la face. Le bord parcourt chaque arête une ou deux fois. 
   Une face est \emph{incidente} aux arêtes et sommets qui sont sur son bord.
-  Le \emph{degré d’une face} est la longueur du bord, donc le nombre d’arêtes incidentes (comptées une ou deux fois).
+  Le \emph{degré d'une face} est la longueur du bord, donc le nombre d'arêtes incidentes (comptées une ou deux fois).
 \end{mydef}
 \begin{myexem}
   Exemple \textcolor{red}{TODO}
@@ -58,18 +63,104 @@
 \end{mydef}
 
 \begin{mytheo}
-  La somme des degrés des faces est deux fois le nombre d’arêtes.
+  La somme des degrés des faces est deux fois le nombre d'arêtes.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
-  Un graphe est planaire si et seulement si il est représentable sur la sphère sans croisement d’arêtes.
+  Un graphe est planaire si et seulement si il est représentable sur la sphère sans croisement d'arêtes.
   \begin{proof}
     Preuve \textcolor{red}{TODO}
   \end{proof}
 \end{mytheo}
+
+% TODO MIDDLE
+
+Un graphe est planaire si il possède une représentation dans le plan dont les arêtes ne se touchent pas, sauf à leurs extrémités.\\
+
+\begin{mytheo}
+Conjoncture des quatre couleurs
+Quatre couleurs suffisent toujours pour colorier une carte
+\begin{proof}
+On suppose qu'en chaque point se rencontrent au maximum trois pays, et que les pays sont d'un seul tenant.\\
+
+%\begin{center}
+%\includegraphics[scale=0.5]{g1}
+%\end{center}
+
+Il est possible de partir du graphe correspondant en remplacant les pays par des sommets et les frontières par des arêtes. Ce graphe est alors planaire. Il suffit alors de montrer que tout graphe planaire a un nombre chromatique $\chi \leq 4$ (ou de manière équivalente, admet au moins un coloriage de quatre couleurs).\\
+
+Notons qu'un graphe planaire peut être dessiné de manière non planaire.
+\end{proof}
+\end{mytheo}
+%\begin{center}
+%\includegraphics[scale=0.5]{g2}
+%\end{center}
+
+\begin{mytheo}
+Théorème de Fary
+Tout graphe planaire simple peut être représenté en n'utilisant que des arêtes droites.
+\end{mytheo}
+
+\begin{mytheo}
+Le graphe complet $K_5$ à cinq noeuds n'est pas planaire.
+
+\begin{proof}
+
+Représentons $K_5$ dans le plan. Soit l'ensemble de ses noeuds $\{v_1, v_2, v_3, v_4, v_5\}$.\\
+$v_1, v_2$ et $v_3$ forment un triangle. Où placer $v_4$?
+
+%\includegraphics[scale=0.4]{t1}
+
+
+\begin{enumerate}
+\item A l'intérieur du triangle formé par $v_1, v_2$ et $v_3$ ?\\
+%\includegraphics[scale=0.4]{t2}\\
+Où placer $v_5$?
+\begin{enumerate}
+\item A l'intérieur du triangle formé par $v_1, v_3$ et $v_4$ ? Le graphe ne serait plus planaire puisqu'il faudrait couper le triangle $v_1, v_3$ et $v_4$ pour relier $v_5$ à $v_2$.\\
+%\includegraphics[scale=0.4]{t3}
+\item A l'intérieur de $v_1$, $v_2$, $v_4$ ou de $v_2$, $v_3$, $v_4$ ? Idem.
+\item A l'extérieur de $v_1$, $v_2$, $v_3$? \\
+%\includegraphics[scale=0.4]{t4}\\
+\end{enumerate}
+\item A l'extérieur de $v_1, v_2$, $v_3$ ? En applicant le même type d'énumération qu'au point précédent, on trouve qu'il n'y a aucune manière de représenter $K_5$ dans le plan de manière à ce qu'il soit planaire.
+\end{enumerate}
+\end{proof}
+\end{mytheo}
+\begin{mytheo}
+Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
+\begin{proof}
+Une subdivision (remplacement de chaque arête par un chemin) d'un graphe non planaire est non-planaire, et un sous-graphe d'un graphe planaire est planaire.\\
+\end{proof}
+\end{mytheo}
+\begin{mytheo} de Kuratowski\\
+Un graphe est non planaire si et seulement si il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
+\end{mytheo}
+
+\subsection*{Quelques définitions}
+Un graphe planaire (dans une représentation sans croisement) découpe le plan en plusieurs régions connexes (au sens géométrique). Ces régions sont appelées \textit{faces}.
+
+Il y a une et une seule face non bornée, nommée \textit{face extérieure}, les autres sont intérieures.
+
+On identifie le \textit{bord }d'une face au parcours fermé qui longe la face.\\
+Le bord parcourt chaque arête une ou deux fois.
+
+Une face est \textit{incidente} aux arêtes et sommets qui sont sur son bord.\\
+
+Le \textit{degré} d'une face est la longueur du bord, donc le nombre d'arêtes incidentes (comptées une ou deux fois).\\
+
+Etant donné un graphe planaire $G$ (dans une représentation sans croisement), construisons $G^*$, graphe dont les sommets sont les faces de $G$, reliés si et seulement si les faces correspondantes ont dans $G$ une arête en commun. Ce graphe $G^*$ est le \textit{dual} de $G$ (dans cette représentation).\\
+Ce dual est un graphe planaire. Ses faces sont les sommets de $G$. Pour le représenter il suffit de placer un sommet de $G^*$ à l'intérieur de chaque face de $G$, et une arête de $G^*$ qui croise l'arête commune de deux faces adjacentes de $G$.\\
+Le dual de $G^*$ dans cette représentation est $G$.\\
+
+\noindent
+\textit{Exemple} : \\
+%\includegraphics[scale=0.5]{g3}
+
+% TODO END
 
 \subsection{Formule d'Euler}
 \begin{mytheo} [Formule d'Euler]
