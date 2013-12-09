@@ -91,7 +91,36 @@
 \end{mydef}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+Pour le graphe dirigé suivant : 
+  \begin{center}
+	  \begin{tikzpicture}
+      \node[vertex] at (0, 2) (a) {\tiny $A$};
+      \node[vertex] at (2, 1) (b) {\tiny $B$};
+      \node[vertex] at (1, -2) (c) {\tiny $C$};
+      \node[vertex] at (-1, -2) (d) {\tiny $D$};
+      \node[vertex] at (-2, 1) (e) {\tiny $E$};
+      \draw[->] (a) edge node[anchor = south] {1} (b);
+  		\draw[->] (c) edge node[anchor = north] {2} (b);
+  		\draw[->] (c) edge node[anchor = north] {3} (d);
+  		\draw[->] (e) edge node[anchor = south] {4} (d);
+  		\draw[->] (a) edge node[anchor = south] {5} (e);
+  		\draw[->] (d) edge node[anchor = north] {6} (a);
+  		\draw[->] (a) edge node[anchor = south] {7} (c);
+  		\draw[->] (d) edge node[anchor = north] {8} (b);
+  	\end{tikzpicture}
+  \end{center}
+	Nous avons :
+	$V=\left\{A,B,C,D,E\right\}$\\
+	$E=\left\{1,2,3,4,5,6,7,8\right\}$\\
+	$\varphi(1)=\left\{a,b\right\}$\\
+	$\varphi(2)=\left\{c,b\right\}$\\
+	$\varphi(3)=\left\{c,d\right\}$\\
+	$\varphi(4)=\left\{e,d\right\}$\\
+	$\varphi(5)=\left\{a,e\right\}$\\
+	$\varphi(6)=\left\{d,a\right\}$\\
+	$\varphi(7)=\left\{a,c\right\}$\\
+	$\varphi(8)=\left\{d,b\right\}$\\
+	
 \end{myexem}
 
 \subsection{Anneaux et Semi-anneaux}
