@@ -211,7 +211,42 @@
 \begin{mytheo} [Théorème d'Euler]
   Un graphe connexe est eulérien ssi tous les sommets sont de degré pair.
   \begin{proof}
-     In progress
+    \noindent
+    \newline
+    \fbox{$\Longrightarrow$}
+    \newline
+    Chaque arête incidente à un noeud $x$ est utilisé par le parcours eulérien:
+    \begin{itemize}
+      \item soit pour entrer dans $x$;
+      \item soit pour en sortir.\\
+    \end{itemize}
+    A chaque arête entrante correspond une arête sortante (celle qui suit dans le parcours sauf pour la dernière et la première).\\
+    Donc, il y a une bijection entre les arêtes entrantes et les arêtes sortantes.\\
+    $\longrightarrow$ degré pair \\
+
+    \noindent
+    \fbox{$\Longleftarrow$}
+    \newline
+    On va construire un parcours un parcours eulérien :\\
+    \begin{enumerate}
+      \item On part d'un noeud arbitraire $x_0$.
+      \item On prend une arête incidente à $x_0$, on arrive à un nouveau noeud.
+      \item Par parité, il y a au moins une arête non utilisée, on la prend, etc... Quand il n'y a plus d'arête disponible, on est forcément arrivé à $x_0$.\\
+    \end{enumerate}
+
+    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
+
+    Pour tout autre noeud y, en arrivant à y, on a utilisé un nombre impair d'arêtes incidentes à y. On a un parcours fermé :
+    \begin{itemize}
+      \item Si toutes les arêtes incidentes aux x noeuds traversés par ce parcours sont utilisées, alors ce parcours est eulérien;
+      \item Sinon, il y a $x_1 \in$ parcours avec au moins une arête non exploitée.\\
+    \end{itemize}
+
+    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
+
+    On merge les deux parcours :\\
+    $P_{0+1} = x_0 \rightarrow x_1 \rightarrow x_1 \rightarrow x_0$\\
+    Et on fait ça en boucle jusqu'à avoir toutes les arêtes.
   \end{proof}
 \end{mytheo}
 
@@ -259,6 +294,9 @@
 \begin{mylem}
   Si $u...u'...v'...v$ est un parcours de longeur minimale de $u$ vers $v$, alors le sous-parcours $u'...v'$ est un parcours de longeur minimale de $u'$ vers $v'$.\\
   En particulier, un parcours de longueur minimale est toujours un chemin.
+  \begin{proof}
+    Si ce parcours entre $u'$ et $v'$ n'était pas le plus court, on utiliserait le parcours strictement plus court pour la construction du parcours entre $u$ et $v$.
+  \end{proof}
 \end{mylem}
 
 \subsection{Graphe biparti}
