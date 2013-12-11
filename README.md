@@ -16,3 +16,5 @@ J-C. Delvenne :
 Ce serait avec plaisir, j'essaierai la dernière semaine, mais sans garantie malheureusement.
 
 => Donc il faut pas trainer, ainsi on a une chance que ce soit corrigé, ça peut aller vraiment vite si on travaille à plusieurs dessus ;-)
+
+Les élèves qui ont terminé leur chapitre ainsi que ceux qui se sont mis dans un chapitre sur le wiki mais qui n'y ont pas contribué sont invités à nous aider à finir d'autres chapitres. Le but est d'avoir fini tous les chapitres pour le début du blocus. Mr Delvenne a accès aux commits sur le github et à la [page contributors du git](https://github.com/blegat/LINMA1691/graphs/contributors). Il sait donc parfaitement qui a contribué et dans quelle proportion à ce travail.
