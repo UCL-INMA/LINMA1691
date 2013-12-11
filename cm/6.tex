@@ -53,7 +53,139 @@ Pour tout graphe simple: $\chi ' = deg max$ ou  $\chi ' = deg max + 1$
 
   \end{proof}
 \end{mytheo}
-%il faut encore ajouter les différents exemple
-\begin{myexem}
-  Exemples \addTODO
+\textbf{Observation:} En chaque nœud il y a au moins une couleur libre (c'est à dire pas utilisée par les arêtes incidentes)
+\\
+\newline Voici 3 exemples avec $k=3$ et 4 couleurs \emph{noir, bleu, rouge et vert}
+\begin{myexem} \label{exemple1} 
+Même couleur libre \emph{rouge} pour $x$ et $y$ $\Rightarrow$ on peut utiliser le \emph{rouge} pour $xy$
+ \begin{figure}[!h]
+ \centering
+ 	\hspace*{\fill}%
+        \subfigure[]
+         {
+ 	\begin{tikzpicture}[scale = 1]
+                   \draw[thick,black] (0,1) -- (2,1.5);
+                   \draw[thick,blue] (0,1) -- (2,0.5);
+                   \draw[thick,dotted,black] (0,1) -- (0,-1);
+                   \draw[thick,black] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                
+                   \node at (-0.25,1) {$x$};
+                   \node at (-0.25,-1){$y$};
+    \end{tikzpicture}
+ }
+ \hfill%
+      \subfigure[]
+         {
+    \begin{tikzpicture}[scale = 1]
+                   \draw[thick,black] (0,1) -- (2,1.5);
+                   \draw[thick,blue] (0,1) -- (2,0.5);
+                   \draw[very thick,red] (0,1) -- (0,-1);
+                   \draw[thick,black] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                
+                   \node at (-0.25,1) {$x$};
+                   \node at (-0.25,-1){$y$};
+    \end{tikzpicture}
+    }
+  \end{figure}
+\end{myexem}
+
+\begin{myexem} Pas de couleur libre entre $x$ et $y$. Mais le \emph{noir} est libre pour $y$ 
+\\$\Rightarrow$ on utilise le \emph{noir} pour $xy$, on efface l'arête \emph{noir} $xy'$
+\\$\Rightarrow$ On se retrouve dans le cas \ref{exemple1}, on utilise ensuite la couleur \emph{vert} pour $xy'$
+
+
+ \begin{figure}[!h]
+ \centering
+ 	\hspace*{\fill}%
+        \subfigure[]
+         {
+ \begin{tikzpicture}[scale = 1]
+                   \draw[thick,red] (0,1) -- (2,1.5);
+                   \draw[thick,green] (0,1) -- (2,0.5);
+                   \draw[thick,dotted,black] (0,1) -- (0,-1);
+                   \draw[thick,black] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                   \draw[thick,blue] (2,-0.5) -- (4,0);
+                   \draw[thick,red] (2,-0.5) -- (4,-1);
+                
+                   \node at (-0.25,1) {$y$};
+                   \node at (-0.25,-1){$x$};
+                   \node at (1.90,-0.25){$y'$};
+        \end{tikzpicture}
+ }
+ \hfill%
+      \subfigure[]
+         {
+    \begin{tikzpicture}[scale = 1]
+                   \draw[thick,red] (0,1) -- (2,1.5);
+                   \draw[thick,green] (0,1) -- (2,0.5);
+                   \draw[very thick,black] (0,1) -- (0,-1);
+                   \draw[thick,dotted,black] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                   \draw[thick,blue] (2,-0.5) -- (4,0);
+                   \draw[thick,red] (2,-0.5) -- (4,-1);
+                
+                   \node at (-0.25,1) {$y$};
+                   \node at (-0.25,-1){$x$};
+                   \node at (1.90,-0.25){$y'$};
+        \end{tikzpicture}    
+    }
+  \end{figure}
+  \end{myexem}
+
+\begin{myexem} \textcolor{white}{blabla}
+\newline
+\begin{minipage}{0.5\textwidth}
+Quelques fois cette astuce ne suffit pas:
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+		\begin{tikzpicture}[scale = 1]
+                   \draw[thick,red] (0,1) -- (2,1.5);
+                   \draw[thick,green] (0,1) -- (2,0.5);
+                   \draw[thick,dotted,black] (0,1) -- (0,-1);
+                   \draw[thick,black] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                   \draw[thick,green] (2,-0.5) -- (4,-0.25);
+                   \draw[thick,red] (2,-0.5) -- (4,-0.75);
+                   \draw[thick,red] (2,-1.5) -- (4,-1.25);
+                   \draw[thick,green] (2,-1.5) -- (4,-1.75);
+                   \draw[thick,black] (4,-0.75) -- (6,-0.5);
+                   \draw[thick,black] (4,-1.25) -- (6,-1.5);
+                   \draw[thick,red] (6,-0.5) -- (6,-1.5);
+                
+                   \node at (-0.25,1) {$y$};
+                   \node at (-0.25,-1){$x$};
+                   \node at (1.90,-0.25){$y'$};
+                   \node at (1.90,-1.78){$y''$};
+        \end{tikzpicture}
+\end{minipage}
+\newline
+\begin{minipage}{0.5\textwidth}
+Échangeons le \emph{noir} et \emph{rouge} le long du chemin des arêtes de couleurs \emph{noir} et \emph{vert} issus de $xy'$ (le coloriage reste propre):
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
+		\begin{tikzpicture}[scale = 1]
+                   \draw[thick,red] (0,1) -- (2,1.5);
+                   \draw[thick,green] (0,1) -- (2,0.5);
+                   \draw[thick,dotted,black] (0,1) -- (0,-1);
+                   \draw[thick,red] (0,-1) -- (2,-0.5);
+                   \draw[thick,blue] (0,-1) -- (2,-1.5);
+                   \draw[thick,green] (2,-0.5) -- (4,-0.25);
+                   \draw[thick,black] (2,-0.5) -- (4,-0.75);
+                   \draw[thick,black] (2,-1.5) -- (4,-1.25);
+                   \draw[thick,green] (2,-1.5) -- (4,-1.75);
+                   \draw[thick,red] (4,-0.75) -- (6,-0.5);
+                   \draw[thick,red] (4,-1.25) -- (6,-1.5);
+                   \draw[thick,black] (6,-0.5) -- (6,-1.5);
+                
+                   \node at (-0.25,1) {$y$};
+                   \node at (-0.25,-1){$x$};
+                   \node at (1.90,-0.25){$y'$};
+                   \node at (1.90,-1.78){$y''$};
+        \end{tikzpicture}	
+\end{minipage}
+\\
+$c_{1}$ libre $\Rightarrow$ même cas que: \ref{exemple1}
 \end{myexem}
