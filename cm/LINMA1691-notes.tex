@@ -23,7 +23,32 @@
 \tableofcontents
 \newpage
 
+\newcounter{todo_1}
+\newcounter{todo_2}
+\newcounter{todo_3}
+\newcounter{todo_4}
+\newcounter{todo_5}
+\newcounter{todo_6}
+\newcounter{todo_7}
+\newcounter{todo_8}
+\newcounter{todo_9}
+\newcounter{todo_10}
+\newcounter{todo_11}
+\newcounter{todo_12}
 
+\newcommand{\addTODO}
+{
+  \textcolor{red}{TODO}\stepcounter{todo_\thesection}
+}
+
+\newcommand{\chapterdone}[2]
+{
+  \ifnum#1=0
+    Chapitre terminé!
+  \else
+    #1 dans le Chapitre #2
+  \fi
+}
 
 \input{1.tex}
 \input{2.tex}
@@ -37,6 +62,26 @@
 \input{10.tex}
 \input{11.tex}
 \input{12.tex}
+
+\clearpage
+\section{Nombre de TODO à compléter \danger}
+\begin{itemize}
+  \item \chapterdone{\arabic{todo_1}}{1}
+  \item \chapterdone{\arabic{todo_2}}{2}
+  \item \chapterdone{\arabic{todo_3}}{3}
+  \item \chapterdone{\arabic{todo_4}}{4}
+  \item \chapterdone{\arabic{todo_5}}{5}
+  \item \chapterdone{\arabic{todo_6}}{6}
+  \item \chapterdone{\arabic{todo_7}}{7}
+  \item \chapterdone{\arabic{todo_8}}{8}
+  \item \chapterdone{\arabic{todo_9}}{9}
+  \item \chapterdone{\arabic{todo_10}}{10}
+  \item \chapterdone{\arabic{todo_11}}{11}
+  \item \chapterdone{\arabic{todo_12}}{12}\\
+\end{itemize}
+
+Les élèves qui ont terminé leur chapitre ainsi que ceux qui se sont mis dans un chapitre sur le wiki mais qui n'y ont pas contribué sont invités à nous aider à finir d'autres chapitres. Le but est d'avoir fini tous les chapitres pour le début du blocus. Mr Delvenne a accès aux commits sur le github et à la \href{https://github.com/blegat/LINMA1691/graphs/contributors}{page contributors du git}. Il sait donc parfaitement qui a contribué et dans quelle proportion à ce travail.
+
 \clearpage
 \printindex
 
