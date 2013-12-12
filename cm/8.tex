@@ -5,7 +5,9 @@
 \index{coloriage!coloriage minimum}
 \begin{mydef}
   Un \emph{coloriage de noeuds} est l’attribution à chaque noeud d’une couleur.
+  
   Le coloriage est dit \emph{propre} si des noeuds adjacents ont des couleurs différentes. 
+  
   Un coloriage \emph{minimum} est un coloriage propre qui emploie un nombre minimal de couleurs.
 \end{mydef}
 
@@ -52,6 +54,6 @@ Pour un graphe $G$, le nombre de coloriage propres à $k$ couleurs est noté $\p
 \begin{mycorr} [Birkhoff]
   Pour un graphe $G$ à $n$ noeuds, $\pi_k (G)$ est un polynôme monique de degré $n$, de terme constant nul et dont les coefficients alternent en signe.
   \begin{proof}
-    Preuve \addTODO
+    Par récurrence en utilisant $\pi_k(G) = \pi_k(G-e)-\pi_k(G.e)$ sur le nombre d'arêtes. Le cas de base correspond à un noeud isolé.
   \end{proof}
 \end{mycorr}
