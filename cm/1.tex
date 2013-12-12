@@ -252,26 +252,33 @@
 
 \begin{mytheo} [Existence d’un parcours eulérien]
   Un graphe connexe possède un parcours eulérien ssi le nombre de noeuds de degré impair est zéro ou deux.
-  \begin{proof} In Progress
+  \begin{proof}
     \noindent
     \newline
     \fbox{$\Longrightarrow$}
     \newline
     \begin{itemize}
-      \item ;
-      \item .\\
+      \item Si ce parcours eulérien est fermé, tous les degrés sont pairs;
+      \item Si ce parcours eulérien est ouvert, tous les degrés sont pairs, sauf $deg(u)$ et $deg(v)$ qui sont impairs.\\
     \end{itemize}
 
     \noindent
     \fbox{$\Longleftarrow$}
     \newline
+    \begin{itemize}
+      \item Si tous les degrés sont pairs alors il existe un parcours eulérien fermé;
+      \item Si deux degrés sont impairs et si on ajoute une arête $e$ entre $u$ et $v$ :\\
+      $\rightarrow$ Tous les degrés sont pairs.\\
+      $\rightarrow$ Il existe un parcours eulérien fermé.\\
+      En retirant $e$, on obtient un parcours eulérien ouvert $u \rightarrow v$
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Théorème des poignées de mains]
   La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+     In progress
   \end{proof}
 \end{mytheo}
 
