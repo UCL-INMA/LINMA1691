@@ -276,9 +276,26 @@
 \end{mytheo}
 
 \begin{mytheo} [Théorème des poignées de mains]
-  La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.
+  La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.\\
+  $\sum_{v_i \in V}^{} deg(v_i) = 2|E|$
   \begin{proof}
-     In progress
+    En utilisant la matrice d'incidence $M$ (voir \ref{in_matrix}), on peut calculer $\sum_{i,j}^{} M_{i,j}$ de deux façon différentes :\\
+    \begin{tikzpicture}[decoration=brace]
+      \matrix (m) [matrix of math nodes,left delimiter=[,right delimiter={]}] {
+          0 & 1 & 1 & 0 & 1 & 0 \\
+          1 & 1 & 0 & 1 & 0 & 1 \\
+          1 & 0 & 0 & 1 & 0 & 1 \\
+          0 & 0 & 1 & 0 & 1 & 0 \\
+      };
+      \draw[decorate,transform canvas={xshift=1.3em},thick] (m-1-6.north east) -- node[right=2pt] {$\sum_i \sum_j M_{ij} = \sum_{v_i \in V} deg(v_i)$} (m-4-6.south east);
+      \draw[decorate,transform canvas={yshift=-1.7em},thick] (m-4-6.north east) -- node[below=2pt] {$\sum_i \sum_j M_{ij} = 2|E|$} (m-3-1.south west);
+    \end{tikzpicture}  
+    \vspace*{5mm}
+    \begin{center}
+      $\sum_i \sum_j M_{ij} = \sum_i \sum_j M_{ij}$\\
+      \vspace*{2mm}
+      $2|E| = \sum_{v_i \in V} deg(v_i)$
+    \end{center}
   \end{proof}
 \end{mytheo}
 
@@ -290,6 +307,7 @@
 
 \index{matrice d'incidence}
 \begin{mydef}
+  \label{in_matrix}
   La \emph{matrice d'incidence} est une matrice rectangulaire $n$x$m$ dont l'élément $ij$ est le nombre de fois que le sommet $v_i$ est incident à l'arête $e_j$.
 \end{mydef}
 
