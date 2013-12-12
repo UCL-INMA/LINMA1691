@@ -1,8 +1,5 @@
 \section{Graphes planaires}
 
-% TODO Alexis, please merge BEGIN->MIDDLE and MIDDLE->END
-
-% TODO BEGIN
 
 Un graphe est planaire si il possède une représentation dans le plan dont les arêtes ne se touchent pas, sauf à leurs extrémités.\\
 
@@ -65,9 +62,11 @@ On suppose qu'en chaque point se rencontrent au maximum trois pays, et que les p
 
 Il est possible de partir du graphe correspondant en remplacant les pays par des sommets et les frontières par des arêtes. Ce graphe est alors planaire. Il suffit alors de montrer que tout graphe planaire a un nombre chromatique $\chi \leq 4$ (ou de manière équivalente, admet au moins un coloriage de quatre couleurs).\\
 
-Notons qu'un graphe planaire peut être dessiné de manière non planaire.
 \end{proof}
 \end{mytheo}
+
+Notons qu'un graphe planaire peut être dessiné de manière non planaire.
+
 \begin{center}
 
 \begin{tikzpicture}
@@ -101,6 +100,7 @@ Notons qu'un graphe planaire peut être dessiné de manière non planaire.
 \draw (1,4)--(5,0);
 \end{tikzpicture}
 \end{center}
+
 
 
 
@@ -189,18 +189,14 @@ Où placer $v_5$?
 
 \begin{mytheo}
 Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
-\begin{proof}
-Preuve \addTODO
-\end{proof}
+%proof avec Euler après
 \end{mytheo}
 
 
 
 \begin{mytheo} [Kuratowski]
   Un graphe est non planaire si et seulement s'il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
-  \begin{proof}
-    Preuve \addTODO
-  \end{proof}
+%pas de preuve
 \end{mytheo}
 
 
@@ -224,9 +220,6 @@ Preuve \addTODO
   Une face est \emph{incidente} aux arêtes et sommets qui sont sur son bord.
   Le \emph{degré d'une face} est la longueur du bord, donc le nombre d'arêtes incidentes (comptées une ou deux fois).
 \end{mydef}
-\begin{myexem}
-  Exemple \addTODO
-\end{myexem}
 
 \index{dual}
 \begin{mydef}
@@ -260,7 +253,7 @@ Preuve \addTODO
 \node [draw,text width =4cm] (test) at (13,8) 
 {4 faces\\
 Face extérieure : 1234521\\
-degre(face exterieure=6)};
+degre(face exterieure)=6};
 
 \coordinate (N7) at (1.25,5);
 \coordinate (N8) at (2.5,6);
@@ -281,26 +274,29 @@ degre(face exterieure=6)};
 \begin{mytheo}
   La somme des degrés des faces est deux fois le nombre d'arêtes.
   \begin{proof}
-    Preuve \addTODO
+    On passe au graphe dual, sur lequel on applique le théorème des poignées de mains.
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
   Un graphe est planaire si et seulement si il est représentable sur la sphère sans croisement d'arêtes.
   \begin{proof}
-    Preuve \addTODO
+  On utilise la projection stéréographique pour passer d'une représentation planaire à une représentation sphérique et vice versa.
   \end{proof}
 \end{mytheo}
-
-%TODO END
-
 
 \subsection{Formule d'Euler}
 \begin{mytheo} [Formule d'Euler]
   Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:\\
   $n−e+f =2$
   \begin{proof}
-    Preuve \addTODO
+    Par induction sur le nombre de faces.
+    S'il y a une seule face, alors le graphe est sans cycle (chaque cycle créé au moins 2 faces).
+    $\rightarrow arbre \rightarrow |arêtes| = |noeuds|-1$.
+    
+    Si il y a plus d'une face, on choisit une arête qui séprare deux faces et on l'efface.
+    
+    On a une arête de moins, et une face de moins. Donc $|sommets| - |arêtes| + |faces|$ est inchangé et vaut 2 par induction.
   \end{proof}
 \end{mytheo}
 
@@ -309,7 +305,15 @@ degre(face exterieure=6)};
   Dans tout graphe planaire \emph{simple} à $n \geq 3$ sommets et $e$ arêtes,
   $e \leq 3n - 6$.
   \begin{proof}
-    Preuve \addTODO
+    $\sum \deg(faces) = 2 |arêtes|$ (on suppsoe le graphe connexe sinon on regarde chaque composante connexe).  
+      
+    Comme il est simple $\rightarrow \deg(face) \geq 3$
+    
+    $\sum \deg(faces) = 3 |faces| \rightarrow \geq \frac{3}{2}|faces|$.
+    
+    $2 = |sommets|-|arêtes| + |faces| \leq |sommets|-|arêtes| + \frac{2}{3}|arêtes|$
+    
+    $\rightarrow |arêtes| = 3n-6$
   \end{proof}
 \end{mytheo}
 
@@ -436,7 +440,5 @@ degre(face exterieure=6)};
 
 \begin{mytheo} [Appel, Haken]
   Tout graphe planaire possède un coloriage propre à quatre couleurs.
-  \begin{proof}
-    Preuve \addTODO
-  \end{proof}
+%no proof
 \end{mytheo}
