@@ -300,7 +300,16 @@ degre(face exterieure=6)};
   Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:\\
   $n−e+f =2$
   \begin{proof}
-    Preuve \addTODO
+    On démontre cette égalité par récurrence sur sur le nombre d'arêtes. 
+    	
+    Si le graphe est sans cycle $\Rightarrow$ la face extérieure est la seule face. Le graphe est donc un arbre et on a donc 
+    $$|arêtes|= |sommets|-1,$$ 
+    $$|sommets| - |aretes| + |faces|= 2.$$	
+    
+  Si il existe un cycle, il y a donc deux faces adjacentes. En supprimant une arête entre les deux faces, les deux faces deviennent une seule et le nombre de faces moins le nombre d'arêtes reste constant. Par hypothèse de récurrence on a donc que  
+  $$|sommets| - |aretes| + |faces|$$ 
+  n'est pas modifié et vaut 2.
+   
   \end{proof}
 \end{mytheo}
 
@@ -309,7 +318,15 @@ degre(face exterieure=6)};
   Dans tout graphe planaire \emph{simple} à $n \geq 3$ sommets et $e$ arêtes,
   $e \leq 3n - 6$.
   \begin{proof}
-    Preuve \addTODO
+    Si il n'y a qu'une seule face, évident. 
+    
+    Si il y a au moins une face, le bord de la face a au moins 3 arêtes (vu que la plus petite face possible est un triangle et que c'est une graphe simple). On a donc deg(face)$\geq 3$. Et donc $$\sum \text{deg(face)} \geq 3 |faces| .$$
+Or    $$\sum \text{deg(face)} = 2 |aretes|.$$
+Et donc 
+ \begin{equation} \label{ineg6}
+ \frac{2}{3} |aretes| \geq |faces|.
+\end{equation} 
+    En injectant \ref{ineg6} dans la formule d'Euler, le résultat est démontré.   
   \end{proof}
 \end{mytheo}
 
