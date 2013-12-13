@@ -214,7 +214,7 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \index{face!face incidente}
 \index{face!degré d'une face}
 \begin{mydef}
-  On identifie le \emph{bord d'une face} au parcours fermé qui longe la face. Le bord parcourt chaque arête une ou deux fois. 
+  On identifie le \emph{bord d'une face} au parcours fermé qui longe la face. Le bord parcourt chaque arête une ou deux fois.
   Une face est \emph{incidente} aux arêtes et sommets qui sont sur son bord.
   Le \emph{degré d'une face} est la longueur du bord, donc le nombre d'arêtes incidentes (comptées une ou deux fois).
 \end{mydef}
@@ -248,7 +248,7 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \node (NN10) at (6,5) {\textbullet};
 \node [red] (test) at (8,11){Graphe Dual};
 \node [black] (test) at  (7,2){Face exterieure};
-\node [draw,text width =4cm] (test) at (13,8) 
+\node [draw,text width =4cm] (test) at (13,8)
 {4 faces\\
 Face extérieure : 1234521\\
 degre(face exterieure)=6};
@@ -288,26 +288,23 @@ degre(face exterieure)=6};
   Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:\\
   $n−e+f =2$
   \begin{proof}
-  Il faut merger les deux démo. \addTODO \\
-  Démo. 1:
-    Par induction sur le nombre de faces.
-    S'il y a une seule face, alors le graphe est sans cycle (chaque cycle créé au moins 2 faces).
-    $\rightarrow arbre \rightarrow |arêtes| = |noeuds|-1$.
-    
-    Si il y a plus d'une face, on choisit une arête qui séprare deux faces et on l'efface.
-    
-    On a une arête de moins, et une face de moins. Donc $|sommets| - |arêtes| + |faces|$ est inchangé et vaut 2 par induction.
-  \newline
-  Démo. 2:
-    On démontre cette égalité par récurrence sur sur le nombre d'arêtes. 
-    	
-    Si le graphe est sans cycle $\Rightarrow$ la face extérieure est la seule face. Le graphe est donc un arbre et on a donc 
-    $$|arêtes|= |sommets|-1,$$ 
-    $$|sommets| - |aretes| + |faces|= 2.$$	
-    
-  Si il existe un cycle, il y a donc deux faces adjacentes. En supprimant une arête entre les deux faces, les deux faces deviennent une seule et le nombre de faces moins le nombre d'arêtes reste constant. Par hypothèse de récurrence on a donc que  
-  $$|sommets| - |aretes| + |faces|$$ 
-  n'est pas modifié et vaut 2.
+    On démontre cette égalité par récurrence sur sur le nombre d'arêtes.
+    \begin{description}
+      \item[initialisation]
+        S'il y a une seule face, alors le graphe est sans cycle car chaque cycle créé au moins 2 faces, la face intérieure au cycle
+        et la face extérieure au cycle.
+        C'est donc un arbre d'où $e = n-1$, c'est à dire $n - e + f = 2$ car $f = 1$.
+      \item[induction]
+        Soit un graphe $G$ avec $f > 1$ faces.
+        Comme les arbres ont une seule face, $G$ possède un cycle et donc deux faces adjacentes.
+        Soit $G'$ obtenu en supprimant une arête entre les deux faces.
+        Les deux faces deviennent une seule face pour $G'$.
+        Ce graphe a donc $f - 1$ faces et $e-1$ arêtes, par l'hypothèse de récurrence sur $G'$, on a
+        \begin{align*}
+          n - (e-1) + (f-1) & = 2\\
+          n - e + f & = 2.
+        \end{align*}
+    \end{description}
   \end{proof}
 \end{mytheo}
 
@@ -316,28 +313,22 @@ degre(face exterieure)=6};
   Dans tout graphe planaire \emph{simple} à $n \geq 3$ sommets et $e$ arêtes,
   $e \leq 3n - 6$.
   \begin{proof}
-  Il faut merger les deux démo. \addTODO \\
-  Démo. 1:
-    $\sum \deg(faces) = 2 |arêtes|$ (on suppsoe le graphe connexe sinon on regarde chaque composante connexe).  
-      
-    Comme il est simple $\rightarrow \deg(face) \geq 3$
-    
-    $\sum \deg(faces) = 3 |faces| \rightarrow \geq \frac{3}{2}|faces|$.
-    
-    $2 = |sommets|-|arêtes| + |faces| \leq |sommets|-|arêtes| + \frac{2}{3}|arêtes|$
-    
-    $\rightarrow |arêtes| = 3n-6$
-  \newline
-  Démo. 2:
-    Si il n'y a qu'une seule face, évident. 
-    
-    Si il y a au moins une face, le bord de la face a au moins 3 arêtes (vu que la plus petite face possible est un triangle et que c'est une graphe simple). On a donc deg(face)$\geq 3$. Et donc $$\sum \text{deg(face)} \geq 3 |faces| .$$
-Or    $$\sum \text{deg(face)} = 2 |aretes|.$$
-Et donc 
- \begin{equation} \label{ineg6}
- \frac{2}{3} |aretes| \geq |faces|.
-\end{equation} 
-    En injectant \ref{ineg6} dans la formule d'Euler, le résultat est démontré.   
+    Commençons par montrer que pour toute face $f$, $\deg(f) \geq 3$.
+    Pour la face extérieure, c'est vrai car $n \geq 3$.
+    Pour une face intérieure, comme le graphe est simple, la plus petite face en terme de degré est un triangle donc c'est vrai également.
+
+    On a donc
+    \[ \sum_{f \in F} \deg(f) \geq 3 |F|. \]
+    Or par le théorème des poignées de main dual,
+    \[ \sum_{f \in F} \deg(f) = 2 |E|. \]
+    Et donc
+    \begin{equation} \label{ineg6}
+      \frac{2}{3} e \geq |F|.
+    \end{equation}
+    En injectant \ref{ineg6} dans la formule d'Euler, on obtient
+    \[ 2 = n - e + |F| \leq n - e + \frac{2}{3}e \]
+    d'où
+    \[ \frac{1}{3}e \leq n - 2. \]
   \end{proof}
 \end{mytheo}
 
