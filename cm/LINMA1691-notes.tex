@@ -41,10 +41,10 @@
   \textcolor{red}{TODO}\stepcounter{todo_\thesection}
 }
 
-\newcommand{\chapterdone}[2]
+\newcommand{\Chapitredone}[2]
 {
   \ifnum#1=0
-    Chapitre terminé!
+    Chapitre #2 terminé!
   \else
     #1 dans le Chapitre #2
   \fi
@@ -66,21 +66,69 @@
 \clearpage
 \section{TODO à compléter \textcolor{red}{\danger}}
 \begin{itemize}
-  \item \chapterdone{\arabic{todo_1}}{1}
-  \item \chapterdone{\arabic{todo_2}}{2}
-  \item \chapterdone{\arabic{todo_3}}{3}
-  \item \chapterdone{\arabic{todo_4}}{4}
-  \item \chapterdone{\arabic{todo_5}}{5}
-  \item \chapterdone{\arabic{todo_6}}{6}
-  \item \chapterdone{\arabic{todo_7}}{7}
-  \item \chapterdone{\arabic{todo_8}}{8}
-  \item \chapterdone{\arabic{todo_9}}{9}
-  \item \chapterdone{\arabic{todo_10}}{10}
-  \item \chapterdone{\arabic{todo_11}}{11}
-  \item \chapterdone{\arabic{todo_12}}{12}\\
+  \item \Chapitredone{\arabic{todo_1}}{1}
+  \item \Chapitredone{\arabic{todo_2}}{2}
+  \item \Chapitredone{\arabic{todo_3}}{3}
+  \item \Chapitredone{\arabic{todo_4}}{4}
+  \item \Chapitredone{\arabic{todo_5}}{5}
+  \item \Chapitredone{\arabic{todo_6}}{6}
+  \item \Chapitredone{\arabic{todo_7}}{7}
+  \item \Chapitredone{\arabic{todo_8}}{8}
+  \item \Chapitredone{\arabic{todo_9}}{9}
+  \item \Chapitredone{\arabic{todo_10}}{10}
+  \item \Chapitredone{\arabic{todo_11}}{11}
+  \item \Chapitredone{\arabic{todo_12}}{12}\\
 \end{itemize}
 
-Les élèves qui ont terminé leur chapitre ainsi que ceux qui se sont mis dans un chapitre sur le wiki mais qui n'y ont pas contribué sont invités à nous aider à finir d'autres chapitres. Le but est d'avoir fini tous les chapitres pour le début du blocus. Mr Delvenne a accès aux commits sur le github et à la \href{https://github.com/blegat/LINMA1691/graphs/contributors}{page contributors du git}. Il sait donc parfaitement qui a contribué et dans quelle proportion à ce travail.
+Corresponpance entre les pseudos github et les noms réels \href{https://github.com/blegat/LINMA1691/graphs/contributors}{(voir page contributors du git pour plus détails)} :
+\begin{itemize}
+  \item Rom2BE -> Romain Capron
+    \begin{itemize}
+      \item Chapitres 1-12
+    \end{itemize}
+  \item xaviercrochet -> Xavier Crochet
+    \begin{itemize}
+      \item Séance de TP 1
+    \end{itemize}
+  \item blegat -> Benoît Legat
+    \begin{itemize}
+      \item Initial commit
+      \item Chapitres 9-10
+      \item Séances de TP 1,8
+    \end{itemize}
+  \item alexispierret -> Alexis Pierret
+    \begin{itemize}
+      \item Chapitres 2,8,9
+    \end{itemize}
+  \item antoine96 -> ??
+    \begin{itemize}
+      \item Chapitre 2
+    \end{itemize}
+  \item alex1123 -> Alexandre de Touzalin
+    \begin{itemize}
+      \item Chapitre 6
+    \end{itemize}
+  \item ark2812 -> ??
+    \begin{itemize}
+      \item Chapitres 2,7,9
+    \end{itemize}
+  \item charlottecirriez -> Charlotte Cirriez
+    \begin{itemize}
+      \item Séance de TP 9
+    \end{itemize}
+  \item fraucent -> François Raucent
+    \begin{itemize}
+      \item Chapitre 7
+    \end{itemize}
+  \item HaroldTaeter -> Harold Taeter
+    \begin{itemize}
+      \item Chapitre 3
+    \end{itemize}
+  \item Nvico -> Nicolas Vico
+    \begin{itemize}
+      \item Chapitre 4\\
+    \end{itemize}
+\end{itemize}
 
 \clearpage
 \printindex
