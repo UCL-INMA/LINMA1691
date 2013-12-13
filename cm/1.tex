@@ -319,7 +319,16 @@
 \begin{mytheo} [Matrice d’adjacence et nombre de parcours]
   Soit $A$ la matrice d'adjacence d'un graphe. Alors l'élément $ij$ de $A^k$ ($k \geq 0$) est le nombre de parcours de longueur $k$ de $v_i$ vers $v_j$.
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+    Nous procédons par récurrence. Soit $A$ une matrice d'adjacence.\\
+     Pour $k=0$, $A^{0}=Id$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même. \\
+     Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1. \\
+     Supposons la propriété vérifiée pour $A^{k}$. 
+       $$ \left.\begin{array}{lll}
+       \#\text{ de parcours de i à j de longueur k+1} & = &\displaystyle \sum_{l \in E} (\#\text{ de parcours de i à l de longueur k})  \\
+       & & \cdot(\#\text{ d'arrêtes de l à j})\\
+          & = & A_{il}^{k}A_{lj}\\
+          & = & A_{ij}^{k+1}
+          \end{array}\right. $$
   \end{proof}
 \end{mytheo}
 
