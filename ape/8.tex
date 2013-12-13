@@ -3,8 +3,27 @@
 \textbf{Coloriage de sommets et polynôme chromatique}
 
 \paragraph{1. } Quels sont les graphes de nombre chromatique égal à 1? et égal à 2?
+\begin{solution}
+  \begin{enumerate}
+    \item Les graphes de nombre chromatique égal à 1 sont forcément les graphes sans arête car dès qu'il y a une arête, on a besoin d'au moins $2$ couleurs pour colorier le graphe (une pour chaque extrémité).
+    \item Les graphes de nombre chromatique égal à 2 sont les graphes bipartis. Démontrons la double implication :
+    \begin{itemize}
+    \item biparti $\Rightarrow \mathcal{X} = 2 $ puisqu'il suffit de colorier tous les noeuds d'un ensemble dans une couleur et les noeuds de l'autre dans une deuxième couleur
+    \item $\mathcal{X} = 2 \Rightarrow$ il n'y a pas de cycle de longueur impaire $\Rightarrow$ le graphe est biparti
+     \end{itemize}
+  \end{enumerate}
+\end{solution}
 
 \paragraph{2. } Trouvez le nombre chromatique du graphe de Pétersen, et du graphe biparti complet $K_{5,3}$.
+\begin{solution}
+  \begin{enumerate}
+    \item Nous savons que $3 \leq \mathcal{X}$ car le graphe n'est pas biparti et il existe effectivement un coloriage à  $3$ couleurs :
+    \begin{center}
+    	\includegraphics[scale=0.4]{seance8ex2}
+     \end{center}
+    \item  $\mathcal{X} = 2$ car ce graphe est biparti.
+  \end{enumerate}
+\end{solution}
 
 \paragraph{3. } Vrai ou faux? \\
 \begin{enumerate}[(a)]
@@ -14,7 +33,14 @@
   \item Si $G$ est de nombre chromatique égal à $n$, alors $G$ contient $K_n$ comme sous-graphe.
 \end{enumerate}
 
-
+\begin{solution}
+  \begin{enumerate}
+    \item Vrai car $\mathcal{X} \leq$ degré max $+ 1 = 4$. 
+    \item  Pas toujours. Le graphe $K_5$ en nécessite $5$ par exemple.
+    \item Vrai puisqu'on aura déjà besoin de $5$ pour colorier $K_n$.
+    \item Faux. Prenons par exemple un pentagone. Son nombre chromatique est égal à $3$ sans pour qu'il ne contienne de triangle. En fait, dès qu'on aura un cycle de longueur impaire, on va avoir $n \geq 3 $ sans pour autant que le graphe ne contienne $K_n$.
+  \end{enumerate}
+\end{solution}
 
 \paragraph{4. } L'algorithme glouton de coloration associé à un graphe $G$ fonctionne comme suit: on parcourt les sommets $v_1,v_2,…,v_n$ de $G$ dans un ordre fixé arbitrairement. Lorsqu'on rencontre le sommet $v_i$, on lui assigne la plus petite couleur qui n'est pas encore utilisée par un de ses voisins.
 \begin{enumerate}[(a)]
@@ -22,7 +48,15 @@
   \item Construisez pour tout $k \geq 1$ un arbre de degré maximum $k$ et une séquence de ses sommets pour laquelle l'algorithme glouton utilise $k+1$ couleurs.
 \end{enumerate}
 
-
+\begin{solution}
+  \begin{enumerate}
+    \item En partant du graphe colorié, on peut créer une telle séquence en mettant d'abord tous les sommets de couleur $1$, puis tous les sommets de couleur $2$, etc. Le graphe obtenu à l'aide de l'algorithme glouton sera peut-être différent de celui qu'on avait au départ dans le sens où cet algorithme assigne la couleur la plus petite possible donc il se peut par exemple qu'il y a un noeud de couleur $2$ qui devienne de couleur $1$. L'algorithme glouton utilisera cependant bien le nombre minimal de couleurs, ce qui est bien ce qu'on veut!
+    \item  Soit $A_1$ un noeud isolé. On peut ensuite créer $A_k$, avec $k \geq 2$, en créant un noeud relié à toutes les structures créées précédemment. La figure  ci-dessous illustre une telle construction.
+    \begin{center}
+    	\includegraphics[scale=0.6]{seance8ex4}
+     \end{center}
+  \end{enumerate}
+\end{solution}
 
 
 \paragraph{5. } Pour les deux graphes ci-dessous appliquez l'algorithme de coloration glouton, et trouvez $\chi(G)$.
@@ -102,9 +136,42 @@
 
 \end{figure}
 
+\begin{solution}
+  \begin{enumerate}
+    \item 
+    \begin{itemize}
+    \item noeud 1 $\Rightarrow$ couleur 1
+    \item noeud 2 $\Rightarrow$ couleur 2
+    \item noeud 3 $\Rightarrow$ couleur 3
+    \item noeud 4 $\Rightarrow$ couleur 2
+    \item noeud 5 $\Rightarrow$ couleur 4
+    \item noeud 6 $\Rightarrow$ couleur 4
+    \item noeud 7 $\Rightarrow$ couleur 1
+    \end{itemize}
+    Comme $K_4$ est inclus dans le graphe, on doit avoir $\mathcal{X} \geq 4$  et donc on a effectivement bien $\mathcal{X} = 4$.
+    \item
+    \begin{itemize}
+    \item noeud 1 $\Rightarrow$ couleur 1
+    \item noeud 2 $\Rightarrow$ couleur 2
+    \item noeud 3 $\Rightarrow$ couleur 3
+    \item noeud 4 $\Rightarrow$ couleur 2
+    \item noeud 5 $\Rightarrow$ couleur 1
+    \item noeud 6 $\Rightarrow$ couleur 3
+    \item noeud 7 $\Rightarrow$ couleur 4
+    \end{itemize}
+    Regardons le cycle 23465. Puisqu'il est de longueur impaire, il va falloir 3 couleurs pour le colorier. Ensuite, on aura besoin d'une autre couleur pour le noeud $7$ comme il est relié à tous les noeuds du cycle. Dès lors, on a effectivement bien $\mathcal{X} = 4$ .
+     \end{enumerate}
+\end{solution}
+
 \paragraph{6. } Sous quelle condition la somme des coefficients d'un polynôme chromatique est-elle nulle?
+\begin{solution}
+  La somme des coefficients du polynôme $= \pi_G(1)$ et $\pi_G(1) = 0$ veut dire que G a au moins une arête.
+\end{solution}
 
 \paragraph{7. } Trouvez le polynôme chromatique du graphe biparti complet $K_{2,2}$, et donnez le nombre de colorations possibles du cycle $C_4$ avec 5 couleurs.
+\begin{solution}
+  To do
+\end{solution}
 
 \paragraph{8. }
 \begin{enumerate}[(a)]
