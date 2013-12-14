@@ -486,6 +486,46 @@
 \begin{mytheo} [Graphes bipartis]
   Un graphe est biparti ssi tous ses cycles sont de longueur paire.
   \begin{proof}
-     IN PROGRESS
+    \noindent
+    \newline
+    \fbox{$\Longrightarrow$}
+    \newline
+    Il existe une bipartition $(V_1,V_2)$.\\
+    \begin{align*}
+      Cycle : & V_1, V_2, V_3, ..., V_n \Rightarrow n\ est\ pair.\\
+              & \downarrow\ \ \ \downarrow\ \ \ \downarrow\ \ \ \ \ \ \ \downarrow\\
+              & V_1, V_2, V_1, ..., V_2
+    \end{align*}
+
+    \noindent
+    \fbox{$\Longleftarrow$}
+    \newline
+    Partition d'un noeud $v_0$ au hasard.\\
+    $V_0\ =\ \{v|d(v,\ v_0)\ $paire$\}$\\
+    $V_1\ =\ \{v|d(v,\ v_0)\ $impaire$\}$\\
+    C'est une partition. Est-ce une bipartition?
+    Oui, sinon on aurait par exemple une arête $uv$ dans $V_0$.
+
+    \begin{center}
+      \begin{tikzpicture}
+        \node[draw, circle] at (-4, 0)  (1)  {$v_0$};
+        \node[draw, circle] at (-1, 0)  (2)  {$w$};
+        \node[draw, circle] at ( 2, 1)  (3)  {$u$};
+        \node[draw, circle] at ( 2,-1)  (4)  {$v$};
+
+        \draw[-] (1) edge [bend left]  node {} (2);
+        \draw[-] (1) edge [bend right] node {} (2);
+        \draw[-, color=red] (2) edge [bend left]  node [anchor = south, color=black] {pcc $v_0 \to u$} (3);
+        \draw[-, color=red] (2) edge [bend right] node [anchor = north, color=black] {pcc $v_0 \to v$} (4);
+        \draw[-, color=red] (3) edge node {} (4);
+      \end{tikzpicture}
+    \end{center}
+    pcc : plus court chemin.\\
+    Les pcc sont de longueure paire car on est dans $V_0$.\\
+    $w$ est le dernier point d'intersection entre les chemins $v_0 \to u$ et $v_0 \to v$.\\
+    \textcolor{red}{$\triangle$} est un cycle de longueur impaire car $w \to u$ et $w \to v$ sont paires (les deux sous-chemins de $v_0 \to w$ sont des plus court chemin de même longueur) + une arête $uv$.\\
+    $lg(wuvw)\ =\ lg(v_{0}uvv_0)\ - \ 2lg(v_0w)$\\
+    $impaire\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paire$\\
+    Contradiction, si arête dans $V_1$ même raisonnement.
   \end{proof}
 \end{mytheo}
