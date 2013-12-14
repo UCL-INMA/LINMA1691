@@ -358,23 +358,64 @@
 \end{mydef}
 
 \begin{myexem}
-  IN PROGRESS
+  \noindent
+  \begin{center}
+      \begin{tikzpicture}[scale = 0.75]
+        \node[draw, circle] at ( 0, 4)  (1)  {$1$};
+        \node[draw, circle] at ( 2, 0)  (2)  {$2$};
+        \node[draw, circle] at (-2, 0)  (3)  {$3$};
+
+        \draw[-] (1) edge [loop above] node {a} (1);
+        \draw[-] (1) edge [bend left] node [anchor = north] {b} (2);
+        \draw[-] (1) edge [bend right] node [anchor = north] {c} (2);
+        \draw[-] (2) edge node [anchor = north] {d} (3);
+        \draw[-] (1) edge node [anchor = north] {e} (3);
+      \end{tikzpicture}
+    
+      
+      $
+      Matrice d'adjacence : A = \bordermatrix{~ & 1 & 2 & 3 \cr
+                                          1 & 1 & 2 & 1 \cr
+                                          2 & 2 & 0 & 1 \cr
+                                          3 & 1 & 1 & 0 \cr}
+      $
+      
+      $
+      Matrice d'incidence : M = \bordermatrix{~ & 1 & 2 & 3 \cr
+                                          1 & 1 & 2 & 1 \cr
+                                          2 & 2 & 0 & 1 \cr
+                                          3 & 1 & 1 & 0 \cr}
+      $
+    \end{center}
+    $(A^k)_{ij} =$ nombre de parcours $i \to j$ de longueur $k$.\\
+    $
+      A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 1\\
+                                    0 & 1 & 0\\
+                                    0 & 0 & 1
+                    \end{pmatrix},\ 
+      A^1\ =\ A\ =\begin{pmatrix} 1 & 2 & 1\\
+                                  2 & 0 & 1\\
+                                  1 & 1 & 0
+                  \end{pmatrix},\ 
+      A^2\ = \begin{pmatrix}  6 & 3 & 3\\
+                              3 & 5 & 2\\
+                              3 & 2 & 2
+              \end{pmatrix}
+    $
 \end{myexem}
 
 \begin{mytheo} [Matrice d’adjacence et nombre de parcours]
   Soit $A$ la matrice d'adjacence d'un graphe. Alors l'élément $ij$ de $A^k$ ($k \geq 0$) est le nombre de parcours de longueur $k$ de $v_i$ vers $v_j$.
   \begin{proof}
     Nous procédons par récurrence. Soit $A$ une matrice d'adjacence.\\
-     Pour $k=0$, $A^{0}=Id$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même. \\
-     Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1. \\
-     Supposons la propriété vérifiée pour $A^{k}$. 
-       $$ \left.\begin{array}{lll}
-       \#\text{ de parcours de i à j de longueur k+1} & = &\displaystyle \sum_{l \in E} (\#\text{ de parcours de i à l de longueur k})  \\
-       & & \cdot(\#\text{ d'arrêtes de l à j})\\
-          & = & A_{il}^{k}A_{lj}\\
-          & = & A_{ij}^{k+1}
-          \end{array}\right. $$
-  \addTODO améliorer l'affichage de l'équation
+    Pour $k=0$, $A^{0}=Id$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même. \\
+    Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1. \\
+    Supposons la propriété vérifiée pour $A^{k}$. 
+       
+    Nombre de parcours de parcours de $i \to j$ de longueur $k+1 =$\\
+    $= \sum_{l \in E}$ (\# parcours de $i \to l$ de longueur $k$)$.$(\# arêtes $l \to j$)\\
+    $= \sum_{l \in E} A_{il}^{k}.A_{lj}$\\
+    $= A_{ij}^{k+1}$
   \end{proof}
 \end{mytheo}
 
@@ -398,12 +439,93 @@
 \end{mydef}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+  \noindent
+  \begin{center}  
+    \definecolor{myblue}{RGB}{80,80,160}
+    \definecolor{mygreen}{RGB}{80,160,80}
+
+    \begin{tikzpicture}[thick,
+      every node/.style={draw,circle},
+      fsnode/.style={fill=myblue},
+      ssnode/.style={fill=mygreen},
+      every fit/.style={ellipse,draw,inner sep=-2pt,text width=2cm},
+      ->,shorten >= 3pt,shorten <= 3pt
+    ]
+
+    % the vertices of U
+    \begin{scope}[start chain=going below,node distance=7mm]
+    \foreach \i in {1,2,...,5}
+      \node[fsnode,on chain] (f\i) [label=\i] {};
+    \end{scope}
+
+    % the vertices of V
+    \begin{scope}[xshift=4cm,yshift=-0.5cm,start chain=going below,node distance=7mm]
+    \foreach \i in {6,7,...,9}
+      \node[ssnode,on chain] (s\i) [label=\i] {};
+    \end{scope}
+
+    % the set U
+    \node [myblue,fit=(f1) (f5),label=$V_1$] {};
+    % the set V
+    \node [mygreen,fit=(s6) (s9),label=$V_2$] {};
+
+    % the edges
+    \draw (f1) -- (s6);
+    \draw (s6) -- (f2);
+    \draw (f2) -- (s7);
+    \draw (s7) -- (f3);
+    \draw (s8) -- (f3);
+    \draw (f3) -- (s9);
+    \draw (s9) -- (f5);
+    \draw (f5) -- (s6);
+    \draw (f4) -- (s9);
+    \end{tikzpicture}
+  \end{center}
 \end{myexem}
 
 \begin{mytheo} [Graphes bipartis]
   Un graphe est biparti ssi tous ses cycles sont de longueur paire.
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+    \noindent
+    \newline
+    \fbox{$\Longrightarrow$}
+    \newline
+    Il existe une bipartition $(V_1,V_2)$.\\
+    \begin{align*}
+      Cycle : & V_1, V_2, V_3, ..., V_n \Rightarrow n\ est\ pair.\\
+              & \downarrow\ \ \ \downarrow\ \ \ \downarrow\ \ \ \ \ \ \ \downarrow\\
+              & V_1, V_2, V_1, ..., V_2
+    \end{align*}
+
+    \noindent
+    \fbox{$\Longleftarrow$}
+    \newline
+    Partition d'un noeud $v_0$ au hasard.\\
+    $V_0\ =\ \{v|d(v,\ v_0)\ $paire$\}$\\
+    $V_1\ =\ \{v|d(v,\ v_0)\ $impaire$\}$\\
+    C'est une partition. Est-ce une bipartition?
+    Oui, sinon on aurait par exemple une arête $uv$ dans $V_0$.
+
+    \begin{center}
+      \begin{tikzpicture}
+        \node[draw, circle] at (-4, 0)  (1)  {$v_0$};
+        \node[draw, circle] at (-1, 0)  (2)  {$w$};
+        \node[draw, circle] at ( 2, 1)  (3)  {$u$};
+        \node[draw, circle] at ( 2,-1)  (4)  {$v$};
+
+        \draw[-] (1) edge [bend left]  node {} (2);
+        \draw[-] (1) edge [bend right] node {} (2);
+        \draw[-, color=red] (2) edge [bend left]  node [anchor = south, color=black] {pcc $v_0 \to u$} (3);
+        \draw[-, color=red] (2) edge [bend right] node [anchor = north, color=black] {pcc $v_0 \to v$} (4);
+        \draw[-, color=red] (3) edge node {} (4);
+      \end{tikzpicture}
+    \end{center}
+    pcc : plus court chemin.\\
+    Les pcc sont de longueure paire car on est dans $V_0$.\\
+    $w$ est le dernier point d'intersection entre les chemins $v_0 \to u$ et $v_0 \to v$.\\
+    \textcolor{red}{$\triangle$} est un cycle de longueur impaire car $w \to u$ et $w \to v$ sont paires (les deux sous-chemins de $v_0 \to w$ sont des plus court chemin de même longueur) + une arête $uv$.\\
+    $lg(wuvw)\ =\ lg(v_{0}uvv_0)\ - \ 2lg(v_0w)$\\
+    $impaire\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ paire$\\
+    Contradiction, si arête dans $V_1$ même raisonnement.
   \end{proof}
 \end{mytheo}
