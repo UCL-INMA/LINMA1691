@@ -258,15 +258,38 @@
         \draw[-] (9) edge node {} (10);
       \end{tikzpicture}
     \end{center}
-
     Pour tout autre noeud y, en arrivant à y, on a utilisé un nombre impair d'arêtes incidentes à y. On a un parcours fermé :
     \begin{itemize}
       \item Si toutes les arêtes incidentes aux x noeuds traversés par ce parcours sont utilisées, alors ce parcours est eulérien;
       \item Sinon, il y a $x_1 \in$ parcours avec au moins une arête non exploitée.\\
     \end{itemize}
+    \begin{center}
+      \begin{tikzpicture}[scale = 0.75]
+        \node[draw, circle] at (-4, 0  )  (1)  {};
+        \node[draw, circle] at (-4,-1.5)  (2)  {};
+        \node[draw, circle] at (-2, 0  )  (3)  {$x_0$};
+        \node[draw, circle] at (-2,-1.5)  (4)  {};
+        \node[draw, circle] at (-2, 1.5)  (5)  {};
+        \node[draw, circle] at ( 0, 1.5)  (6)  {};
+        \node[draw, circle] at ( 0, 0  )  (7)  {$x_1$};
+        \node[draw, circle] at ( 0,-1.5)  (8)  {};
+        \node[draw, circle] at ( 2,-1.5)  (9)  {};
+        \node[draw, circle] at ( 2, 0  )  (10) {};
 
-    IN PROGRESS
-
+        \draw[-] (1) edge node {} (2);
+        \draw[-] (1) edge node {} (3);
+        \draw[-] (2) edge node {} (4);
+        \draw[-] (3) edge node {} (4);
+        \draw[-] (3) edge node {} (5);
+        \draw[-] (3) edge node {} (7);
+        \draw[-] (5) edge node {} (6);
+        \draw[-] (6) edge node {} (7);
+        \draw[-, color=red] (7) edge node {} (8);
+        \draw[-, color=red] (7) edge node {} (10);
+        \draw[-, color=red] (8) edge node {} (9);
+        \draw[-, color=red] (9) edge node {} (10);
+      \end{tikzpicture}
+    \end{center}
     On merge les deux parcours :\\
     $P_{0+1} = x_0 \rightarrow x_1 \textcolor{red}{\rightarrow} x_1 \rightarrow x_0$\\
     Et on fait ça en boucle jusqu'à avoir toutes les arêtes.
