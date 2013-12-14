@@ -46,8 +46,12 @@
   \ifnum#1=0
     Chapitre #2 terminé!
   \else
-    #1 dans le Chapitre #2
+    \textbf{#1} dans le Chapitre #2
   \fi
+}
+\newcommand{\username}[2]
+{
+  \textit{\textbf{#1}} $\Longrightarrow$ \textbf{#2}
 }
 
 \input{1.tex}
@@ -79,72 +83,70 @@
   \item \Chapitredone{\arabic{todo_11}}{11}
   \item \Chapitredone{\arabic{todo_12}}{12}\\
 \end{itemize}
-
-Corresponpance entre les pseudos github et les noms réels \href{https://github.com/blegat/LINMA1691/graphs/contributors}{(voir page contributors du git pour plus détails)} :
-\begin{itemize}
-  \item blegat -> Benoît Legat
-    \begin{itemize}
-      \item Initial commit
-      \item Chapitres 9-10
-      \item Séances de TP 1,8-9
-    \end{itemize}
-  \item Rom2BE -> Romain Capron
-    \begin{itemize}
-      \item Chapitres 1-12
-    \end{itemize}
-  \item alexispierret -> Alexis Pierret
-    \begin{itemize}
-      \item Chapitres 2,8,9
-    \end{itemize}
-  \item fraucent -> François Raucent
-    \begin{itemize}
-      \item Chapitre 7
-    \end{itemize}
-  \item alex1123 -> Alexandre de Touzalin
-    \begin{itemize}
-      \item Chapitre 6
-    \end{itemize}
-  \item charlottecirriez -> Charlotte Cirriez
-    \begin{itemize}
-      \item Séance de TP 9
-    \end{itemize}
-  \item antoine96 -> ??
-    \begin{itemize}
-      \item Chapitre 2
-    \end{itemize}
-  \item Nvico -> Nicolas Vico
-    \begin{itemize}
-      \item Chapitre 4
-    \end{itemize}
-  \item xaviercrochet -> Xavier Crochet
-    \begin{itemize}
-      \item Séance de TP 1
-    \end{itemize}
-  \item ark2812 -> Arnaud Cerckel
-    \begin{itemize}
-      \item Chapitres 2,7,9
-    \end{itemize}
-  \item HaroldTaeter -> Harold Taeter
-    \begin{itemize}
-      \item Chapitre 3
-    \end{itemize}
-  \item FlorentinG -> Florentin Goyens
-    \begin{itemize}
-      \item Chapitre 1
-    \end{itemize}
-  \item Melanie8 -> Mélanie Sedda
-    \begin{itemize}
-      \item Séance de TP 8
-    \end{itemize}
-  \item tplissart -> Thérèse Plissart
-    \begin{itemize}
-      \item Chapitre 5
-    \end{itemize}
-  \item Gadecallatay -> Gatien De Callataÿ
-    \begin{itemize}
-      \item ??
-    \end{itemize}
-\end{itemize}
+\noindent
+\username{blegat}{Benoît Legat}
+  \begin{itemize} 
+    \item Initial commit
+    \item Chapitres 9 et 10
+    \item Séances de TP 1, 8 et 9
+  \end{itemize}
+\username{Rom2BE}{Romain Capron}
+  \begin{itemize}
+    \item Chapitres 1 à 12
+  \end{itemize}
+\username{alexispierret}{Alexis Pierret}
+  \begin{itemize}
+    \item Chapitres 2, 8 et 9
+  \end{itemize}
+\username{fraucent}{François Raucent}
+  \begin{itemize}
+    \item Chapitre 7
+  \end{itemize}
+\username{alex1123}{Alexandre de Touzalin}
+  \begin{itemize}
+    \item Chapitre 6
+  \end{itemize}
+\username{charlottecirriez}{Charlotte Cirriez}
+  \begin{itemize}
+    \item Séance de TP 9
+  \end{itemize}
+\username{antoine96}{??}
+  \begin{itemize}
+    \item Chapitre 2
+  \end{itemize}
+\username{Nvico}{Nicolas Vico}
+  \begin{itemize}
+    \item Chapitre 4
+  \end{itemize}
+\username{xaviercrochet}{Xavier Crochet}
+  \begin{itemize}
+    \item Séance de TP 1
+  \end{itemize}
+\username{ark2812}{Arnaud Cerckel}
+  \begin{itemize}
+    \item Chapitres 2, 7 et 9
+  \end{itemize}
+\username{HaroldTaeter}{Harold Taeter}
+  \begin{itemize}
+    \item Chapitre 3
+  \end{itemize}
+\username{FlorentinG}{Florentin Goyens}
+  \begin{itemize}
+    \item Chapitre 1
+  \end{itemize}
+\username{Melanie8}{Mélanie Sedda}
+  \begin{itemize}
+    \item Séance de TP 8
+  \end{itemize}
+\username{tplissart}{Thérèse Plissart}
+  \begin{itemize}
+    \item Chapitre 5
+  \end{itemize}
+\username{Gadecallatay}{Gatien De Callataÿ}
+  \begin{itemize}
+    \item ??\\
+  \end{itemize}
+\href{https://github.com/blegat/LINMA1691/graphs/contributors}{Voir page contributors du git pour plus détails.}
 
 \clearpage
 \printindex
