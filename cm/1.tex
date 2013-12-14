@@ -231,8 +231,33 @@
       \item On prend une arête incidente à $x_0$, on arrive à un nouveau noeud.
       \item Par parité, il y a au moins une arête non utilisée, on la prend, etc... Quand il n'y a plus d'arête disponible, on est forcément arrivé à $x_0$.\\
     \end{enumerate}
+    \begin{center}
+      \begin{tikzpicture}[scale = 0.75]
+        \node[draw, circle] at (-3, 0  )  (1)  {$x_0$};
+        \node[draw, circle] at (-2, 1.5)  (2)  {};
+        \node[draw, circle] at (-2,-1.5)  (3)  {};
+        \node[draw, circle] at (-1, 0  )  (4)  {};
+        \node[draw, circle] at ( 0, 1.5)  (5)  {};
+        \node[draw, circle] at ( 0,-1.5)  (6)  {};
+        \node[draw, circle] at ( 1, 0  )  (7)  {$x_1$};
+        \node[draw, circle] at ( 2, 1.5)  (8)  {};
+        \node[draw, circle] at ( 2,-1.5)  (9)  {};
+        \node[draw, circle] at ( 3, 0  )  (10) {};
 
-    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
+        \draw[-] (1) edge node {} (2);
+        \draw[dotted] (1) edge node {} (3);
+        \draw[-] (2) edge node {} (4);
+        \draw[-] (3) edge node {} (4);
+        \draw[-] (4) edge node {} (5);
+        \draw[-] (4) edge node {} (6);
+        \draw[-] (5) edge node {} (7);
+        \draw[-] (6) edge node {} (7);
+        \draw[-] (7) edge node {} (8);
+        \draw[-] (7) edge node {} (9);
+        \draw[-] (8) edge node {} (10);
+        \draw[-] (9) edge node {} (10);
+      \end{tikzpicture}
+    \end{center}
 
     Pour tout autre noeud y, en arrivant à y, on a utilisé un nombre impair d'arêtes incidentes à y. On a un parcours fermé :
     \begin{itemize}
@@ -240,7 +265,7 @@
       \item Sinon, il y a $x_1 \in$ parcours avec au moins une arête non exploitée.\\
     \end{itemize}
 
-    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
+    IN PROGRESS
 
     On merge les deux parcours :\\
     $P_{0+1} = x_0 \rightarrow x_1 \textcolor{red}{\rightarrow} x_1 \rightarrow x_0$\\
