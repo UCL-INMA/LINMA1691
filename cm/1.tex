@@ -439,7 +439,48 @@
 \end{mydef}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+  \noindent
+  \begin{center}  
+    \definecolor{myblue}{RGB}{80,80,160}
+    \definecolor{mygreen}{RGB}{80,160,80}
+
+    \begin{tikzpicture}[thick,
+      every node/.style={draw,circle},
+      fsnode/.style={fill=myblue},
+      ssnode/.style={fill=mygreen},
+      every fit/.style={ellipse,draw,inner sep=-2pt,text width=2cm},
+      ->,shorten >= 3pt,shorten <= 3pt
+    ]
+
+    % the vertices of U
+    \begin{scope}[start chain=going below,node distance=7mm]
+    \foreach \i in {1,2,...,5}
+      \node[fsnode,on chain] (f\i) [label=\i] {};
+    \end{scope}
+
+    % the vertices of V
+    \begin{scope}[xshift=4cm,yshift=-0.5cm,start chain=going below,node distance=7mm]
+    \foreach \i in {6,7,...,9}
+      \node[ssnode,on chain] (s\i) [label=\i] {};
+    \end{scope}
+
+    % the set U
+    \node [myblue,fit=(f1) (f5),label=$V_1$] {};
+    % the set V
+    \node [mygreen,fit=(s6) (s9),label=$V_2$] {};
+
+    % the edges
+    \draw (f1) -- (s6);
+    \draw (s6) -- (f2);
+    \draw (f2) -- (s7);
+    \draw (s7) -- (f3);
+    \draw (s8) -- (f3);
+    \draw (f3) -- (s9);
+    \draw (s9) -- (f5);
+    \draw (f5) -- (s6);
+    \draw (f4) -- (s9);
+    \end{tikzpicture}
+  \end{center}
 \end{myexem}
 
 \begin{mytheo} [Graphes bipartis]
