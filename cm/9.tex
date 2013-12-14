@@ -226,7 +226,7 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \begin{myexem}
 
 \noindent
-\textit{Exemple} : \\
+\textit{Exemple} : \addTODO : déplacer et agrandir le cadre pour que le texte ne soit plus coupé\\
 \begin{center}
 \begin{tikzpicture}
 %Premier graphe
@@ -373,15 +373,17 @@ degre(face exterieure)=6};
   $K_{3,3}$ est non planaire.
   \begin{proof}
     $K_{3,3}$ a 6 noeuds et 9 arêtes.
-    C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.
-    Donc toutes les faces ont un degré $\geq 4$.
-    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) = 2|E| = 18$.
-    Donc $|F| \leq \frac{18}{4} = 4.5$.
-
-    Par la formule d'Euler, il faut que
-    $|F| - |E| + |V| = 2$.
-    Or $|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5$.
-    $K_{3,3}$ ne peut donc pas être planaire.
+    C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.\\
+    Donc toutes les faces ont un degré $\geq 4$.\\
+    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) = 2|E| = 18$.\\
+    Donc $|F| \leq \frac{18}{4} = 4.5$.\\
+    \noindent
+    Par la formule d'Euler, il faut que :
+    \begin{center}
+      $|F| - |E| + |V| = 2$.\\
+      Or $|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5$.\\
+    \end{center}
+    $K_{3,3}$ ne peut donc pas être planaire.\\
   \end{proof}
 \end{mycorr}
 
