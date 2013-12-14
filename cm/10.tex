@@ -4,23 +4,25 @@
 \index{capacité}
 \begin{mydef}
   Soit un graphe dirigé, dont les noeuds sont partitionnés en sources, puits et noeuds intermédiaires, et dont chaque arête $a$ porte un nombre réel $c(a)$ nommé \emph{capacité}.\\
-  Un \emph{flot} est la donnée d’un nombre réel $f(a)$ sur chaque arête, tel que $0 \leq f(a) \leq c(a)$ et que le flot net sortant de chaque noeud intermédiaire soit nul.
+  Un \emph{flot} est la donnée d'un nombre réel $f(a)$ sur chaque arête, tel que $0 \leq f(a) \leq c(a)$ et que le flot net sortant de chaque noeud intermédiaire soit nul.
 \end{mydef}
 
 \index{flot!flot net sortant}
 \index{flot!valeur du flot}
 \index{flot!flot maximum}
 \begin{mydef}
-  Le \emph{flot net sortant d’un noeud} $u$ est défini comme $\sum_{arêtes a d’origine u} f(a) − \sum_{arêtes b de destination u} f(b)$. Le \emph{flot net sortant d’un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
+  Le \emph{flot net sortant d'un noeud} $u$ est défini comme
+  $\sum_{\text{arêtes }a\text{ d'origine }u} f(a) − \sum_{\text{arêtes }b\text{ de destination }u} f(b)$.
+  Le \emph{flot net sortant d'un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
   La \emph{valeur du flot} est le flot net sortant des noeuds sources.\\
-  On désire trouver le \emph{flot maximum}, c’est-à-dire le flot de valeur maximale.
+  On désire trouver le \emph{flot maximum}, c'est-à-dire le flot de valeur maximale.
 \end{mydef}
 
 \index{coupe}
 \index{coupe!coupe minimum}
 \begin{mydef}
-  Une \emph{coupe} est un ensemble d’arêtes tel qu’il n’ait plus aucun chemin d’un noeud source vers un noeud puits quand on retire cet ensemble du graphe.\\
-  On désire trouver une \emph{coupe minimum}, c’est-à-dire une coupe dont la capacité (i.e., la somme des capacités de ses arêtes) est minimale.
+  Une \emph{coupe} est un ensemble d'arêtes tel qu'il n'ait plus aucun chemin d'un noeud source vers un noeud puits quand on retire cet ensemble du graphe.\\
+  On désire trouver une \emph{coupe minimum}, c'est-à-dire une coupe dont la capacité (i.e., la somme des capacités de ses arêtes) est minimale.
 \end{mydef}
 
 \begin{center}
@@ -64,8 +66,8 @@
 \paragraph{Observation}
 Se donner une coupe, on se donne un ensemble $S$ de noeuds atteignables à partir des sources,
 c'est la même chose.
-$\mathrm{Coupe} \mapsto S :=$ composantes connexes des sources quand on enlève la coupe.
-Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
+Lorsqu'on a une coupe, $S$ est la composante connexe comprenant les sources lorsqu'on enlève la coupe.
+Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et de $\bar{S}$.
 
 \begin{mylem}
   Pour un flot donné, toutes les coupes ont le même flot net, qui est la valeur du flot.
@@ -108,70 +110,40 @@ Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
 \end{mylem}
 
 \begin{mylem}
-  Pour tout flot $f$ et toute coupe $S \to \bar{S}$, valeur($f$) $\leq$ capacité($S \to \bar{S}$). L’égalité a lieu si et seulement si toutes les arêtes $a$ de la coupe $S \to \bar{S}$ sont $f$-saturées (i.e., $f(a) = c(a)$) et toutes les arêtes $b$ de $\bar{S} \to S$ sont $f$-nulles (i.e., $f(b) = 0$).
+  Pour tout flot $f$ et toute coupe $S \to \bar{S}$, valeur($f$) $\leq$ capacité($S \to \bar{S}$). L'égalité a lieu si et seulement si toutes les arêtes $a$ de la coupe $S \to \bar{S}$ sont $f$-saturées (i.e., $f(a) = c(a)$) et toutes les arêtes $b$ de $\bar{S} \to S$ sont $f$-nulles (i.e., $f(b) = 0$).
 
   \begin{proof}
     \begin{align*}
-      val(f) & = flot sur la coupe\\
-             & = \sum f_{net}(S \to \bar{S})\\
-             %& = \sum_{i \in S\\j \in \bar{S}\\ij \in E} f_{ij} - \sum_{i \in S\\j \in \bar{S}\\ji \in E} f_{ij}\\
-             %& \leq \sum_{i \in S\\j \in \bar{S}\\ij \in E} f_{ij}\\
-             %& \leq \sum_{i \in S\\j \in \bar{S}\\ij \in E} c_{ij}\\
-             %& = Coupe(S \to \bar{S}).
+      \mathrm{valeur}(f) & = \text{flot sur la coupe}\\
+             & = \sum f_{\mathrm{net}}(S \to \bar{S})\\
+             & = \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f_{ij} - \sum_{i \in S \atop {j \in \bar{S} \atop ji \in E}} f_{ij}\\
+             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f_{ij}\\
+             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} c_{ij}\\
+             & = \text{Coupe}(S \to \bar{S}).
     \end{align*}
-    = ssi $\sum_{i \in S\\j \in \bar{S}\\ji \in E} f_{ij} = 0$ et $\sum_{i \in S\\j \in \bar{S}\\ij \in E} f_{ij} = \sum_{..} c_{ij}$
-    ssi arêtes $S \to \bar{S}$ saturées et arêtes $\bar{S} \to S$ nulles.
+    Avec égalité si et seulement si $\sum_{i \in S\atop {j \in \bar{S}\atop ji \in E}} f_{ij} = 0$ et
+    $\sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} f_{ij} = \sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} c_{ij}$
+    c'est à dire que toutes les arêtes qui lient un noeud de $S$ à un noeud de $\bar{S}$ sont saturées
+    et que les arêtes qui lient un noeud de $\bar{S}$ à un noeud de $S$ ont un flot nul.
   \end{proof}
 \end{mylem}
-
-\begin{center}
-\begin{tikzpicture}[scale = 0.7]
-\node at (-1, 1) {$x$};
-\node at (-1, 0) {$y$};
-
-\node[draw, circle] at (0, 0) (A)                  {\tiny G};
-\node[draw, circle, fill = blue!25] at (1, 0) (B)  {\tiny C};
-\node[draw, circle, fill = blue!25] at (2, 0) (C)  {\tiny A};
-\node[draw, circle, fill = blue!25] at (3, 0) (D)  {\tiny A};
-\node[draw, circle, fill = blue!25] at (4, 0) (E)  {\tiny G};
-\node[draw, circle, fill = blue!25] at (5, 0) (F)  {\tiny T};
-\node[draw, circle] at (6, 0) (G)                  {\tiny C};
-\node[draw, circle, fill = blue!25] at (7, 0) (H)  {\tiny T};
-\node[draw, circle, fill = blue!25] at (8, 0) (I)  {\tiny A};
-\node[draw, circle] at (9, 0) (J)                  {\tiny A};
-\node[draw, circle, fill = blue!25] at (10, 0) (K) {\tiny T};
-\node[draw, circle, fill = blue!25] at (11, 0) (L) {\tiny A};
-
-\node[draw, circle, fill = blue!25] at (0, 1) (a)  {\tiny C};
-\node[draw, circle, fill = blue!25] at (1, 1) (b)  {\tiny A};
-\node[draw, circle, fill = blue!25] at (2, 1) (c)  {\tiny A};
-\node[draw, circle] at (3, 1) (d)                  {\tiny G};
-\node[draw, circle, fill = blue!25] at (4, 1) (e)  {\tiny G};
-\node[draw, circle, fill = blue!25] at (5, 1) (f)  {\tiny T};
-\node[draw, circle] at (6, 1) (g)                  {\tiny T};
-\node[draw, circle] at (7, 1) (h)                  {\tiny A};
-\node[draw, circle, fill = blue!25] at (8, 1) (i)  {\tiny T};
-\node[draw, circle, fill = blue!25] at (9, 1) (j)  {\tiny A};
-\node[draw, circle, fill = blue!25] at (10, 1) (k) {\tiny T};
-\node[draw, circle, fill = blue!25] at (11, 1) (l) {\tiny A};
-
-\draw (B) edge (a);
-\draw (C) edge (b);
-\draw (D) edge (c);
-\draw (F) edge (f);
-\draw (H) edge (i);
-\draw (I) edge (j);
-\draw (K) edge (k);
-\draw (L) edge (l);
-\draw (E) edge (e);
-
-\end{tikzpicture}
-\end{center}
 
 \begin{mycorr}
   Si un flot et une coupe sont tels que valeur(flot) = capacité(coupe), alors ce flot est maximum et cette coupe minimum.
   \begin{proof}
-     Preuve \addTODO
+    On vient de voir que dans le cas d'égalité, les arêtes étaient saturées et il n'y a aucun flot qui va de $\bar{S}$ à $S$
+    Et donc ne peut plus faire passer de flot de $S$ à $\bar{S}$ ni par des arêtes directes (elles sont saturées),
+    ni par des ``back edges'' (elles sont nulles car il n'y a pas de flot de $\bar{S}$ à $S$).
+
+    Le fait que le flot est maximum et que la coupe est minimum est en fait simplement montré par la dualité.
+    On sait que pour toute coupe $S\to\bar{S}$ et flot $f$, $\text{Coupe}(S\to\bar{S}) \geq \mathrm{valeur}(f)$.
+    Dès lors, pour toute coupe $\text{Coupe}(S \to \bar{S}) \geq f_\mathrm{max}$ et pour tout flot,
+    $\text{Coupe}_\mathrm{min} \geq \mathrm{valeur}(f)$ et en particulier $\text{Coupe}_\mathrm{min} \geq f_\mathrm{max}$.
+    On a donc
+    \[ \text{Coupe}(S \to \bar{S}) \geq \text{Coupe}_\mathrm{min} \geq f_\mathrm{max} \geq \mathrm{valeur}(f) \]
+    d'où $\text{Coupe}(S \to \bar{S}) = \text{Coupe}_\mathrm{min}$ et
+    $f_\mathrm{max} = \mathrm{valeur}(f)$ en cas d'égalité
+    $\text{Coupe}(S \to \bar{S}) = \mathrm{valeur}(f)$.
   \end{proof}
 \end{mycorr}
 
@@ -179,11 +151,11 @@ Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
 \index{chemin!chemin $f$-augmentant}
 \begin{mydef}
   Etant donné un flot $f$, à tout chemin $P$ dans le graphe non-dirigé sous-jacent associons la quantité $i(P) = min_{a \in P} i(a)$, où $i(a) = c(a) − f(a)$ pour les arêtes $a$ prises par $P$ dans le sens direct, et $i(a) = f (a)$ pour les arêtes a prises dans le sens inverse.\\
-  Un chemin $P$ est \emph{$f$-saturé} si $i(P) = 0$. Il est \emph{$f$-augmentant} s’il est non saturé, part d’un noeud source et arrive à un noeud puits.
+  Un chemin $P$ est \emph{$f$-saturé} si $i(P) = 0$. Il est \emph{$f$-augmentant} s'il est non saturé, part d'un noeud source et arrive à un noeud puits.
 \end{mydef}
 
 \begin{mytheo}
-  Un flot est maximum si et seulement s’il ne contient pas de chemin $f$-augmentant.
+  Un flot est maximum si et seulement s'il ne contient pas de chemin $f$-augmentant.
   \begin{proof}
      Preuve \addTODO
   \end{proof}
