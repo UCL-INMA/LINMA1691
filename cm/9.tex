@@ -67,36 +67,36 @@ Notons qu'un graphe planaire peut être dessiné de manière non planaire.
 
 \begin{center}
 
-\begin{tikzpicture}
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,0) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,4) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (4,4) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (4,0) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (2,6) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,2) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (3,2) {\textbullet};
+  \begin{tikzpicture}
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,0) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,4) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (4,4) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (4,0) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (2,6) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,2) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (3,2) {\textbullet};
 
-\draw (0,0)--(0,4)--(2,6)--(4,4)--(4,0)--cycle;
-\draw (0,4)--(4,4);
-\draw (0,0)--(1,2)--(2,6);
-\draw (4,0)--(3,2)--(2,6);
-\draw (0,4) to[out=-89, in=179] (4,0);
-\end{tikzpicture}
+    \draw (0,0)--(0,4)--(2,6)--(4,4)--(4,0)--cycle;
+    \draw (0,4)--(4,4);
+    \draw (0,0)--(1,2)--(2,6);
+    \draw (4,0)--(3,2)--(2,6);
+    \draw (0,4) to[out=-89, in=179] (4,0);
+  \end{tikzpicture}
 
-\begin{tikzpicture}
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,0) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,4) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (5,4) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (5,0) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (3,6) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,2) {\textbullet};
-\node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (6,2) {\textbullet};
-\draw (1,0)--(1,4)--(3,6)--(5,4)--(5,0)--cycle;
-\draw (1,4)--(5,4);
-\draw (1,0) to[out=135,in=-90](0,2)to[out=90,in=-150](3,6);
-\draw (5,0) to[out=45,in=-90](6,2)to[out=90,in=-30](3,6);
-\draw (1,4)--(5,0);
-\end{tikzpicture}
+  \begin{tikzpicture}
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,0) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (1,4) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (5,4) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (5,0) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (3,6) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (0,2) {\textbullet};
+    \node[fill=black,  circle, inner sep=0pt,minimum width=0.5mm] (test) at (6,2) {\textbullet};
+    \draw (1,0)--(1,4)--(3,6)--(5,4)--(5,0)--cycle;
+    \draw (1,4)--(5,4);
+    \draw (1,0) to[out=135,in=-90](0,2)to[out=90,in=-150](3,6);
+    \draw (5,0) to[out=45,in=-90](6,2)to[out=90,in=-30](3,6);
+    \draw (1,4)--(5,0);
+  \end{tikzpicture}
 \end{center}
 
 
@@ -105,8 +105,8 @@ Notons qu'un graphe planaire peut être dessiné de manière non planaire.
 
 \subsection{Graphes planaires}
 \begin{mytheo} [Fáry]
-Tout graphe planaire simple peut être représenté en n'utilisant que des arêtes droites.
-%no proof ?
+  Tout graphe planaire simple peut être représenté en n'utilisant que des arêtes droites.
+  %no proof ?
 \end{mytheo}
 
 
@@ -114,73 +114,73 @@ Tout graphe planaire simple peut être représenté en n'utilisant que des arêt
 \begin{mytheo}
 Le graphe complet $K_5$ à cinq noeuds n'est pas planaire.
 
-\begin{proof}
+  \begin{proof}
 
-Représentons $K_5$ dans le plan. Soit l'ensemble de ses noeuds $\{v_1, v_2, v_3, v_4, v_5\}$.\\
-$v_1, v_2$ et $v_3$ forment un triangle. Où placer $v_4$?
+  Représentons $K_5$ dans le plan. Soit l'ensemble de ses noeuds $\{v_1, v_2, v_3, v_4, v_5\}$.\\
+  $v_1, v_2$ et $v_3$ forment un triangle. Où placer $v_4$?
 
-\begin{center}
-\begin{tikzpicture}
-\node[circle] (v1)[draw=black] at (0,0) {v1};
-\node[circle] (v2)[draw=black] at (7,0) {v2};
-\node[circle] (v3)[draw=black] at (2,5) {v3};
-\draw (v1)--(v2)--(v3)--(v1);
-\end{tikzpicture}
-\end{center}
+    \begin{center}
+      \begin{tikzpicture}
+        \node[circle] (v1)[draw=black] at (0,0) {v1};
+        \node[circle] (v2)[draw=black] at (7,0) {v2};
+        \node[circle] (v3)[draw=black] at (2,5) {v3};
+        \draw (v1)--(v2)--(v3)--(v1);
+      \end{tikzpicture}
+    \end{center}
 
 
-\begin{enumerate}
-\item A l'intérieur du triangle formé par $v_1, v_2$ et $v_3$ ?\\
-\begin{center}
-\begin{tikzpicture}
-\node[circle] (v1)[draw=black] at (0,0) {v1};
-\node[circle] (v2)[draw=black] at (7,0) {v2};
-\node[circle] (v3)[draw=black] at (2,5) {v3};
-\node[circle] (v4)[draw=black] at (3,2) {v3};
-\draw (v1)--(v2)--(v3)--(v1);
-\draw (v4)--(v1);
-\draw (v4)--(v2);
-\draw (v4)--(v3);
-\end{tikzpicture}
-\end{center}
-%\includegraphics[scale=0.4]{t2}\\
-Où placer $v_5$?
-\begin{enumerate}
-\item A l'intérieur du triangle formé par $v_1, v_3$ et $v_4$ ? Le graphe ne serait plus planaire puisqu'il faudrait couper le triangle $v_1, v_3$ et $v_4$ pour relier $v_5$ à $v_2$.\\
-\begin{center}
-\begin{tikzpicture}
-\node[circle] (v1)[draw=black] at (0,0) {v1};
-\node[circle] (v2)[draw=black] at (7,0) {v2};
-\node[circle] (v3)[draw=black] at (2,5) {v3};
-\node[circle] (v4)[draw=black] at (3,2) {v3};
-\node[circle] (v5)[draw=black] at (1.8,2.2) {v5};
-\draw (v1)--(v2)--(v3)--(v1);
-\draw (v4)--(v1);
-\draw (v4)--(v2);
-\draw (v4)--(v3);
-\end{tikzpicture}
-\end{center}
-%\includegraphics[scale=0.4]{t3}
-\item A l'intérieur de $v_1$, $v_2$, $v_4$ ou de $v_2$, $v_3$, $v_4$ ? Idem.
-\item A l'extérieur de $v_1$, $v_2$, $v_3$? \\
-\begin{center}
-\begin{tikzpicture}
-\node[circle] (v1)[draw=black] at (0,0) {v1};
-\node[circle] (v2)[draw=black] at (7,0) {v2};
-\node[circle] (v3)[draw=black] at (2,5) {v3};
-\node[circle] (v4)[draw=black] at (3,2) {v3};
-\node[circle] (v5)[draw=black] at (0,3) {v5};
-\draw (v1)--(v2)--(v3)--(v1);
-\draw (v4)--(v1);
-\draw (v4)--(v2);
-\draw (v4)--(v3);
-\end{tikzpicture}
-\end{center}
-%\includegraphics[scale=0.4]{t4}\\
-\end{enumerate}
-\item A l'extérieur de $v_1, v_2$, $v_3$ ? En applicant le même type d'énumération qu'au point précédent, on trouve qu'il n'y a aucune manière de représenter $K_5$ dans le plan de manière à ce qu'il soit planaire.
-\end{enumerate}
-\end{proof}
+  \begin{enumerate}
+    \item A l'intérieur du triangle formé par $v_1, v_2$ et $v_3$ ?\\
+    \begin{center}
+      \begin{tikzpicture}
+        \node[circle] (v1)[draw=black] at (0,0) {v1};
+        \node[circle] (v2)[draw=black] at (7,0) {v2};
+        \node[circle] (v3)[draw=black] at (2,5) {v3};
+        \node[circle] (v4)[draw=black] at (3,2) {v3};
+        \draw (v1)--(v2)--(v3)--(v1);
+        \draw (v4)--(v1);
+        \draw (v4)--(v2);
+        \draw (v4)--(v3);
+      \end{tikzpicture}
+    \end{center}
+    %\includegraphics[scale=0.4]{t2}\\
+    Où placer $v_5$?
+    \begin{enumerate}
+      \item A l'intérieur du triangle formé par $v_1, v_3$ et $v_4$ ? Le graphe ne serait plus planaire puisqu'il faudrait couper le triangle $v_1, v_3$ et $v_4$ pour relier $v_5$ à $v_2$.\\
+      \begin{center}
+        \begin{tikzpicture}
+          \node[circle] (v1)[draw=black] at (0,0) {v1};
+          \node[circle] (v2)[draw=black] at (7,0) {v2};
+          \node[circle] (v3)[draw=black] at (2,5) {v3};
+          \node[circle] (v4)[draw=black] at (3,2) {v3};
+          \node[circle] (v5)[draw=black] at (1.8,2.2) {v5};
+          \draw (v1)--(v2)--(v3)--(v1);
+          \draw (v4)--(v1);
+          \draw (v4)--(v2);
+          \draw (v4)--(v3);
+        \end{tikzpicture}
+      \end{center}
+      %\includegraphics[scale=0.4]{t3}
+      \item A l'intérieur de $v_1$, $v_2$, $v_4$ ou de $v_2$, $v_3$, $v_4$ ? Idem.
+      \item A l'extérieur de $v_1$, $v_2$, $v_3$? \\
+      \begin{center}
+        \begin{tikzpicture}
+          \node[circle] (v1)[draw=black] at (0,0) {v1};
+          \node[circle] (v2)[draw=black] at (7,0) {v2};
+          \node[circle] (v3)[draw=black] at (2,5) {v3};
+          \node[circle] (v4)[draw=black] at (3,2) {v3};
+          \node[circle] (v5)[draw=black] at (0,3) {v5};
+          \draw (v1)--(v2)--(v3)--(v1);
+          \draw (v4)--(v1);
+          \draw (v4)--(v2);
+          \draw (v4)--(v3);
+        \end{tikzpicture}
+      \end{center}
+      %\includegraphics[scale=0.4]{t4}\\
+    \end{enumerate}
+    \item A l'extérieur de $v_1, v_2$, $v_3$ ? En applicant le même type d'énumération qu'au point précédent, on trouve qu'il n'y a aucune manière de représenter $K_5$ dans le plan de manière à ce qu'il soit planaire.
+  \end{enumerate}
+  \end{proof}
 \end{mytheo}
 
 
@@ -223,49 +223,49 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \begin{mydef}
   Etant donné un graphe planaire $G$ (dans une représentation sans croisement), construisons $G^*$ , graphe dont les sommets sont les faces de $G$, reliés si et seulement si les faces correspondantes ont dans $G$ une arête en commun. Ce graphe $G^*$ est le \emph{dual} de $G$ (dans cette représentation).
 \end{mydef}
+
 \begin{myexem}
-
 \noindent
-\textit{Exemple} : \addTODO : déplacer et agrandir le cadre pour que le texte ne soit plus coupé\\
-\begin{center}
-\begin{tikzpicture}
-%Premier graphe
-\node[circle](N1)[draw=black] at (4,10) {1};
-\node[circle](N2)[draw=black] at (4,8) {2};
-\node[circle](N3)[draw=black] at (8,5) {3};
-\node[circle](N4)[draw=black] at (4,2) {4};
-\node[circle](N5)[draw=black] at (0,5) {5};
-\node[circle](N6)[draw=black] at (2.5,5){6};
+\textit{Exemple} :
+  \begin{center}
+    \begin{tikzpicture}
+    %Premier graphe
+    \node[circle](N1)[draw=black] at (4,10) {1};
+    \node[circle](N2)[draw=black] at (4,8) {2};
+    \node[circle](N3)[draw=black] at (8,5) {3};
+    \node[circle](N4)[draw=black] at (4,2) {4};
+    \node[circle](N5)[draw=black] at (0,5) {5};
+    \node[circle](N6)[draw=black] at (2.5,5){6};
 
-\draw (N1)--(N2)--(N3)--(N4)--(N5)--(N2);
-\draw (N5)to[out=20,in=160](N6)to[out=-160,in=-20](N5);
-\draw (N6)--(N2);
+    \draw (N1)--(N2)--(N3)--(N4)--(N5)--(N2);
+    \draw (N5)to[out=20,in=160](N6)to[out=-160,in=-20](N5);
+    \draw (N6)--(N2);
 
-%Second graphe
-\node (NN7) at (1.25,5) {\textbullet};
-\node (NN8) at (2.5,6) {\textbullet};
-\node (NN9) at (7,10) {\textbullet};
-\node (NN10) at (6,5) {\textbullet};
-\node [red] (test) at (8,11){Graphe Dual};
-\node [black] (test) at  (7,2){Face exterieure};
-\node [draw,text width =4cm] (test) at (13,8)
-{4 faces\\
-Face extérieure : 1234521\\
-degre(face exterieure)=6};
+    %Second graphe
+    \node (NN7) at (1.25,5) {\textbullet};
+    \node (NN8) at (2.5,6) {\textbullet};
+    \node (NN9) at (7,10) {\textbullet};
+    \node (NN10) at (6,5) {\textbullet};
+    \node [red] (test) at (8,11){Graphe Dual};
+    \node [black] (test) at  (7,2){Face extérieure};
+    \node [draw,text width =4.5cm] (test) at (12,10)
+    {4 faces\\
+    Face extérieure : 1234521\\
+    degré(face extérieure) = 6};
 
-\coordinate (N7) at (1.25,5);
-\coordinate (N8) at (2.5,6);
-\coordinate (N9) at (7,10);
-\coordinate (N10) at (6,5);
+    \coordinate (N7) at (1.25,5);
+    \coordinate (N8) at (2.5,6);
+    \coordinate (N9) at (7,10);
+    \coordinate (N10) at (6,5);
 
-\draw[red] (N7) to[out=-20,in=-160](N10)--(N8)--(N7);
-\draw[red] (N10)to[out=-160,in=90](1.5,2)to[out=-90,in=-180](4,0.5)to[out=0,in=-135](11,2.5)to[out=45,in=-30](N9)to[out=130,in=45](2,11)to[out=-135,in=135](N8);
-\draw[red] (N10)to[out=-45,in=-135](8.5,4)to[out=45,in=-30](N9);
-\draw[red] (N10)--(N9);
-\draw[red] (N9) to[out=170,in=90](3,10)to[out=-90,in=-170](N9);
+    \draw[red] (N7) to[out=-20,in=-160](N10)--(N8)--(N7);
+    \draw[red] (N10)to[out=-160,in=90](1.5,2)to[out=-90,in=-180](4,0.5)to[out=0,in=-135](11,2.5)to[out=45,in=-30](N9)to[out=130,in=45](2,11)to[out=-135,in=135](N8);
+    \draw[red] (N10)to[out=-45,in=-135](8.5,4)to[out=45,in=-30](N9);
+    \draw[red] (N10)--(N9);
+    \draw[red] (N9) to[out=170,in=90](3,10)to[out=-90,in=-170](N9);
 
-\end{tikzpicture}
-\end{center}
+    \end{tikzpicture}
+  \end{center}
 \end{myexem}
 
 

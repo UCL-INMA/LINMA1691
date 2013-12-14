@@ -67,18 +67,16 @@
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
-          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 2, 0.5)  (2) {$2'$};
           \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
           \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
-          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
+          \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
-          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-
-          %TODO tracer les lignes qui montrent comment on passe du graphe b au graphe c (en gardant les 3 graphes sur la même ligne)
+          \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
+          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
 
         \end{tikzpicture}
       }
@@ -136,16 +134,16 @@
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
-          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 2, 0.5)  (2) {$2'$};
           \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
           \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
-          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
+          \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
-          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
+          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
 
           %TODO tracer les lignes qui montrent comment on passe du graphe e au graphe f (en gardant les 3 graphes sur la même ligne)
         \end{tikzpicture}
@@ -179,7 +177,6 @@
     \newline
     \newline
     Les six graphes de cet exemple sont isomorphes entre eux.\\
-    \addTODO : mettre le label autrement pour que ce soit lisible dans les graphes $(b)$ et $(e)$.
 \end{myexem}
 
 \subsection{Parcours eulérien}
@@ -234,17 +231,65 @@
       \item On prend une arête incidente à $x_0$, on arrive à un nouveau noeud.
       \item Par parité, il y a au moins une arête non utilisée, on la prend, etc... Quand il n'y a plus d'arête disponible, on est forcément arrivé à $x_0$.\\
     \end{enumerate}
+    \begin{center}
+      \begin{tikzpicture}[scale = 0.75]
+        \node[draw, circle] at (-3, 0  )  (1)  {$x_0$};
+        \node[draw, circle] at (-2, 1.5)  (2)  {};
+        \node[draw, circle] at (-2,-1.5)  (3)  {};
+        \node[draw, circle] at (-1, 0  )  (4)  {};
+        \node[draw, circle] at ( 0, 1.5)  (5)  {};
+        \node[draw, circle] at ( 0,-1.5)  (6)  {};
+        \node[draw, circle] at ( 1, 0  )  (7)  {$x_1$};
+        \node[draw, circle] at ( 2, 1.5)  (8)  {};
+        \node[draw, circle] at ( 2,-1.5)  (9)  {};
+        \node[draw, circle] at ( 3, 0  )  (10) {};
 
-    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
-
+        \draw[-] (1) edge node {} (2);
+        \draw[dotted] (1) edge node {} (3);
+        \draw[-] (2) edge node {} (4);
+        \draw[-] (3) edge node {} (4);
+        \draw[-] (4) edge node {} (5);
+        \draw[-] (4) edge node {} (6);
+        \draw[-] (5) edge node {} (7);
+        \draw[-] (6) edge node {} (7);
+        \draw[-] (7) edge node {} (8);
+        \draw[-] (7) edge node {} (9);
+        \draw[-] (8) edge node {} (10);
+        \draw[-] (9) edge node {} (10);
+      \end{tikzpicture}
+    \end{center}
     Pour tout autre noeud y, en arrivant à y, on a utilisé un nombre impair d'arêtes incidentes à y. On a un parcours fermé :
     \begin{itemize}
       \item Si toutes les arêtes incidentes aux x noeuds traversés par ce parcours sont utilisées, alors ce parcours est eulérien;
       \item Sinon, il y a $x_1 \in$ parcours avec au moins une arête non exploitée.\\
     \end{itemize}
+    \begin{center}
+      \begin{tikzpicture}[scale = 0.75]
+        \node[draw, circle] at (-4, 0  )  (1)  {};
+        \node[draw, circle] at (-4,-1.5)  (2)  {};
+        \node[draw, circle] at (-2, 0  )  (3)  {$x_0$};
+        \node[draw, circle] at (-2,-1.5)  (4)  {};
+        \node[draw, circle] at (-2, 1.5)  (5)  {};
+        \node[draw, circle] at ( 0, 1.5)  (6)  {};
+        \node[draw, circle] at ( 0, 0  )  (7)  {$x_1$};
+        \node[draw, circle] at ( 0,-1.5)  (8)  {};
+        \node[draw, circle] at ( 2,-1.5)  (9)  {};
+        \node[draw, circle] at ( 2, 0  )  (10) {};
 
-    INSERT GRAPH HERE \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO\\
-
+        \draw[-] (1) edge node {} (2);
+        \draw[-] (1) edge node {} (3);
+        \draw[-] (2) edge node {} (4);
+        \draw[-] (3) edge node {} (4);
+        \draw[-] (3) edge node {} (5);
+        \draw[-] (3) edge node {} (7);
+        \draw[-] (5) edge node {} (6);
+        \draw[-] (6) edge node {} (7);
+        \draw[-, color=red] (7) edge node {} (8);
+        \draw[-, color=red] (7) edge node {} (10);
+        \draw[-, color=red] (8) edge node {} (9);
+        \draw[-, color=red] (9) edge node {} (10);
+      \end{tikzpicture}
+    \end{center}
     On merge les deux parcours :\\
     $P_{0+1} = x_0 \rightarrow x_1 \textcolor{red}{\rightarrow} x_1 \rightarrow x_0$\\
     Et on fait ça en boucle jusqu'à avoir toutes les arêtes.
@@ -313,7 +358,7 @@
 \end{mydef}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+  IN PROGRESS
 \end{myexem}
 
 \begin{mytheo} [Matrice d’adjacence et nombre de parcours]
