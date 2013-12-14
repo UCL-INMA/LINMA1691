@@ -11,7 +11,11 @@
 \index{flot!valeur du flot}
 \index{flot!flot maximum}
 \begin{mydef}
-  Le \emph{flot net sortant d’un noeud} $u$ est défini comme $\sum_{arêtes a d’origine u} f(a) − \sum_{arêtes b de destination u} f(b)$. Le \emph{flot net sortant d’un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
+  Le \emph{flot net sortant d’un noeud} $u$ est défini comme : 
+  \begin{center}
+  $\sum_{arêtes\ a\ d’origine\ u} f(a) − \sum_{arêtes\ b\ de\ destination\ u} f(b)$
+  \end{center}
+  Le \emph{flot net sortant d’un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
   La \emph{valeur du flot} est le flot net sortant des noeuds sources.\\
   On désire trouver le \emph{flot maximum}, c’est-à-dire le flot de valeur maximale.
 \end{mydef}
@@ -65,7 +69,7 @@
 Se donner une coupe, on se donne un ensemble $S$ de noeuds atteignables à partir des sources,
 c'est la même chose.
 $\mathrm{Coupe} \mapsto S :=$ composantes connexes des sources quand on enlève la coupe.
-Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
+Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à\ l'envers) S$.
 
 \begin{mylem}
   Pour un flot donné, toutes les coupes ont le même flot net, qui est la valeur du flot.
@@ -121,6 +125,7 @@ Arêtes $S \mapsto \bar{S} =: coupe \mapsto(à l'envers) S$.
     \end{align*}
     = ssi $\sum_{i \in S\\j \in \bar{S}\\ji \in E} f_{ij} = 0$ et $\sum_{i \in S\\j \in \bar{S}\\ij \in E} f_{ij} = \sum_{..} c_{ij}$
     ssi arêtes $S \to \bar{S}$ saturées et arêtes $\bar{S} \to S$ nulles.
+    \addTODO : écrire ça proprement
   \end{proof}
 \end{mylem}
 
