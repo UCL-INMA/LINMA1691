@@ -67,18 +67,16 @@
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
-          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 2, 0.5)  (2) {$2'$};
           \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
           \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
-          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
+          \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
-          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-
-          %TODO tracer les lignes qui montrent comment on passe du graphe b au graphe c (en gardant les 3 graphes sur la même ligne)
+          \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
+          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
 
         \end{tikzpicture}
       }
@@ -136,16 +134,16 @@
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
-          \node[draw, circle] at ( 2, 0  )  (2) {$2'$};
+          \node[draw, circle] at ( 2, 0.5)  (2) {$2'$};
           \node[draw, circle] at ( 1,-1.5)  (3) {$3'$};
           \node[draw, circle] at (-1,-1.5)  (4) {$4'$};
-          \node[draw, circle] at (-2, 0  )  (5) {$5'$};
+          \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
-          \draw[-] (1) edge node {$a'$} (3); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$b'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (2) edge node {$c'$} (4); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (3) edge node {$d'$} (5); %TODO mettre le label autrement pour que ce soit lisible
-          \draw[-] (1) edge node {$e'$} (4); %TODO mettre le label autrement pour que ce soit lisible
+          \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
+          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
 
           %TODO tracer les lignes qui montrent comment on passe du graphe e au graphe f (en gardant les 3 graphes sur la même ligne)
         \end{tikzpicture}
@@ -179,7 +177,6 @@
     \newline
     \newline
     Les six graphes de cet exemple sont isomorphes entre eux.\\
-    \addTODO : mettre le label autrement pour que ce soit lisible dans les graphes $(b)$ et $(e)$.
 \end{myexem}
 
 \subsection{Parcours eulérien}
