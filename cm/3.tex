@@ -10,7 +10,7 @@
 \index{graphe!sous-graphe sous-tendant}
 \index{graphe!sous-graphe couvrant}
 \begin{mydef}
-  Un \emph{sous-graphe sous-tendant} ou \emph{couvrant} d’un graphe $G$ est un sous-graphe qui contient tous les sommets de $G$.
+  Un \emph{sous-graphe sous-tendant} ou \emph{couvrant} d'un graphe $G$ est un sous-graphe qui contient tous les sommets de $G$.
 \end{mydef}
 
 \begin{mytheo} [Arbres sous-tendants]
@@ -75,7 +75,7 @@
 \end{mytheo}
 
 \begin{myform} [Formule de Cayley]
-  Soit $T(G)$ le nombre d’arbres sous-tendants de $G$, et $e$ une arête quelconque de $G$, qui n’est pas une boucle. \\
+  Soit $T(G)$ le nombre d'arbres sous-tendants de $G$, et $e$ une arête quelconque de $G$, qui n'est pas une boucle. \\
   Alors $T(G) = T(G − e) + T (G.e)$.
   \begin{proof}
   On divise les arbres sous-tendants de $G$ en deux catégories
@@ -90,7 +90,7 @@
 \end{myform}
 
 \begin{mytheo} [Théorème de Cayley]
-  Le nombre d’arbres sous-tendants de $K_n$ est $n^{n−2}$ .
+  Le nombre d'arbres sous-tendants de $K_n$ est $n^{n−2}$ .
   \begin{proof}
      Preuve \addTODO
   \end{proof}
@@ -103,18 +103,114 @@
 \end{myalgo}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \addTODO
+  \begin{align*}
+    T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \NO[empty](A){D}
+      \EA[empty](A){B}
+      \NO[empty](B){C}
+      \Edges(A,B,C,D,A,C)
+    \end{tikzpicture}) & = T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \NO[empty](A){D}
+      \EA[empty](A){B}
+      \NO[empty](B){C}
+      \Edges(A,B,C,D,A)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.2}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \SOEA[empty](B){C}
+      \Edges[style={bend left}](A,B,C,B,A)
+    \end{tikzpicture})\\
+    & = T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \NO[empty](A){D}
+      \EA[empty](A){B}
+      \NO[empty](B){C}
+      \Edges(D,A,B,C)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOWE[empty](A){B}
+      \SOEA[empty](A){C}
+      \Edges(A,B,C,A)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.2}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \SOEA[empty](B){C}
+      \Edges[style={bend left}](A,B,C,B)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \Edges[style={bend left}](A,B,A)
+    \end{tikzpicture})\\
+    & = 1 + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOWE[empty](A){B}
+      \SOEA[empty](A){C}
+      \Edges(A,B,C)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \Edges[style={bend left}](A,B,A)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.2}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \SOEA[empty](B){C}
+      \Edges[style={bend left}](A,B,C)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.2}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \SOEA[empty](B){C}
+      \Edges[style={bend left}](A,B,C)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \Edges[style={bend left}](A,B)
+    \end{tikzpicture}) + T(\begin{tikzpicture}
+      \SetGraphUnit{0.3}
+      \SetVertexNoLabel
+      \Vertex[empty]{A}
+      \SOEA[empty](A){B}
+      \Edges[style={bend left}](A,B)
+    \end{tikzpicture})\\
+    & = 1 + 1 + 2 + 1 + 1 + 1 + 1\\
+    & = 8.
+  \end{align*}
 \end{myexem}
 
 \begin{mytheo}
-  L’algorithme de Kruskal est correct.
+  L'algorithme de Kruskal est correct.
   \begin{proof}
      Preuve \addTODO
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo} [L’algorithme de Kruskal est efficace]
-  L’algorithme de Kruskal requiert un temps de calcul de l’ordre de $m.log(m)$ sur un graphe à $m$ arêtes.
+\begin{mytheo} [L'algorithme de Kruskal est efficace]
+  L'algorithme de Kruskal requiert un temps de calcul de l'ordre de $m.log(m)$ sur un graphe à $m$ arêtes.
   \begin{proof}
      Preuve \addTODO
   \end{proof}
@@ -122,12 +218,12 @@
 
 \index{coupe de sommets}
 \begin{mydef}
-  Pour un graphe connexe, une \emph{coupe de sommets} est un ensemble de sommets qui déconnecte le graphe quand on l’en retire.
+  Pour un graphe connexe, une \emph{coupe de sommets} est un ensemble de sommets qui déconnecte le graphe quand on l'en retire.
 \end{mydef}
 
 \index{coupe de d'arêtes}
 \begin{mydef}
-  Pour un graphe connexe, une \emph{coupe de d'arêtes} est un ensemble d’arêtes qui déconnecte le graphe quand on l’en retire.
+  Pour un graphe connexe, une \emph{coupe de d'arêtes} est un ensemble d'arêtes qui déconnecte le graphe quand on l'en retire.
 \end{mydef}
 
 \index{graphe!graphe k-connexe}
@@ -137,17 +233,17 @@
 
 \index{connectivité}
 \begin{mydef}
-   La \emph{connectivité} d’un graphe est la taille de la plus petite coupe de sommets. Si tous les $n$ noeuds sont voisins (ex., le graphe complet), la connectivité est définie comme $n − 1$.
+   La \emph{connectivité} d'un graphe est la taille de la plus petite coupe de sommets. Si tous les $n$ noeuds sont voisins (ex., le graphe complet), la connectivité est définie comme $n − 1$.
 \end{mydef}
 
 \index{graphe!graphe k-arête-connexe}
 \begin{mydef}
-   Un graphe est dit \emph{k-arête-connexe} si retirer $k − 1$ arêtes quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes d’arêtes sont de taille au moins $k$.
+   Un graphe est dit \emph{k-arête-connexe} si retirer $k − 1$ arêtes quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes d'arêtes sont de taille au moins $k$.
 \end{mydef}
 
 \index{connectivité!arête-connectivité}
 \begin{mydef}
-   L’\emph{arête-connectivité} d’un graphe est la taille de la plus petite coupe d’arêtes.
+   L'\emph{arête-connectivité} d'un graphe est la taille de la plus petite coupe d'arêtes.
 \end{mydef}
 
 \begin{mytheo} [Lien entre les connectivités]
