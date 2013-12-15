@@ -80,27 +80,23 @@
   \begin{proof}
   On divise les arbres sous-tendants de $G$ en deux catégories
   \begin{enumerate}[a)]
-  \item Ceux qui contiennent l'arête $e$
-  \item Ceux qui ne contiennent pas l'arête $e$
+    \item Ceux qui contiennent l'arête $e$
+    \item Ceux qui ne contiennent pas l'arête $e$
   \end{enumerate}
-  On voit que le nombre de $a)$ sont en bijection avec les arbres sous-tendants de $G.e$ (détails laissé au lecteur)\\
-  On voit que le nombre de $b)$ sont en bijection avec les arbres sous-tendants de $G-e$ (détails laissé au lecteur)\\
+  \begin{itemize}
+    \item On voit que les arbres de $a)$ sont en bijection avec les arbres sous-tendants de $G.e$ (détails laissé au lecteur)
+    \item On voit que le nombre de $b)$ sont en bijection avec les arbres sous-tendants de $G-e$ (détails laissé au lecteur)
+  \end{itemize}
   On a donc $T(G) = T(G − e) + T (G.e)$.
   \end{proof}
 \end{myform}
 
 \begin{mytheo} [Théorème de Cayley]
-  Le nombre d'arbres sous-tendants de $K_n$ est $n^{n−2}$ .
+  Le nombre d'arbres sous-tendants de $K_n$ est $n^{n−2}$.
   \begin{proof}
-     Preuve \addTODO
+    \addTODO
   \end{proof}
 \end{mytheo}
-
-\subsection{Algorithme de Kruskal}
-\index{algorithme!algorithme de Kruskal}
-\begin{myalgo}[Algorithme de Kruskal]
-  Algorithme \addTODO
-\end{myalgo}
 
 \begin{myexem}
   \begin{align*}
@@ -202,18 +198,62 @@
   \end{align*}
 \end{myexem}
 
+\subsection{Algorithme de Kruskal}
+\index{algorithme!algorithme de Kruskal}
+\begin{myalgo}[Algorithme de Kruskal]
+  \begin{algorithm}
+    \caption{Algorithme de Kruskal}
+    \label{algo:kruskal}
+    \begin{algorithmic}
+      \STATE % flush
+      \STATE $E_s \gets E$ sorted by increasing weight
+      \WHILE{$|T| < |V|-1$}
+      \STATE $e \gets$ the first edge of $E_s$
+      \STATE $E_s \gets E_s \setminus \{e\}$
+      \IF{$e$ does not create a loop}
+      \STATE $T \gets T \cup \{e\}$
+      \ENDIF
+      \ENDWHILE
+    \end{algorithmic}
+  \end{algorithm}
+\end{myalgo}
+
 \begin{mytheo}
   L'algorithme de Kruskal est correct.
   \begin{proof}
-     Preuve \addTODO
-  \end{proof}
+    Soit $T$ l'arbre trouvé par Kruskal,
+    c'est bien un arbre sous-tendant car il a $n-1$ arêtes et qu'il n'a pas de cycle.
+    Démontrons qu'il est optimal par l'absurde.
+
+    S'il ne l'est pas, c'est qu'il existe un arbre sous-tendant $T^*$ tel que $w(T^*) < w(T)$.
+    Soit $e$ la plus petite arête telle que $T$ l'a et $T^*$ ne l'a pas ou le contraire.
+    \begin{itemize}
+      \item Si $T$ ne l'a pas et que $T^*$ l'a, ça veut dire qu'elle crée un cycle avec les
+        arête de poids strictement plus petit qui sont dans $T$.
+        Ces arêtes sont aussi dans $T^*$ car on a considéré que c'était la plus petite qui différait.
+        Pourtant $T^*$ n'a pas de cycle car c'est un arbre. On est donc pas dans ce cas là.
+      \item On sait donc que $T$ l'a et que $T^*$ ne l'a pas.
+        Comme $T^*$ est un arbre, $T^* + e$ a un et un seul cycle.
+        Dans ce cycle, il y a nécessairement des arête que $T$ n'a pas car $T$ a $e$ et qu'il n'a pas de cycle.
+        Ces arêtes on un poids plus grand ou égal à $e$ car on a dit qu'on prenait $e$ avec le poids
+        le plus petit qui différait entre $T$ et $T^*$. Soit $e'$, l'une d'entre elle.
+        Comme $T^*+e$ a un et un seul cycle et que $e'$ est dedans, $T^*+e-e'$ est un arbre sous-tendant.
+
+        Si $w(e) < w(e')$, on arrive à une contradiction.
+        Si $w(e) = w(e')$, on prends ${T^*}'=T^*+e-e'$ qui est aussi
+        un graphe sous-tendant de poids minimum car $w({T^*}') = w(T^*+e-e') = w(T^*)+w(e)-w(e') = w(T^*)$.
+        Si ${T^*}' = T$, on a notre contradiction, sinon on recommence le raisonnement.
+        On ne pourra pas le recommencer indéfiniment car il y a un nombre fini d'arête qui diffère entre $T^*$
+        et $T$ et à chaque fois, il y en a une de moins qui diffère.
+    \end{itemize}
+    $T$ est donc optimal.
+   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [L'algorithme de Kruskal est efficace]
-  L'algorithme de Kruskal requiert un temps de calcul de l'ordre de $m.log(m)$ sur un graphe à $m$ arêtes.
+  L'algorithme de Kruskal requiert un temps de calcul de l'ordre de $\bigoh(m\log(m))$ sur un graphe à $m$ arêtes.
   \begin{proof}
-     Preuve \addTODO
-  \end{proof}
+ \end{proof}
 \end{mytheo}
 
 \index{coupe de sommets}
