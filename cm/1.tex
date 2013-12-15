@@ -360,48 +360,47 @@
 \begin{myexem}
   \noindent
   \begin{center}
-      \begin{tikzpicture}[scale = 0.75]
-        \node[draw, circle] at ( 0, 4)  (1)  {$1$};
-        \node[draw, circle] at ( 2, 0)  (2)  {$2$};
-        \node[draw, circle] at (-2, 0)  (3)  {$3$};
+    \begin{tikzpicture}[scale = 0.75]
+      \node[draw, circle] at ( 0, 4)  (1)  {$1$};
+      \node[draw, circle] at ( 2, 0)  (2)  {$2$};
+      \node[draw, circle] at (-2, 0)  (3)  {$3$};
 
-        \draw[-] (1) edge [loop above] node {a} (1);
-        \draw[-] (1) edge [bend left] node [anchor = north] {b} (2);
-        \draw[-] (1) edge [bend right] node [anchor = north] {c} (2);
-        \draw[-] (2) edge node [anchor = north] {d} (3);
-        \draw[-] (1) edge node [anchor = north] {e} (3);
-      \end{tikzpicture}
+      \draw[-] (1) edge [loop above] node {a} (1);
+      \draw[-] (1) edge [bend left] node [anchor = north] {b} (2);
+      \draw[-] (1) edge [bend right] node [anchor = north] {c} (2);
+      \draw[-] (2) edge node [anchor = north] {d} (3);
+      \draw[-] (1) edge node [anchor = north] {e} (3);
+    \end{tikzpicture}
     
-      
-      $
-      Matrice d'adjacence : A = \bordermatrix{~ & 1 & 2 & 3 \cr
-                                          1 & 1 & 2 & 1 \cr
-                                          2 & 2 & 0 & 1 \cr
-                                          3 & 1 & 1 & 0 \cr}
-      $
-      
-      $
-      Matrice d'incidence : M = \bordermatrix{~ & 1 & 2 & 3 \cr
-                                          1 & 1 & 2 & 1 \cr
-                                          2 & 2 & 0 & 1 \cr
-                                          3 & 1 & 1 & 0 \cr}
-      $
-    \end{center}
-    $(A^k)_{ij} =$ nombre de parcours $i \to j$ de longueur $k$.\\
     $
-      A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 1\\
-                                    0 & 1 & 0\\
-                                    0 & 0 & 1
-                    \end{pmatrix},\ 
-      A^1\ =\ A\ =\begin{pmatrix} 1 & 2 & 1\\
-                                  2 & 0 & 1\\
-                                  1 & 1 & 0
+    Matrice\ d'adjacence\ :\ A\ = \bordermatrix{~ & 1 & 2 & 3 \cr
+                                                1 & 1 & 2 & 1 \cr
+                                                2 & 2 & 0 & 1 \cr
+                                                3 & 1 & 1 & 0 \cr}
+    $
+    
+    $
+    Matrice\ d'incidence\ :\ M\ = \bordermatrix{~ & 1 & 2 & 3 \cr
+                                                1 & 1 & 2 & 1 \cr
+                                                2 & 2 & 0 & 1 \cr
+                                                3 & 1 & 1 & 0 \cr}
+    $
+  \end{center}
+  $(A^k)_{ij} =$ nombre de parcours $i \to j$ de longueur $k$.\\
+  $
+    A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 1\\
+                                  0 & 1 & 0\\
+                                  0 & 0 & 1
                   \end{pmatrix},\ 
-      A^2\ = \begin{pmatrix}  6 & 3 & 3\\
-                              3 & 5 & 2\\
-                              3 & 2 & 2
-              \end{pmatrix}
-    $
+    A^1\ =\ A\ =\begin{pmatrix} 1 & 2 & 1\\
+                                2 & 0 & 1\\
+                                1 & 1 & 0
+                \end{pmatrix},\ 
+    A^2\ = \begin{pmatrix}  6 & 3 & 3\\
+                            3 & 5 & 2\\
+                            3 & 2 & 2
+            \end{pmatrix}
+  $
 \end{myexem}
 
 \begin{mytheo} [Matrice d’adjacence et nombre de parcours]
