@@ -14,8 +14,8 @@
   \begin{itemize}
     \item Le \emph{flot net sortant d'un noeud} $u$ est défini comme
       $\sum_{\text{arêtes }a\text{ d'origine }u} f(a) − \sum_{\text{arêtes }b\text{ de destination }u} f(b)$.
-    \item Le \emph{flot net sortant d'un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.\\
-    \item La \emph{valeur du flot} est le flot net sortant des noeuds sources.\\
+    \item Le \emph{flot net sortant d'un ensemble} $U$ de noeuds est la somme des flots nets sortant des noeuds de $U$.
+    \item La \emph{valeur du flot} est le flot net sortant des noeuds sources.
   \end{itemize}
   On désire trouver le \emph{flot maximum}, c'est-à-dire le flot de valeur maximale.
 \end{mydef}
@@ -112,47 +112,52 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \end{mylem}
 
 \begin{mylem}
-  Pour tout flot $f$ et toute coupe $S \to \bar{S}$, valeur($f$) $\leq$ capacité($S \to \bar{S}$). L'égalité a lieu si et seulement si toutes les arêtes $a$ de la coupe $S \to \bar{S}$ sont $f$-saturées (i.e., $f(a) = c(a)$) et toutes les arêtes $b$ de $\bar{S} \to S$ sont $f$-nulles (i.e., $f(b) = 0$).
+  Pour tout flot $f$ et toute coupe $S \to \bar{S}$,
+  $\valeur(f) \leq \coupe(S \to \bar{S})$.
+  L'égalité a lieu si et seulement si toutes les arêtes $a$ de la coupe $S \to \bar{S}$ sont $f$-saturées
+  (i.e., $f(a) = c(a)$) et toutes les arêtes $b$ de $\bar{S} \to S$ sont $f$-nulles (i.e., $f(b) = 0$).
 
   \begin{proof}
     \begin{align*}
-      \mathrm{valeur}(f) & = \text{flot sur la coupe}\\
-             & = \sum f_{\mathrm{net}}(S \to \bar{S})\\
-             & = \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f_{ij} - \sum_{i \in S \atop {j \in \bar{S} \atop ji \in E}} f_{ij}\\
-             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f_{ij}\\
-             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} c_{ij}\\
-             & = \text{Coupe}(S \to \bar{S}).
+      \valeur(f) & = \text{flot sur la coupe}\\
+             & = \sum \fnet(S \to \bar{S})\\
+             & = \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f(ij) - \sum_{i \in S \atop {j \in \bar{S} \atop ji \in E}} f(ij)\\
+             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f(ij)\\
+             & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} c(ij)\\
+             & = \coupe(S \to \bar{S}).
     \end{align*}
-    Avec égalité si et seulement si $\sum_{i \in S\atop {j \in \bar{S}\atop ji \in E}} f_{ij} = 0$ et
-    $\sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} f_{ij} = \sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} c_{ij}$
+    Avec égalité si et seulement si $\sum_{i \in S\atop {j \in \bar{S}\atop ji \in E}} f(ij) = 0$ et
+    $\sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} f(ij) = \sum_{i \in S\atop {j \in \bar{S}\atop ij \in E}} c(ij)$
     c'est à dire que toutes les arêtes qui lient un noeud de $S$ à un noeud de $\bar{S}$ sont saturées
     et que les arêtes qui lient un noeud de $\bar{S}$ à un noeud de $S$ ont un flot nul.
   \end{proof}
 \end{mylem}
 
 \begin{mycorr}
-  Si un flot et une coupe sont tels que valeur(flot) = capacité(coupe), alors ce flot est maximum et cette coupe minimum.
+  Si un flot $f$ et une coupe $S\to\bar{S}$ sont tels que $\valeur(f) = \coupe(S\to\bar{S})$,
+  alors ce flot est maximum et cette coupe minimum.
   \begin{proof}
     On vient de voir que dans le cas d'égalité, les arêtes étaient saturées et il n'y a aucun flot qui va de $\bar{S}$ à $S$
     Et donc ne peut plus faire passer de flot de $S$ à $\bar{S}$ ni par des arêtes directes (elles sont saturées),
     ni par des ``back edges'' (elles sont nulles car il n'y a pas de flot de $\bar{S}$ à $S$).
 
     Le fait que le flot est maximum et que la coupe est minimum est en fait simplement montré par la dualité.
-    On sait que pour toute coupe $S\to\bar{S}$ et flot $f$, $\text{Coupe}(S\to\bar{S}) \geq \mathrm{valeur}(f)$.
-    Dès lors, pour toute coupe $\text{Coupe}(S \to \bar{S}) \geq f_\mathrm{max}$ et pour tout flot,
-    $\text{Coupe}_\mathrm{min} \geq \mathrm{valeur}(f)$ et en particulier $\text{Coupe}_\mathrm{min} \geq f_\mathrm{max}$.
+    On sait que pour toute coupe $S\to\bar{S}$ et flot $f$, $\coupe(S\to\bar{S}) \geq \valeur(f)$.
+    Dès lors, pour toute coupe $\coupe(S \to \bar{S}) \geq \flotmax$ et pour tout flot,
+    $\coupemin \geq \valeur(f)$ et en particulier
+    $\coupemin \geq \flotmax$.
     On a donc
-    \[ \text{Coupe}(S \to \bar{S}) \geq \text{Coupe}_\mathrm{min} \geq f_\mathrm{max} \geq \mathrm{valeur}(f) \]
-    d'où $\text{Coupe}(S \to \bar{S}) = \text{Coupe}_\mathrm{min}$ et
-    $f_\mathrm{max} = \mathrm{valeur}(f)$ en cas d'égalité
-    $\text{Coupe}(S \to \bar{S}) = \mathrm{valeur}(f)$.
+    \[ \coupe(S \to \bar{S}) \geq \coupemin \geq \flotmax \geq \valeur(f) \]
+    d'où $\coupe(S \to \bar{S}) = \coupemin$ et
+    $\flotmax = \valeur(f)$ en cas d'égalité
+    $\coupe(S \to \bar{S}) = \valeur(f)$.
   \end{proof}
 \end{mycorr}
 
 \index{chemin!chemin $f$-saturé}
 \index{chemin!chemin $f$-augmentant}
 \begin{mydef}
-  Etant donné un flot $f$, à tout chemin $P$ dans le graphe non-dirigé sous-jacent associons la quantité $i(P) = min_{a \in P} i(a)$, où $i(a) = c(a) − f(a)$ pour les arêtes $a$ prises par $P$ dans le sens direct, et $i(a) = f (a)$ pour les arêtes a prises dans le sens inverse.\\
+  Etant donné un flot $f$, à tout chemin $P$ dans le graphe non-dirigé sous-jacent associons la quantité $i(P) = \min_{a \in P} i(a)$, où $i(a) = c(a) − f(a)$ pour les arêtes $a$ prises par $P$ dans le sens direct, et $i(a) = f (a)$ pour les arêtes a prises dans le sens inverse.\\
   Un chemin $P$ est \emph{$f$-saturé} si $i(P) = 0$. Il est \emph{$f$-augmentant} s'il est non saturé, part d'un noeud source et arrive à un noeud puits.
 \end{mydef}
 
