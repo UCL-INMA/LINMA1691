@@ -38,14 +38,14 @@
 
 \begin{solution}
   On voit que $f_\mathrm{net}(S) = -f_\mathrm{net}(T) = 17$.
-  Si on essaie de trouver un chemin augmentant avec un BFS ou DFS,
+  Si on essaie de trouver un chemin $f$-augmentant avec un BFS ou DFS
   en s'autorisant donc à prendre,
   \begin{itemize}
-    \item Soit les arêtes non-saturées.
+    \item Soit les arêtes non $f$-saturées,
     \item Soit les arêtes telles qu'il y ait une arête dans l'autre
-      sens avec un flot non-null (back edges).
+      sens non $f$-nulles (back edges),
   \end{itemize}
-  On part de $S$ mais on arrive jamais à $T$.
+  on part de $S$ mais on arrive jamais à $T$.
   On a donc $f_\mathrm{max} = 17$.
   \begin{center}
     \begin{tikzpicture}
@@ -317,9 +317,9 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
       Comme les capacités sont entières et que la capacité d'un chemin d'augmentation est strictement positif,
       elle est au moins égal à 1.
       Après $n$ itérations, on a donc $\fnet(S) \geq n$.
-      On sait que ce flot net est au maximum la somme des capacités des arêtes sortant des sources $\degout(S)$,
-      c'est à dire $\fnet(S) \leq \degout(S)$.
-      On a donc $n \leq \degout(S)$. Comme $\degout(S)$ est fini, l'algorithme va s'arrêter après un nombre fini d'itérations.
+      On sait que ce flot net est au maximum la somme des capacités des arêtes sortant des sources, notons la $\mathcal{C}$,
+      c'est à dire $\fnet(S) \leq \mathcal{C}$.
+      On a donc $n \leq \mathcal{C}$. Comme $\mathcal{C}$ est fini, l'algorithme va s'arrêter après un nombre fini d'itérations.
     \item
       Si elles sont rationnelles, on peut les écrire sous forme d'une fraction d'entiers.
       Soit $p$, le ppcm des dénominateurs de ces fractions.
