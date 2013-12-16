@@ -26,12 +26,21 @@
 
 \index{problème!classe $\mathcal{NP}$}
 \begin{mydef}
-  Un problème est dans $\mathcal{NP}$ s’il existe un algorithme efficace $A$ tel que : 
+  Un problème est dans $\mathcal{NP}$ s’il existe un algorithme efficace $A$ tel que :
   \begin{itemize}
     \item pour chaque instance positive $m$, il existe un objet fini $n$ tel que $A(m, n)$ renvoie OUI,
     \item pour chaque instance négative $m$ et tout objet fini $n$, $A(m, n)$ renvoie NON.
   \end{itemize}
 \end{mydef}
+
+\begin{myexem}
+  Problème du graphe hamiltonien:
+  \begin{align*}
+    m & = \text{graphe non-dirigé} = \text{instance}\\
+    n & = \text{cycle dans }m = \text{``preuve'' ou ``témoin''}\\
+    A(m,n) & = \text{OUI ssi }n\text{ est hamiltonien}.
+  \end{align*}
+\end{myexem}
 
 \begin{mycorr}
   $\mathcal{P} \subseteq \mathcal{NP}$
@@ -45,12 +54,56 @@
   Etant donnés deux problèmes $P$ et $Q$, on dit que $P$ est \emph{réductible en temps polynomial} à $Q$, ou que $P$ est \emph{réductible} à $Q$, ou plus informellement que $P$ est plus facile que $Q$, noté $P \leq Q$, s’il existe un algorithme efficace $A$ (appelé réduction) qui prenne en entrée une instance $n$ de $P$ et renvoie en sortie une instance $A(n)$ de $Q$, telle que $n$ est positive ssi $A(n)$ est positive.
 \end{mydef}
 
+\begin{myexem}
+  Soit les problèmes suivant
+  \begin{description}
+    \item{Problème} COUPLAGE-PARFAIT
+    \item[Instance] Graphe non-dirigé
+    \item[Question] Existe-t-il un couplage parfait ?
+  \end{description}
+  \begin{description}
+    \item{Problème} POLYÈDRE-NON-VIDE
+    \item[Instance] Inégalité $Ax \leq b$ (géométriquement : polyèdre $\{x \in \mathbb{R}^m : Ax \leq b\}$)
+    \item[Question] Le polyèdre est-il non vide ? C'est à dire, $\exists x : Ax \leq b$ ?
+  \end{description}
+  COUPLAGE-PARFAIT $\leq$ POLYÈDRE-NON-VIDE
+  \begin{proof}
+    Soit $M$ la matrice d'incidence du graphe.
+    Il existe un couplage parfait si et seulement si $\exists x \in \{0,1\}^m$ tel que
+    $Mx = \begin{pmatrix}
+      1\\
+      \vdots\\
+      1
+    \end{pmatrix}$ si et seulement si (il faut admettre le sens ``seulement si'', le sens ``si'' est trivial)
+    $\exists x \in \mathbb{R}^n$ tel que $Mx = \begin{pmatrix}
+      1\\
+      \vdots\\
+      1
+    \end{pmatrix}$ et $0 \leq x_i \leq 1$.
+    Ce qui est un cas particulier de la question
+    ``$\exists x : Ax \leq b$ ?''
+    Fabriquer $A$ et $b$ à partir du graphe se fait en temps polynomial en la taille du graphe.
+  \end{proof}
+  Donc: Tout algo pour résoudre POLYÈDRE-NON-VIDE peut être utilisé pour résoudre COUPLAGE-PARFAIT.
+\end{myexem}
+
 \begin{mytheo}
   Si $P \leq Q$ et $Q \in \mathcal{P}$ alors $P \in \mathcal{P}$.
   \begin{proof}
      Preuve \addTODO
   \end{proof}
 \end{mytheo}
+
+\begin{myexem}
+  Soit les problèmes suivant
+  \begin{description}
+    \item{Problème} $k$-CLIQUE
+    \item[Instance] Graphe
+    \item[Question] Existe-t-il une clique à $k$ noeuds ?
+  \end{description}
+  $k$-CLIQUE $\leq$ $k$-INDEPENDANT $\leq$ $k$-CLIQUE.
+  Ils sont donc équivalents.
+\end{myexem}
 
 \index{problème!problème $\mathcal{NP}$-complet}
 \begin{mydef}
@@ -60,15 +113,29 @@
 
 \begin{mytheo} [Cook]
   SAT est $\mathcal{NP}$-complet.
-  \begin{proof}
-     Preuve \addTODO
-  \end{proof}
 \end{mytheo}
+
+\begin{myexem}
+  Soit le problème suivant
+  \begin{description}
+    \item{Problème} SAT
+    \item[Instance] Formule logique
+    \item[Question] Existe-t-il des valeurs de vérité pour les variables telles que la formule est vraie.
+  \end{description}
+  Par exemple, l'instance $\lnot(P \lor Q) \land (R \lor \lnot Q)$ est une instanc epositive car
+  $(R, P, Q) = (\text{VRAI}, \text{FAUX}, \text{FAUX})$ vérifie la formule.
+\end{myexem}
 
 \begin{mytheo} [Karp]
   Déterminer si un graphe est hamiltonien est $\mathcal{NP}$-complet.
   \begin{proof}
-     Preuve \addTODO
+    \begin{itemize}
+      \item HAMILTONIEN $\in \mathcal{NP}$: trivial.
+      \item Il existe une réduction de SAT vers HAMILTONIEN (partie difficile de la preuve) donc
+        SAT $\leq$ HAMILTONIEN.
+    \end{itemize}
+    Donc HAMILTONIEN est $\mathcal{NP}$-complet.
+    On a d'ailleurs SAT $=$ HAMILTONIEN car SAT est $\mathcal{NP}$-complet.
   \end{proof}
 \end{mytheo}
 

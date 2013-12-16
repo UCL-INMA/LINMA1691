@@ -161,17 +161,108 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   Un chemin $P$ est \emph{$f$-saturé} si $i(P) = 0$. Il est \emph{$f$-augmentant} s'il est non saturé, part d'un noeud source et arrive à un noeud puits.
 \end{mydef}
 
+\begin{myexem}
+  En partant du flot $f$ avec un chemin $f$-augmentant
+  montré à la figure~\ref{fig:faug},
+  on peut créer un nouveau flot $f'$ valide.
+  L'arête déjà remplie à $3/4$ nous oblique à ce que le flot n'augmente que de 1,
+  $\valeur(f') = \valeur(f) + 1$.
+  Le flot est alors modifié le long de ce chemin comme montré
+  à la figure~\ref{fig:fprime}.
+  \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+      \SetGraphUnit{2}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \Vertex{S}
+      \NOEA(S){A}
+      \SOEA(A){B}
+      \NOEA(B){C}
+      \SOEA(C){D}
+      \NOEA(D){T}
+      \Edge[label=$1/5$](S)(A)
+      \Edge[label=$2/3$](B)(A)
+      \Edge[label=$3/4$](B)(C)
+      \Edge[label=$2/2$](D)(C)
+      \Edge[label=$0/4$](D)(T)
+    \end{tikzpicture}
+    \caption{Chemin $f$-augmentant}
+    \label{fig:faug}
+  \end{figure}
+  \begin{figure}[h!]
+    \centering
+    \begin{tikzpicture}
+      \SetGraphUnit{2}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \Vertex{S}
+      \NOEA(S){A}
+      \SOEA(A){B}
+      \NOEA(B){C}
+      \SOEA(C){D}
+      \NOEA(D){T}
+      \Edge[label=$2/5$](S)(A)
+      \Edge[label=$1/3$](B)(A)
+      \Edge[label=$4/4$](B)(C)
+      \Edge[label=$1/2$](D)(C)
+      \Edge[label=$1/4$](D)(T)
+    \end{tikzpicture}
+    \caption{Chemin avec $f'$}
+    \label{fig:fprime}
+  \end{figure}
+\end{myexem}
+
 \begin{mytheo}
   Un flot est maximum si et seulement s'il ne contient pas de chemin $f$-augmentant.
   \begin{proof}
-     Preuve \addTODO
+    \begin{itemize}
+      \item[$\Rightarrow$] Si il existe un chemin augmentant, alors on peut améliorer strictement le flot.
+      \item[$\Leftarrow$]
+        Soit $f$ un flot qui ne contient pas de chemin $f$-augmentant.
+        Soit $S$ l'ensemble des noeuds qu'on peut atteindre à partir de la source avec
+        des chemins non $f$-saturés.
+        $S$ ne contient aucun puits.
+        Soit une arête de $S \to \bar{S}$, elle est $f$-saturée par construction de $S$,
+        sinon la destination de l'arête serait dans $S$.
+        Soit une arête de $\bar{S} \to S$, elle doit être $f$-nulle pour la même raison.
+        \begin{figure}[h!]
+          \centering
+          \begin{tikzpicture}[x=2cm,y=1cm]
+            \SetGraphUnit{1}
+            \GraphInit[vstyle=Dijkstra]
+            \SetUpEdge[style={->},
+            labelstyle = {draw}]
+            \Vertex{S}
+            \NOEA(S){A}
+            \SOEA(S){B}
+            \EA(A){a}
+            \EA(B){b}
+            \SOEA(a){T}
+            \Edge[label=$4/4$,color=red](A)(a)
+            \Edge[label=$0/5$,color=red](b)(B)
+            \AddVertexColor{blue}{S,A,B}
+            \AddVertexColor{green}{a,b,T}
+          \end{tikzpicture}
+        \end{figure}
+        Dès lors,
+        \begin{align*}
+          \coupe(S\to\bar{S}) & = \text{valeur du flot qui quitte }S\text{ vers }\bar{S}\\
+                              & = \text{valeur du flot note entre }S\text{ et }\bar{S}\\
+                              & = \valeur(f)
+        \end{align*}
+        Cette coupe est la coupe mininum et ce flot est le flot maximum.
+        La preuve prouve aussi que du flot max on déduit une coupe min de même valeur.
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo}
   La valeur du flot maximum et la capacité de la coupe minimum sont toujours égales.
   \begin{proof}
-     Preuve \addTODO
+    Preuve \addTODO
   \end{proof}
 \end{mytheo}
 
@@ -186,22 +277,185 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \end{myexem}
 
 \begin{mylem}
+  \label{lem:flot_chemin}
   Dans tout graphe dirigé avec un noeud source $u$ et un noeud puits $v$ et chaque arête de capacité un, le nombre maximum de chemins dirigés de u vers v disjoints deux à deux par les arêtes est la valeur du flot maximum.
   \begin{proof}
-     Preuve \addTODO
+    Si j'ai $k$ chemins disjoints $u \to v$,
+    je crée un flot de valeur $k$ en saturant les arêtes
+    des chemins
+    \begin{figure}[h!]
+      \centering
+      \begin{tikzpicture}
+        \SetGraphUnit{2}
+        \GraphInit[vstyle=Dijkstra]
+        \SetUpEdge[style={->},
+        labelstyle = {draw}]
+        \Vertex{S}
+        \NOEA(S){A1}
+        \EA(A1){A2}
+        \SOEA(A2){T}
+        \EA(S){B1}
+        \EA(B1){B2}
+        \EA(B2){T}
+        \SOEA(S){C1}
+        \EA(C1){C2}
+        \NOEA(C2){T}
+        \Edge[label=$1/1$](S)(A1)
+        \Edge[label=$1/1$](A1)(A2)
+        \Edge[label=$1/1$](A2)(T)
+        \Edge[label=$1/1$](S)(B1)
+        \Edge[label=$1/1$](B1)(B2)
+        \Edge[label=$1/1$](B2)(T)
+        \Edge[label=$1/1$](S)(C1)
+        \Edge[label=$1/1$](C1)(C2)
+        \Edge[label=$1/1$](C2)(T)
+      \end{tikzpicture}
+    \end{figure}
+    $\flotmax \geq \#\{\text{chemins disjoints }u \to v\}$.
+
+    De plus, considérons le flot max de $u \to v$.
+    Partant d'un flot initial \emph{entier},
+    Ford-Fulkerson le maintient \emph{entier},
+    d'où il existe un flot maximum entier.
+
+    Il existe donc un flot maximum binaire: 0 ou 1
+    sur chaque arête.
+    Prenons $E$, le nombre d'arêtes de flot 1.
+    C'est un sous-graphe.
+    Pour noeuds ni source ni puits,
+    degré entrant $\leq$ degré sortant (sur $E$).
+    Si $\flotmax = k$,
+    il existe $k$ arêtes sortantes de $u$ dans $E$ que
+    je peux prolonger par $k$ chemins (disjoints par les arêtes)
+    vers $v$.
+
+    \begin{figure}[h!]
+      \centering
+      \begin{tikzpicture}[x=2cm,y=1cm]
+        \SetGraphUnit{1}
+        \GraphInit[vstyle=Dijkstra]
+        \SetUpEdge[style={->},
+        labelstyle = {draw}]
+        \SetVertexNoLabel
+        \Vertex[NoLabel=false,L=$u$]{u}
+        \NOEA(u){a}
+        \SOEA(u){b}
+        \SOEA(a){o}
+        \NOEA(o){c}
+        \SOEA(o){d}
+        \SOEA[NoLabel=false,L=$v$](c){v}
+        \Edges[color=blue](u,a,o,d,v)
+        \Edges[color=green](u,b,o,c,v)
+      \end{tikzpicture}
+    \end{figure}
   \end{proof}
 \end{mylem}
 
 \begin{mytheo}
+  \label{theo:kconnexe_chemin}
   Un graphe (non-dirigé) est $k$-arête-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les arêtes.
   \begin{proof}
-     Preuve \addTODO
+    \begin{itemize}
+      \item[$\Leftarrow$]
+        Si j'enlève $k-1$ arêtes quelconques
+        entre $u$ et $v$, je coupe au plus $k-1$
+        chemins des $k$ chemins disjoints.
+        Il en reste au moins 1.
+      \item[$\Rightarrow$]
+        $k$-arête-connexe signifie que toute coupe entre $u$
+        et $v$ a une capacité d'au moins $k$ (pour capacité 1
+        sur les arêtes) car $\coupemin = k$.
+        Le flot max de $u$ vers $v$ est donc $k$.
+        Par le Lemme~\ref{lem:flot_chemin},
+        il existe $k$ chemins disjoints par les arêtes de
+        $u \to v$.
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Menger]
   Un graphe (non-dirigé) est $k$-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les noeuds.
   \begin{proof}
-     Preuve \addTODO
+    Pour se ramener au théorème~\ref{theo:kconnexe_chemin},
+    on va ``tranformer les noeuds en arêtes''.
+    \begin{table}[h!]
+      \centering
+      \begin{tabular}{cc}
+        Graphe non dirigé $G$ & Graphe dirigé $G'$\\
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->}]
+          \Vertex[L=$u$]{u}
+        \end{tikzpicture}
+        &
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->}]
+          \Vertex[L=$u_0$]{u0}
+          \EA[L=$u_1$](u0){u1}
+          \Edge(u0)(u1)
+        \end{tikzpicture}\\
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \Vertex[L=$u$]{u}
+          \SO[L=$v$](u){v}
+          \Edge(u)(v)
+        \end{tikzpicture}
+        &
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->}]
+          \Vertex[L=$u_0$]{u0}
+          \EA[L=$u_1$](u0){u1}
+          \SO[L=$v_0$](u0){v0}
+          \EA[L=$v_1$](v0){v1}
+          \Edge(u0)(u1)
+          \Edge(v0)(v1)
+          \Edge(u1)(v0)
+          \Edge(v1)(u0)
+        \end{tikzpicture}\\
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \Vertex[L=$u$]{u}
+          \SO[L=$v$](u){v}
+          \SO[L=$w$](v){w}
+          \Edge(u)(v)
+          \Edge(v)(w)
+        \end{tikzpicture}
+        &
+        \begin{tikzpicture}
+          \SetGraphUnit{1}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->}]
+          \Vertex[L=$u_0$]{u0}
+          \EA[L=$u_1$](u0){u1}
+          \SO[L=$v_0$](u0){v0}
+          \EA[L=$v_1$](v0){v1}
+          \SO[L=$w_0$](v0){w0}
+          \EA[L=$w_1$](w0){w1}
+          \Edge(u0)(u1)
+          \Edge(v0)(v1)
+          \Edge(w0)(w1)
+          \Edge(u1)(v0)
+          \Edge(v1)(u0)
+          \Edge(v1)(w0)
+          \Edge(w1)(v0)
+        \end{tikzpicture}\\
+      \end{tabular}
+    \end{table}[h!]
+    $k$ chemins $u \to v$ disjoints par les noeuds
+    $\rightarrow$ en $k$ chemins $u_0 \to v_1$ disjoints
+    par les arêtes.
+    Flot max $u \to v$ $\rightarrow$ Flot max de $u_0 \to v_1$
+    de même valeur.
+
+    $k$-connexe $\leftrightarrow$ en $k$-arête connexe.
+    On applique le théorème~\ref{theo:kconnexe_chemin} sur $v'$,
+    on en déduit le théorème de Meyer sur $v$.
   \end{proof}
 \end{mytheo}
