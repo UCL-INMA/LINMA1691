@@ -10,6 +10,7 @@
      Chaque nœud $x$ a cinq voisins. On peut donc définir une couleur majoritaire en chaque nœud comme la couleur du plus grand nombre d'arêtes incidentes. Prenons le cas où la couleur majoritaire pour $x$ est le bleu. Il existe donc au moins trois arêtes bleues incidentes à $x$.
      
    \begin{figure} [!h]
+   \centering
         \begin{tikzpicture}[scale = 0.5]
                    \draw[blue] (0,1) -- (-1,-1);
                    \draw[blue] (0,1) -- (0,-1.5);
@@ -58,10 +59,10 @@
 \begin{mytheo}
 Un ensemble de nœuds est indépendant si et seulement si son complémentaire est une couverture de sommets.
 \begin{proof}
-Soit S un ensemble de noeuds indépendant.
+Soit S un ensemble de nœuds indépendant.
  
-S est un ensemble de noeuds indépendant. \\
-$\Leftrightarrow$ Il n'existe pas d'arête rejoignant 2 noeuds de S. \\
+S est un ensemble de nœuds indépendant. \\
+$\Leftrightarrow$ Il n'existe pas d'arête rejoignant 2 nœuds de S. \\
 $\Leftrightarrow$ Toute arête a au moins une extrémité qui n'est pas incluse dans S. \\
 $\Leftrightarrow$ Le complémentaire de S est une couverture de sommets.
 \end{proof}
@@ -70,6 +71,7 @@ $\Leftrightarrow$ Le complémentaire de S est une couverture de sommets.
 \begin{myexem} \label{cm7:ex1}
 	Complémentaire d'un ensemble indépendant
 	\begin{figure} [!h]
+	\centering
          \begin{tikzpicture}[scale = 0.5]
              	   \draw (-1,0) -- (-2,2) -- (0,3.5) -- (2,2) -- (1,0) -- (-1,0) -- cycle;
                    \draw (-1,0) -- (0,1.5);
@@ -116,8 +118,8 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
      Soit S un ensemble indépendant dans un graphe simple G.
      
      S est un ensemble indépendant de G \\
-     $\Leftrightarrow$ Deux noeuds quelconques de S sont non-adjacents dans G. \\
-     $\Leftrightarrow$ Deux noeuds quelconques de S sont adjacents dans le complémentaire de G. \\
+     $\Leftrightarrow$ Deux nœuds quelconques de S sont non-adjacents dans G. \\
+     $\Leftrightarrow$ Deux nœuds quelconques de S sont adjacents dans le complémentaire de G. \\
      $\Leftrightarrow$ S est une clique dans le complémentaire de G.\\
   \end{proof}
 \end{mytheo}
@@ -125,6 +127,7 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
 
 \begin{myexem} Complémentaire du graphe de l'exemple \ref{cm7:ex1}
 	\begin{figure} [!h]
+	\centering
              \begin{tikzpicture}[scale = 0.5]
                    \draw (-1,0) -- (0,3.5) -- (1,0) -- (-2,2) -- (2,2) -- (-1,0) -- cycle;
                    
@@ -133,7 +136,7 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
                    \fill[black] (0,3.5) circle (0.2cm);
                    \fill[red]   (2,2)   circle (0.2cm);
                    \fill[black] (1,0)   circle (0.2cm);
-                   \fill[black] (0,1.5) circle (0.2cm);
+                   %\fill[black] (0,1.5) circle (0.2cm);
         \end{tikzpicture}
     \end{figure} \newline
     \color{red}Clique (maximum) \color{black}
@@ -158,11 +161,13 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
 \begin{mytheo} [Théorème de Erdös et Szekeres]
   Pour $m, n \geq 2: R(m, n) \leq R(m, n-1) + R(m-1, n)$.
   \begin{proof}
-     Prenons un noeud quelconque u dans un graphe complet à $R(m,n-1) + R(m-1,n)$ noeuds avec des arêtes coloriées en bleu ou en rouge. Soit M et N définis tels que
+     Prenons un noeud quelconque u dans un graphe complet à $R(m,n-1) + R(m-1,n)$ 
+      avec des arêtes coloriées en bleu ou en rouge. Soit M et N définis tels que
      $$M = \{ \text{voisins de u reliés par des arêtes bleues}\}$$
      $$N = \{ \text{voisins de u reliés par des arêtes rouges}\}.$$
      
 \begin{figure} [!h]
+\centering
         \begin{tikzpicture}[scale = 0.5]
                    \draw[blue] (-1,-2) -- (-3,2);
                    \draw[blue] (-1,-2) -- (-2,2);
@@ -278,6 +283,7 @@ Beaucoup de théorèmes existent qui imitent le théorème de Ramsey et prouvent
  
 \begin{myexem}   
 Séparons les nombres de 1 à 13 en trois couleurs:
+\vspace*{0.2cm}
     
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
         \hline
@@ -293,7 +299,8 @@ Séparons les nombres de 1 à 13 en trois couleurs:
       \end{tabular} \\
       Le 14 ne va nulle part.
 \end{myexem}
-      
+
+%\vspace*{0.2cm}
       
 \begin{mytheo} [Théorème de Schur] 
 Pour chaque $k$, il y a un nombre $r_k$ tel que pour toute partition des nombres $1,2,....,r_k$ en $k$ classes, une de ces classes contient $x$, $y$ et $z$ tels que $x+y=z$. \footnote{dans l'exemple ci-dessus $k = 3$ et $r_k = 14$}
