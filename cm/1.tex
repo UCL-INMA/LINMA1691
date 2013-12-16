@@ -335,7 +335,7 @@
       };
       \draw[decorate,transform canvas={xshift=1.3em},thick] (m-1-6.north east) -- node[right=2pt] {$\sum_i \sum_j M_{ij} = \sum_{v_i \in V} deg(v_i)$} (m-4-6.south east);
       \draw[decorate,transform canvas={yshift=-1.7em},thick] (m-4-6.north east) -- node[below=2pt] {$\sum_i \sum_j M_{ij} = 2|E|$} (m-3-1.south west);
-    \end{tikzpicture}  
+    \end{tikzpicture}
     \vspace*{5mm}
     \begin{center}
       $\sum_i \sum_j M_{ij} = \sum_i \sum_j M_{ij}$\\
@@ -371,14 +371,14 @@
       \draw[-] (2) edge node [anchor = north] {d} (3);
       \draw[-] (1) edge node [anchor = north] {e} (3);
     \end{tikzpicture}
-    
+
     $
     Matrice\ d'adjacence\ :\ A\ = \bordermatrix{~ & 1 & 2 & 3 \cr
                                                 1 & 1 & 2 & 1 \cr
                                                 2 & 2 & 0 & 1 \cr
                                                 3 & 1 & 1 & 0 \cr}
     $
-    
+
     $
     Matrice\ d'incidence\ :\ M\ = \bordermatrix{~ & 1 & 2 & 3 \cr
                                                 1 & 1 & 2 & 1 \cr
@@ -391,11 +391,11 @@
     A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 1\\
                                   0 & 1 & 0\\
                                   0 & 0 & 1
-                  \end{pmatrix},\ 
+                  \end{pmatrix},\
     A^1\ =\ A\ =\begin{pmatrix} 1 & 2 & 1\\
                                 2 & 0 & 1\\
                                 1 & 1 & 0
-                \end{pmatrix},\ 
+                \end{pmatrix},\
     A^2\ = \begin{pmatrix}  6 & 3 & 3\\
                             3 & 5 & 2\\
                             3 & 2 & 2
@@ -409,8 +409,8 @@
     Nous procédons par récurrence. Soit $A$ une matrice d'adjacence.\\
     Pour $k=0$, $A^{0}=Id$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même. \\
     Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1. \\
-    Supposons la propriété vérifiée pour $A^{k}$. 
-       
+    Supposons la propriété vérifiée pour $A^{k}$.
+
     Nombre de parcours de parcours de $i \to j$ de longueur $k+1 =$\\
     $= \sum_{l \in E}$ (\# parcours de $i \to l$ de longueur $k$)$.$(\# arêtes $l \to j$)\\
     $= \sum_{l \in E} A_{il}^{k}.A_{lj}$\\
@@ -439,7 +439,7 @@
 
 \begin{myexem}
   \noindent
-  \begin{center}  
+  \begin{center}
     \definecolor{myblue}{RGB}{80,80,160}
     \definecolor{mygreen}{RGB}{80,160,80}
 

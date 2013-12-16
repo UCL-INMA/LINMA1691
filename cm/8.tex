@@ -5,9 +5,9 @@
 \index{coloriage!coloriage minimum}
 \begin{mydef}
   Un \emph{coloriage de noeuds} est l’attribution à chaque noeud d’une couleur.
-  
-  Le coloriage est dit \emph{propre} si des noeuds adjacents ont des couleurs différentes. 
-  
+
+  Le coloriage est dit \emph{propre} si des noeuds adjacents ont des couleurs différentes.
+
   Un coloriage \emph{minimum} est un coloriage propre qui emploie un nombre minimal de couleurs.
 \end{mydef}
 
@@ -24,13 +24,13 @@
 \begin{mytheo}
   $\chi \leq $ degré max +1
   \begin{proof}
-    Par induction sur le nombre de noeuds $n$. 
+    Par induction sur le nombre de noeuds $n$.
     Trivial pour $n = 1$.
     Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\geq d$.
-    
+
     Par hypothère d'induction, il existe un coloriage propre de $G-\{x\}$.
     On rétablis $x$ et ses arêtes. $x$ a au plus $d $ voisins.
-    
+
     \begin{itemize}
     \item Si  $G-\{x\}$ a $\leq d$ couleurs, alors ont peut utiliser une $d$ème couleur pour $x$.
     \item  Si $G-\{x\}$ a $\leq d+1$ couleurs, alors $x$ a au plus $d$ voisins. Il existe donc une couleur non-utilisée, libre pour $x$.

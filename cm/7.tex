@@ -6,9 +6,9 @@
   Parmi six personnes, on en trouve toujours trois qui se connaissent l'une l'autre, ou trois qui sont étrangers l'un à l'autre.
   \begin{proof}
      Considérons le graphe complet $K_6$ pour représenter le problème. Les nœuds symbolisent les personnes et les arêtes symbolisent les relations entre elles. Deux personnes sont reliées par une arêtes bleue si elles se connaissent, et par une arête rouge sinon. On veut montrer que le graphe contient un triangle bleu ou un triangle rouge.
-     
+
      Chaque nœud $x$ a cinq voisins. On peut donc définir une couleur majoritaire en chaque nœud comme la couleur du plus grand nombre d'arêtes incidentes. Prenons le cas où la couleur majoritaire pour $x$ est le bleu. Il existe donc au moins trois arêtes bleues incidentes à $x$.
-     
+
    \begin{figure} [!h]
    \centering
         \begin{tikzpicture}[scale = 0.5]
@@ -17,24 +17,24 @@
                    \draw[blue] (0,1) -- (1,-1);
                    \draw[black] (0,1) -- (2,0.5);
                    \draw[black] (0,1) -- (2,1.5);
-                   
+
                    \fill[black] (0,1) circle (0.2cm);
                    \fill[black] (-1,-1) circle (0.1cm);
                    \fill[black] (0,-1.5) circle (0.1cm);
                    \fill[black] (1,-1) circle (0.1cm);
                    \fill[black] (2,0.5) circle (0.1cm);
                    \fill[black] (2,1.5) circle (0.1cm);
-                   
+
                    \node at (0,1.5) {$x$};
                    \node at (-1.5,-1.5) {$a$};
                    \node at (0.5,-2) {$b$};
                    \node at (1.5,-1) {$c$};
-                   
-        \end{tikzpicture}             
+
+        \end{tikzpicture}
 	\end{figure}
-     
-     Considérons trois nœuds $a$, $b$ et $c$ reliés à $x$ par une arête bleue. Si ces trois nœuds forment un triangle rouge, alors le graphe contient un triangle rouge. Sinon, le triangle $abc$ contient au moins une arête bleue. Prenons par exemple l'arête $ab$ bleue. Le triangle $abx$ est alors bleu. Le graphe contient donc dans ce cas-ci un triangle bleu. 
-     
+
+     Considérons trois nœuds $a$, $b$ et $c$ reliés à $x$ par une arête bleue. Si ces trois nœuds forment un triangle rouge, alors le graphe contient un triangle rouge. Sinon, le triangle $abc$ contient au moins une arête bleue. Prenons par exemple l'arête $ab$ bleue. Le triangle $abx$ est alors bleu. Le graphe contient donc dans ce cas-ci un triangle bleu.
+
      La preuve reste évidemment valable si l'on prend l'arête $bc$ ou l'arête $ac$ bleue, de même que si l'on prend le rouge comme couleur majoritaire du nœud $x$.
   \end{proof}
 \end{mytheo}
@@ -60,7 +60,7 @@
 Un ensemble de nœuds est indépendant si et seulement si son complémentaire est une couverture de sommets.
 \begin{proof}
 Soit S un ensemble de nœuds indépendant.
- 
+
 S est un ensemble de nœuds indépendant. \\
 $\Leftrightarrow$ Il n'existe pas d'arête rejoignant 2 nœuds de S. \\
 $\Leftrightarrow$ Toute arête a au moins une extrémité qui n'est pas incluse dans S. \\
@@ -79,14 +79,14 @@ $\Leftrightarrow$ Le complémentaire de S est une couverture de sommets.
                    \draw (0,3.5) -- (0,1.5);
                    \draw (2,2) -- (0,1.5);
                    \draw (1,0) -- (0,1.5);
-                   
+
                    \fill[red] (-1,0) circle (0.2cm);
                    \fill[green] (-2,2) circle (0.2cm);
                    \fill[green] (0,3.5) circle (0.2cm);
                    \fill[red] (2,2) circle (0.2cm);
                    \fill[green] (1,0) circle (0.2cm);
                    \fill[green] (0,1.5) circle (0.2cm);
-                   
+
         \end{tikzpicture}
 	\end{figure} \newline
 	\color{green}Couverture de sommets \\
@@ -95,7 +95,7 @@ $\Leftrightarrow$ Le complémentaire de S est une couverture de sommets.
 \end{myexem}
 
 
-\begin{mycorr} 
+\begin{mycorr}
 |ensemble indépendant maximum| + |couverture minimum| = |nombre de nœuds|
 \end{mycorr}
 
@@ -116,7 +116,7 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
   Un ensemble est indépendant dans un graphe simple si et seulement s'il est une clique dans le graphe complémentaire.
   \begin{proof}
      Soit S un ensemble indépendant dans un graphe simple G.
-     
+
      S est un ensemble indépendant de G \\
      $\Leftrightarrow$ Deux nœuds quelconques de S sont non-adjacents dans G. \\
      $\Leftrightarrow$ Deux nœuds quelconques de S sont adjacents dans le complémentaire de G. \\
@@ -130,7 +130,7 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
 	\centering
              \begin{tikzpicture}[scale = 0.5]
                    \draw (-1,0) -- (0,3.5) -- (1,0) -- (-2,2) -- (2,2) -- (-1,0) -- cycle;
-                   
+
                    \fill[red]   (-1,0)  circle (0.2cm);
                    \fill[black] (-2,2)  circle (0.2cm);
                    \fill[black] (0,3.5) circle (0.2cm);
@@ -153,7 +153,7 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
 \begin{mydef} [Nombre de Ramsey]
 Le \emph{nombre de Ramsey} $R(n_1 , ..., n_k)$ est le plus petit naturel $r$ tel que tout coloriage du graphe complet de $r$ nœuds en $k$ couleurs $c_1$ , ..., $c_k$ crée une clique de $n_1$ nœuds de couleur $c_1$, ou une clique de $n_2$ nœuds de couleur $c_2$, ..., ou une clique de $n_k$ nœuds de couleur $c_k$.
 \end{mydef}
-  
+
 \begin{mytheo} [Théorème de Ramsey]
 Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
 \end{mytheo}
@@ -161,11 +161,11 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
 \begin{mytheo} [Théorème de Erdös et Szekeres]
   Pour $m, n \geq 2: R(m, n) \leq R(m, n-1) + R(m-1, n)$.
   \begin{proof}
-     Prenons un noeud quelconque u dans un graphe complet à $R(m,n-1) + R(m-1,n)$ 
+     Prenons un noeud quelconque u dans un graphe complet à $R(m,n-1) + R(m-1,n)$
       avec des arêtes coloriées en bleu ou en rouge. Soit M et N définis tels que
      $$M = \{ \text{voisins de u reliés par des arêtes bleues}\}$$
      $$N = \{ \text{voisins de u reliés par des arêtes rouges}\}.$$
-     
+
 \begin{figure} [!h]
 \centering
         \begin{tikzpicture}[scale = 0.5]
@@ -178,7 +178,7 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
                    \draw[red] (-1,-2) -- (3,-1);
                    \draw[red] (-1,-2) -- (3,-2);
                    \draw[red] (-1,-2) -- (3,-3);
-                   
+
                    \fill[black] (-1,-2) circle (0.2cm);
                    \fill[black] (-3,2) circle (0.1cm);
                    \fill[black] (-2,2) circle (0.1cm);
@@ -189,19 +189,19 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
                    \fill[black] (3,-1) circle (0.1cm);
                    \fill[black] (3,-2) circle (0.1cm);
                    \fill[black] (3,-3) circle (0.1cm);
-                   
+
                    \node at (-1.5,-2.5) {$u$};
                    \node at (-3,3.5) {\color{blue}$M$};
                    \node at (4,0.5) {\color{red}$N$};
-                   
+
                    \draw[blue] (-1,2) ellipse (3cm and 1cm);
-                   \draw[red]  (3,-1.5) ellipse (1cm and 2cm);                 
-        \end{tikzpicture}          
-\end{figure}   
-     
+                   \draw[red]  (3,-1.5) ellipse (1cm and 2cm);
+        \end{tikzpicture}
+\end{figure}
+
  On a (simplement la somme des nœuds) que
  $$|M|+|N|+1 = R(m,n-1) + R(m-1,n).$$
- 
+
  Donc on a que
  \begin{equation} \label{cm7:RM}
  |M| \geq R(m-1,n)
@@ -228,9 +228,9 @@ $R(n_1,...,n_k) \leq R \left( n_1,...,n_{k-2},R(n_{k-1},n_k) \right)$
 
 \begin{proof}
   Prenons un graphe complet à $R(n_1, ..., n_{k-2}, R(n_{k-1}, n_k))$ nœuds et leurs arêtes coloriées en $k$ couleurs. Soit $c_i $ la couleur $i$.
-  
+
   Faisons semblant que $c_{k-1}$ et $c_{k}$ sont une seule couleur. Cela implique qu'il n'y a plus que $k-1$ couleurs. Il existe donc une clique à $n_1$ nœuds de couleur $c_1$ ou bien une clique à $n_2$ nœuds de couleur $c_2$ et ainsi de suite jusqu'à la possibilité d'une clique de $R(n_{k-1}, n_k)$ nœuds de couleur $c_{k-1}$ ou $c_{k}$.
-  
+
   Or par définition de $R(n_{k-1}, n_k)$, cette dernière possibilité revient à dire qu'il existe une clique de $n_{k-1}$ nœuds de couleur $c_{k-1}$ ou une clique de $n_{k}$ nœuds de couleur $c_{k}$.
 \end{proof}
 \end{mytheo}
@@ -243,10 +243,10 @@ En d'autre termes, ce théorème stipule qu'il existe toujours un peu d'ordre da
   \begin{proof}
      Cela découle directement du théorème \ref{ami2}.
   \end{proof}
-\end{mytheo}  
-      
+\end{mytheo}
 
-\begin{mytheo} 
+
+\begin{mytheo}
 [Théorème de Turán
 \footnote{par la contraposée on obtient la définition de Wikipédia qui nous dit: Tout graphe $G$ ayant $n$ sommets, et ne contenant pas de clique de taille plus grande que $r$ ($ K_{r+1} $) possède au plus $(1-\frac{1}{r})\frac{n^2}{2}$ arêtes}] \label{turan}
 Si un graphe simple possède strictement plus de $(1-\frac{1}{r})\frac{n^2}{2}$ arêtes, alors il a une clique de $n+1$ nœuds.
@@ -262,7 +262,7 @@ Pendant les séances d'exercices, le tuteur a complété le théorème \ref{tura
 \item
 On a  $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} > \left( 1-\dfrac{1}{n-1} \right) \dfrac{n^2}{2}$ donc si on prend $r=n$ alors on aura une clique à $(n-1)+1=n$ nœuds. Or on a bien : $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} = \dfrac{n(n-1)}{2}$.
 \end{enumerate}
-   
+
 
 \subsection{La théorie de Ramsey}
 Beaucoup de théorèmes existent qui imitent le théorème de Ramsey et prouvent quelque chose du genre:
@@ -274,35 +274,35 @@ Beaucoup de théorèmes existent qui imitent le théorème de Ramsey et prouvent
 \item
 "Le désordre complet est impossible."
 \end{itemize}
-    
-    
-    
+
+
+
 \begin{mytheo} [Sommes d'entiers]
     Si l'on colorie les nombres de un à quatorze en trois couleurs alors il existe trois nombres (pas forcément distincts) $x$, $y$ et $z$ de m\^eme couleur tels que $x+y=z$.
 \end{mytheo}
- 
-\begin{myexem}   
+
+\begin{myexem}
 Séparons les nombres de 1 à 13 en trois couleurs:
 \vspace*{0.2cm}
-    
+
     \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
         \hline
        couleur1 & 1 &  &  & 4  &  &  &  &  &  & 10 &  &  & 13\\
-       
+
        \hline
        couleur2 &  & 2 & 3 &  &  &  &  &  &  &  & 11 & 12 &\\
-       
+
        \hline
        couleur3 &  &  &  &  & 5 & 6 & 7 & 8 & 9 &  &  &  &\\
-  
+
         \hline
       \end{tabular} \\
       Le 14 ne va nulle part.
 \end{myexem}
 
 %\vspace*{0.2cm}
-      
-\begin{mytheo} [Théorème de Schur] 
+
+\begin{mytheo} [Théorème de Schur]
 Pour chaque $k$, il y a un nombre $r_k$ tel que pour toute partition des nombres $1,2,....,r_k$ en $k$ classes, une de ces classes contient $x$, $y$ et $z$ tels que $x+y=z$. \footnote{dans l'exemple ci-dessus $k = 3$ et $r_k = 14$}
 \begin{proof}
 Soit $r_k = R(n_1,...,n_k)$ avec $\forall i \in [1 , k], n_i = 3 $.
@@ -317,9 +317,9 @@ Donc il y a $i$, $j$ et $l$ tels que:
 \item
 $i < j < l$
 \item
-$j-i, l-j, l-i$ sont dans le m\^eme classe.\\      
+$j-i, l-j, l-i$ sont dans le m\^eme classe.\\
 \end{itemize}
-      
+
 On prend alors:\\
 $x = j-i$, $y = l-j$ et $z = l-i$\\
 $\Rightarrow x+y=z$
@@ -335,7 +335,7 @@ Parmi cinq points arbitraires dans le plan, tels que trois d'entre eux ne sont  
 \begin{mytheo}
 Si l'on colorie les nombres de un à neuf en deux couleurs.  Alors il existe une progression arithmétique de longueur trois qui est monochrome.
 \end{mytheo}
-     
+
 \begin{mytheo} [Théorème de Van der Waerden]
 Pour tout $k$, $l$, il existe un nombre $W(k,l)$ tel que les nombres de 1 à $W(k,l)$, coloriés arbitrairement en $k$ couleurs, contiennent une progression arithmétique monochrome de longueur $l$.
 \end{mytheo}

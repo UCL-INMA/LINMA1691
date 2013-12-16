@@ -37,7 +37,7 @@
           	 \fill[black] (2.5,2) circle (0.1cm);
           	 \fill[black] (3,1) circle (0.1cm);
           	 \fill[black] (1.5,0) circle (0.1cm);
-          	 
+
           	 \draw (-1,0) -- (-2,2) -- (-1.5,4) -- (-2.5,5) -- (0,6) -- (2.5,4.5) -- (2.5,2) -- (3,1) -- (1.5,0) -- cycle;
         \end{tikzpicture}
       	}
@@ -51,7 +51,7 @@
           	 \fill[black] (2.5,2) circle (0.1cm);
           	 \fill[black] (3,1) circle (0.1cm);
           	 \fill[black] (1.5,0) circle (0.1cm);
-          	 
+
           	 \draw (-1,0) -- (-2,2);
           	 \draw (2.5,2) -- (3,1) -- (1.5,0);
         \end{tikzpicture}
@@ -64,12 +64,12 @@
 \begin{mytheo} [Condition suffisante pour un graphe hamiltonien]
   Un graphe simple à $n \geq 3$ noeuds tel que le degré minimum est d’au moins $n/2$ est hamiltonien.
   \begin{proof}
-     Par l'absurde. 
-     
+     Par l'absurde.
+
      Supposons qu'il existe un graphe à $n \geq 3$ noeuds de degré minimum $d(v) \geq \frac{n}{2}$ non hamiltonien.
-     
+
      Prenons un tel graphe qui est maximal pour cette propriété : ajouter une arête dans ce graphe le rendrait hamiltonien.
-     
+
      Ce graphe G n'est pas le graphe complet $K_n$
      \begin{align*}
 		&\Rightarrow \exists \text{ des noeuds } v_1, v_n \text{ non adjacents} \\
@@ -99,7 +99,7 @@
           	 \node at (5,1) {$v_{n-1}$};
           	 \fill[black] (7,0) circle (0.3cm);
           	 \node at (7,1) {$v_n$};
-          	 
+
           	 \draw (-7,0) -- (-5,0);
           	 \draw [dashed] (-5,0) -- (-1,0);
           	 \draw [dashed] (1,0) -- (5,0);

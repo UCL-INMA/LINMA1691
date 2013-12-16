@@ -16,7 +16,7 @@
 \begin{mytheo} [Arbres sous-tendants]
   Tout graphe connexe contient un arbre sous-tendant.
   \begin{proof}
-     Parmi tous les sous-graphes sous-tendants connexes, on choisit un sous-graphe \emph{minimal} dans cet ensemble (\emph{minimum} = si j'enlève n'importe quelle arête, alors on perd la connexité). Je prétends que c'est un arbre sous-tendant : 
+     Parmi tous les sous-graphes sous-tendants connexes, on choisit un sous-graphe \emph{minimal} dans cet ensemble (\emph{minimum} = si j'enlève n'importe quelle arête, alors on perd la connexité). Je prétends que c'est un arbre sous-tendant :
      \begin{itemize}
      \item \emph{Connexe} : par construction
      \item \emph{Sans cycle} : suppose qu'on a un cycle. Soit $e = uv$ une arête quelconque de ce cycle. Si on enlève $e$, le graphe est toujours connexe (en effet, $\forall$ parcours $x \rightarrow uev \rightarrow y$, on peut remplacer $e$ par le reste du cycle dont $e$ faisait partie).
@@ -37,39 +37,39 @@
   \end{itemize}
   La dernière condition implique que G est sans boucle (pour deux noeuds identiques).
   \begin{proof}
-  Nous allons démontrer que chaque condition implique la suivante et qu'elles sont ainsi toutes équivalentes.  
+  Nous allons démontrer que chaque condition implique la suivante et qu'elles sont ainsi toutes équivalentes.
   \begin{itemize}
   \item $(1) \Rightarrow (2)$ :\\
   Sans cycle : OK\\
-  $m = n-1$ : 
+  $m = n-1$ :
   \begin{enumerate}[$\bullet$]
   \item D'abord, on prouve que tout arbre possède une feuille (= nœud de degré 1). Tous les nœuds ont un degré $\geq$ 1 (par connexité, s'il y a au moins deux nœuds). Supposons que tous les nœuds aient un degré $\geq$ 2. Alors, partant d'un nœud on peut créer un parcours sans jamais rebrousser chemin (chaque fois qu'on visite un nœud pour la première fois, on peut sortir par une autre arête), jusqu'à revenir à un nœud déjà visité. Cela implique qu'on peut extraire un cycle $\rightarrow$ contradiction. Tout arbre possède donc au moins une feuille.
   \item On procède par récurrence sur $n$. Pour $n=1, m=0$ : on a bien $m = n − 1$. Pour $n+1$ avec une feuille $x$ : on enlève $x$ et son arête, on obtient un nouvel arbre. Il reste $n$ nœud et (par récurrence) $n-1$ arêtes. Donc on avait $n+1$ nœud et $n$ arêtes.
   \end{enumerate}
-  
+
   \item $(2) \Rightarrow (3)$ :\\
   $m = n-1$ : OK\\
-  Connexe : supposons qu'il ne soit pas connexe. Alors au moins 2 composantes sont connexes, de $n_i$ nœuds et $m_i$ arêtes. Sur chacune, on peut appliquer $(1) \Rightarrow (2)$ (puisque chaque composante est connexe et sans cycle). Donc, pour toute composante connexe $i$ : $m_i = n_i -1$. Sommons maintenant cela sur l'ensemble des composantes. Somme : $m = \sum_i m_i = \sum_i n_i - \# \text{composantes connexes} = n - \# \text{comp. conn.} = n - 1$. Donc il n'y a qu'une seule composante connexe. 
-  
-  \item $(3) \Rightarrow (4)$ :\\ 
+  Connexe : supposons qu'il ne soit pas connexe. Alors au moins 2 composantes sont connexes, de $n_i$ nœuds et $m_i$ arêtes. Sur chacune, on peut appliquer $(1) \Rightarrow (2)$ (puisque chaque composante est connexe et sans cycle). Donc, pour toute composante connexe $i$ : $m_i = n_i -1$. Sommons maintenant cela sur l'ensemble des composantes. Somme : $m = \sum_i m_i = \sum_i n_i - \# \text{composantes connexes} = n - \# \text{comp. conn.} = n - 1$. Donc il n'y a qu'une seule composante connexe.
+
+  \item $(3) \Rightarrow (4)$ :\\
   Connexe : OK\\
   Supprimer une arête déconnecte le graphe : supposons par l'absurde qu'on puisse enlever une arête $e$ à $G$ et $G-e$ reste connexe. Par le théorème précédent, dans $G-e$ (connexe), il y a un arbre sous-tendant. Par $(1) \Rightarrow (2)$, cet arbre a $n-1$ arêtes. Donc $G-e$ a au moins $n-1$ arêtes. Donc $G$ a au moins $\geq n$ arêtes $\rightarrow$ contradiction (car hypothèse : $m = n-1$).
-  
-  \item $(4) \Rightarrow (5)$ :\\ 
+
+  \item $(4) \Rightarrow (5)$ :\\
   Sans cycle : s'il y avait un cycle, on pourrait supprimer une arête de ce cycle et maintenir la connexité, ce qui n'est pas le cas par hypothèse. Il n'y a donc pas de cycle.\\
-  Ajouter une arête quelconque crée un et un seul cycle : 
+  Ajouter une arête quelconque crée un et un seul cycle :
   \begin{enumerate}[$\bullet$]
   \item D'abord, on prouve qu'il existe un cycle. Ajoutons une arête $e$ entre $u$ et $v$. Par connexité, il existe un chemin $c = u \ldots v$. Donc $\underbrace{u \ldots v}_{c}eu$ est un cycle.
   \item Ensuite, on prouve que c'est le seul cycle. Supposons qu'on ait obtenu au moins 2 cycles $c_1, c_2$. Alors on a un parcours fermé $u \ldots v \ldots u$, dont on peut extraire un cycle dans $G$ $\rightarrow$ contradiction.
   \end{enumerate}
-  
+
   \item $(5) \Rightarrow (6)$ :\\
   Soit deux nœuds $u$ et $v$. Supposons qu'il existe deux chemins $P_1 = u \ldots v$, $P_2 = u \ldots v$, alors $u \ldots v \ldots u$ est un parcours fermé, donc on peut extraire un cycle $\rightarrow$ contradiction. Il y a donc au plus un chemin $u \rightarrow v$. En ajoutant une arête $e$ entre $u$ et $v$, par hypothèse je crée un cycle. Cela implique que $C-e$ est un chemin $u \rightarrow v$. Il y a donc bien un chemin entre deux noeuds de $G$ et c'est le seul.
-  
+
   \item $(6) \Rightarrow (1)$ :\\
   Connexe : OK\\
   Sans cycle : supposons qu'il existe un cycle. Soient $x$ et $y$ deux nœuds dans ce cycle. Le cycle donne deux chemins $x \rightarrow y$ c'est qui est en contradiction avec l'hypothèse. Il n'y a donc pas de cycle.
-  
+
   \end{itemize}
   \end{proof}
 \end{mytheo}
@@ -297,7 +297,7 @@
 \end{mydef}
 
 \begin{mytheo} [Lien entre les connectivités]
- $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$ 
+ $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$
   \begin{proof}
      Preuve \addTODO
   \end{proof}
