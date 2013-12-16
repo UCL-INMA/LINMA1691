@@ -165,7 +165,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   En partant du flot $f$ avec un chemin $f$-augmentant
   montré à la figure~\ref{fig:faug},
   on peut créer un nouveau flot $f'$ valide.
-  L'arête déjà remplie à $3/4$ nous oblique à ce que le flot n'augmente que de 1,
+  L'arête déjà remplie à $3/4$ nous oblige à ce que le flot n'augmente que de 1,
   $\valeur(f') = \valeur(f) + 1$.
   Le flot est alors modifié le long de ce chemin comme montré
   à la figure~\ref{fig:fprime}.
@@ -250,11 +250,11 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
         Dès lors,
         \begin{align*}
           \coupe(S\to\bar{S}) & = \text{valeur du flot qui quitte }S\text{ vers }\bar{S}\\
-                              & = \text{valeur du flot note entre }S\text{ et }\bar{S}\\
+                              & = \text{valeur du flot net entre }S\text{ et }\bar{S}\\
                               & = \valeur(f)
         \end{align*}
         Cette coupe est la coupe mininum et ce flot est le flot maximum.
-        La preuve prouve aussi que du flot max on déduit une coupe min de même valeur.
+        La preuve prouve aussi que du flot max on déduit une coupe min de même valeur.\\ D'où  $\rightarrow$ Max Flow = Min cut.
     \end{itemize}
   \end{proof}
 \end{mytheo}
@@ -262,7 +262,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \begin{mytheo}
   La valeur du flot maximum et la capacité de la coupe minimum sont toujours égales.
   \begin{proof}
-    Preuve \addTODO
+    Cette preuve n'a pas été vue au cours, on l'obtiens cependant facilement par contradiction.
   \end{proof}
 \end{mytheo}
 
@@ -272,9 +272,6 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   Algorithme \addTODO
 \end{myalgo}
 
-\begin{myexem}
-  Exemple \addTODO
-\end{myexem}
 
 \begin{mylem}
   \label{lem:flot_chemin}
@@ -282,7 +279,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   \begin{proof}
     Si j'ai $k$ chemins disjoints $u \to v$,
     je crée un flot de valeur $k$ en saturant les arêtes
-    des chemins
+    des chemins.
     \begin{figure}[h!]
       \centering
       \begin{tikzpicture}
@@ -322,8 +319,8 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
     sur chaque arête.
     Prenons $E$, le nombre d'arêtes de flot 1.
     C'est un sous-graphe.
-    Pour noeuds ni source ni puits,
-    degré entrant $\leq$ degré sortant (sur $E$).
+    Si ni source ni puits,
+    degré entrant = degré sortant (sur $E$).
     Si $\flotmax = k$,
     il existe $k$ arêtes sortantes de $u$ dans $E$ que
     je peux prolonger par $k$ chemins (disjoints par les arêtes)
@@ -353,7 +350,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 
 \begin{mytheo}
   \label{theo:kconnexe_chemin}
-  Un graphe (non-dirigé) est $k$-arête-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les arêtes.
+  Un graphe (non-dirigé) est $k$-arête-connexe si et seulement si entre toutes paires de noeuds il y a au moins $k$ chemins disjoints deux à deux par les arêtes.
   \begin{proof}
     \begin{itemize}
       \item[$\Leftarrow$]
@@ -456,6 +453,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 
     $k$-connexe $\leftrightarrow$ en $k$-arête connexe.
     On applique le théorème~\ref{theo:kconnexe_chemin} sur $v'$,
-    on en déduit le théorème de Meyer sur $v$.
+    on en déduit le théorème de Menger sur $v$.
   \end{proof}
 \end{mytheo}
+
