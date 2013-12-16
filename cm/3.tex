@@ -253,7 +253,17 @@
 \begin{mytheo} [L'algorithme de Kruskal est efficace]
   L'algorithme de Kruskal requiert un temps de calcul de l'ordre de $\bigoh(m\log(m))$ sur un graphe à $m$ arêtes.
   \begin{proof}
- \end{proof}
+    On doit commencer par trier les arêtes du graphes ce qui se fait en $\bigoh(m\log(m))$ avec un algorithme efficace.
+    Savoir si ajouter une arête crée un cycle se fait en $\bigoh(\alpha(m))$ avec un Union-Find.
+    On retient pour chaque noeud dans quel composante connexe il est.
+    Une arête crée un cycle si et seulement si ses deux extrémités sont dans la même composante connexe,
+    ce qui se fait à l'aide de deux \emph{find} en $\bigoh(\alpha(m))$.
+    Lorsqu'on ajoute une arête, on fait l'union de deux composantes connexes,
+    ce qui se fait en $\bigoh(\alpha(m))$ à l'aide d'une \emph{union}.
+    \footnote{$\alpha(m)$ est la réciproque de la fonction $f(n) = A(n,n)$ et
+    $A$ la fonction d'Ackermann dont la croissance est extrêmement rapide.
+    $\alpha(m)$ vaut moins de 5 pour toute valeur $m$ en pratique.}
+  \end{proof}
 \end{mytheo}
 
 \index{coupe de sommets}
