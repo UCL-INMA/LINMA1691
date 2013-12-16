@@ -45,7 +45,7 @@
 \begin{mycorr}
   $\mathcal{P} \subseteq \mathcal{NP}$
   \begin{proof}
-     Preuve \addTODO
+     C'est par définition de l'ensemble. On verra à la fin de cette section qu'il pourrait (bien qu'il est peu probable) prouver que $\mathcal{P}=\mathcal{NP}$
   \end{proof}
 \end{mycorr}
 
@@ -90,7 +90,7 @@
 \begin{mytheo}
   Si $P \leq Q$ et $Q \in \mathcal{P}$ alors $P \in \mathcal{P}$.
   \begin{proof}
-     Preuve \addTODO
+     Cette preuve n'a pas été vue.
   \end{proof}
 \end{mytheo}
 
@@ -140,15 +140,19 @@
 \end{mytheo}
 
 \begin{mytheo} [Comment prouver qu'un problème $P$ est $\mathcal{NP}$-complet?]
+\begin{proof}
   \begin{enumerate}
     \item Prouver $P \in \mathcal{NP}$;
     \item Choisir un problème $Q$ connu comme $\mathcal{NP}-complet$;
     \item Prouver $Q \leq P$ en exhibant une réduction efficace.
   \end{enumerate}
-  \begin{proof}
-     Preuve \addTODO
+  
   \end{proof}
 \end{mytheo}
+
+\begin{mydef}
+On pourrait essayer de prouver que $\mathcal{P}=\mathcal{NP}$ si et seulement si on montrait qu'un problème $\mathcal{NP}$  (Hamilton, SAT ou encore le sudoku) $\in$ P
+\end{mydef}
 
 \begin{myexem}
   Quelques problèmes $\mathcal{NP}$-complets en théorie des graphes :
@@ -163,3 +167,4 @@
     \item VOYAGEUR DE COMMERCE
   \end{itemize}
 \end{myexem}
+
