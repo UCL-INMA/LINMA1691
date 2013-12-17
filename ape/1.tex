@@ -8,7 +8,7 @@ Rappel : Un graphe simple est un graphe
  \end{itemize}
 \begin{enumerate}
 	\item{L'élimination d'un sommet de degré maximum peut augmenter le degré moyen d'un graphe.}
-	\item{Un graphe qui ne contient pas de triangle est pibarti}
+	\item{Un graphe qui ne contient pas de triangle est biparti}
 	\item{Deux graphes qui possèdent un même nombre de sommets et dont les listes de degrés sont identiques sont isomorphes. Même question, si, en plus, les graphes sont connexes.}
 	\item{Un graphe simple de 2 sommets au moins possède toujours 2 sommets de degré identiques}
 	\item{$\exists$ un graphe simple dont les degrés des sommets sont $\{1,2,2,3,3,4\}$}
@@ -46,8 +46,45 @@ $ \stackrel{Isomorphe}{\nRightarrow}$
 \item{Tout graphe qui possède n sommets et h arêtes possède au moins $n-k$ composantes connexes}
 \end{enumerate}
 
+\begin{solution}
+\begin{enumerate}
+\item{\emph{?}}
+\item{
+	\begin{itemize}
+	\item Le graph étant connexe, il y a au minimum $n-1$ arrêtes.
+	\item Le graph (connexe) étant complet, il y a maximum $\frac{n (n-1)}{2}$ arrêtes car on a:
+		\begin{itemize}
+		\item $n$ nœuds
+		\item $n-1$ arrêtes par nœuds
+		\item et donc $n (n-1)$ arrêtes $\times \frac{1}{2}$ car on les comptes deux fois!
+		\end{itemize}
+	\end{itemize}	
+}
+\item{
+	
+	}
+\item{}
+\end{enumerate}
+\end{solution}
+
 \subsection{Graphe de l'hypercube}
-Soit $G_{i}$ le graphe dont les sommets sont des k-tuples de 0 et 1. Deux sommets de G sont adjacents si leurs k-tuples ne diffèrent qu'en une seule position. Montrez que le graphe est biparti, k-régulier et donnez son nombre arrêtes.
+Soit $G_{i}$ le graphe dont les sommets sont des k-tuples de 0 et 1. Deux sommets de G sont adjacents si leurs k-tuples ne diffèrent qu'en une seule position. Montrez que le graphe est biparti, k-régulier et donnez son nombre arrêtes.\\
+
+\begin{solution}
+\begin{minipage}{0.35\textwidth}
+\begin{flushleft}
+\includegraphics[scale=0.4]{graph_ape1_ex3}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.65\textwidth}
+\begin{flushright}
+\begin{itemize}
+\item Le graph est $k-régulier$ car tout les nœuds sont de degré k.
+\item Le graph est biparti car $|E| = \frac{2^{k} k}{2} = 12$
+\end{itemize}
+\end{flushright}
+\end{minipage}
+\end{solution}
 
 \subsection{Parcours fermés}
 Formule : $(n-1)^{k} + (n-1)(-1)^{k}$
