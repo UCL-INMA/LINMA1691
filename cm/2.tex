@@ -1,4 +1,5 @@
 \section{Les plus courts chemins}
+\subsection{Les plus courts chemins}
 \index{graphe!graphe pondéré}
 \begin{mydef}
   Une \emph{fonction de poids} sur un graphe ($V$, $E$, $\varphi$) est une fonction $E \to \mathbb{R}$. Un \emph{graphe pondéré} est un graphe muni d’une fonction de poids. Le \emph{poids} ou la \emph{longueur} d’un parcours est la somme des poids des arêtes qui le compose.
@@ -7,47 +8,52 @@
 \begin{mytheo} [Plus court chemin et plus court parcours]
   Pour un graphe avec une fonction de poids $\geq 0$, si le plus court parcours entre $u$ et $v$ est de longueur $d$, alors le plus court chemin entre $u$ et $v$ est aussi de longueur $d$.
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+     Cette démonstration n'a pas été vue au cours.
   \end{proof}
 \end{mytheo}
 
 \subsection{Algorithme de Dijkstra}
 \index{algorithme!algorithme de Dijkstra}
 \begin{myalgo}[Algorithme de Dijkstra]
+\begin{enumerate}
+  \item Initialement, $i=0$, l'ensemble $S={u_{0}}$ (il contient notre noeud de départ) et l'ensemble \={S}$_{0}$ contient tous les autres noeuds. $l(u_{0})=0$ et $l(v)=\infty$ pour $v\ne u_{0}$ ($l(v)$ est une borne supérieure de $d(u_{0},v)$).
+	\item Pour chaque $v \in$ \=S$_{i}$, on remplace $l(v)$ par min $({l(v),l(u_{i}+w{u_{i}v)}})$. On calcule le minimum pour $v \in$\=S$_{i}$ de $l(v)$ et on nomme $u_{i+1}$ le sommet pour qui ce minimum est atteind. Ensuite, on fixe $S_{i+1}=S_{i} \cup {u_{i+1}}$ et on retire ce sommet de \=S$_{i+1}$.
+	\item si $i=v-1$, on arrête. Si $i < v-1$, on remplace i par $i+1$ et on refait l'étape 2.
+	\end{enumerate}
 \end{myalgo}
 
 \begin{myexem}
   On cherche les distances à partir de $a$.\\
 	\begin{center}
-	 \begin{tikzpicture}
-    \node[vertex] at (0, 2) (a) {\tiny $A$};
-    \node[vertex] at (2, 1) (b) {\tiny $B$};
-    \node[vertex] at (1, -2) (c) {\tiny $C$};
-    \node[vertex] at (-1, -2) (d) {\tiny $D$};
-    \node[vertex] at (-2, 1) (e) {\tiny $E$};
-    \draw[->] (a) edge node[anchor = south] {\tiny $50$} (b);
-		 \draw[->] (c) edge node[anchor = north] {\tiny $5$} (b);
-		\draw[->] (c) edge node[anchor = north] {\tiny $50$} (d);
-		\draw[->] (e) edge node[anchor = south] {\tiny $10$} (d);
-		\draw[->] (a) edge node[anchor = south] {\tiny $10$} (e);
-		\draw[->] (d) edge node[anchor = north] {\tiny $5$} (a);
-		\draw[->] (a) edge node[anchor = south] {\tiny $30$} (c);
-		\draw[->] (d) edge node[anchor = north] {\tiny $20$} (b);
-		 \end{tikzpicture}
-\end{center}
-\begin{center}
-\begin{tabular}{|c|c|ccccc|}
-\hline
-$u'$ & $S$ & $l(a)$ & $l(b)$ & $l(c)$ & $l(d)$ & $l(e)$\\
-\hline
-$a$ & $\lbrace a \rbrace$ & $\boxed{0}$ & $\infty$ & $\infty$ & $\infty$ &$\infty$\\
-$a$ & $\lbrace a,e \rbrace$ && 50 & 30 & $\infty$ & $\boxed{10}$\\
-$e$ & $\lbrace a,e,d \rbrace$ && 50 & 30 & $\boxed{20}$ &\\
-$d$ & $\lbrace a,e,d,c \rbrace$ && 40 & $\boxed{30}$ & &\\
-$c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
-\hline
-\end{tabular}
-\end{center}
+	  \begin{tikzpicture}
+      \node[vertex] at (0, 2) (a) {\tiny $A$};
+      \node[vertex] at (2, 1) (b) {\tiny $B$};
+      \node[vertex] at (1, -2) (c) {\tiny $C$};
+      \node[vertex] at (-1, -2) (d) {\tiny $D$};
+      \node[vertex] at (-2, 1) (e) {\tiny $E$};
+      \draw[->] (a) edge node[anchor = south] {\tiny $50$} (b);
+  		\draw[->] (c) edge node[anchor = north] {\tiny $5$} (b);
+  		\draw[->] (c) edge node[anchor = north] {\tiny $50$} (d);
+  		\draw[->] (e) edge node[anchor = south] {\tiny $10$} (d);
+  		\draw[->] (a) edge node[anchor = south] {\tiny $10$} (e);
+  		\draw[->] (d) edge node[anchor = north] {\tiny $5$} (a);
+  		\draw[->] (a) edge node[anchor = south] {\tiny $30$} (c);
+  		\draw[->] (d) edge node[anchor = north] {\tiny $20$} (b);
+  	\end{tikzpicture}
+  \end{center}
+  \begin{center}
+    \begin{tabular}{|c|c|ccccc|}
+      \hline
+      $u'$ & $S$ & $l(a)$ & $l(b)$ & $l(c)$ & $l(d)$ & $l(e)$\\
+      \hline
+      $a$ & $\lbrace a \rbrace$ & $\boxed{0}$ & $\infty$ & $\infty$ & $\infty$ &$\infty$\\
+      $a$ & $\lbrace a,e \rbrace$ && 50 & 30 & $\infty$ & $\boxed{10}$\\
+      $e$ & $\lbrace a,e,d \rbrace$ && 50 & 30 & $\boxed{20}$ &\\
+      $d$ & $\lbrace a,e,d,c \rbrace$ && 40 & $\boxed{30}$ & &\\
+      $c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
+      \hline
+    \end{tabular}
+  \end{center}
 \end{myexem}
 
 \begin{mytheo} [L'algorithme de Dijkstra fonctionne]
@@ -57,7 +63,7 @@ $c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
     \item pour $v \notin S$, $\ell(v) \geq d(u_0, v)$, et $\ell(v)$ est la longueur du plus court chemin de $u_0$ vers $v$ dont tous les noeuds internes sont dans $S$.
   \end{itemize}
   \begin{proof}
-     \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+     Cette démonstration n'a pas été vue au cours.
   \end{proof}
 \end{mytheo}
 
@@ -71,7 +77,7 @@ $c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
     \begin{itemize}
 		\item A chaque passage de boucle $\left\lbrace v \in S \right\rbrace $ décroit de 1. Ce qui implique $n$ passages de boucles.
 		\item A chaque boucle, "$\forall v \in S$" fait $O(n-|S|)$ opérations; et "trouver $v_{min}$" fait $O(n-|S|)$ opérations également.
-		\item Cela implique un temps total $O(n + (n-1) + (n-2) + ... + 1) = O\left( \frac{n(n-1)}{2} \right) = O(n^2)$ puisqu'on considère le temps à une constante près. 
+		\item Cela implique un temps total $O(n + (n-1) + (n-2) + ... + 1) = O\left( \frac{n(n-1)}{2} \right) = O(n^2)$ puisqu'on considère le temps à une constante près.
 		\end{itemize}
   \end{proof}
 \end{mytheo}
@@ -85,33 +91,67 @@ $c$ & $\lbrace a,e,d,c,b \rbrace$ && $\boxed{35}$ & & &\\
 \end{mydef}
 
 \begin{myexem}
-  \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Voir notes} \textcolor{red}{TODO}
+Pour le graphe dirigé suivant :
+  \begin{center}
+	  \begin{tikzpicture}
+      \node[vertex] at (0, 2) (a) {\tiny $A$};
+      \node[vertex] at (2, 1) (b) {\tiny $B$};
+      \node[vertex] at (1, -2) (c) {\tiny $C$};
+      \node[vertex] at (-1, -2) (d) {\tiny $D$};
+      \node[vertex] at (-2, 1) (e) {\tiny $E$};
+      \draw[->] (a) edge node[anchor = south] {1} (b);
+  		\draw[->] (c) edge node[anchor = north] {2} (b);
+  		\draw[->] (c) edge node[anchor = north] {3} (d);
+  		\draw[->] (e) edge node[anchor = south] {4} (d);
+  		\draw[->] (a) edge node[anchor = south] {5} (e);
+  		\draw[->] (d) edge node[anchor = north] {6} (a);
+  		\draw[->] (a) edge node[anchor = south] {7} (c);
+  		\draw[->] (d) edge node[anchor = north] {8} (b);
+  	\end{tikzpicture}
+  \end{center}
+	Nous avons :
+	$V=\left\{A,B,C,D,E\right\}$\\
+	$E=\left\{1,2,3,4,5,6,7,8\right\}$\\
+	$\varphi(1)=\left\{a,b\right\}$\\
+	$\varphi(2)=\left\{c,b\right\}$\\
+	$\varphi(3)=\left\{c,d\right\}$\\
+	$\varphi(4)=\left\{e,d\right\}$\\
+	$\varphi(5)=\left\{a,e\right\}$\\
+	$\varphi(6)=\left\{d,a\right\}$\\
+	$\varphi(7)=\left\{a,c\right\}$\\
+	$\varphi(8)=\left\{d,b\right\}$\\
+
 \end{myexem}
 
-\subsection{Semi-anneaux}
+\subsection{Anneaux et Semi-anneaux}
+\index{anneau}
+\index{anneau!semi-anneau}
 \begin{mydef}
-Un semi-anneau est un ensemble muni de deux opérations ($\oplus,\otimes$) et ses propriétés.
+  Un \emph{semi-anneau} est un ensemble muni de deux opérations ($\oplus,\otimes$) et ses propriétés.
 \end{mydef}
+
 \begin{mydef}
-Un anneau est un ensemble muni de trois opérations ($\oplus,\otimes,\ominus$) et ses propriétés.
+  Un \emph{anneau} est un ensemble muni de trois opérations ($\oplus,\otimes,\ominus$) et ses propriétés.
 \end{mydef}
+
 \begin{mydef}
-Un corps est un ensemble muni de quatre opérations ($\oplus,\otimes,\ominus,\oslash$) et ses propriétés.
+  Un \emph{corps} est un ensemble muni de quatre opérations ($\oplus,\otimes,\ominus,\oslash$) et ses propriétés.
 \end{mydef}
-Par exemple, une propriété peux être la distributivité : 
+
+Par exemple, une propriété peux être la distributivité :
 $$a\otimes (b \oplus c) = (a \otimes b)\oplus(a \otimes c) $$
-On peut par exemple définir des matrices avec un semi-anneau : 
+On peut par exemple définir des matrices avec un semi-anneau :
 \begin{eqnarray}
-A \oplus B &=& (a_{ij} \oplus b_{ij})_{ij}\\
-A \otimes B &=& (\sum_k a_{ik} \otimes b_{kj})_{ij}
+  A \oplus B &=& (a_{ij} \oplus b_{ij})_{ij}\\
+  A \otimes B &=& (\sum_k a_{ik} \otimes b_{kj})_{ij}
 \end{eqnarray}
 Le $\oplus$ définit la somme matricielle et le $\otimes$ le produit matriciel.\\
-Pour calculer le plus court chemin, on peut définir l'itération : 
+Pour calculer le plus court chemin, on peut définir l'itération :
 \begin{eqnarray}
-M_0 &=& I\\
-M_1 &=& I \oplus (M_0 \otimes A)\\
-M_2 &=& I \oplus (M_1 \otimes A)\\
- &\vdots &\\
-M_{k+1} &=& I \oplus (M_k \otimes A)\\
+  M_0 &=& I\\
+  M_1 &=& I \oplus (M_0 \otimes A)\\
+  M_2 &=& I \oplus (M_1 \otimes A)\\
+   &\vdots &\\
+  M_{k+1} &=& I \oplus (M_k \otimes A)
 \end{eqnarray}
 On a fini de converger quand $M_k = M_{k+1}$. Dijkstra peut être vu comme une manière efficace d'implémenter cette itération.

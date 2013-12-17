@@ -11,6 +11,7 @@
 \pagenumbering{gobble}% Remove page numbers
 \maketitle
 \begin{center}
+  \textit{Basé sur le cours de Jean-Charles Delvenne}\\
   \includegraphics[width=140pt]{../img/logo}
 \end{center}
 \newpage
@@ -23,7 +24,36 @@
 \tableofcontents
 \newpage
 
+\newcounter{todo_1}
+\newcounter{todo_2}
+\newcounter{todo_3}
+\newcounter{todo_4}
+\newcounter{todo_5}
+\newcounter{todo_6}
+\newcounter{todo_7}
+\newcounter{todo_8}
+\newcounter{todo_9}
+\newcounter{todo_10}
+\newcounter{todo_11}
+\newcounter{todo_12}
 
+\newcommand{\addTODO}
+{
+  \textcolor{red}{TODO}\stepcounter{todo_\thesection}
+}
+
+\newcommand{\Chapitredone}[2]
+{
+  \ifnum#1=0
+    Chapitre #2 terminé!
+  \else
+    \textbf{#1} dans le Chapitre #2
+  \fi
+}
+\newcommand{\username}[2]
+{
+  \textit{\textbf{#1}} $\longleftrightarrow$ \textbf{#2}
+}
 
 \input{1.tex}
 \input{2.tex}
@@ -37,6 +67,105 @@
 \input{10.tex}
 \input{11.tex}
 \input{12.tex}
+
+\clearpage
+\section{TODO à compléter \textcolor{red}{\danger}}
+\begin{itemize}
+  \item \Chapitredone{\arabic{todo_1}}{1}
+  \item \Chapitredone{\arabic{todo_2}}{2}
+  \item \Chapitredone{\arabic{todo_3}}{3}
+  \item \Chapitredone{\arabic{todo_4}}{4}
+  \item \Chapitredone{\arabic{todo_5}}{5}
+  \item \Chapitredone{\arabic{todo_6}}{6}
+  \item \Chapitredone{\arabic{todo_7}}{7}
+  \item \Chapitredone{\arabic{todo_8}}{8}
+  \item \Chapitredone{\arabic{todo_9}}{9}
+  \item \Chapitredone{\arabic{todo_10}}{10}
+  \item \Chapitredone{\arabic{todo_11}}{11}
+  \item \Chapitredone{\arabic{todo_12}}{12}\\
+\end{itemize}
+\noindent
+\username{Rom2BE}{Romain Capron}
+  \begin{itemize}
+    \item Chapitres 1 à 12
+    \item \href{https://dl.dropboxusercontent.com/u/44092863/Graph_Theory_Romain_Capron.pdf}{Notes en ligne}     
+  \end{itemize}
+\username{blegat}{Benoît Legat}
+  \begin{itemize} 
+    \item Initial commit
+    \item Chapitres 9 et 10
+    \item Séances de TP 1, 8, 9 et 10
+  \end{itemize}
+\username{alexispierret}{Alexis Pierret}
+  \begin{itemize}
+    \item Chapitres 2, 8 et 9
+  \end{itemize}
+\username{fraucent}{François Raucent}
+  \begin{itemize}
+    \item Chapitre 7
+  \end{itemize}
+\username{alex1123}{Alexandre de Touzalin}
+  \begin{itemize}
+    \item Chapitre 6
+  \end{itemize}
+\username{charlottecirriez}{Charlotte Cirriez}
+  \begin{itemize}
+    \item Séance de TP 9
+  \end{itemize}
+\username{antoine96}{Antoine Van Malleghem}
+  \begin{itemize}
+    \item Chapitre 2
+  \end{itemize}
+\username{Nvico}{Nicolas Vico}
+  \begin{itemize}
+    \item Chapitre 4
+  \end{itemize}
+\username{xaviercrochet}{Xavier Crochet}
+  \begin{itemize}
+    \item Séance de TP 1
+  \end{itemize}
+\username{ark2812}{Arnaud Cerckel}
+  \begin{itemize}
+    \item Chapitres 2, 7 et 9
+  \end{itemize}
+\username{HaroldTaeter}{Harold Taeter}
+  \begin{itemize}
+    \item Chapitre 3
+  \end{itemize}
+\username{FlorentinG}{Florentin Goyens}
+  \begin{itemize}
+    \item Chapitre 1
+  \end{itemize}
+\username{Melanie8}{Mélanie Sedda}
+  \begin{itemize}
+    \item Séance de TP 8
+  \end{itemize}
+\username{tplissart}{Thérèse Plissart}
+  \begin{itemize}
+    \item Chapitre 5
+  \end{itemize}
+\username{cdebodt}{Cyril de Bodt}
+  \begin{itemize}
+    \item Pas encore publié
+  \end{itemize}
+\username{gvanderreydt}{Geoffroy Vanderreydt﻿}
+  \begin{itemize}
+    \item Pas encore publié
+  \end{itemize}
+\username{narjad}{Arnaud Jacques}
+  \begin{itemize}
+    \item Pas encore publié
+  \end{itemize}
+\username{Felicien93}{Félicien Schiltz﻿}
+  \begin{itemize}
+    \item Pas encore publié
+  \end{itemize}
+\username{Gadecallatay}{Gatien De Callataÿ}
+  \begin{itemize}
+    \item Pas encore publié\\
+  \end{itemize}
+\href{https://github.com/blegat/LINMA1691/graphs/contributors}{Voir page contributors du git pour plus détails.}
+
 \clearpage
 \printindex
 

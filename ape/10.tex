@@ -1,0 +1,547 @@
+\section{Séance 10}
+
+\paragraph{1. } Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la solution proposée est bien optimale? 
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
+    \SetGraphUnit{3}
+    \GraphInit[vstyle=Dijkstra]
+    \SetUpEdge[style={->},
+    labelstyle = {sloped,draw}]
+    \SetVertexNoLabel
+    \Vertex[NoLabel=false]{S}
+    \NOEA(S){A} \SOEA(A){O} \SOEA(S){B}
+    \NOEA(O){C} \SOEA(O){D} \EA(O){E}
+    \EA[NoLabel=false](E){T}
+    \Edge[label=$6$](S)(A)
+    \Edge[label=$4$](S)(B)
+    \Edge[label=$9$](S)(O)
+    \Edge[label=$3$](A)(C)
+    \Edge[label=$6$](B)(D)
+    \Edge[label=$1$](C)(O)
+    \Edge[label=$8$](C)(T)
+    \Edge[label=$1$](D)(E)
+    \Edge[label=$6$](D)(T)
+    \Edge[label=$1$](E)(B)
+    \Edge[label=$2$](E)(C)
+    \Edge[label=$4$](E)(T)
+    \Edge[label=$1$](O)(D)
+    \Edge[label=$8$](O)(E)
+    \tikzset{EdgeStyle/.append style = {bend left}}
+    \Edge[label=$2$](A)(B)
+    \Edge[label=$1$](B)(A)
+    \tikzset{EdgeStyle/.append style = {bend right}}
+    \Edge[label=$2$](B)(C)
+  \end{tikzpicture}
+\end{figure}
+
+\begin{solution}
+  On voit que $f_\mathrm{net}(S) = -f_\mathrm{net}(T) = 17$.
+  Si on essaie de trouver un chemin $f$-augmentant avec un BFS ou DFS
+  en s'autorisant donc à prendre,
+  \begin{itemize}
+    \item Soit les arêtes non $f$-saturées,
+    \item Soit les arêtes telles qu'il y ait une arête dans l'autre
+      sens non $f$-nulles (back edges),
+  \end{itemize}
+  on part de $S$ mais on arrive jamais à $T$.
+  On a donc $f_\mathrm{max} = 17$.
+  \begin{center}
+    \begin{tikzpicture}
+      \SetGraphUnit{3}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {sloped,draw}]
+      \SetVertexNoLabel
+      \Vertex[NoLabel=false]{S}
+      \NOEA(S){A} \SOEA(A){O} \SOEA(S){B}
+      \NOEA(O){C} \SOEA(O){D} \EA(O){E}
+      \EA[NoLabel=false](E){T}
+      \Edge[label=$5/6$](S)(A)
+      \Edge[label=$4/4$](S)(B)
+      \Edge[label=$8/9$](S)(O)
+      \Edge[label=$3/3$](A)(C)
+      \Edge[label=$5/6$](B)(D)
+      \Edge[label=$0/1$](C)(O)
+      \Edge[label=$7/8$](C)(T)
+      \Edge[label=$0/1$](D)(E)
+      \Edge[label=$6/6$](D)(T)
+      \Edge[label=$1/1$](E)(B)
+      \Edge[label=$2/2$](E)(C)
+      \Edge[label=$4/4$](E)(T)
+      \Edge[label=$1/1$](O)(D)
+      \Edge[label=$7/8$](O)(E)
+      \tikzset{EdgeStyle/.append style = {bend left}}
+      \Edge[label=$2/2$](A)(B)
+      \Edge[label=$0/1$](B)(A)
+      \tikzset{EdgeStyle/.append style = {bend right}}
+      \Edge[label=$2/2$](B)(C)
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+
+\paragraph{2. } Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau? 
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}
+    \SetGraphUnit{3}
+    \GraphInit[vstyle=Dijkstra]
+    \SetUpEdge[style={->},
+    labelstyle = {sloped,draw}]
+    \SetVertexNoLabel
+    \Vertex{O}
+    \WE[NoLabel=false](O){S}
+    \NO(O){A} \SO(O){B} \EA(O){o}
+    \NO(o){a} \SO(o){b}
+    \EA[NoLabel=false](o){T}
+    \Edge[label=$40$](S)(A)
+    \Edge[label=$30$](S)(B)
+    \Edge[label=$70$](S)(O)
+    \Edge[label=$50$](A)(a)
+    \Edge[label=$40$](B)(b)
+    \Edge[label=$24$](B)(o)
+    \Edge[label=$20$](O)(a)
+    \Edge[label=$30$](O)(o)
+    \Edge[label=$20$](O)(B)
+    \Edge[label=$22$](a)(o)
+    \Edge[label=$36$](a)(T)
+    \Edge[label=$48$](o)(T)
+    \Edge[label=$60$](b)(T)
+    \tikzset{EdgeStyle/.append style = {bend left}}
+    \Edge[label=$15$](A)(O)
+    \Edge[label=$15$](O)(A)
+    \Edge[label=$12$](o)(b)
+    \Edge[label=$18$](b)(o)
+  \end{tikzpicture}
+\end{figure}
+
+\begin{solution}
+  On sait par la dualité que pour toute coupe $S \to \bar{S}$,
+  $\flotmax \leq \coupe(S\to\bar{S})$.
+  En prenant dans $S$ les noeuds bleus et dans $\bar{S}$ les
+  noeuds verts, $\coupe(S\to\bar{S})$ vaut la somme
+  des capacités des arêtes rouges, c'est à dire 136.
+  On a donc $\flotmax \leq 136$.
+  \begin{center}
+    \centering
+    \begin{tikzpicture}
+      \SetGraphUnit{3}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {sloped,draw}]
+      \SetVertexNoLabel
+      \Vertex{O}
+      \WE[NoLabel=false](O){S}
+      \NO(O){A} \SO(O){B} \EA(O){o}
+      \NO(o){a} \SO(o){b}
+      \EA[NoLabel=false](o){T}
+      \Edge[label=$40$](S)(A)
+      \Edge[label=$30$](S)(B)
+      \Edge[label=$70$](S)(O)
+      \Edge[label=$50$](A)(a)
+      \Edge[label=$40$,color=red](B)(b)
+      \Edge[label=$24$](B)(o)
+      \Edge[label=$20$](O)(a)
+      \Edge[label=$30$](O)(o)
+      \Edge[label=$20$](O)(B)
+      \Edge[label=$22$](a)(o)
+      \Edge[label=$36$,color=red](a)(T)
+      \Edge[label=$48$,color=red](o)(T)
+      \Edge[label=$60$](b)(T)
+      \tikzset{EdgeStyle/.append style = {bend left}}
+      \Edge[label=$15$](A)(O)
+      \Edge[label=$15$](O)(A)
+      \Edge[label=$12$,color=red](o)(b)
+      \Edge[label=$18$](b)(o)
+      \AddVertexColor{blue}{S,A,B,O,a,o}
+      \AddVertexColor{green}{b,T}
+    \end{tikzpicture}
+  \end{center}
+
+  Soit $f$ le flot du graph suivant,
+  $\valeur(f) = 136$.
+  On sait donc que
+  $136 = \valeur(f) \leq \flotmax \leq 136$.
+  On a donc nécessairement $\flotmax = 136$.
+  \begin{center}
+    \centering
+    \begin{tikzpicture}
+      \SetGraphUnit{3}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {sloped,draw}]
+      \SetVertexNoLabel
+      \Vertex{O}
+      \WE[NoLabel=false](O){S}
+      \NO(O){A} \SO(O){B} \EA(O){o}
+      \NO(o){a} \SO(o){b}
+      \EA[NoLabel=false](o){T}
+      \Edge[label=$40/40$](S)(A)
+      \Edge[label=$30/30$](S)(B)
+      \Edge[label=$62/70$](S)(O)
+      \Edge[label=$40/50$](A)(a)
+      \Edge[label=$40/40$](B)(b)
+      \Edge[label=$10/24$](B)(o)
+      \Edge[label=$18/20$](O)(a)
+      \Edge[label=$22/30$](O)(o)
+      \Edge[label=$20/20$](O)(B)
+      \Edge[label=$22/22$](a)(o)
+      \Edge[label=$36/36$](a)(T)
+      \Edge[label=$48/48$](o)(T)
+      \Edge[label=$46/60$](b)(T)
+      \tikzset{EdgeStyle/.append style = {bend left}}
+      \Edge[label=$0/15$](A)(O)
+      \Edge[label=$0/15$](O)(A)
+      \Edge[label=$0/12$](o)(b)
+      \Edge[label=$6/18$](b)(o)
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\paragraph{3. } Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe. 
+
+\begin{solution}
+  On peut modéliser ce problème comme un flot maximum dans un graphes de $2n + 2m + 2$ noeuds dont
+  \begin{itemize}
+    \item Une source
+    \item Un puit
+    \item Les $n$ célibataires masculins
+    \item Les $n$ célibataires féminins
+    \item Les $m$ entremetteuses dupliquées,
+      c'est la façon standard modéliser une capacité sur un noeud et non sur une arête.
+      On duplique le noeud en question, une première partie avec toutes les arêtes entrantes
+      et une deuxième partie avec toutes les arêtes sortantes.
+      Une arête avec la capacité du noeud comme capacité est alors ajoutée entre les deux parties.
+  \end{itemize}
+  Pour modéliser le fait qu'ils ne peuvent se marier qu'une seule fois, on relie tous les célibataires
+  masculins (resp. féminins) à une source (resp. un puit) avec une capacité 1.
+  La capacité entre les célibataires et les entremetteuses n'a alors pas trop d'importance,
+  elle doit juste être plus grande que 1.
+
+  Le flot maximum du graphe est alors le nombre de mariage maximum.
+  Un exemple est illustré ci-dessous avec $n = 4$, $m = 3$ et des connaissances quelconques.
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \Vertex{S}
+      \NOEA(S){M2}
+      \SOEA(S){M3}
+      \NOEA(M2){E1}
+      \SOEA(M2){E2}
+      \SOEA(M3){E3}
+      \NOWE(E1){M1}
+      \SOWE(E3){M4}
+      \EA(E1){E1'}
+      \EA(E2){E2'}
+      \EA(E3){E3'}
+      \NOEA(E1'){F1}
+      \SOEA(E1'){F2}
+      \SOEA(E2'){F3}
+      \SOEA(E3'){F4}
+      \SOEA(F2){T}
+      \Edge[label=$1$](S)(M1)
+      \Edge[label=$1$](S)(M2)
+      \Edge[label=$1$](S)(M3)
+      \Edge[label=$1$](S)(M4)
+      \Edge[label=$1$](M1)(E1)
+      \Edge[label=$1$](M2)(E1)
+      \Edge[label=$1$](M2)(E2)
+      \Edge[label=$1$](M3)(E3)
+      \Edge[label=$1$](M4)(E3)
+      \Edge[label=$b_1$](E1)(E1')
+      \Edge[label=$b_2$](E2)(E2')
+      \Edge[label=$b_3$](E3)(E3')
+      \Edge[label=$1$](E1')(F1)
+      \Edge[label=$1$](E2')(F1)
+      \Edge[label=$1$](E3')(F3)
+      \Edge[label=$1$](E3')(F2)
+      \Edge[label=$1$](F1)(T)
+      \Edge[label=$1$](F2)(T)
+      \Edge[label=$1$](F3)(T)
+      \Edge[label=$1$](F4)(T)
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\paragraph{4. } Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous. 
+
+\begin{multicols}{2}
+
+\begin{center}
+\begin{tabular}{||c||c|c|c|c||}
+\hline
+$i$ & 1 & 2 & 3 & 4 \\ 
+\hline
+$\alpha_i$ & 6 & 5 & 10 & 4 \\
+\hline
+$\beta_i$ & 4 & 10 & 3 & 8 \\
+\hline
+\end{tabular}
+\end{center}
+
+\columnbreak
+
+
+\begin{center}
+\begin{tabular}{||c||c|c|c|c||}
+\hline
+$c_{ij}$ & 1 & 2 & 3 & 4 \\ 
+\hline
+1 & 0 & 5 & 0 & 0 \\
+\hline
+2 & 5 & 0 & 6 & 2 \\
+\hline
+3 & 0 & 6 & 0 & 1 \\
+\hline 
+4 & 0 & 2 & 1 & 0 \\
+\hline
+\end{tabular}
+\end{center}
+
+\end{multicols}
+
+\paragraph{5. } L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemin d'augmentation et d'augmenter le flot le long de ce chemin jusqu'à saturation. Montrez par un argument élémentaire que dans le cas où les capacités maximales sont entières cet algorithme s'arrête toujours après un nombre fini d'itérations. Pouvez-vous adapter votre argument à la situation pour laquelle les capacités sont rationnelles? \\
+\textbf{Challenge:} et pour des capacités réelles? 
+
+\begin{solution}
+  \begin{itemize}
+    \item
+      Considérons $\fnet(S)$, le flot net sortant des sources.
+      À chaque itération, il augmente de la capacité du chemin d'augmentation.
+      Comme les capacités sont entières et que la capacité d'un chemin d'augmentation est strictement positif,
+      elle est au moins égal à 1.
+      Après $n$ itérations, on a donc $\fnet(S) \geq n$.
+      On sait que ce flot net est au maximum la somme des capacités des arêtes sortant des sources, notons la $\mathcal{C}$,
+      c'est à dire $\fnet(S) \leq \mathcal{C}$.
+      On a donc $n \leq \mathcal{C}$. Comme $\mathcal{C}$ est fini, l'algorithme va s'arrêter après un nombre fini d'itérations.
+    \item
+      Si elles sont rationnelles, on peut les écrire sous forme d'une fraction d'entiers.
+      Soit $p$, le ppcm des dénominateurs de ces fractions.
+      Si on multiplie toutes la capacités par $p$, ça ne change pas le nombre d'itérations
+      et on arrive à un cas avec que des capacités entières.
+      L'algorithme va donc aussi s'arrêter après un nombre fini d'opérations.
+    \item
+      Pour des capacités réelles, il est possible que l'algorithme ne s'arrête jamais comme c'est le cas du
+      graphe suivant avec $r = \frac{\sqrt{5} - 1}{2}$.
+      \begin{center}
+        \begin{tikzpicture}
+          \SetGraphUnit{2}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->},
+          labelstyle = {draw}]
+          \Vertex[L=$s$]{S}
+          \SOWE[L=$v_1$](S){v1} \SO[L=$v_2$](S){v2} \SOEA[L=$v_3$](S){v3}
+          \EA[L=$v_4$](v3){v4}
+          \SO[L=$t$](v3){T}
+          \Edge[label=$2$](S)(v1)
+          \Edge[label=$2$](S)(v2)
+          \Edge[label=$2$](S)(v4)
+          \Edge[label=$1$](v2)(v1)
+          \Edge[label=$1$](v2)(v3)
+          \Edge[label=$r$](v4)(v3)
+          \Edge[label=$2$](v1)(T)
+          \Edge[label=$2$](v3)(T)
+          \Edge[label=$2$](v4)(T)
+        \end{tikzpicture}
+      \end{center}
+
+      Il se peut que Ford-Fulkerson
+      trouve les chemins augmentant dans l'ordre suivant,
+      rappelons nous que $r^2 = 1 - r$ et donc aussi $r^{n+2} = r^n - r^{n+1}$.
+      \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+          \hline
+          Chemin augmentant & Flot du chemin & $v_2v_1$ & $v_2v_3$ & $v_4v_3$\\
+          \hline
+          & & 1 & 1 & $r$\\
+          \hline
+          $s, v_2, v_3, t$ & 1 & 1 & 0 & $r$\\
+          \hline
+          $s, v_4, v_3, v_2, v_1, t$ & $r$ & $r^2$ & $r$ & 0\\
+          \hline
+          $s, v_2, v_3, v_4, t$ & $r$ & $r^2$ & 0 & $r$\\
+          \hline
+          $s, v_4, v_3, v_2, v_1, t$ & $r^2$ & 0 & $r^2$ & $r^3$\\
+          \hline
+          $s, v_1, v_2, v_3, t$ & $r^2$ & $r^2$ & 0 & $r^3$\\
+          \hline
+        \end{tabular}
+      \end{center}
+      On vérifie par récurrence que le flot après $2n+1$ itérations suivant
+      ce schéma de choix de chemins augmentant vaut $1 + 2\sum_{i=1}^n r^i$
+      et que ce schéma ne dépasse jamais la capacité des arêtes.
+
+      Le flot maximum donné par le graphe résiduel suivant est 5
+      \begin{center}
+        \begin{tikzpicture}
+          \SetGraphUnit{2}
+          \GraphInit[vstyle=Dijkstra]
+          \SetUpEdge[style={->},
+          labelstyle = {draw}]
+          \Vertex[L=$s$]{S}
+          \SOWE[L=$v_1$](S){v1} \SO[L=$v_2$](S){v2} \SOEA[L=$v_3$](S){v3}
+          \EA[L=$v_4$](v3){v4}
+          \SO[L=$t$](v3){T}
+          \Edge[label=$2/2$](S)(v1)
+          \Edge[label=$1/2$](S)(v2)
+          \Edge[label=$2/2$](S)(v4)
+          \Edge[label=$0/1$](v2)(v1)
+          \Edge[label=$1/1$](v2)(v3)
+          \Edge[label=$0/r$](v4)(v3)
+          \Edge[label=$2/2$](v1)(T)
+          \Edge[label=$1/2$](v3)(T)
+          \Edge[label=$2/2$](v4)(T)
+        \end{tikzpicture}
+      \end{center}
+      Seulement,
+      \begin{align*}
+        1 + 2\sum_{i=1}^\infty r^i & = 1 + 2r\frac{1-r^\infty}{1-r}\\
+                                   & = 1 + 2\frac{r}{r^2}\\
+                                   & = 1 + 2\frac{1}{r}\\
+                                   & = 1 + 4\frac{1}{\sqrt{5}-1}\\
+                                   & = 1 + 4\frac{\sqrt{5}+1}{4}\\
+                                   & = \sqrt{5}+2\\
+                                   & < 5.
+      \end{align*}
+      On atteindra donc jamais le flot maximum.
+  \end{itemize}
+\end{solution}
+
+\paragraph{6. } Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
+
+\newpage
+\textbf{Exercices supplémentaires}
+
+\paragraph{7. } Un producteur désire envoyer au départ des sommets $D_1$ et $D_2$ un produit aux destinations $M_1, M_2$, et $M_3$ à travers le réseau. Les capacités des arêtes sont limitées. Il y a des demandes respectives de 10, 8 et 8 unités aux destinations $M_1, M_2,$ et $M_3$. Ces demandes peuvent-elles être satisfaites? 
+
+\begin{figure}[h!]
+  \centering
+  \begin{tikzpicture}[x=2cm,y=1cm]
+    \SetGraphUnit{1.5}
+    \GraphInit[vstyle=Dijkstra]
+    \SetUpEdge[style={->},
+    labelstyle = {draw}]
+    \SetVertexNoLabel
+    \Vertex[NoLabel=false]{D1}
+    \NOEA(D1){A} \SOEA(D1){B}
+    \SOWE[NoLabel=false](B){D2}
+    \SOEA(D2){C}
+    \NOEA(B){D} \SOEA(B){E}
+    \NOEA[NoLabel=false](D){M1}
+    \SOEA[NoLabel=false](D){M2}
+    \SOEA[NoLabel=false](E){M3}
+    \Edge[label=$5$](D1)(D2)
+    \Edge[label=$20$](D1)(A)
+    \Edge[label=$5$](D2)(B)
+    \Edge[label=$6$](D2)(C)
+    \Edge[label=$5$](A)(B)
+    \Edge[label=$10$](A)(D)
+    \Edge[label=$6$](B)(D)
+    \Edge[label=$5$](B)(E)
+    \Edge[label=$5$](C)(B)
+    \Edge[label=$5$](C)(E)
+    \Edge[label=$4$](D)(E)
+    \Edge[label=$20$](D)(M1)
+    \Edge[label=$15$](E)(M3)
+    \Edge[label=$6$](M1)(M2)
+    \Edge[label=$6$](M3)(M2)
+  \end{tikzpicture}
+\end{figure}
+
+\begin{solution}
+  Il nous suffit d'ajouter un puit relié à M1, M2 et M3 avec les demandes respectives.
+  Si $\flotmax = 10+8+8=26$, les demandes peuvent être satisfaites,
+  sinon elles ne le peuvent pas.
+  Ça donne le réseau suivant
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1.5}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \SetVertexNoLabel
+      \Vertex[NoLabel=false]{D1}
+      \NOEA(D1){A} \SOEA(D1){B}
+      \SOWE[NoLabel=false](B){D2}
+      \SOEA(D2){C}
+      \NOEA(B){D} \SOEA(B){E}
+      \NOEA[NoLabel=false](D){M1}
+      \SOEA[NoLabel=false](D){M2}
+      \SOEA[NoLabel=false](E){M3}
+      \EA[NoLabel=false](M2){T}
+      \Edge[label=$5$](D1)(D2)
+      \Edge[label=$20$](D1)(A)
+      \Edge[label=$5$](D2)(B)
+      \Edge[label=$6$](D2)(C)
+      \Edge[label=$5$](A)(B)
+      \Edge[label=$10$](A)(D)
+      \Edge[label=$6$](B)(D)
+      \Edge[label=$5$](B)(E)
+      \Edge[label=$5$](C)(B)
+      \Edge[label=$5$](C)(E)
+      \Edge[label=$4$](D)(E)
+      \Edge[label=$20$](D)(M1)
+      \Edge[label=$15$](E)(M3)
+      \Edge[label=$6$](M1)(M2)
+      \Edge[label=$6$](M3)(M2)
+      \Edge[label=$10$](M1)(T)
+      \Edge[label=$8$](M2)(T)
+      \Edge[label=$8$](M3)(T)
+    \end{tikzpicture}
+  \end{center}
+
+  On voit clairement que le flot maximum est 26 en prenant $\bar{S} = \{T\}$.
+  Il existe d'ailleurs un flot de valeur 26 donné par le graphe suivant
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1.5}
+      \GraphInit[vstyle=Dijkstra]
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \SetVertexNoLabel
+      \Vertex[NoLabel=false]{D1}
+      \NOEA(D1){A} \SOEA(D1){B}
+      \SOWE[NoLabel=false](B){D2}
+      \SOEA(D2){C}
+      \NOEA(B){D} \SOEA(B){E}
+      \NOEA[NoLabel=false](D){M1}
+      \SOEA[NoLabel=false](D){M2}
+      \SOEA[NoLabel=false](E){M3}
+      \EA[NoLabel=false](M2){T}
+      \Edge[label=$0/5$](D1)(D2)
+      \Edge[label=$15/20$](D1)(A)
+      \Edge[label=$5/5$](D2)(B)
+      \Edge[label=$6/6$](D2)(C)
+      \Edge[label=$5/5$](A)(B)
+      \Edge[label=$10/10$](A)(D)
+      \Edge[label=$6/6$](B)(D)
+      \Edge[label=$5/5$](B)(E)
+      \Edge[label=$1/5$](C)(B)
+      \Edge[label=$5/5$](C)(E)
+      \Edge[label=$0/4$](D)(E)
+      \Edge[label=$16/20$](D)(M1)
+      \Edge[label=$10/15$](E)(M3)
+      \Edge[label=$6/6$](M1)(M2)
+      \Edge[label=$2/6$](M3)(M2)
+      \Edge[label=$10/10$](M1)(T)
+      \Edge[label=$8/8$](M2)(T)
+      \Edge[label=$8/8$](M3)(T)
+    \end{tikzpicture}
+  \end{center}
+
+\end{solution}
+
+\paragraph{8. } On considère un groupe de six personnes $\left\lbrace A, B, … , F \right\rbrace$ qui sont toutes membres d'un certain nombre de clubs de sport $\left\lbrace 1, 2, 3, 4, 5, 6 \right\rbrace$. Ci-dessous nous donnons la liste des membres de chaque club. \\
+Club 1: A, C \\
+Club 2: C, E \\
+Club 3: A, B, C, D, E, F \\
+Club 4: A, C, E \\
+Club 5: A, B, D, E, F \\
+Club 6: A, E\\
+On souhaite choisir un représentant pour chaque club. Pour être représentant d'un club, il faut en être membre. Par ailleurs, une même personne ne peut représenter qu'un seul club. Est-il possible de trouver des représentants pour tous les clubs? Justifiez votre réponse. Proposez une solution dans le cas d'un ensemble $M$ de personnes, avec $S_j \subseteq M$ la liste des membres du club $j$. 

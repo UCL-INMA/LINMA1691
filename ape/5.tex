@@ -1,1 +1,227 @@
-\section{TODO}
+\section{Séance 5}
+
+\textbf{Graphes Hamiltoniens}
+
+\paragraph{1. } Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-on en déduire une caractérisation des graphes qui sont à la fois eulériens et hamiltoniens?
+
+\paragraph{2. } Le problème du cavalier était un problème en vogue au XVIIIème siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
+
+\paragraph{3. } Le théorème de Dirac affirme que si $d(v) > n/2$ pour tous les sommets $v \in V$ d'un graphe $G=(V,E)$, alors $G$ est hamiltonien. Donnez un graphe hamiltonien de $n$ sommets qui ne satisfait pas les conditions du théorème de Dirac. Donnez un graphe qui n'est pas hamiltonien et qui satisfait $d(v) \geq (n-1)/2$ pour tout $v \in V$.
+
+\paragraph{4. } Placez $n$ sommets sur un cercle et liez un sommet à ses deux plus proches voisins dans les deux directions. Démontrez que pour $n \geq 5$ le graphe obtenu est l'union de deux circuits hamiltoniens.
+
+\paragraph{5. } Une souris mange un gruyère de dimension $3 \times 3 \times 3$ par petits morceaux de taille $1 \times 1 \times 1$. Elle démarre en un coin du cube et se déplace de cube adjacent en cube adjacent. Peut-elle manger la totalité du gruyère en terminant par le cube central?
+
+\paragraph{6. } Trouvez des bornes supérieures et inférieures sur la valeur optimale du problème du voyageur de commerce avec les distances suivantes (les distances satisfont l'inégalité triangulaire) :
+\begin{equation}
+  \left( \begin{matrix}
+      - & 5 & 4 & 3 & 6 \\
+      - & - & 6 & 4 & 5 \\
+      - & - & - & 3 & 3 \\
+      - & - & - & - & 5 \\
+      - & - & - & - & -
+  \end{matrix}  \right)
+\end{equation}
+
+\paragraph{7. } Formulez le problème suivant comme le problème du voyageur de commerce. Cinq opérations $j=1,…,5$ doivent avoir lieu sur une machine spécialisée. Les temps de transition $c_{ij}$ entre deux opérations sont importants, et sont donnés dans la table suivante:
+\begin{equation}
+  \left( \begin{matrix}
+      10 & 23 & 42 & 11 & 24 \\
+      19 & 13 & 42 & 36 & 43 \\
+      67 & 34 & 23 & 29 & 21 \\
+      19 & 52 & 41 & 37 & 31 \\
+      96 & 63 & 75 & 89 & 43
+  \end{matrix}  \right)
+\end{equation}
+En plus, si une opération $j$ est en première position, il faut aussi un temps de préparation $t_j$ qui est fonction de l'opération, où $t=(23,41,32,54,11)$. Pour des raisons techniques, on décide que l'opération $3$ ne peut pas précéder directement l'opération $1$, et les opérations $4$ et $5$ ne peuvent pas avoir lieu en dernière position.
+
+\paragraph{8. } Un groupe de huit personnes se retrouve pour diner. Le graphe ci-dessous précise les "incompatibilités d'humeur" entre les personnes de ce groupe (une arête reliant deux personnes indique que celles-ci s'entendent très modérément). Proposez un plan de table (la table est ronde) pour ce groupe en évitant de placer côte à côte deux personnes "incompatibles".
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=0]{8}
+      \Vertex[x=0 ,y=-2]{7}
+      \Vertex[x=2,y=1]{1}
+      \Vertex[x=2 ,y=-3]{6}
+      \Vertex[x=4 ,y=1]{2}
+      \Vertex[x=4 ,y=-3]{5}
+      \Vertex[x=6 ,y=0]{3}
+      \Vertex[x=6 ,y=-2]{4}
+
+
+      \path[every node/.style={font=\sffamily\small}]
+      (1) edge node [left] {} (2)
+      edge node [left] {} (4)
+
+      (2) edge node [right] {} (5)
+      edge node [right] {} (6)
+      edge node [right] {} (8)
+
+      (3) edge node [right] {} (4)
+      edge node [left] {} (5)
+
+      (4) edge node [right] {} (7)
+
+      (5) edge node [right] {} (6)
+
+      (6) edge node [right] {} (8)
+
+      (7) edge node [left] {} (8);
+
+    \end{tikzpicture}
+  \end{center}
+\end{figure}
+
+\newpage
+
+\textbf{Couplages}
+
+\paragraph{9. } Etant donné le couplage $M = \left\lbrace  (1,1'), (2,4'),(4,2'),(5,5')  \right\rbrace$ dans le graphe biparti ci-dessous, démontrez que $M$ est maximum.
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=0]{1}
+      \Vertex[x=0 ,y=-1]{2}
+      \Vertex[x=0,y=-2]{3}
+      \Vertex[x=0 ,y=-3]{4}
+      \Vertex[x=0 ,y=-4]{5}
+      \Vertex[x=3 ,y=-0]{1'}
+      \Vertex[x=3 ,y=-1]{2'}
+      \Vertex[x=3 ,y=-2]{3'}
+      \Vertex[x=3 ,y=-3]{4'}
+      \Vertex[x=3 ,y=-4]{5'}
+
+
+      \path[every node/.style={font=\sffamily\small}]
+      (1) edge [style=dashed]  node [left] {} (1')
+      edge node [left] {} (5')
+
+      (2) edge node [right] {} (1')
+      edge node [right] {} (2')
+      edge node [right] {} (3')
+      edge [style=dashed]  node [right] {} (4')
+      edge node [right] {} (5')
+
+      (3) edge node [right] {} (1')
+      edge node [left] {} (5')
+
+      (4) edge [style=dashed]  node [right] {} (2')
+      edge node [right] {} (3')
+      edge node [right] {} (4')
+      edge node [right] {} (5')
+
+      (5) edge node [right] {} (1')
+      edge [style=dashed]  node [left] {} (5');
+
+
+    \end{tikzpicture}
+  \end{center}
+\end{figure}
+
+
+\paragraph{10. } Vrai ou faux? \\
+\begin{itemize}
+  \item Un arbre possède un couplage parfait si et seulement si tous les chemin d'une feuille à une autre sont de longueur impaire.
+  \item Un arbre possède au plus un couplage parfait.
+  \item Dans un arbre, si pour tout noeud $u$, il existe une feuille $v$ telle que $d(u,v)$ est impaire, alors cet arbre possède un couplage parfait.
+  \item Soit $o(H)$, le nombre de composantes impaires du graphe $H$, c'est-à-dire le nombre de composantes connexes ayant un nombre impair de sommets. Un arbre $G$ admet un couplage parfait si $o(G-v)=1,  \ \ \forall v \in V$.
+  \item Si un arbre $G$ admet un couplage parfait, alors $o(G-v)=1, \ \ \forall v \in V$.
+\end{itemize}
+
+
+
+\paragraph{11. } Thibault a la responsabilité de répartir les séances d'exercices des cours de mathématiques appliquées entre les assistants du pôle INMA. Chacun des assistants donne pour cela à Thibault une liste de ses cours préférés, qui sont repris dans la table ci-dessous.
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    Assistant & Cours préférés \\
+    \hline
+    Pierre & Projet, Théorie des Matrices \\
+    Romain & Graphes, Modélisation Stochastique \\
+    Arnaud & Théorie des Matrices \\
+    Adeline & Graphes, Optimisation, Analyse Numérique \\
+    Benoit & Théorie des Matrices, Projet \\
+    Nicolas & Graphes, Optimisation, Analyse Numérique, \\
+            & Modélisation Stochastique, Théorie des Matrices  \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Thibault aimerait bien assigner exactement un cours à chaque assistant en respectant autant que possible leurs préférences. Formulez cela comme un problème de couplage maximum dans un graphe.
+
+Pour l'aider dans sa tâche, Thibault dispose de la répartition de l'année dernière:
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    Romain & Modélisation Stochastique \\
+    Adeline & Optimisation \\
+    Nicolas & Théorie des Matrices \\
+    Pierre & Projet \\
+    \hline
+  \end{tabular}
+\end{center}
+
+En partant de la répartition de l'année dernière, utilisez l'algorithme hongrois pour aider Thibault à trouver un couplage maximum. Ce couplage est-il parfait? Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
+
+
+
+
+%Dans le graphe graphe biparti ci-dessous, un couplage possible est $M = \left\lbrace  (1,5'), (2,2'),(3,6'),(5,4')  \right\rbrace$. En partant de ce couplage, utilisez l'algorithme hongrois pour trouver un couplage maximum. Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
+
+%\begin{figure}[h!]
+%\begin{center}
+%\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+%   \Vertex[x=0 ,y=0]{1}
+%   \Vertex[x=0 ,y=-1]{2}
+%   \Vertex[x=0,y=-2]{3}
+%   \Vertex[x=0 ,y=-3]{4}
+%   \Vertex[x=0 ,y=-4]{5}
+%   \Vertex[x=0, y=-5]{6}
+%   \Vertex[x=3 ,y=-0]{1'}
+%   \Vertex[x=3 ,y=-1]{2'}
+%   \Vertex[x=3 ,y=-2]{3'}
+%   \Vertex[x=3 ,y=-3]{4'}
+%   \Vertex[x=3 ,y=-4]{5'}
+%   \Vertex[x=3, y=-5]{6'}
+%
+%     \path[every node/.style={font=\sffamily\small}]
+%     (1) edge  node [left] {} (1')
+%        	edge [style=dashed]  node [left] {} (5')
+%
+%    (2) edge node [right] {} (1')
+%    	edge [style=dashed]  node [right] {} (2')
+%    	edge node [right] {} (3')
+%
+%    (3) edge node [right] {} (1')
+%     	edge  node [right] {} (2')
+%    	edge node [right] {} (3')
+%         edge  node [left] {} (5')
+%         edge [style=dashed]  node [left] {} (6')
+%
+%    (4) edge node [right] {} (6')
+%
+%     (5) edge [style=dashed] node [right] {} (4')
+%         edge node [left] {} (6')
+%
+%     (6) edge node [right] {} (4')
+%         edge  node [left] {} (6')
+%
+%
+%\end{tikzpicture}
+%\end{center}
+%\end{figure}
+
+
+\paragraph{12. } Deux personnes jouent à un jeu sur un graphe $G$ de la manière suivante: \\
+
+\begin{itemize}
+  \item Chacune des deux personnes sélectionne chacune à son tour un sommet $v_1, v_2, v_3, …$ tel que $\forall i > 1, \ \ \ v_i$ est adjacent à $v_{i-1}$.
+  \item Un sommet déjà sélectionné ne peut plus être choisi.
+  \item La dernière personne à sélectionner un sommet gagne le jeu.
+\end{itemize}
+
+Montrer que le premier joueur admet une stratégie gagnante si et seulement si le graphe $G$ n'admet pas de couplage parfait.
