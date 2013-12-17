@@ -93,6 +93,25 @@ Formule : $(n-1)^{k} + (n-1)(-1)^{k}$
 \item{Comptez le nombre de parcours fermés de longueur k dans $K_{k,n}$}
 \end{enumerate}
 
+\begin{solution}
+\begin{enumerate}
+\item
+\item
+	\begin{itemize}
+	\item $K_{n} :$ Un graph complet avec n nœuds.
+	\item $K_{n,n} :$ Un graph biparti complet avec n nœuds dans chacune des partitions.
+	\end{itemize}
+	\begin{minipage}{0.25\textwidth}
+	\begin{flushleft}
+	\end{flushleft}
+	\end{minipage}
+	\begin{minipage}{0.75\textwidth}
+	\begin{flushright}
+	\end{flushright}
+	\end{minipage}
+\end{enumerate}
+\end{solution}
+
 \subsection{Trouvez le nombre de parcours de longueur k du sommet A à lui-même.}
 \begin{figure}
 \center
@@ -104,5 +123,13 @@ Un tournoi de n joueurs est un graphe complet $K_{n}$ dans lequel on a choisi un
 
 Prouvez qu'il existe toujours au moins un roi.
 Utiliser ce résultat pour montrer que dans le cas où aucun sommet n'a un degré entrant nul, il y a toujours au moins 2 rois.
+\begin{solution}
+\begin{itemize}
+\item S'il n'y a pas de cycle, il suffit de remonter à l'origine pour trouver le roi.
+\item S'il n'y a pas de cycle, il y a plusieurs rois. 
+\end{itemize}
 
+Dans la deuxième partie, on est dans le cas d'un cycle.\\Ce graph est un exemple o il y a 3 rois. \includegraphics[scale=0.5]{graph_ape1_ex6}\\
+
+\end{solution}
 
