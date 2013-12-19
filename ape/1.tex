@@ -43,12 +43,12 @@ $ \stackrel{Isomorphe}{\nRightarrow}$
 \item{D'un sommet de degré impair, $\exists$ toujours un chemin jusqu'à un autre sommet de degré impair.}
 \item{Pour un graph simple et connexe de n sommets, on a $(n-1) \leq |E| \leq \frac{n \times (n-1)}{2}$}
 \item{Un graphe simple qui possède plus de $\frac{(n-1) \times (n-2)}{2}$ arêtes est connexe.}
-\item{Tout graphe qui possède n sommets et h arêtes possède au moins $n-k$ composantes connexes}
+\item{Tout graphe qui possède n sommets et k arêtes possède au moins $n-k$ composantes connexes}
 \end{enumerate}
 
 \begin{solution}
 \begin{enumerate}
-\item{\emph{?}}
+\item{Soit un graphe connexe (pour un graphe non-connexe il suffit de considérer ses composantes connexe). Par le théorème des poignées de mains, $\sum deg(u_i) = 2 |E|$. Dés lors si le graphe possède un sommet de degré impair, il en possède forcément un autre. Et comme le graphe est connexe, toute paire de nœuds peuvent être reliés par un chemin, en particulier nos deux nœuds de degré impaire peuvent être reliés par un chemin.}
 \item{
 	\begin{itemize}
 	\item Le graph étant connexe, il y a au minimum $n-1$ arrêtes.
@@ -60,10 +60,9 @@ $ \stackrel{Isomorphe}{\nRightarrow}$
 		\end{itemize}
 	\end{itemize}	
 }
-\item{
-	
+\item{ Essayons de construire le graphe non-connexe avec le plus d'arrêtes possibles. Ce faisant on construit le graphe composé de $K_{n-1}$ et d'un nœud isolé $u$. On a bien $\frac{(n-1)(n-2)}{2}$ arrêtes. Si on ajoute une arrête de plus, c'est forcément entre $u$ et $K_{n-1}$.	
 	}
-\item{}
+\item{Pour construire le graphe avec le moins de composantes connexes possible, il faut construire un arbre : on contruit une chaîne de noeuds. Avec $k$ arrêtes on peut relier $k+1$ noeuds. Cela nous donne $(n-k-1)+1=n-k$ composantes connexes.}
 \end{enumerate}
 \end{solution}
 
