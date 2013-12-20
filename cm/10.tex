@@ -269,7 +269,14 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \subsection{L'algorithme de Ford-Fulkerson}
 \index{algorithme!algorithme de Ford-Fulkerson}
 \begin{myalgo}[Algorithme de Ford-Fulkerson]
-  Algorithme \addTODO
+  L'algorithme de Ford-Fulkerson permet de determiné le flot maximum d'un graphe.
+  On initialise un flot arbitraire.
+  On décris ensuite le graphe de "retour", où chaque arrête est substitué par une arrête dirigé dans le même sens avec la 
+  capacité encore disponible. Et une arrête inverse de flot identique à l'initiale (qui se trouve maintenant dans le sens opposé).
+  Dans ce graphe on essaye de trouver un chemin reliant la source et le puit, et on identifie l'arrête limitante (qui a la capacité la plus faible
+  et qui restreint donc l'augmentation du flot). On augmente le flot de ce que l'arrête limitante nous permet.
+  Avec ce nouveau flot on revient à notre graphe de départ, ou peux incrémenter notre flot arbitraire de la quantité précédente.\\
+  On repète le processus itératif jusque a ce que on ne puisse plus augmenter le flot. Le dernier obtenu est donc le flot max.
 \end{myalgo}
 
 
