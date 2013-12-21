@@ -3,14 +3,54 @@
 \textbf{Graphes Hamiltoniens}
 
 \paragraph{1. } Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-on en déduire une caractérisation des graphes qui sont à la fois eulériens et hamiltoniens?
+\begin{solution}
+\begin{itemize}
+\item Pour les graphes connexes dont tous les noeuds sont de degré 2.
+\item Pour avoir un graphe qui est à la fois eulérien et hamiltonien, il faut partir du cycle hamiltonien de base. Si on décide d'ajouter des arêtes, il faut respecter la condition "garder le degré pair". En effet, le cycle hamiltonien n'est pas spécialement le même que le cycle eulérien.
+\end{itemize}
+\end{solution}
 
 \paragraph{2. } Le problème du cavalier était un problème en vogue au XVIIIème siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
+\begin{solution}
+Ce problème correspond à trouver un tour hamiltonien dans un graphe dans lequel les sommets sont les cases du graphe. Les sommets sont reliés entre eux lorsque le cavalier peut se déplacer d'un à l'autre directement.\\
+Comme le mouvement du cavalier lui permet de se déplacer uniquement d'une case blanche à une case noire et d'une case noire à une case blanche, ce graphe est biparti.
+Si $n$ est impair, le nombre de cases est impair également et le problème demande donc de trouver un cycle hamiltonien de longueur impaire dans un graphe biparti. Hors, un graphe est biparti si et seulement si il ne contient aucun cycle de longueur impaire. Il est donc impossible de résoudre ce problème si n est impair.
+\textit{\textsc{En bref: }Dans un graphe biparti, si le nombre de noeuds n'est pas le même des deux côtés, le graphe n'est pas hamiltonien.}
+\end{solution}
 
 \paragraph{3. } Le théorème de Dirac affirme que si $d(v) > n/2$ pour tous les sommets $v \in V$ d'un graphe $G=(V,E)$, alors $G$ est hamiltonien. Donnez un graphe hamiltonien de $n$ sommets qui ne satisfait pas les conditions du théorème de Dirac. Donnez un graphe qui n'est pas hamiltonien et qui satisfait $d(v) \geq (n-1)/2$ pour tout $v \in V$.
 
+\begin{solution}
+\begin{itemize}
+\item Graphe hamiltonien de 5 sommets ne satisfaisant pas les conditions du théorème de Dirac.\\
+\includegraphics[scale=0.5]{ape5_ex3_1.png}
+\item Graphe non hamiltonien de 5 sommets satisfaisant $d(v) \geq (n-1)/2$ pour tout $v \in V$.\\
+\includegraphics[scale=0.5]{ape5_ex3_2.png}
+\end{itemize}
+\end{solution}
+
 \paragraph{4. } Placez $n$ sommets sur un cercle et liez un sommet à ses deux plus proches voisins dans les deux directions. Démontrez que pour $n \geq 5$ le graphe obtenu est l'union de deux circuits hamiltoniens.
 
+\begin{solution}
+Pour $n$ impair, ce résultat est évident. On a le circuit hamiltonien intérieur (en vert) et celui extérieur (en rouge).\\
+\includegraphics[scale=0.5]{nimpair.jpg}
+\\
+Pour $n$ pair, on propose une méthode de construction des 2 circuits hamiltoniens qui fonctionne pour tout $n$ pair. On commence par construire, pour $n=6$ le graphe suivant, avec le circuit hamiltonien intéreur (en vert) et celui extérieur (en rouge).
+\\
+\includegraphics[scale=0.5]{npair1.jpg}
+\\
+Il est très facile d'ajouter les noeuds par 2 en complétant les circuits hamiltoniens. On construit d'abord le circuit extérieur (en rouge) en gardant toujours la même façon de procéder, et ensuite celui intérieur, qui comprend les arêtes non-utilisées par le circuit rouge. Voici le graphe pour $n=8$.
+\\
+\includegraphics[scale=0.5]{npair2.jpg}
+\\
+\end{solution}
+
 \paragraph{5. } Une souris mange un gruyère de dimension $3 \times 3 \times 3$ par petits morceaux de taille $1 \times 1 \times 1$. Elle démarre en un coin du cube et se déplace de cube adjacent en cube adjacent. Peut-elle manger la totalité du gruyère en terminant par le cube central?
+\begin{solution}
+La justification est la même que pour le problème du cavalier. Modélisons le fromage comme un graphe dont chaque cube de dimension $1 \times 1 \times 1$ est un noeud et dont les noeuds représentant des cubes adjacents sont reliés par une arête.\\
+En effet, ce graphe est biparti. On peut imaginer peindre le noeud de départ en blanc, ceux qui y sont adjacents en noir, ceux adjacents à ceux-ci en blanc etc.\\
+Le nombre de noeuds peints en blanc sera donc 14 et ceux peints en noir 13. Il est évidemment impossible de trouver un chemin hamiltonien partant d'un coin (blanc) et se terminant au centre (noir) et ayant parcouru tous les noeuds.
+\end{solution}
 
 \paragraph{6. } Trouvez des bornes supérieures et inférieures sur la valeur optimale du problème du voyageur de commerce avec les distances suivantes (les distances satisfont l'inégalité triangulaire) :
 \begin{equation}
@@ -22,6 +62,10 @@
       - & - & - & - & -
   \end{matrix}  \right)
 \end{equation}
+\begin{solution}
+Une borne supérieure de la solution optimale est obtenue en faisant par exemple le parcours 1-2-3-4-5: $5+4+3+6=18$\\
+Une borne inférieure peut être obtenue en additionnant les 4 plus petites distances entre les villes: $3+3+4+4=12$\\
+\end{solution}
 
 \paragraph{7. } Formulez le problème suivant comme le problème du voyageur de commerce. Cinq opérations $j=1,…,5$ doivent avoir lieu sur une machine spécialisée. Les temps de transition $c_{ij}$ entre deux opérations sont importants, et sont donnés dans la table suivante:
 \begin{equation}
@@ -34,6 +78,18 @@
   \end{matrix}  \right)
 \end{equation}
 En plus, si une opération $j$ est en première position, il faut aussi un temps de préparation $t_j$ qui est fonction de l'opération, où $t=(23,41,32,54,11)$. Pour des raisons techniques, on décide que l'opération $3$ ne peut pas précéder directement l'opération $1$, et les opérations $4$ et $5$ ne peuvent pas avoir lieu en dernière position.
+
+\begin{solution}
+Ce problème peut être modélisé comme le problème du voyageur de commerce dans un graphe orienté.
+\begin{itemize}
+\item Les opérations (par lesquelles il faut toutes passer) représentent les villes et sont modélisées comme des noeuds. 
+\item Les arêtes sont les temps de transitions entre les opérations et relient ces opérations en étant dirigées de l'opération de départ  celle d'arrivée. Leur poids est le temps de transition. Elles représentent les routes dans le problème du voyageur de commerce.
+\item On ajoute un noeud de départ, qui est relié à toutes les opérations par des arêtes qui ont des poids valant les temps de préparations respectifs des opérations et en étant dirigées vers les opérations. 
+\item On ajoute également un noeud d'arrivée, auquel sont reliées toutes les opérations à l'aide d'arêtes de poids nuls en étant dirigée vers ce noeud.
+\item Afin de modéliser la condition "L'opération 3 ne peut pas précéder directement l'opération 1", on supprime l'arête partant de l'opération 3 et allant vers l'opération 1.
+\item Afin de modéliser la condition "les opérations 4 et 5 ne peuvent pas avoir lieu en dernière position", on supprime les arêtes qui partent des opérations 4 et 5 sont dirigées vers le noeud d'arrivée
+\end{itemize}
+\end{solution}
 
 \paragraph{8. } Un groupe de huit personnes se retrouve pour diner. Le graphe ci-dessous précise les "incompatibilités d'humeur" entre les personnes de ce groupe (une arête reliant deux personnes indique que celles-ci s'entendent très modérément). Proposez un plan de table (la table est ronde) pour ce groupe en évitant de placer côte à côte deux personnes "incompatibles".
 
@@ -72,6 +128,10 @@ En plus, si une opération $j$ est en première position, il faut aussi un temps
     \end{tikzpicture}
   \end{center}
 \end{figure}
+
+\begin{solution}
+Afin de trouver un plan de table qui conviendrait, il faut d'abord créer le complémentaire du graphe précédent. Dans celui-ci, les arêtes relient deux personnes qui s'entendent bien. Il faut ensuite trouver un cycle hamiltonien dans ce graphe, et l'ordre dans lequel les noeuds sont parcourus sera celui dans lequel les gens sont placés autour de la table. Une solution possible est la suivante:$1-3-6-4-2-7-5-8$
+\end{solution}
 
 \newpage
 
@@ -119,7 +179,11 @@ En plus, si une opération $j$ est en première position, il faut aussi un temps
     \end{tikzpicture}
   \end{center}
 \end{figure}
-
+\begin{solution}
+Un couplage dans un graphe est un ensemble M d’arêtes tel que
+M ne contient pas de boucles et deux arêtes de M n’ont jamais
+d’extrêmité en commun. Hors, les seuls noeuds qui ne sont pas encore des extrémités dans ce couplage M sont les noeuds $3$ et $3'$. Si M est maximum, on ne peut pas lui ajouter d'arête. Hors la seule arête qu'on pourrait lui ajouter serait une qui relie les noeuds $3$ et $3'$. Cette arête n'existant pas dans ce graphe, M est bien maximum.
+\end{solution}
 
 \paragraph{10. } Vrai ou faux? \\
 \begin{itemize}
@@ -129,7 +193,6 @@ En plus, si une opération $j$ est en première position, il faut aussi un temps
   \item Soit $o(H)$, le nombre de composantes impaires du graphe $H$, c'est-à-dire le nombre de composantes connexes ayant un nombre impair de sommets. Un arbre $G$ admet un couplage parfait si $o(G-v)=1,  \ \ \forall v \in V$.
   \item Si un arbre $G$ admet un couplage parfait, alors $o(G-v)=1, \ \ \forall v \in V$.
 \end{itemize}
-
 
 
 \paragraph{11. } Thibault a la responsabilité de répartir les séances d'exercices des cours de mathématiques appliquées entre les assistants du pôle INMA. Chacun des assistants donne pour cela à Thibault une liste de ses cours préférés, qui sont repris dans la table ci-dessous.
