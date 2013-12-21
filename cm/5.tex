@@ -33,10 +33,58 @@
   Un couplage $M$ est maximum si et seulement s’il n’y a pas de chemin M-augmenté.
   \begin{proof}
      Preuve:
-     $ \Longrightarrow $ Soit le couplage M représenté en bleu sur la figure ci-dessous. \addTODO{} (mettre graphe)
-     On construit le couplage $ M' = M \Delta P$ où $\Delta$ indique une différence symétrique entre M et P ($ M \Delta P = ( M \backslash P) \cup ( P \backslash M)$ ). Ce nouveau couplage est représenté en mauve.
+$ \Longrightarrow $ Soit le couplage M représenté en bleu sur la figure ci-dessous.
+     
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+      \SetGraphUnit{2}
+      \SetVertexNoLabel
+      \Vertex{A}
+      \EA(A){B}
+      \EA(B){C}
+      \SO(C){D}
+      \WE(D){E}
+      \EA(C){F}
+      \EA(F){G}
+      \SO(G){H}
+      \Edges(C,D)
+      \SetUpEdge[color=green]
+      \Edges(A,B)
+      \Edges(C,F)
+      \Edges(G,H)
+      \tikzset{EdgeStyle/.style={color=blue,thick,double=green,double distance = 1.2pt}}
+      \Edges(F,G)
+      \Edges(B,C)
+      \SetUpEdge[color=blue]
+      \Edges(D,E)
+    \end{tikzpicture}
+\end{center}        
+     
+     On construit le couplage $ M' = M \Delta P$ où $\Delta$ indique une différence symétrique entre M et P ($ M \Delta P = ( M \backslash P) \cup ( P \backslash M)$ ). Ce nouveau couplage est représenté en rouge.
      $ |M'| = |M| + 1 $. On voit bien que M n'est pas maximal.
 
+\begin{center}
+    \begin{tikzpicture}[scale=1]
+      \SetGraphUnit{2}
+      \SetVertexNoLabel
+      \Vertex{A}
+      \EA(A){B}
+      \EA(B){C}
+      \SO(C){D}
+      \WE(D){E}
+      \EA(C){F}
+      \EA(F){G}
+      \SO(G){H}
+      \Edges(C,D)
+      \Edges(F,G)
+      \Edges(B,C)
+      \SetUpEdge[color=red]
+      \Edges(G,H)
+      \Edges(C,F)
+      \Edges(A,B)
+      \Edges(D,E)
+    \end{tikzpicture}
+\end{center} 
 
      $\Longleftarrow$ Soit M' le couplage maximum représenté ci-dessous \addTODO{} (mettre graphe)
       tel que $ |M'| > |M| $ . Regardons $ M \Delta M'$. On observe que les noeuds dans $ M \Delta M'$ dont de degrés $0,1$ ou $2$. Les noeuds de degrés $2$ ont une arête dans M et une arête dans M'. $\Rightarrow$ $ M \Delta M'$ est une union de noeuds isolés, chemins et cycles. Or, dans un cycle de longueur paire, il y a autant d'arêtes dans M que dans M'. Comme  $ |M'| > |M| $, il faut qu'il existe un chemin de longueur impaire qui commence et termine par une arête de M'. On voit facilement que ce chemin est un chemin M-augmenté.
