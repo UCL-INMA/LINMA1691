@@ -271,9 +271,9 @@
   Pour un graphe connexe, une \emph{coupe de sommets} est un ensemble de sommets qui déconnecte le graphe quand on l'en retire.
 \end{mydef}
 
-\index{coupe de d'arêtes}
+\index{coupe d'arêtes}
 \begin{mydef}
-  Pour un graphe connexe, une \emph{coupe de d'arêtes} est un ensemble d'arêtes qui déconnecte le graphe quand on l'en retire.
+  Pour un graphe connexe, une \emph{coupe d'arêtes} est un ensemble d'arêtes qui déconnecte le graphe quand on l'en retire.
 \end{mydef}
 
 \index{graphe!graphe k-connexe}
@@ -299,7 +299,10 @@
 \begin{mytheo} [Lien entre les connectivités]
  $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$
   \begin{proof}
-     Preuve \addTODO
+     \begin{itemize}
+					\item $\text{arête-connectivité} \leq \text{degré minimum}$ : une façon de déconnecter un graphe est de retirer les arêtes incidentes au noeud de degré minimum
+					\item $\text{connectivité} \leq \text{arête-connectivité}$ : par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. Imaginons que G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{Connectivité(G-e)} \leq k-1$. 
+		 \end{itemize}
   \end{proof}
 \end{mytheo}
 
@@ -320,7 +323,7 @@ Ce théorème se généralise :
 \end{mytheo}
 
 \begin{mytheo} [Nombre d'arêtes dans un graphe k-connexe]
-  Tout graphe k-connexe à $n$ noeuds possède $kn/2$ arêtes au moins.
+  Tout graphe k-connexe à $n$ noeuds possède $kn/2$ arêtes au moins (condition nécessaire).
   \begin{proof}
      Preuve \addTODO
   \end{proof}
@@ -334,5 +337,34 @@ Ce théorème se généralise :
 \end{mytheo}
 
 \begin{myexem}
-  Exemples de graphes de Harary. \addTODO
+  Exemples de graphes de Harary ($H_{4,8}$ ici) :
+	\begin{center}
+    	  \begin{tikzpicture}[scale = 1]
+          \node[draw, circle] at ( 0, 4)  (0) {0};
+					\node[draw, circle] at ( 3,3) (1) {1};
+          \node[draw, circle] at ( 4, 0  )  (2) {2};
+          \node[draw, circle] at ( 3,-3)  (3) {3};
+          \node[draw, circle] at (0,-4)  (4) {4};
+          \node[draw, circle] at (-3, -3)  (5) {5};
+					\node[draw, circle] at (-4, 0  )  (6) {6};
+					\node[draw, circle] at (-3, 3)  (7) {7};
+
+					\draw[-] (0) edge node {} (1);
+					\draw[-] (0) edge node {} (2);
+					\draw[-] (0) edge node {} (6);
+					\draw[-] (0) edge node {} (7);
+					\draw[-] (1) edge node {} (7);
+          \draw[-] (1) edge node {} (2);
+					\draw[-] (1) edge node {} (3);
+          \draw[-] (2) edge node {} (3);
+					\draw[-] (2) edge node {} (4);
+          \draw[-] (3) edge node {} (4);
+					\draw[-] (3) edge node {} (5);
+          \draw[-] (4) edge node {} (5);
+					\draw[-] (4) edge node {} (6);
+          \draw[-] (5) edge node {} (6);
+					\draw[-] (5) edge node {} (7);
+					\draw[-] (6) edge node {} (7);
+        \end{tikzpicture}
+ \end{center}
 \end{myexem}
