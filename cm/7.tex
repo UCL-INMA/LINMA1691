@@ -249,7 +249,7 @@ En d'autre termes, ce théorème stipule qu'il existe toujours un peu d'ordre da
 \begin{mytheo}
 [Théorème de Turán
 \footnote{par la contraposée on obtient la définition de Wikipédia qui nous dit: Tout graphe $G$ ayant $n$ sommets, et ne contenant pas de clique de taille plus grande que $r$ ($ K_{r+1} $) possède au plus $(1-\frac{1}{r})\frac{n^2}{2}$ arêtes}] \label{turan}
-Si un graphe simple possède strictement plus de $(1-\frac{1}{r})\frac{n^2}{2}$ arêtes, alors il a une clique de $n+1$ nœuds.
+Si un graphe simple possède strictement plus de $(1-\frac{1}{r})\frac{n^2}{2}$ arêtes, alors il a une clique de $r+1$ nœuds.
 \end{mytheo}
 
 Cette borne est atteinte par le graphe de Turán $T(n,r)$.  Selon wiki un graphe de $T(n,r)$ n'a pas de clique de taille $ r+1$ mais je ne sais pas si il existe un graphe $T(n,r)$ pour tout $r$.
@@ -260,7 +260,7 @@ Cette borne est atteinte par le graphe de Turán $T(n,r)$.  Selon wiki un graphe
 \item
 Pendant les séances d'exercices, le tuteur a complété le théorème \ref{turan} en ajoutant "et il existe un graphe possédant $\left( 1-\dfrac{1}{r} \right) \dfrac{n^2}{2}$ qui ne contient aucune clique de taille $r+1$" (ce que Wikipédia semble confirmer).
 \item
-On a  $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} > \left( 1-\dfrac{1}{n-1} \right) \dfrac{n^2}{2}$ donc si on prend $r=n$ alors on aura une clique à $(n-1)+1=n$ nœuds. Or on a bien : $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} = \dfrac{n(n-1)}{2}$.
+On a  $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} > \left( 1-\dfrac{1}{n-1} \right) \dfrac{n^2}{2}$ donc si on prend $r=n-1$ alors on aura une clique à $(n-1)+1=n$ nœuds. Or on a bien : $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} = \dfrac{n(n-1)}{2}$.
 \end{enumerate}
 
 
