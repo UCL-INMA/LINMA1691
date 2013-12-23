@@ -42,4 +42,4 @@ show: $(PDF_NAME)
 	$(PDFVIEWER) $(PDF_NAME) 2> /dev/null &
 
 release: $(PDF_NAME)
-	smartcp -v config.yml
+	cd ..; smartcp -v config.yml
