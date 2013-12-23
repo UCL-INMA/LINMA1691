@@ -190,18 +190,21 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 %proof avec Euler après
 \end{mytheo}
 
-
+\index{subdivision}
+\begin{mydef}
+  Une \emph{subdivision} d'un graphe est un graphe obtenu en remplaçant chaque arête
+  par un chemin (possiblement de longueur 1).
+\end{mydef}
 
 \begin{mytheo} [Kuratowski]
   Un graphe est non planaire si et seulement s'il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.
 %pas de preuve
 \end{mytheo}
 
-
-\index{subdivision}
-\begin{mydef}
-  Une \emph{subdivision} (remplacement de chaque arête par un chemin) d'un graphe non planaire est non-planaire, et un sous-graphe d'un graphe planaire est planaire.
-\end{mydef}
+\begin{mytheo}
+  Une \emph{subdivision} d'un graphe non planaire est non-planaire,
+  et un sous-graphe d'un graphe planaire est planaire.
+\end{mytheo}
 
 \index{face}
 \index{face!face extérieure}
