@@ -67,7 +67,7 @@
   Supposons que la plus courte chaîne et le plus court chemin sont différents. Il y a deux possibilités :
   \begin{itemize}
     \item Soit le plus court chemin est plus court ou égal à la plus courte chaîne. Dans ce cas, il existe une plus courte chaîne que celle trouvée précédemment, c'est à dire le plus court chemin.
-    \item Soit la plus courte chaine est plus courte que le plus court chemin.
+    \item Soit la plus courte chaîne est plus courte que le plus court chemin.
       Nous savons que pour qu'une chaîne soit la plus courte entre $u$ et $v$,
       il faut qu'elle soit aussi la plus courte entre deux nœuds intermédiaires du graphe,
       supposons que le cycle comprenne deux fois le nœud $w$,
@@ -97,54 +97,52 @@
 		\end{center}
 		Ce digraphe, qui ne possède pas de cycle, ne gère pas bien Dijkstra. En effet, l'algorithme va parcourir l'arête de poids $1$ et ignorer l'arête de poids $5$ car cette dernière est plus lourde et on trouve directement la destination en parcourant celle de poids $1$. En résumé, l'algorithme nous renvoie un chemin de longueur $1$ alors que le chemin de plus petit poids est de poids $-5$.\\
 		
-		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode "simple" est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $O(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.\\
+		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode "simple" est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $\bigoh(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.\\
 		
-		Voici un exemple de pseudo-code pour l'algorithme de Bellman-Ford : 
-		\algsetup{indent=2em}
-		\begin{algorithm}[h!]
-			\caption{Bellman_Ford(List $vertices$, List $edges$, Vertex $source$)}
-			\label{AlgoBF}
+		Un exemple de pseudo-code pour l'algorithme de Bellman-Ford :
+		\begin{algorithm}{Bellman-Ford(List $vertices$, List $edges$, Vertex $source$)}
 			\begin{algorithmic}
 				\REQUIRE Un graphe (ici, représenté sous forme d'une liste de nœuds et une liste d'arêtes) et un nœud source
 				\ENSURE Un tableau contenant les distances de nœuds par rapport au nœud de départ et un tableau contenant des références vers le prédécesseur de chaque nœud. S'il y a un cycle négatif, une valeur qui l'indique est renvoyée.
 				
 				\medskip
-				
-				\COMMENT {Initialisation du graphe, on met les distances à $+\inf$ sauf pour la source}
-				\FOREACH	{$v$ in $vertices$}
+				\STATE \textit{//Initialisation}
+				\FORALL{$v$ in $vertices$}
 					\IF{$v\ ==\ source$}
-						\STATE distance[$v$] \leftarrow $0$
+						\STATE $distance[v] \leftarrow 0$
 					\ELSE
-						\STATE distance[$v$] \leftarrow $+\inf$
+						\STATE $distance[v] \leftarrow +\infty$
 					\ENDIF
-					\STATE predecessor[$v$] \leftarrow \textbf{null}	
+					\STATE $predecessor[v] \leftarrow\ null$	
 				\ENDFOR
 				
-				\COMMENT {Opérations sur les distances des nœuds}
-				
-				\FOREACH {$u \neq$ source in $vertices$}
-					\FOREACH {edge($u$,$v$) with weight $w$ in $edges$}
-						\IF{distance[$v$] $>$ distance[$u$] + $w$}
-							\STATE distance[$v$] \leftarrow distance[$u$] + $w$
-							\STATE predecessor[$v$] \leftarrow $u$
+				\medskip
+				\STATE \textit{//Mise à jour des distances et des prédécesseurs}		
+				\FORALL{$u$ in $vertices$}
+					\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
+						\IF{$distance[v] > distance[u] + w$}
+							\STATE $distance[v] \leftarrow distance[u] + w$
+							\STATE $predecessor[v] \leftarrow u$
 						\ENDIF
 					\ENDFOR			
 				\ENDFOR
 				
-				\COMMENT {Vérification de la présence de cycles de poids négatif}
-				
-				\FOREACH{edge($u$,$v$) with weight $w$ in $edges$}
-					\IF{distance[$v$] $>$ distance[$u$] + $w$}
-						\RETURN cycle négatif
+				\medskip
+				\STATE \textit{//Vérification pour les cycles de poids négatif}
+				\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
+					\IF{$distance[v] > distance[u] + w$}
+						\STATE \textbf{return} "il y a un cycle négatif"
 					\ENDIF
 				\ENDFOR
-				\RETURN les tableaux "predecessor" et "distance"
+				\medskip
+				
+				\STATE \textbf{return} les tableaux "predecessor" et "distance"
 			\end{algorithmic}
 		\end{algorithm}	
 		
 		Dans le cas de notre exemple, l'algorithme procède comme suit :
 		\begin{enumerate}
-			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\inf$, distance[A] :$= +\inf$
+			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, distance[A] :$= +\infty$
 			\item On trouve B, on met sa distance à $1$ et son prédécesseur à A
 			\item On trouve C, on met sa distance à $5$ et son prédécesseur à A
 			\item On trouve B, comme on a que $1>5+(-10)$, on met sa distance à $-5$ et son prédécesseur à $C$
