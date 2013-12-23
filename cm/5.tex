@@ -173,6 +173,45 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
      \end{itemize}
      $ \Rightarrow  Voisin (S)= T \Longleftrightarrow  |Voisin(s)| = |s|-1 < |s|$
 
+\begin{center}
+\begin{tikzpicture}
+\SetVertexNoLabel
+\tikzset{
+  decoration={brace},
+  tuborg/.style={decorate},
+  tubnoderight/.style={midway, right=2pt},
+  tubnodeleft/.style={midway, left=2pt},
+}
+\GraphInit[vstyle=Normal]
+\SetGraphUnit{1.5}
+    \Vertex[NoLabel=false]{u}
+    \SO(u){A1}  
+    \SO(A1){B1} 
+    \SO(B1){C1} 
+    \SO(C1){D1}
+%\begin{scope}[shift={(0,1.5)}]    
+    \EA(A1){A2}
+    \SO(A2){B2}
+    \SO(B2){C2}
+    \SO(C2){D2}
+    \SO(D2){E2} 
+%\end{scope}   
+\Edges(u,A2,C1)
+\Edges(C2,A1,B2)
+\Edges(D1,E2)
+\SetUpEdge[color=green]
+\Edges(A1,A2)
+\Edges(B1,B2)
+\Edges(C1,C2)
+\Edges(D1,D2)
+
+\draw[tuborg, decoration={brace}] let \p1=(u.north), \p2=(C1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$S$};
+\draw[tuborg, decoration={brace}] let \p1=(D1.north), \p2=(D1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$X\setminus S$};
+\draw[tuborg, decoration={brace}] let \p1=(A2.north), \p2=(C2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$T$};
+\draw[tuborg, decoration={brace}] let \p1=(D2.north), \p2=(E2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$Y\setminus T$};
+\end{tikzpicture}
+\end{center}
+
   \end{proof}
 \end{mytheo}
 \begin{myexem}
