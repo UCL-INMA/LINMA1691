@@ -183,7 +183,7 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
   Un graphe est k-régulier si tous les noeuds sont de degré $k$.
 \end{myrem}
 
-\begin{mycorr}
+\begin{mycorr}[du théorème de Hall]
   Tout graphe biparti k-régulier (pour $k > 0$) possède un couplage parfait.
 \end{mycorr}
 
@@ -209,7 +209,7 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \begin{mylem}
   Si $K$ est une couverture de sommets, $M$ un couplage et que $|M| = |K|$, alors $K$ est minimum et $M$ est maximum.
   \begin{proof}
-     Preuve:
+     Preuve: on a, par définition, $|M| \leq |M^*| \leq |k^*| \leq |k|$. par conséquent, si $|M| = |K|$, $|M| = |M^*| = |K^*| = |K|$
   \end{proof}
 \end{mylem}
 
@@ -219,6 +219,37 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
      Preuve \addTODO
   \end{proof}
 \end{mytheo}
+
+\begin{myexem}[Problème du site de rencontres]
+	Nous avons 5 filles et 5 garçons (noeuds) et nous devons en accoupler un maximum en fonction de leurs préférences (arêtes = volonté de s'accoupler). Par conséquent, nous devons réaliser un couplage maximum sur un graphe biparti. Voici le schéma obtenu :
+	\begin{center}
+	  \begin{tikzpicture}
+      \node[vertex] at (-2, 2) (a) {A};
+			\node[vertex] at (-1, 2) (b) {B};
+			\node[vertex, fill = red] at (0, 2) (c) {C};
+			\node[vertex, fill = red] at (1, 2) (d) {D};
+			\node[vertex] at (2, 2) (e) {E};
+			\node[vertex] at (-2, -2) (f) {a};
+			\node[vertex, fill = red] at (-1, -2) (g) {b};
+			\node[vertex] at (0, -2) (h) {c};
+			\node[vertex, fill = red] at (1, -2) (i) {d};
+			\node[vertex] at (2, -2) (j) {e};
+			
+      \draw[red] (a) edge node {} (g);
+			\draw[] (a) edge node {} (i);
+			\draw[] (b) edge node {} (g);
+			\draw[] (c) edge node {} (f);
+			\draw[] (c) edge node {} (g);
+			\draw[red] (c) edge node {} (h);
+			\draw[] (c) edge node {} (i);
+			\draw[] (c) edge node {} (j);
+			\draw[] (d) edge node {} (h);
+			\draw[red] (d) edge node {} (j);
+			\draw[red] (e) edge node {} (i);
+  	\end{tikzpicture}
+  \end{center}
+On voit que $|M|=|K|$ et, par conséquent (voir en rouge), le couplage est maximum (et la couverture est minimum).
+\end{myexem}
 
 \subsection{L'algorithme hongrois}
 \index{algorithme!algorithme hongrois}
