@@ -8,6 +8,8 @@
 % \usepackage{tkz-graph}
 %
 % Il y a aussi besoin d'un environnement solution
+% Les questions 3 et 4 ont été réalisées avec l'aide 
+% de Guillaume Derval
 
 \section{Séance 3}
 
@@ -86,7 +88,9 @@
 \paragraph{4. } Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
 
 \begin{solution}
-  \nosolution
+On écrit que la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes est égal au minimum entre le plus court chemin de $s$ à $j$ de longueur $k-1$ et le chemin minimum de $s$ à $i$ de longueur $k-1$ + l'arête de $i$ à $j$.
+$$d_k(j) = min (d_{k-1}(j) , min_i(d_{k-1}(i)+w(i, j))$$
+La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arète supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
 \end{solution}
 
 \paragraph{5. } Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
