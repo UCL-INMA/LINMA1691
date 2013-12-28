@@ -24,7 +24,7 @@
 \end{mytheo}
 \begin{myexem} Le graphe suivant est bien hamiltonien.
   \begin{figure} [!h]
-      \hspace*{\fill}%
+      \hspace*{\fill}
          \subfigure[]
          {
              \begin{tikzpicture}[scale = 0.5]
@@ -41,24 +41,25 @@
           	 \draw (-1,0) -- (-2,2) -- (-1.5,4) -- (-2.5,5) -- (0,6) -- (2.5,4.5) -- (2.5,2) -- (3,1) -- (1.5,0) -- cycle;
         \end{tikzpicture}
       	}
-      	\hfill%
-      \subfigure[]
+      	\hfill
+      \subfigure[] 
          {
              \begin{tikzpicture}[scale = 0.5]
           	 \fill[black] (-1,0) circle (0.1cm);
           	 \fill[black] (-2,2) circle (0.1cm);
+          	 \fill[black] (-2.5,5) circle (0.1cm);
           	 \fill[black] (0,6) circle (0.1cm);
           	 \fill[black] (2.5,2) circle (0.1cm);
           	 \fill[black] (3,1) circle (0.1cm);
-          	 \fill[black] (1.5,0) circle (0.1cm);
 
+             \draw (-2.5,5) -- (0,6);
           	 \draw (-1,0) -- (-2,2);
-          	 \draw (2.5,2) -- (3,1) -- (1.5,0);
+          	 \draw (2.5,2) -- (3,1);
         \end{tikzpicture}
       	}
-      	\hspace*{\fill}%
+      	\hspace*{\fill}
     \end{figure} \newline
-    En retirant 3 noeuds du graphe $(a)$ on obtient bien 3 composantes connexes dans le graphe $(b)$.
+    En retirant 3 noeuds du graphe $g$ on obtient bien 3 composantes connexes dans le graphe $h$.
 \end{myexem}
 
 \begin{mytheo} [Condition suffisante pour un graphe hamiltonien]
