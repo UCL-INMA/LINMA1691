@@ -260,7 +260,7 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 
 \begin{mytheo} [König]
   Dans un graphe biparti, si $K^*$ est une couverture de sommets minimum et $M^*$ un couplage maximum, alors $|M^*| = |K^*|$.
-  \begin{proof} [Démonstration venant du cours de R. Lambiotte et L. Tabourier (FUNDP)]
+  \begin{proof} [Démonstration venant du cours de R. Lambiotte et L. Tabourier  (FUNDP)]
     Soit un graphe biparti ($X$,$Y$) et $M^*$ un couplage maximum. 
     Soit $U$ les noeuds qui ne sont pas incidents à $M^*$ dans $X$.
     Soit $Z$ l'ensemble des noeuds atteints par tous les chemins $M^*$-alternés partant de $U$.\\
@@ -313,9 +313,34 @@ On voit que $|M|=|K|$ et, par conséquent (voir en rouge), le couplage est maxim
 
 \subsection{L'algorithme hongrois}
 \index{algorithme!algorithme hongrois}
-\begin{myalgo}[Algorithme hongrois]
-  IN PROGRESS
+\begin{myalgo}[Algorithme hongrois venant du cours de R. Lambiotte et L. Tabourier (FUNDP)]
+  \noindent
+  \begin{enumerate}
+    \item Construire un couplage $M$ du graphe biparti tel qu'on ne puisse plus ajouter d'arêtes sans que deux arêtes soient incidentes au même noeud
+    \item Soit $U = \{u \in X$ et $u$ non-incident à $M^*\}$, si $U = \O$, le couplage est maximum (arrêt)
+    \item $\forall u \in U$, on construit l'ensemble des chemins M-alternés partant de $u$ (étape non-triviale)
+      \begin{itemize}
+        \item soit aucun de ces chemins n'est M-augmenté, par théorème le couplage est maximum (arrêt)
+        \item soit il existe un chemin M-augmenté $u,y_a,x_b,...,x_l,y_m$, et on modifie M selon :\\
+        $M \leftarrow M \textbackslash\{(y_a,x_b),...,(y_k,x_l)\} \cup \{(u,ya),(xb,yc),...,(xl,ym)\}$
+      \end{itemize}
+    \item on itère le procédé jusqu'à avoir un couplage maximum
+  \end{enumerate}
 \end{myalgo}
 \begin{myexem}
-  Exemple \addTODO
+  \noindent
+  \begin{enumerate}
+    \item couplage initial :\\
+      \begin{center}
+        \includegraphics[width=150pt]{../img/hongrois1}
+      \end{center}
+    \item recherche des chemins alternés :\\
+      \begin{center}
+        \includegraphics[width=250pt]{../img/hongrois2}
+      \end{center}
+    \item couplage suivant (et maximum) :\\
+      \begin{center}
+        \includegraphics[width=150pt]{../img/hongrois3}
+      \end{center}
+  \end{enumerate}
 \end{myexem}
