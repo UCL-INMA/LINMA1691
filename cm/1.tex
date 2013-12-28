@@ -114,10 +114,11 @@
     \end{tabular}
     \newline
     \newline
+    \noindent
     Notons aussi que plusieurs résultats sont possibles : \\
-    \begin{figure}[!h]
+    \begin{figure}[h!]
       \centering
-      \subfigure[]
+      \subfigure[h!]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {1};
@@ -134,7 +135,7 @@
         \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[]
+      \subfigure[h!]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
@@ -150,7 +151,7 @@
           \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
         \end{tikzpicture}
       }
-      \subfigure[]
+      \subfigure[h!]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
@@ -389,7 +390,7 @@
   \end{center}
   $(A^k)_{ij} =$ nombre de parcours $i \to j$ de longueur $k$.\\
   $
-    A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 1\\
+    A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 0\\
                                   0 & 1 & 0\\
                                   0 & 0 & 1
                   \end{pmatrix},\
