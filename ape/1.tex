@@ -78,8 +78,9 @@ Soit $G_{i}$ le graphe dont les sommets sont des k-tuples de 0 et 1. Deux sommet
 \begin{minipage}{0.65\textwidth}
 \begin{flushright}
 \begin{itemize}
-\item Le graph est $k-régulier$ car tout les nœuds sont de degré k.
-\item Le graph est biparti car $|E| = \frac{2^{k} k}{2} = 12$
+\item Le graphe est $k-régulier$ car tout les nœuds sont de degré k.
+\item Le nombre d'arêtes est donc $|E| = \frac{2^{k} k}{2} = 12$
+\item Le graphe est biparti car comme un seul chiffre du k-tuple change entre deux noeuds adjacents, si la somme des chiffres du k-tuple d'un noeud est paire, alors la sommes des chiffres des k-tuples de ses noeuds adjacents sera impaire, et vice versa.
 \end{itemize}
 \end{flushright}
 \end{minipage}
