@@ -297,13 +297,15 @@
 \end{mydef}
 
 \begin{mytheo} [Lien entre les connectivités]
- $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$
+  $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$
   \begin{proof}
-     \begin{itemize}
-					\item $\text{arête-connectivité} \leq \text{degré minimum}$ : une façon de déconnecter un graphe est de retirer les arêtes incidentes au noeud de degré minimum
-					\item $\text{connectivité} \leq \text{arête-connectivité}$ : par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. Imaginons que G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{Connectivité(G-e)} \leq k-1$. 
-		 \end{itemize}
-  \end{proof}
+    \noindent
+    $$\text{arête-connectivité} \leq \text{degré minimum}$$
+    Est une façon de déconnecter un graphe est de retirer les arêtes incidentes au noeud de degré minimum
+    
+    $$\text{connectivité} \leq \text{arête-connectivité}$$
+    Par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. Imaginons que G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{connectivité(G-e)} \leq k-1$.
+ \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Théorème de Whitney]
