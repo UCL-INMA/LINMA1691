@@ -4,6 +4,7 @@ Description
 Notes, énoncés et solutions des APEs du cours INMA1691 à l'EPL.
 
 Plus de détail dans le [wiki](https://github.com/blegat/LINMA1691/wiki).
+Pour utilisez certaines fonctionnalitées du Makefile, il vous faut installer [smartcp](https://github.com/blegat/smartcp).
 
 Deadline
 ===========
