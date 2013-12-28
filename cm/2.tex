@@ -75,6 +75,7 @@
 \begin{mytheo} [L’algorithme de Dijkstra est quadratique]
   L’algorithme de Dijkstra sur un graphe se termine en un temps de l’ordre $n^2$ .
   \begin{proof}
+    \noindent
     \begin{itemize}
 		\item A chaque passage de boucle $\left\lbrace v \in S \right\rbrace $ décroit de 1. Ce qui implique $n$ passages de boucles.
 		\item A chaque boucle, "$\forall v \in S$" fait $O(n-|S|)$ opérations; et "trouver $v_{min}$" fait $O(n-|S|)$ opérations également.
