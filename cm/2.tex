@@ -96,11 +96,11 @@
 Pour le graphe dirigé suivant :
   \begin{center}
 	  \begin{tikzpicture}
-      \node[vertex] at (0, 2) (a) {\tiny $A$};
-      \node[vertex] at (2, 1) (b) {\tiny $B$};
-      \node[vertex] at (1, -2) (c) {\tiny $C$};
-      \node[vertex] at (-1, -2) (d) {\tiny $D$};
-      \node[vertex] at (-2, 1) (e) {\tiny $E$};
+      \node[vertex] at (0,  2) (a) {$a$};
+      \node[vertex] at (2,  1) (b) {$b$};
+      \node[vertex] at (1, -2) (c) {$c$};
+      \node[vertex] at (-1,-2) (d) {$d$};
+      \node[vertex] at (-2, 1) (e) {$e$};
       \draw[->] (a) edge node[anchor = south] {1} (b);
   		\draw[->] (c) edge node[anchor = north] {2} (b);
   		\draw[->] (c) edge node[anchor = north] {3} (d);
@@ -112,7 +112,7 @@ Pour le graphe dirigé suivant :
   	\end{tikzpicture}
   \end{center}
 	Nous avons :
-	$V=\left\{A,B,C,D,E\right\}$\\
+	$V=\left\{a,b,c,d,e\right\}$\\
 	$E=\left\{1,2,3,4,5,6,7,8\right\}$\\
 	$\varphi(1)=\left\{a,b\right\}$\\
 	$\varphi(2)=\left\{c,b\right\}$\\
