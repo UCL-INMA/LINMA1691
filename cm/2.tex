@@ -101,14 +101,14 @@ Pour le graphe dirigé suivant :
       \node[vertex] at (1, -2) (c) {$c$};
       \node[vertex] at (-1,-2) (d) {$d$};
       \node[vertex] at (-2, 1) (e) {$e$};
-      \draw[->] (a) edge node[anchor = south] {1} (b);
-  		\draw[->] (c) edge node[anchor = north] {2} (b);
-  		\draw[->] (c) edge node[anchor = north] {3} (d);
-  		\draw[->] (e) edge node[anchor = south] {4} (d);
-  		\draw[->] (a) edge node[anchor = south] {5} (e);
-  		\draw[->] (d) edge node[anchor = north] {6} (a);
-  		\draw[->] (a) edge node[anchor = south] {7} (c);
-  		\draw[->] (d) edge node[anchor = north] {8} (b);
+      \draw[->] (a) edge node[anchor = south]   {\tiny $1$} (b);
+  		\draw[->] (c) edge node[anchor = north] {\tiny $2$} (b);
+  		\draw[->] (c) edge node[anchor = north] {\tiny $3$} (d);
+  		\draw[->] (e) edge node[anchor = south] {\tiny $4$} (d);
+  		\draw[->] (a) edge node[anchor = south] {\tiny $5$} (e);
+  		\draw[->] (d) edge node[anchor = north] {\tiny $6$} (a);
+  		\draw[->] (a) edge node[anchor = south] {\tiny $7$} (c);
+  		\draw[->] (d) edge node[anchor = north] {\tiny $8$} (b);
   	\end{tikzpicture}
   \end{center}
 	Nous avons :
