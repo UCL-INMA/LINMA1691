@@ -5,30 +5,40 @@
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=4cm]{tp9_1.png}
-    \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
-      \path (-.5, 2) node[draw,shape=circle] (1)  {$a$};
-      \path (.5, 2)  node[draw,shape=circle] (2)  {$b$};
-      \path (1,-1) node[draw,shape=circle] (3)  {$c$};
-      \path ( -.5, -2) node[draw,shape=circle] (6)  {$d$};
-      \path ( -1, 0) node[draw,shape=circle] (5)  {$e$};
-      \path (  0, 1) node[draw,shape=circle] (4)  {$f$};
-      \path (  -.5, -.5) node[draw,shape=circle] (7)  {$g$};
+      \end{center}
+\end{figure}
 
-      \draw (-1, 0) -- ( -.5,-2); %ed
-      \draw (-1, 0) -- ( -.5,-.5); %eg
-      \draw (-1, 0) -- ( 0,1); %ef
-      \draw (-1, 0) -- ( -5,2); %ea
-      \draw (-.5, -2) -- ( 1,-1); %dc
-      \draw ( -.5, -.5) -- (0,1); %gf
-      \draw ( -.5, 2) -- ( 0,1); %af
-      \draw ( -.5, 2) -- (.5,2); %ab
-      \draw ( 0, 1) -- ( .5,2); %fb
-      \draw ( 0, 1) -- ( 1,-1); %fc
-      \draw ( .5, 2) -- ( 1,-1); %bc
+\begin{solution}
+\begin{figure}[h!]
+  \begin{center}
+
+    \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
+      \path (0, -1) node[draw,shape=circle] (1)  {$a$};
+      \path (0, -2)  node[draw,shape=circle] (2)  {$b$};
+      \path (0,-3) node[draw,shape=circle] (3)  {$c$};
+      \path (0, -4) node[draw,shape=circle] (4)  {$d$};
+      \path (-3, 0) node[draw,shape=circle] (5)  {$e$};
+      \path (3, 0) node[draw,shape=circle] (6)  {$f$};
+      \path (0, -5) node[draw,shape=circle] (7)  {$g$};
+
+      \draw (1) -- (2);
+      \draw (1) -- (5);
+      \draw (1) -- (6);
+      \draw (2) -- (3);
+      \draw (2) -- (6);
+      \draw (3) -- (4);
+      \draw (3) -- (6);
+      \draw (4) -- (5);
+      \draw (4) -- (6);
+      \draw (5) -- (6);
+      \draw (5) -- (7);
+      \draw (6) -- (7);
 
     \end{tikzpicture}
   \end{center}
 \end{figure}
+\end{solution}
+
 
 \paragraph{2. } Un graphe planaire peut-il être représenté sur un cylindre bi-infini sans ses arêtes ne se croisent? La réciproque est-elle vraie?  Et pour un graphe sur un tore?
 
@@ -51,15 +61,21 @@ Pour le tore :
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=15cm]{tp9_2.png}
-    \begin{tabular}{lcccr}
+      \end{center}
+\end{figure}
+
+\begin{solution}
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tabular}{lcr}
       \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
 
-        \path (0,2) node[draw,shape=circle] (1)  {$a$};
-        \path (1,2) node[draw,shape=circle] (2)  {$b$};
-        \path (1,1) node[draw,shape=circle] (3)  {$c$};
-        \path (1,0) node[draw,shape=circle] (4)  {$d$};
-        \path (0,0) node[draw,shape=circle] (5)  {$e$};
-        \path (-.5,1) node[draw,shape=circle] (6)  {$f$};
+        \path (-2,3) node[draw,shape=circle] (1)  {$a$};
+        \path (2,3) node[draw,shape=circle] (2)  {$b$};
+        \path (2,-3) node[draw,shape=circle] (3)  {$c$};
+        \path (0,-1) node[draw,shape=circle] (4)  {$d$};
+        \path (-2,-3) node[draw,shape=circle] (5)  {$e$};
+        \path (0,1) node[draw,shape=circle] (6)  {$f$};
 
         \draw (1)  -- (2);
         \draw (1)  -- (5) ;
@@ -77,15 +93,15 @@ Pour le tore :
       & \hspace{1cm} &
       \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
 
-        \path (-1,1) node[draw,shape=circle] (1)  {$a$};
-        \path (0,1) node[draw,shape=circle] (2)  {$b$};
-        \path (1,1) node[draw,shape=circle] (3)  {$c$};
-        \path (1.5,.5) node[draw,shape=circle] (4)  {$d$};
-        \path (1.5,-.5) node[draw,shape=circle] (5)  {$e$};
-        \path (1,-1) node[draw,shape=circle] (6)  {$f$};
-        \path (0,-1) node[draw,shape=circle] (7)  {$g$};
-        \path (-1,-1) node[draw,shape=circle] (8)  {$h$};
-        \path (-1.5,0) node[draw,shape=circle] (9)  {$i$};
+        \path (0,0) node[draw,shape=circle] (1)  {$a$};
+        \path (0,-2) node[draw,shape=circle] (2)  {$b$};
+        \path (0,-4) node[draw,shape=circle] (3)  {$c$};
+        \path (-2,-7) node[draw,shape=circle] (4)  {$d$};
+        \path (2,-9) node[draw,shape=circle] (5)  {$e$};
+        \path (8,-11) node[draw,shape=circle] (6)  {$f$};
+        \path (2,-7) node[draw,shape=circle] (7)  {$g$};
+        \path (-2,-9) node[draw,shape=circle] (8)  {$h$};
+        \path (-8,-11) node[draw,shape=circle] (9)  {$i$};
 
         \draw (1)  -- (2);
         \draw (1)  -- (6) ;
@@ -106,37 +122,13 @@ Pour le tore :
 
       \end{tikzpicture}
 
-      & \hspace{1cm} &
-      \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
-
-        \path (-.5,1) node[draw,shape=circle] (1)  {$a$};
-        \path (.5,1) node[draw,shape=circle] (2)  {$b$};
-        \path (1,-.5) node[draw,shape=circle] (3)  {$c$};
-        \path (.5,-1) node[draw,shape=circle] (4)  {$d$};
-        \path (-.5,-1) node[draw,shape=circle] (5)  {$e$};
-        \path (-1,0) node[draw,shape=circle] (6)  {$f$};
-        \path (0,.5) node[draw,shape=circle] (7)  {$g$};
-
-        \draw (1)  -- (2);
-        \draw (1)  -- (6) ;
-        \draw (1)  -- (5)  ;
-        \draw (1)  -- (7)  ;
-        \draw (2)  -- (3)  ;
-        \draw (2)  -- (4)  ;
-        \draw (2) -- (7) ;
-        \draw (2) -- (6) ;
-        \draw (3) -- (4) ;
-        \draw (3)  -- (6) ;
-        \draw (3)  -- (7)  ;
-        \draw (4)  -- (5)  ;
-        \draw (5) -- (7) ;
-        \draw (6) -- (7) ;
-
-      \end{tikzpicture}
-
     \end{tabular}
   \end{center}
 \end{figure}
+
+Le graphe c) n'est pas planaire. En effet, on observe que le graphe possède une clique de 4 noeuds (a,b,g,f). On observe aussi que le noeud c est adjacent à b,g et f. On prouve ensuite qu'il existe un chemin entre c et a qui ne passe pas par b, g ou f : le chemin c-d-e-a. Cela signifie qu'il existe un sous-graphe $K_5$ "caché" dans le graphe. Or, \begin{theorem} Un graphe est non planaire si et seulement s’il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.\end{theorem}
+
+\end{solution}
 
 \paragraph{4. } Supposez qu’un graphe connexe planaire a 6 sommets, chacun de degré 4. En combien de régions le plan est-il divisé par une représentation planaire de ce graphe?
 
@@ -186,4 +178,8 @@ $$ f_4 = 12 \qquad f_6 = 8 \qquad f_8 = 6$$
 \end{solution}
 \paragraph{8. }Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
 
+\nosolution
+
 \paragraph{9. } Un circuit électrique connecte des terminaux de deux types $A$ et $B$. Chaque terminal $A$ est connecté à chaque terminal $B$. Montrez qu’un tel circuit peut être imprimé sur les deux faces d’une seule feuille isolante si les terminaux traversent la feuille.
+
+\nosolution

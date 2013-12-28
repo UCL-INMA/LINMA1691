@@ -148,11 +148,8 @@
           \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
           \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
           \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
-
-          %TODO tracer les lignes qui montrent comment on passe du graphe e au graphe f (en gardant les 3 graphes sur la même ligne)
         \end{tikzpicture}
       }
-      % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
       \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
@@ -185,8 +182,8 @@
 
 \subsection{Parcours eulérien}
 \index{parcours}
-\begin{mydef}%TODO définir ce qu'est un parcours
-  Un \emph{parcours} est fermé si $v_0 = v_1$.
+\begin{mydef}
+  Un \emph{parcours} est fermé si $v_0 = v_n$.
 \end{mydef}
 
 \index{chemin}
