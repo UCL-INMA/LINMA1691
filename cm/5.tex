@@ -162,15 +162,21 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \begin{mytheo} [Théorème du mariage ou de Hall]
   Un graphe biparti avec bipartition $(X , Y)$ possède un couplage incident à tous les noeuds de $X$ si et seulement si pour tout ensemble $S \subseteq X$ , le nombre de voisins de $S$ est au moins $|S|$.
   \begin{proof}
-     Preuve $\Longrightarrow$ Un couplage M incident à tout X crée une fonction injective: $X\mapsto Y$ donc $\forall S \subseteq X: Voisin (S) \geq M(S) $. On a donc que $ |Voisin (S)| \geq |M(S)| = |S| $.
-     $\downarrow$ On veut montrer qu'il n'existe pas de couplage incident à tout X et donc qu'il existe un $ S \subseteq X: |voisin (S)| < |S|$. \\
-     Soit $M*$ le couplage maximal et $ u \in X$ non incident à $M*$. Prenons les chemins $M*$ alternés partant de u: Soit z l'ensemble des noeuds ainsi rencontrés. $ S = X\cap Z$, $T= Y \cap Z$.
-     \textit{Preuve.} On remarque \begin{itemize}
-     \item Voisins (S)= T ( par constriuction)
-     \item	$M*$ est incident à tout T (sinon on aurait un chemin M-augmenté car un chemin alterné qui part de u et qui arrive dans T peut toujours poursuivre par une arête de $M*$)
-     \item $M*$ est incident à tout $S\backslash\lbrace u\rbrace$ par construction
-     \item $M*$ crée une bijection entre $S\backslash\lbrace u\rbrace$ et T ( car $M* (S\backslash\lbrace u\rbrace) \subseteq T$ et $M*(T) \subseteq S\backslash\lbrace u\rbrace$.
-     \end{itemize}
+    \noindent
+    \newline
+    $\Longrightarrow$\\
+    Un couplage M incident à tout X crée une fonction injective: $X\mapsto Y$ donc $\forall\ S \subseteq X: Voisin (S) \geq M(S) $. On a donc que $ |Voisin (S)| \geq |M(S)| = |S| $.\\
+    \\
+    $\Longleftarrow$\\
+    On veut montrer qu'il n'existe pas de couplage incident à tout X et donc qu'il existe un $ S \subseteq X: |Voisin (S)| < |S|$. \\
+    Soit $M*$ le couplage maximal et $ u \in X$ non incident à $M*$. Prenons les chemins $M*$ alternés partant de u: Soit z l'ensemble des noeuds ainsi rencontrés. $ S = X\cap Z$, $T= Y \cap Z$.\\
+    \textit{Preuve,} On remarque : 
+    \begin{itemize}
+      \item Voisins (S)= T ( par constriuction)
+      \item	$M*$ est incident à tout T (sinon on aurait un chemin M-augmenté car un chemin alterné qui part de u et qui arrive dans T peut toujours poursuivre par une arête de $M*$)
+      \item $M*$ est incident à tout $S\backslash\lbrace u\rbrace$ par construction
+      \item $M*$ crée une bijection entre $S\backslash\lbrace u\rbrace$ et T ( car $M* (S\backslash\lbrace u\rbrace) \subseteq T$ et $M*(T) \subseteq S\backslash\lbrace u\rbrace$.
+    \end{itemize}
      $ \Rightarrow  Voisin (S)= T \Longleftrightarrow  |Voisin(s)| = |s|-1 < |s|$
 
 \begin{center}
