@@ -9,7 +9,6 @@
 \end{figure}
 
 \begin{solution}
-\begin{figure}[h!]
   \begin{center}
 
     \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
@@ -36,7 +35,6 @@
 
     \end{tikzpicture}
   \end{center}
-\end{figure}
 \end{solution}
 
 
@@ -65,7 +63,6 @@ Pour le tore :
 \end{figure}
 
 \begin{solution}
-\begin{figure}[h!]
   \begin{center}
     \begin{tabular}{lcr}
       \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
@@ -90,43 +87,50 @@ Pour le tore :
         \draw (5)  -- (6)  ;
       \end{tikzpicture}
 
-      & \hspace{1cm} &
-      \begin{tikzpicture}[scale=1,looseness=1,auto,line width=.4mm]
+      & \hspace{0.5cm} &
+      \begin{tikzpicture}[scale=0.4,looseness=1,auto,line width=.4mm]
 
         \path (0,0) node[draw,shape=circle] (1)  {$a$};
         \path (0,-2) node[draw,shape=circle] (2)  {$b$};
         \path (0,-4) node[draw,shape=circle] (3)  {$c$};
-        \path (-2,-7) node[draw,shape=circle] (4)  {$d$};
-        \path (2,-9) node[draw,shape=circle] (5)  {$e$};
-        \path (8,-11) node[draw,shape=circle] (6)  {$f$};
-        \path (2,-7) node[draw,shape=circle] (7)  {$g$};
-        \path (-2,-9) node[draw,shape=circle] (8)  {$h$};
-        \path (-8,-11) node[draw,shape=circle] (9)  {$i$};
+        \path (-2,-9) node[draw,shape=circle] (4)  {$d$};
+        \path (2,-12) node[draw,shape=circle] (5)  {$e$};
+        \path (8,-14) node[draw,shape=circle] (6)  {$f$};
+        \path (2,-9) node[draw,shape=circle] (7)  {$g$};
+        \path (-2,-12) node[draw,shape=circle] (8)  {$h$};
+        \path (-8,-14) node[draw,shape=circle] (9)  {$i$};
 
         \draw (1)  -- (2);
-        \draw (1)  -- (6) ;
-        \draw (1)  -- (9)  ;
-        \draw (2)  -- (3)  ;
-        \draw (3)  -- (4)  ;
-        \draw (3)  -- (6)  ;
+        \draw (1)  -- (6);
+        \draw (1)  -- (9);
+        \draw (2)  -- (3);
+        \draw (3)  -- (4);
+        \draw (3)  -- (6);
         \draw (3) -- (7) ;
         \draw (3) -- (9) ;
         \draw (4) -- (9) ;
-        \draw (5)  -- (6) ;
-        \draw (5)  -- (8)  ;
-        \draw (6)  -- (7)  ;
+        \draw (5)  -- (6);
+        \draw (5)  -- (8);
+        \draw (6)  -- (7);
         \draw (6) -- (9) ;
         \draw (7) -- (8) ;
         \draw (7) -- (9) ;
-        \draw (8)  -- (9) ;
+        \draw (8)  -- (9);
 
       \end{tikzpicture}
 
     \end{tabular}
   \end{center}
-\end{figure}
 
-Le graphe c) n'est pas planaire. En effet, on observe que le graphe possède une clique de 4 noeuds (a,b,g,f). On observe aussi que le noeud c est adjacent à b,g et f. On prouve ensuite qu'il existe un chemin entre c et a qui ne passe pas par b, g ou f : le chemin c-d-e-a. Cela signifie qu'il existe un sous-graphe $K_5$ "caché" dans le graphe. Or, \begin{theorem} Un graphe est non planaire si et seulement s’il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.\end{theorem}
+  Le graphe c) n'est pas planaire.
+  En effet, on observe que le graphe possède une clique de 4 noeuds $(a,b,g,f)$.
+  On observe aussi que le noeud $c$ est adjacent à $b, g$ et $f$.
+  On prouve ensuite qu'il existe un chemin entre $c$ et $a$ qui ne passe pas par $b, g ou f$:
+  le chemin $c-d-e-a$. Cela signifie qu'il existe un sous-graphe $K_5$ ``caché'' dans le graphe. Or,
+
+  \begin{quotation}
+    ``Un graphe est non planaire si et seulement s’il contient comme sous-graphe $K_5$ ou $K_{3,3}$ ou une subdivision de ceux-ci.''
+  \end{quotation}
 
 \end{solution}
 
@@ -178,8 +182,12 @@ $$ f_4 = 12 \qquad f_6 = 8 \qquad f_8 = 6$$
 \end{solution}
 \paragraph{8. }Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
 
-\nosolution
+\begin{solution}
+  \nosolution
+\end{solution}
 
 \paragraph{9. } Un circuit électrique connecte des terminaux de deux types $A$ et $B$. Chaque terminal $A$ est connecté à chaque terminal $B$. Montrez qu’un tel circuit peut être imprimé sur les deux faces d’une seule feuille isolante si les terminaux traversent la feuille.
 
-\nosolution
+\begin{solution}
+  \nosolution
+\end{solution}
