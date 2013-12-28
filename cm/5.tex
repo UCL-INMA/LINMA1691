@@ -260,8 +260,23 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 
 \begin{mytheo} [König]
   Dans un graphe biparti, si $K^*$ est une couverture de sommets minimum et $M^*$ un couplage maximum, alors $|M^*| = |K^*|$.
-  \begin{proof}
-     Preuve \addTODO
+  \begin{proof} [Démonstration venant du cours de R. Lambiotte et L. Tabourier (FUNDP)]
+    Soit un graphe biparti ($X$,$Y$) et $M^*$ un couplage maximum. 
+    Soit $U$ les noeuds qui ne sont pas incidents à $M^*$ dans $X$.
+    Soit $Z$ l'ensemble des noeuds atteints par tous les chemins $M^*$-alternés partant de $U$.\\
+    Soient : 
+    \begin{enumerate}
+      \item $S = Z \cap X$
+      \item $T = Z \cap Y$
+    \end{enumerate}
+    On montre que $V(S) = T$ :
+    \begin{center}
+      \includegraphics[width=300pt]{../img/konig}
+    \end{center}
+    Soit $K = T \cup (X \textbackslash S)$, $K$ est une couverture de sommets : toutes les arêtes ont une extrêmité dans $K$ car si ce n'est pas le cas, on a une arête du graphe liant $(Y \textbackslash T)$ à $S$, or $V(S) = T$ (contradictoire). On va montrer que $K$ est une couverture minimale et qu'elle vérifie $|K^*| = |M^*|$.\\
+    $|K| = |X \textbackslash S| + |T|$ ($X$ et $Y$ étant disjoints).\\
+    Supposons qu'il existe $x \in X \textbackslash S$ tel que $x$ est adjacent par une arête de $M^*$ à un noeud de $T$, dans ce cas $x \in Z$ et donc $x \in S$ (contradictoire). Donc les arêtes de $M^*$ ont une extrémité dans $T$ ou dans $X \textbackslash S$ mais pas dans les deux, donc $|K| = |M^*|$, on a donc trouvé que $K^*$ est une couverture minimum telle que $|K^*| = |M^*|$.\\
+    Notons qu'on a pas seulement montré qu'il existe une couverture minimum $K^*$ telle que $|K^*| = |M^*|$, on a aussi vu comment on pouvait la construire connaissant $M^*$.
   \end{proof}
 \end{mytheo}
 
