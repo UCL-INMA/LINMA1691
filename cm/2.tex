@@ -15,6 +15,7 @@
 \subsection{Algorithme de Dijkstra}
 \index{algorithme!algorithme de Dijkstra}
 \begin{myalgo}[Algorithme de Dijkstra]
+\noindent
 \begin{enumerate}
   \item Initialement, $i=0$, l'ensemble $S={u_{0}}$ (il contient notre noeud de départ) et l'ensemble \={S}$_{0}$ contient tous les autres noeuds. $l(u_{0})=0$ et $l(v)=\infty$ pour $v\ne u_{0}$ ($l(v)$ est une borne supérieure de $d(u_{0},v)$).
 	\item Pour chaque $v \in$ \=S$_{i}$, on remplace $l(v)$ par min $({l(v),l(u_{i}+w{u_{i}v)}})$. On calcule le minimum pour $v \in$\=S$_{i}$ de $l(v)$ et on nomme $u_{i+1}$ le sommet pour qui ce minimum est atteind. Ensuite, on fixe $S_{i+1}=S_{i} \cup {u_{i+1}}$ et on retire ce sommet de \=S$_{i+1}$.
