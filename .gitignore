@@ -10,6 +10,8 @@ INMA2702-exercices.pdf
 *~
 *.pdf
 *.synctex.gz
+*.bbl
+*.blg
 
 # latexmk
 *.fdb_latexmk
