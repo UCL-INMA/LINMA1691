@@ -1,5 +1,7 @@
 \input{../lib.tex}
 
+\usepackage{verbatim} % for comment
+
 \usepackage[framemethod=tikz]{mdframed}
 %\usepackage{tikzpagenodes}
 \usepackage{hyperref} %Allows to make references (\ref{}), pdf links are now clickable.
@@ -31,7 +33,14 @@
   \fill[black] ([xshift=-2pt,yshift=-2pt]O) rectangle ++(-1ex,-1ex);
   }
 }
-\newmdenv[style=mysquare]{solution}
+\ifthenelse{\isundefined{\Sol}}{\def\Sol{true}}{}
+\ifthenelse{\equal{\Sol}{false}}
+{
+  \newenvironment{solution}{\expandafter\comment}{\expandafter\endcomment}
+}
+{
+  \newmdenv[style=mysquare]{solution}
+}
 
 \newcommand{\nosolution}
 {Cet exercice ne contient pas encore de solution.
@@ -73,17 +82,26 @@ ou par mail.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pagenumbering{arabic}% Arabic page numbers (and reset to 1)
 \tableofcontents
-\newpage
 
+\newpage
 \input{1.tex}
+\newpage
 \input{2.tex}
+\newpage
 \input{3.tex}
+\newpage
 \input{4.tex}
+\newpage
 \input{5.tex}
+\newpage
 \input{6.tex}
+\newpage
 \input{7.tex}
+\newpage
 \input{8.tex}
+\newpage
 \input{9.tex}
+\newpage
 \input{10.tex}
 
 \end{document}
