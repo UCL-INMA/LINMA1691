@@ -25,6 +25,7 @@
   \end{center}
 \end{figure}
 
+\begin{solution}
 On cherche le nombre de parcours fermé partant de A de longueur $k$.
 Pour cela, on utilise le théorème suivant :
 
@@ -131,8 +132,7 @@ Ici $k$ est pair, donc $(-1)^{k}=1$ et $n=3$ (sous-blocs), on obtient
 \[
 \#\, parcours\, ferm\acute{e}\, de\, longueur\, k\, de\, A\rightarrow A=\frac{2}{3}(2{}^{k-1}+1)
 \]
-
-\vspace{-1cm}
+\end{solution}
 
 \paragraph{2. } Est-il possible de tracer les figures suivantes sans lever le crayon et sans passer deux fois par le même segment?
 
@@ -215,6 +215,7 @@ Ici $k$ est pair, donc $(-1)^{k}=1$ et $n=3$ (sous-blocs), on obtient
   \end{center}
 \end{figure}
 
+\begin{solution}
 Tracer les figures sans lever le crayon et sans passer deux fois par
 le même segment, revient à chercher un parcours eulérien :
 \begin{itemize}
@@ -224,16 +225,17 @@ fermé.
 \item 2 noeuds sont de degré impair, on utilise le théorème suivant : 
 \end{itemize}
 \begin{center}
-Un graphe connexe possède un parcours eulérien ssi le nombre de noeuds de degré impair est zéro ou deux.
-\par\end{center}
+\par Un graphe connexe possède un parcours eulérien ssi le nombre de noeuds de degré impair est zéro ou deux.
 
-Il existe donc un parcours eulérien.
-\begin{itemize}
-\item 4 noeuds sont de degré impair, il n'existe donc pas de parcours eulérien.
-\end{itemize}
-\vspace{-1cm}
+\end{center}
+
+Il existe donc un parcours eulérien dans le premier et le deuxième.
+Il y a 4 noeuds qui sont de degré impair dans le dernier, il n'existe donc pas de parcours eulérien.
+
+\end{solution}
 
 \paragraph{3. } En vous basant sur la preuve inductive du théorème qui caractérise les graphes eulériens, décrivez un algorithme qui trouve un circuit eulérien en un temps $O(|E|)$.
+\begin{solution}
 Il faut utiliser la preuve du théorème d'Euler :
 
 \begin{center}
@@ -244,12 +246,22 @@ pair
 La deuxième partie de la preuve consiste en la construction d'un parcours
 eulérien, cela nous donne aussi un algorithme pour trouver un parcours
 eulérien.
+
+Le principe de l’algorithme est simple:
+\begin{itemize}
+\item on prend un nœud non parcouru encore;
+\item on prend les arêtes non parcourue encore jusqu'à revenir sur le noeud de départ;
+\item on merge ce parcours avec ceux déjà trouver;
+\item si il n'y a plus de nœud non exploré, on a fini. Sinon on reprend au point 1.
+\end{itemize}
+\end{solution}
 \paragraph{4. } \textbf{Séquences de de Bruijn.} Le problème suivant apparaît sous de nombreuses formes. On demande de construire la plus longue séquence circulaire de lettres d'un alphabet de $k$ lettres sans qu'aucune sous-séquence de longueur $n$ ne soit répétée.
 \begin{enumerate}
   \item Donnez une borne supérieure sur la longueur de la séquence circulaire en question.
   \item Cette borne peut-elle être atteinte? Formulez cette question comme un problème de tour eulérien dans un graphe orienté. (Indice~: les sommets correspondent aux séquences de longueur $n-1$ et les arêtes aux séquences de longueur $n$.)
   \item Pour l'alphabet $\mathcal{A} = \{0, 1, 2\}$ de $k = 3$ lettres et pour $n = 3$, répondez à la question précédente en construisant la plus longue séquence circulaire.
 \end{enumerate}
+\begin{solution}
 1. $k^{n}$ est une borne supérieure sur le nombre de sous-séquences
 de longueur $n$. Puisqu'on ne peut pas les répéter, la plus longue
 chaîne utilisera toutes les sous-séquences.
@@ -257,8 +269,8 @@ chaîne utilisera toutes les sous-séquences.
 2.oui
 
 3.
-\newpage
-
+\end{solution}
+\pagebreak
 \paragraph{5. } On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
 \begin{figure}[h!]
   \begin{center}
@@ -314,7 +326,8 @@ chaîne utilisera toutes les sous-séquences.
     \end{tikzpicture}
   \end{center}
 \end{figure}
-\vspace{-1cm}
+
+\begin{solution}
 Il faut trouver un parcours fermé de poids minimum passant au moins
 une fois par chaque arête. Le cas idéal est celui où tous les noeuds
 sont pairs car dans ce cas il existe un parcours fermé passant une
@@ -385,9 +398,10 @@ $\,$
 \begin{center}
 7+4+1+4+7+4+1+4+1+1+3+3+1+1+3+3+2+2+2+2+\textcolor{red}{4}+\textcolor{red}{4}+\textcolor{red}{1}+\textcolor{red}{1}=66
 \par\end{center}
-
+\end{solution}
 
 \paragraph{6. } Dans le graphe suivant, trouvez un chemin de coût minimum du sommet $1$ au sommet $7$. Le chemin doit traverser toutes les arêtes au moins une fois.
+
 \begin{figure}[h!]
   \begin{center}
     \begin{tikzpicture}[scale=2,auto,line width=.4mm]
@@ -428,8 +442,8 @@ $\,$
     \end{tikzpicture}
   \end{center}
 \end{figure}
-\vspace{-1cm}
 
+\begin{solution}
 Le raisonnement est similaire à celui de l'exercice 5. Nous devons
 trouver un chemin de coût minimum du sommet 1 au sommet 7. Le chemin
 doit traverser toutes les arêtes au moins une fois. Le cas idéal est
@@ -451,5 +465,5 @@ notre graphe a 2 sommets de degré impair, il existe donc un parcours
 eulérien entre ces 2 sommets. Ce parcours est le parcours de poids
 minimum du sommet 1 au sommet 7 passant au moins une fois par chaque
 arête dans le graphe de départ, sont poids vaut 79.
-
+\end{solution}
 \paragraph{7. } Résolvez le problème du postier chinois sur l'hypercube de dimension $k$.
