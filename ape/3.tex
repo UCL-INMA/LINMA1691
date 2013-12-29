@@ -16,7 +16,7 @@
 \section{Séance 3}
 
 
-\paragraph{1. } Lorsque toutes les arêtes d'un graphe sont de longueur 1, la recherche en largeur dans le graphe permet de trouver le plus court chemin du nœud $s$ au nœud $t$. Quelle est la complexité de cet algorithme? Quel est le pire cas?
+\subsection{Complexité} Lorsque toutes les arêtes d'un graphe sont de longueur 1, la recherche en largeur dans le graphe permet de trouver le plus court chemin du nœud $s$ au nœud $t$. Quelle est la complexité de cet algorithme? Quel est le pire cas?
 
 \begin{solution}
   Étant donné que cet algorithme doit, au plus, parcourir toutes les arêtes pour trouver le chemin,
@@ -27,7 +27,7 @@
   La complexité est donc $\bigoh(n^2)$, avec $n$ le nombre de nœuds dans le graphe.
 \end{solution}
 
-\paragraph{2. } Lorsque certaines longueurs dans un digraphe sont négatives il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
+\subsection{la plus courte chaîne VS le plus court chemin} Lorsque certaines longueurs dans un digraphe sont négatives il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
 \begin{solution}
 Une chaîne \footnote{même chose qu'un parcours} est une suite $v_0e_1v_1e_2...e_nv_n $ où $v_1,v_2,...$ sont des sommets et $e_1,e_2,...$ sont des arêtes.  Un chemin est une chaîne dont les sommets sont tous distincts.
 
@@ -76,7 +76,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
   \end{itemize}
 \end{solution}
 
-\paragraph{3. } L'algorithme de Dijkstra ne fonctionne correctement que lorsque la longueur des arêtes est positive. Donnez un exemple d'un digraphe dont tous les cycles sont de longueur positive et pour lequel l'algorithme de Dijkstra ne fournit pas la bonne solution. (A faire chez vous) Proposez une modification de l'algorithme de Dijkstra pour qu'il donne la bonne solution, même dans le cas où certaines arêtes sont négatives, si tous les cycles sont de longueur positive.
+\subsection{Dijkstra pour les longueurs négatives} L'algorithme de Dijkstra ne fonctionne correctement que lorsque la longueur des arêtes est positive. Donnez un exemple d'un digraphe dont tous les cycles sont de longueur positive et pour lequel l'algorithme de Dijkstra ne fournit pas la bonne solution. (A faire chez vous) Proposez une modification de l'algorithme de Dijkstra pour qu'il donne la bonne solution, même dans le cas où certaines arêtes sont négatives, si tous les cycles sont de longueur positive.
 
 \begin{solution}
   Nous allons tout d'abord appliquer l'algorithme de Dijkstra sur le graphe suivant pour trouver le chemin de poids minimum entre A et B.
@@ -148,7 +148,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 		\end{enumerate}
 \end{solution}
 
-\paragraph{4. } Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
+\subsection{Récurence sur le plus court chemin} Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
 
 \begin{solution}
 On écrit que la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes est égal au minimum entre le plus court chemin de $s$ à $j$ de longueur $k-1$ et le chemin minimum de $s$ à $i$ de longueur $k-1$ + l'arête de $i$ à $j$.
@@ -156,7 +156,7 @@ $$d_k(j) = min (d_{k-1}(j) , min_i(d_{k-1}(i)+w(i, j))$$
 La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arète supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
 \end{solution}
 
-\paragraph{5. } Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
+\subsection{Application de Dijkstra} Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
 
 \begin{center}
   \begin{tikzpicture}[x=2cm,y=1cm]
@@ -199,7 +199,7 @@ La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la 
   \]
 \end{solution}
 
-\paragraph{6. } Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
+\subsection{Deux seaux} Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
 
 \begin{solution}
 Le problème peut être modélisé comme le plus court chemin entre le nœud (0,0) et (0,4) dans le graphe donné. Il suffit de suivre la chaîne, on obtient sept opérations nécessaires. Nous n'avons tracé que les arêtes permettant d'aller dans les deux sens, par exemple, nous n'avons pas tracer  l'arête entre (5;4) et (5;0) car on peut aller de (5;4) à (5;0) mais pas de (5;0) à (5;4). On peut constater que le chemin le plus court est de 7 opérations. Il est tracé en rouge.
@@ -259,7 +259,7 @@ Le problème peut être modélisé comme le plus court chemin entre le nœud (0,
 \end{center}
 \end{solution}
 
-\paragraph{7. }
+\subsection{Échange de monnaies}
 	Vous possédez un billet de $p$ euros et vous souhaitez le changer en pièces de $a_1, a_2, ..., a_k$ euros (tous les montants étant entiers). Est-ce possible? Si oui, avec quel nombre de pièces? Formulez ce problème comme un problème de plus court chemin dans un graphe.
 
 
