@@ -28,21 +28,16 @@
 \end{solution}
 
 \paragraph{2. } Lorsque certaines longueurs dans un digraphe sont négatives il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
-
 \begin{solution}
-  Une chaîne \footnote{même chose qu'un parcours} est une suite $v_0e_1v_1e_2...e_nv_n $ où $v_1,v_2,...$ sont des sommets et $e_1,e_2,...$ sont des arêtes.
-  Un chemin est une chaîne dont les sommets sont tous distincts.\\
+Une chaîne \footnote{même chose qu'un parcours} est une suite $v_0e_1v_1e_2...e_nv_n $ où $v_1,v_2,...$ sont des sommets et $e_1,e_2,...$ sont des arêtes.  Un chemin est une chaîne dont les sommets sont tous distincts.
 
-  Un digraphe est graphe dirigé, ce qui est important ici car si le graphe n'était pas dirigé et qu'un poids
-  était négatif, il suffirait de faire cette arête en aller-retour suffisamment de fois pour avoir un poids
-  aussi petit que l'on veut.
-  Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de longueur négative ne signifie pas
-  spécialement que la plus courte chaîne sera différente que le plus court chemin.\\
+Un digraphe est graphe dirigé, ce qui est important ici car si le graphe n'était pas dirigé et qu'un poids
+était négatif, il suffirait de faire cette arête en aller-retour suffisamment de fois pour avoir un poids aussi petit que l'on veut.
+Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de longueur négative ne signifie pas spécialement que la plus courte chaîne sera différente que le plus court chemin.
 
-  Dans le graphe suivant,
-  si on veut trouver le chemin de poids minimum de $A$ à $E$, on a $ABDE$ de poids $8$.
+  Dans le graphe suivant, si on veut trouver le chemin de poids minimum de $A$ à $E$, on a $ABDE$ de poids $8$.
   Par contre, il n'y a pas de plus courte chaîne car $w(AB(DCBD)^nE) = 8 - 18n$ peut être aussi
-  petit que l'on veut.\\
+  petit que l'on veut.
 
   \begin{center}
     \begin{tikzpicture}[transform shape]
