@@ -312,7 +312,10 @@
     Est une façon de déconnecter un graphe est de retirer les arêtes incidentes au noeud de degré minimum
     
     $$\text{connectivité} \leq \text{arête-connectivité}$$
-    Par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. Imaginons que G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{connectivité(G-e)} \leq k-1$.
+    Par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. 
+    \begin{itemize}
+    \item Cas extrême : G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{connectivité(G-e)} \leq k-1$.
+    \item Sinon, il existe une coupe de sommets S de G-e telle que G-e-S est déconnecté. Si G-S est déjà déconnecté, alors $\text{connectivité(G)} \leq |S| \leq k - 1 \leq k$. \\ Si G-S est connecté, alors e est une coupe d'arête puisque G-S-e est déconnecté. \\ Si il y a au moins 3 noeuds x,u,v dans G-S: alors en retirant u ou v, on déconnecte x de v ou de u. Donc, $S \cup \{u \text{ou} v\}$ est une coupe de G et $\text{connectivité(G) \leq |S| + 1  \leq k$
  \end{proof}
 \end{mytheo}
 
