@@ -10,7 +10,7 @@
 % \usepackage{algorithmic}
 %
 % Il y a aussi besoin d'un environnement solution
-% Les questions 3 et 4 ont été réalisées avec l'aide 
+% Les questions 3 et 4 ont été réalisées avec l'aide
 % de Guillaume Derval
 
 \section{Séance 3}
@@ -80,7 +80,8 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 \begin{solution}
   Nous allons tout d'abord appliquer l'algorithme de Dijkstra sur le graphe suivant pour trouver le chemin de poids minimum entre A et B.
-        \begin{center}		
+
+        \begin{center}
 			\begin{tikzpicture}[scale=0.75,transform shape]
   				\Vertex[x=0,y=0]{A}
   				\Vertex[x=3,y=0]{B}
@@ -92,16 +93,18 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
   				\Edge[label=$-10$](C)(B)
 			\end{tikzpicture}
 		\end{center}
+
 		Ce digraphe, qui ne possède pas de cycle, ne gère pas bien Dijkstra. En effet, l'algorithme va parcourir l'arête de poids $1$ et ignorer l'arête de poids $5$ car cette dernière est plus lourde et on trouve directement la destination en parcourant celle de poids $1$. En résumé, l'algorithme nous renvoie un chemin de longueur $1$ alors que le chemin de plus petit poids est de poids $-5$.\\
-		
-		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode "simple" est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $\bigoh(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.\\
-		
+
+		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode "simple" est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $\bigoh(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.
+
 		Un exemple de pseudo-code pour l'algorithme de Bellman-Ford :
+
 		\begin{algorithm}{Bellman-Ford(List $vertices$, List $edges$, Vertex $source$)}
 			\begin{algorithmic}
 				\REQUIRE Un graphe (ici, représenté sous forme d'une liste de nœuds et une liste d'arêtes) et un nœud source
 				\ENSURE Un tableau contenant les distances de nœuds par rapport au nœud de départ et un tableau contenant des références vers le prédécesseur de chaque nœud. S'il y a un cycle négatif, une valeur qui l'indique est renvoyée.
-				
+
 				\medskip
 				\STATE \textit{//Initialisation}
 				\FORALL{$v$ in $vertices$}
@@ -110,20 +113,20 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 					\ELSE
 						\STATE $distance[v] \leftarrow +\infty$
 					\ENDIF
-					\STATE $predecessor[v] \leftarrow\ null$	
+					\STATE $predecessor[v] \leftarrow\ null$
 				\ENDFOR
-				
+
 				\medskip
-				\STATE \textit{//Mise à jour des distances et des prédécesseurs}		
+				\STATE \textit{//Mise à jour des distances et des prédécesseurs}
 				\FORALL{$u$ in $vertices$}
 					\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
 						\IF{$distance[v] > distance[u] + w$}
 							\STATE $distance[v] \leftarrow distance[u] + w$
 							\STATE $predecessor[v] \leftarrow u$
 						\ENDIF
-					\ENDFOR			
+					\ENDFOR
 				\ENDFOR
-				
+
 				\medskip
 				\STATE \textit{//Vérification pour les cycles de poids négatif}
 				\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
@@ -132,11 +135,11 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 					\ENDIF
 				\ENDFOR
 				\medskip
-				
+
 				\STATE \textbf{return} les tableaux "predecessor" et "distance"
 			\end{algorithmic}
-		\end{algorithm}	
-		
+		\end{algorithm}
+
 		Dans le cas de notre exemple, l'algorithme procède comme suit :
 		\begin{enumerate}
 			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, distance[A] :$= +\infty$

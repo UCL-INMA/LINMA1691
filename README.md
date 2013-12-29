@@ -6,9 +6,14 @@ Notes, énoncés et solutions des APEs du cours INMA1691 à l'EPL.
 Plus de détail dans le [wiki](https://github.com/blegat/LINMA1691/wiki).
 Pour utilisez certaines fonctionnalitées du Makefile, il vous faut installer [smartcp](https://github.com/blegat/smartcp).
 
+Les exercices peuvent avoir les solutions ou pas incluses
+et les boxes des solutions peuvent être changées.
+Pour cela, changez la variable `\SolStyle` et `\Sol`.
+`greyarrow` a de meilleur résultat niveau des bad page breaks.
+
 Deadline
 ===========
-R. Capron : 
+R. Capron :
 On a déjà commencé à travailler sur les notes, et ça avance bien.
 Est-ce que vous pourrez jeter un coup d’œil quand on aura plus avancé, histoire qu'on étudie pas trop d'erreurs :D
 C'est le genre de petit détails qui pousserait plus d'élèves à travailler sur ces notes.
