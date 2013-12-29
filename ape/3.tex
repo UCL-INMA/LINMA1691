@@ -36,7 +36,7 @@
   Un digraphe est graphe dirigé, ce qui est important ici car si le graphe n'était pas dirigé et qu'un poids
   était négatif, il suffirait de faire cette arête en aller-retour suffisamment de fois pour avoir un poids
   aussi petit que l'on veut.
-  Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de longueur impair ne signifie pas
+  Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de longueur négative ne signifie pas
   spécialement que la plus courte chaîne sera différente que le plus court chemin.\\
 
   Dans le graphe suivant,
@@ -63,7 +63,7 @@
   \end{center}
 
   Cependant, cette distinction n'est seulement nécessaire lorsqu'il y a
-  un circuit de longueur positive comme ici avec $DCBD$.
+  un circuit de longueur négative comme ici avec $DCBD$.
   Démontrons le par l'absurde.\\
 
   Supposons que la plus courte chaîne et le plus court chemin sont différents. Il y a deux possibilités :
