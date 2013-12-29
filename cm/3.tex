@@ -322,7 +322,17 @@
 \begin{mytheo} [Théorème de Whitney]
   Un graphe à au moins trois noeuds est 2-connexe ssi toute paire de noeuds distincts est reliée par au moins deux chemins dont les noeuds internes sont distincts.
   \begin{proof}
-     Preuve \addTODO
+  \newline
+   \fbox{$\Longleftarrow$}
+   \newline
+   Si je retire un noeud quelconque du graphe, $\forall u,v$ au plus 1 des 2 chemin est toujours connecté $\rightarrow$ G reste connexe. \\
+   \fbox{$\Longrightarrow$}
+     \newline
+     Par récurrence sur $d(u,v)$ : 
+     \begin{enumerate}
+     \item Cas de base : $d(u,v)=1$. Si G est 2-connexe alors G est 2-arête-connexe (cfr théorème précédent) donc retirer une arête laisse le graphe connexe. Soit l'arête e telle qu'il existe le chemin uev. Si on retire e, u et v sont toujours connecté donc existe donc un chemin P tel que uPv. $\rightarrow$ 2 chemins entre u et v.
+     \item Si c'est vrai pour toute paire de noeuds $x,y$ tels que $d(x,y) < d(u,v)$, prouvons que c'est également vrai pour $d(u,v)$. Soit $w$, le dernier noeud sur le chemin le plus court de u à v. Par hypothèse, $d(u,w) < d(u,v)$ et par récurrence, u et w sont reliés par au moins 2 chemins dont les noeuds internes sont distincts, nommons les $P_1$ et $P_2$. Si je retire w, il existe, par connexité, un chemin P de u à v qui ne passe pas par w. Soit x le dernier noeud de P qui appartient à $P_1$ ou à $P_2$ (éventuellement, x=u). Il existe donc 2 chemins de u à v : u \dots x\dots v, et u \dots w \dots v. Par construction, ces chemins sont disjoints. 
+     \end{enumerate}
   \end{proof}
 \end{mytheo}
 
