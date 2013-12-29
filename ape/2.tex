@@ -1,5 +1,5 @@
 \section{Séance 2}
-\paragraph{1. } Dans le graphe ci-dessous, trouvez le nombre de parcours fermés contenant le point $A$.
+\subsection{Parcours fermés} Dans le graphe ci-dessous, trouvez le nombre de parcours fermés contenant le point $A$.
 
 \begin{figure}[h!]
   \begin{center}
@@ -134,7 +134,7 @@ Ici $k$ est pair, donc $(-1)^{k}=1$ et $n=3$ (sous-blocs), on obtient
 \]
 \end{solution}
 
-\paragraph{2. } Est-il possible de tracer les figures suivantes sans lever le crayon et sans passer deux fois par le même segment?
+\subsection{Tracer d'un coup} Est-il possible de tracer les figures suivantes sans lever le crayon et sans passer deux fois par le même segment?
 
 \begin{figure}[h!]
   \begin{center}
@@ -234,7 +234,7 @@ Il y a 4 noeuds qui sont de degré impair dans le dernier, il n'existe donc pas 
 
 \end{solution}
 
-\paragraph{3. } En vous basant sur la preuve inductive du théorème qui caractérise les graphes eulériens, décrivez un algorithme qui trouve un circuit eulérien en un temps $O(|E|)$.
+\subsection{Algorithme pour trouver un circuit eulérien} En vous basant sur la preuve inductive du théorème qui caractérise les graphes eulériens, décrivez un algorithme qui trouve un circuit eulérien en un temps $O(|E|)$.
 \begin{solution}
 Il faut utiliser la preuve du théorème d'Euler :
 
@@ -255,7 +255,7 @@ Le principe de l’algorithme est simple:
 \item si il n'y a plus de nœud non exploré, on a fini. Sinon on reprend au point 1.
 \end{itemize}
 \end{solution}
-\paragraph{4. } \textbf{Séquences de de Bruijn.} Le problème suivant apparaît sous de nombreuses formes. On demande de construire la plus longue séquence circulaire de lettres d'un alphabet de $k$ lettres sans qu'aucune sous-séquence de longueur $n$ ne soit répétée.
+\subsection{Séquences de de Bruijn.} Le problème suivant apparaît sous de nombreuses formes. On demande de construire la plus longue séquence circulaire de lettres d'un alphabet de $k$ lettres sans qu'aucune sous-séquence de longueur $n$ ne soit répétée.
 \begin{enumerate}
   \item Donnez une borne supérieure sur la longueur de la séquence circulaire en question.
   \item Cette borne peut-elle être atteinte? Formulez cette question comme un problème de tour eulérien dans un graphe orienté. (Indice~: les sommets correspondent aux séquences de longueur $n-1$ et les arêtes aux séquences de longueur $n$.)
@@ -271,7 +271,7 @@ chaîne utilisera toutes les sous-séquences.
 3.
 \end{solution}
 \pagebreak
-\paragraph{5. } On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
+\subsections{Parcourt fermé de poid minimum} On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
 \begin{figure}[h!]
   \begin{center}
     \begin{tikzpicture}[scale=1,auto,line width=.4mm]
@@ -400,7 +400,7 @@ $\,$
 \par\end{center}
 \end{solution}
 
-\paragraph{6. } Dans le graphe suivant, trouvez un chemin de coût minimum du sommet $1$ au sommet $7$. Le chemin doit traverser toutes les arêtes au moins une fois.
+\subsection{Chemin de coût minimum} Dans le graphe suivant, trouvez un chemin de coût minimum du sommet $1$ au sommet $7$. Le chemin doit traverser toutes les arêtes au moins une fois.
 
 \begin{figure}[h!]
   \begin{center}
@@ -466,4 +466,4 @@ eulérien entre ces 2 sommets. Ce parcours est le parcours de poids
 minimum du sommet 1 au sommet 7 passant au moins une fois par chaque
 arête dans le graphe de départ, sont poids vaut 79.
 \end{solution}
-\paragraph{7. } Résolvez le problème du postier chinois sur l'hypercube de dimension $k$.
+\subsection{Postier chinois dans l'hypercube} Résolvez le problème du postier chinois sur l'hypercube de dimension $k$.
