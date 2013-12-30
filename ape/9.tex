@@ -191,7 +191,8 @@ $$ f_4 = 12 \qquad f_6 = 8 \qquad f_8 = 6$$
 Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
 
 \begin{solution}
-  \nosolution
+Si une coupe dans le graphe G comporte un nombre paire d'arêtes cela signifie que les cycles dans le graphe dual seront de longueurs paires également. En effet une coupe dans le graphe G est l'équivalent du cycle enfermant une face dans le graphe dual. On a effectivement que toutes les coupes dans G comportent un nombre paire d'arêtes car le nombre d'arête d'une coupe est le nombre d'arête d'une des parties déconnectées - le nombre d'arête interne à cette partie. Comme le nombre total des arêtes des noeuds d'une partie est paire car tous les nœuds sont de degré paire. On soustrait un nombre paire à un nombre paire et on a donc un nombre paire et donc bien un graphe dual avec uniquement des cycles de degrés paires. Si tous les cycles d'un graphe sont de degré paire il est biparti, si il est biparti il est coloriable en deux couleurs.
+
 \end{solution}
 
 \subsection{Impression de circuits électriques}
