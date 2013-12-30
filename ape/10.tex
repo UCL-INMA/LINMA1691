@@ -1,6 +1,7 @@
 \section{Séance 10}
 
-\paragraph{1. } Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la solution proposée est bien optimale? 
+\subsection{Flot maximum}
+Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la solution proposée est bien optimale? 
 
 \begin{figure}[h!]
   \centering
@@ -28,10 +29,10 @@
     \Edge[label=$4$](E)(T)
     \Edge[label=$1$](O)(D)
     \Edge[label=$8$](O)(E)
-    \tikzset{EdgeStyle/.append style = {bend left}}
+    \tikzset{EdgeStyle/.append style = {bend right}}
     \Edge[label=$2$](A)(B)
     \Edge[label=$1$](B)(A)
-    \tikzset{EdgeStyle/.append style = {bend right}}
+    \tikzset{EdgeStyle/.append style = {bend left}}
     \Edge[label=$2$](B)(C)
   \end{tikzpicture}
 \end{figure}
@@ -72,17 +73,18 @@
       \Edge[label=$4/4$](E)(T)
       \Edge[label=$1/1$](O)(D)
       \Edge[label=$7/8$](O)(E)
-      \tikzset{EdgeStyle/.append style = {bend left}}
+      \tikzset{EdgeStyle/.append style = {bend right}}
       \Edge[label=$2/2$](A)(B)
       \Edge[label=$0/1$](B)(A)
-      \tikzset{EdgeStyle/.append style = {bend right}}
+      \tikzset{EdgeStyle/.append style = {bend left}}
       \Edge[label=$2/2$](B)(C)
     \end{tikzpicture}
   \end{center}
 \end{solution}
 
 
-\paragraph{2. } Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau? 
+\subsection{Mon patron a tord}
+Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau? 
 
 \begin{figure}[h!]
   \centering
@@ -201,7 +203,8 @@
   \end{center}
 \end{solution}
 
-\paragraph{3. } Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe. 
+\subsection{Entremetteuses de couples ardensais}
+Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe. 
 
 \begin{solution}
   On peut modéliser ce problème comme un flot maximum dans un graphes de $2n + 2m + 2$ noeuds dont
@@ -269,7 +272,8 @@
   \end{center}
 \end{solution}
 
-\paragraph{4. } Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous. 
+\subsection{Processeur bicoeurs}
+Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous. 
 
 \begin{multicols}{2}
 
@@ -306,7 +310,8 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 
 \end{multicols}
 
-\paragraph{5. } L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemin d'augmentation et d'augmenter le flot le long de ce chemin jusqu'à saturation. Montrez par un argument élémentaire que dans le cas où les capacités maximales sont entières cet algorithme s'arrête toujours après un nombre fini d'itérations. Pouvez-vous adapter votre argument à la situation pour laquelle les capacités sont rationnelles? \\
+\subsection{Algorithme de Ford-Fulkerson}
+L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemin d'augmentation et d'augmenter le flot le long de ce chemin jusqu'à saturation. Montrez par un argument élémentaire que dans le cas où les capacités maximales sont entières cet algorithme s'arrête toujours après un nombre fini d'itérations. Pouvez-vous adapter votre argument à la situation pour laquelle les capacités sont rationnelles? \\
 \textbf{Challenge:} et pour des capacités réelles? 
 
 \begin{solution}
@@ -413,12 +418,14 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
   \end{itemize}
 \end{solution}
 
-\paragraph{6. } Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
+\subsection{Profit d'un laboratoire}
+Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
 
 \newpage
 \textbf{Exercices supplémentaires}
 
-\paragraph{7. } Un producteur désire envoyer au départ des sommets $D_1$ et $D_2$ un produit aux destinations $M_1, M_2$, et $M_3$ à travers le réseau. Les capacités des arêtes sont limitées. Il y a des demandes respectives de 10, 8 et 8 unités aux destinations $M_1, M_2,$ et $M_3$. Ces demandes peuvent-elles être satisfaites? 
+\subsection{Acheminer des produits}
+Un producteur désire envoyer au départ des sommets $D_1$ et $D_2$ un produit aux destinations $M_1, M_2$, et $M_3$ à travers le réseau. Les capacités des arêtes sont limitées. Il y a des demandes respectives de 10, 8 et 8 unités aux destinations $M_1, M_2,$ et $M_3$. Ces demandes peuvent-elles être satisfaites? 
 
 \begin{figure}[h!]
   \centering
@@ -537,11 +544,12 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 
 \end{solution}
 
-\paragraph{8. } On considère un groupe de six personnes $\left\lbrace A, B, … , F \right\rbrace$ qui sont toutes membres d'un certain nombre de clubs de sport $\left\lbrace 1, 2, 3, 4, 5, 6 \right\rbrace$. Ci-dessous nous donnons la liste des membres de chaque club. \\
+\subsection{Représentant de clubs de sport}
+On considère un groupe de six personnes $\left\lbrace A, B, … , F \right\rbrace$ qui sont toutes membres d'un certain nombre de clubs de sport $\left\lbrace 1, 2, 3, 4, 5, 6 \right\rbrace$. Ci-dessous nous donnons la liste des membres de chaque club. \\
 Club 1: A, C \\
 Club 2: C, E \\
 Club 3: A, B, C, D, E, F \\
 Club 4: A, C, E \\
 Club 5: A, B, D, E, F \\
 Club 6: A, E\\
-On souhaite choisir un représentant pour chaque club. Pour être représentant d'un club, il faut en être membre. Par ailleurs, une même personne ne peut représenter qu'un seul club. Est-il possible de trouver des représentants pour tous les clubs? Justifiez votre réponse. Proposez une solution dans le cas d'un ensemble $M$ de personnes, avec $S_j \subseteq M$ la liste des membres du club $j$. 
+On souhaite choisir un représentant pour chaque club. Pour être représentant d'un club, il faut en être membre. Par ailleurs, une même personne ne peut représenter qu'un seul club. Est-il possible de trouver des représentants pour tous les clubs ? Justifiez votre réponse. Proposez une solution dans le cas d'un ensemble $M$ de personnes, avec $S_j \subseteq M$ la liste des membres du club $j$. 
