@@ -437,7 +437,7 @@ $\,$
       \draw (8)  -- (11) node[midway,above] {$9$};
       \draw (9)  -- (10) node[midway,above] {$7$};
       \draw (9)  -- (11) node[midway,above,right] {$1$};
-      \draw (1) to[bend right] (7) node[midway,below] {$2$};
+      \draw (1) to[bend right] node[midway,below] {$2$} (7);
 
     \end{tikzpicture}
   \end{center}
@@ -446,22 +446,28 @@ $\,$
 \begin{solution}
 Le raisonnement est similaire à celui de l'exercice 5. Nous devons
 trouver un chemin de coût minimum du sommet 1 au sommet 7. Le chemin
-doit traverser toutes les arêtes au moins une fois. Le cas idéal est
-celui d'un parcours eulérien du sommet 1 au sommet 7 (dans ce cas
+doit traverser toutes les arêtes au moins une fois. 
+
+Le cas idéal est celui d'un parcours eulérien du sommet 1 au sommet 7 (dans ce cas
 on ne passe qu'une seule fois par chaque arête). Pour avoir un parcours
 eulérien, il faut que les sommets de départ et d'arrivée (sommet 1
-\& 7) soient de degré impair. Le sommet 1 est bien de degré impair,
+\& 7) soient de degré impair. 
+
+Le sommet 1 est bien de degré impair,
 par contre le sommet 7 est de degré pair, il faudra donc ajouter une
 arête incidente à ce sommet. De plus, tous les autres sommets doivent
 avoir un degré pair. Par conséquent, il faut ajouter une arête aux
 sommets 2, 6 \& 4. Nous avons 4 sommets (2, 4, 6 \& 7) auquel il faut
-ajouter une arête. Nous les regroupons par paire afin d'avoir le plus
+ajouter une arête. 
+
+Nous les regroupons par paire afin d'avoir le plus
 court chemin possible entre chaque paire. Ce qui nous donne 4 avec
 7 et 2 avec 6. A présent, il ne nous reste plus qu'à ajouter une arête
 entre chaque paire de sommets, le poids de la nouvelle arête correspond
 aux poids du parcours minimum entre les 2 sommets. L'arête entre 4
-et 7 aura un poids 1, l'arête entre 2 et 6 aura un poids 6. A présent,
-notre graphe a 2 sommets de degré impair, il existe donc un parcours
+et 7 aura un poids 1, l'arête entre 2 et 6 aura un poids 6. 
+
+A présent, notre graphe a 2 sommets de degré impair, il existe donc un parcours
 eulérien entre ces 2 sommets. Ce parcours est le parcours de poids
 minimum du sommet 1 au sommet 7 passant au moins une fois par chaque
 arête dans le graphe de départ, sont poids vaut 79.
