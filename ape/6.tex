@@ -1,5 +1,162 @@
 \section{Séance 6}
-\textbf{Coloriages d'arêtes}
+
+\paragraph{Couplages}
+
+\subsection{Couplage maximum}
+Etant donné le couplage $M = \left\lbrace  (1,1'), (2,4'),(4,2'),(5,5')  \right\rbrace$ dans le graphe biparti ci-dessous, démontrez que $M$ est maximum.
+
+\begin{figure}[h!]
+  \begin{center}
+    \begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=0]{1}
+      \Vertex[x=0 ,y=-1]{2}
+      \Vertex[x=0,y=-2]{3}
+      \Vertex[x=0 ,y=-3]{4}
+      \Vertex[x=0 ,y=-4]{5}
+      \Vertex[x=3 ,y=-0]{1'}
+      \Vertex[x=3 ,y=-1]{2'}
+      \Vertex[x=3 ,y=-2]{3'}
+      \Vertex[x=3 ,y=-3]{4'}
+      \Vertex[x=3 ,y=-4]{5'}
+
+
+      \path[every node/.style={font=\sffamily\small}]
+      (1) edge [style=dashed]  node [left] {} (1')
+      edge node [left] {} (5')
+
+      (2) edge node [right] {} (1')
+      edge node [right] {} (2')
+      edge node [right] {} (3')
+      edge [style=dashed]  node [right] {} (4')
+      edge node [right] {} (5')
+
+      (3) edge node [right] {} (1')
+      edge node [left] {} (5')
+
+      (4) edge [style=dashed]  node [right] {} (2')
+      edge node [right] {} (3')
+      edge node [right] {} (4')
+      edge node [right] {} (5')
+
+      (5) edge node [right] {} (1')
+      edge [style=dashed]  node [left] {} (5');
+
+
+    \end{tikzpicture}
+  \end{center}
+\end{figure}
+\begin{solution}
+Un couplage dans un graphe est un ensemble M d’arêtes tel que
+M ne contient pas de boucles et deux arêtes de M n’ont jamais
+d’extrêmité en commun. Hors, les seuls noeuds qui ne sont pas encore des extrémités dans ce couplage M sont les noeuds $3$ et $3'$. Si M est maximum, on ne peut pas lui ajouter d'arête. Hors la seule arête qu'on pourrait lui ajouter serait une qui relie les noeuds $3$ et $3'$. Cette arête n'existant pas dans ce graphe, M est bien maximum.
+\end{solution}
+
+\subsection{Vrai ou faux}
+
+\begin{itemize}
+  \item Un arbre possède un couplage parfait si et seulement si tous les chemin d'une feuille à une autre sont de longueur impaire.
+  \item Un arbre possède au plus un couplage parfait.
+  \item Dans un arbre, si pour tout noeud $u$, il existe une feuille $v$ telle que $d(u,v)$ est impaire, alors cet arbre possède un couplage parfait.
+  \item Soit $o(H)$, le nombre de composantes impaires du graphe $H$, c'est-à-dire le nombre de composantes connexes ayant un nombre impair de sommets. Un arbre $G$ admet un couplage parfait si $o(G-v)=1,  \ \ \forall v \in V$.
+  \item Si un arbre $G$ admet un couplage parfait, alors $o(G-v)=1, \ \ \forall v \in V$.
+\end{itemize}
+
+
+\subsection{Assistanat INMA}
+Thibault a la responsabilité de répartir les séances d'exercices des cours de mathématiques appliquées entre les assistants du pôle INMA. Chacun des assistants donne pour cela à Thibault une liste de ses cours préférés, qui sont repris dans la table ci-dessous.
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    Assistant & Cours préférés \\
+    \hline
+    Pierre & Projet, Théorie des Matrices \\
+    Romain & Graphes, Modélisation Stochastique \\
+    Arnaud & Théorie des Matrices \\
+    Adeline & Graphes, Optimisation, Analyse Numérique \\
+    Benoit & Théorie des Matrices, Projet \\
+    Nicolas & Graphes, Optimisation, Analyse Numérique, \\
+            & Modélisation Stochastique, Théorie des Matrices  \\
+    \hline
+  \end{tabular}
+\end{center}
+
+Thibault aimerait bien assigner exactement un cours à chaque assistant en respectant autant que possible leurs préférences. Formulez cela comme un problème de couplage maximum dans un graphe.
+
+Pour l'aider dans sa tâche, Thibault dispose de la répartition de l'année dernière:
+
+\begin{center}
+  \begin{tabular}{|c|c|}
+    \hline
+    Romain & Modélisation Stochastique \\
+    Adeline & Optimisation \\
+    Nicolas & Théorie des Matrices \\
+    Pierre & Projet \\
+    \hline
+  \end{tabular}
+\end{center}
+
+En partant de la répartition de l'année dernière, utilisez l'algorithme hongrois pour aider Thibault à trouver un couplage maximum. Ce couplage est-il parfait? Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
+
+
+%Dans le graphe graphe biparti ci-dessous, un couplage possible est $M = \left\lbrace  (1,5'), (2,2'),(3,6'),(5,4')  \right\rbrace$. En partant de ce couplage, utilisez l'algorithme hongrois pour trouver un couplage maximum. Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
+
+%\begin{figure}[h!]
+%\begin{center}
+%\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+%   \Vertex[x=0 ,y=0]{1}
+%   \Vertex[x=0 ,y=-1]{2}
+%   \Vertex[x=0,y=-2]{3}
+%   \Vertex[x=0 ,y=-3]{4}
+%   \Vertex[x=0 ,y=-4]{5}
+%   \Vertex[x=0, y=-5]{6}
+%   \Vertex[x=3 ,y=-0]{1'}
+%   \Vertex[x=3 ,y=-1]{2'}
+%   \Vertex[x=3 ,y=-2]{3'}
+%   \Vertex[x=3 ,y=-3]{4'}
+%   \Vertex[x=3 ,y=-4]{5'}
+%   \Vertex[x=3, y=-5]{6'}
+%
+%     \path[every node/.style={font=\sffamily\small}]
+%     (1) edge  node [left] {} (1')
+%        	edge [style=dashed]  node [left] {} (5')
+%
+%    (2) edge node [right] {} (1')
+%    	edge [style=dashed]  node [right] {} (2')
+%    	edge node [right] {} (3')
+%
+%    (3) edge node [right] {} (1')
+%     	edge  node [right] {} (2')
+%    	edge node [right] {} (3')
+%         edge  node [left] {} (5')
+%         edge [style=dashed]  node [left] {} (6')
+%
+%    (4) edge node [right] {} (6')
+%
+%     (5) edge [style=dashed] node [right] {} (4')
+%         edge node [left] {} (6')
+%
+%     (6) edge node [right] {} (4')
+%         edge  node [left] {} (6')
+%
+%
+%\end{tikzpicture}
+%\end{center}
+%\end{figure}
+
+
+\subsection{Gagner sans le couplage parfait}
+Deux personnes jouent à un jeu sur un graphe $G$ de la manière suivante:
+
+\begin{itemize}
+  \item Chacune des deux personnes sélectionne chacune à son tour un sommet $v_1, v_2, v_3, …$ tel que $\forall i > 1, \ \ \ v_i$ est adjacent à $v_{i-1}$.
+  \item Un sommet déjà sélectionné ne peut plus être choisi.
+  \item La dernière personne à sélectionner un sommet gagne le jeu.
+\end{itemize}
+
+Montrer que le premier joueur admet une stratégie gagnante si et seulement si le graphe $G$ n'admet pas de couplage parfait.
+
+\paragraph{Coloriages d'arêtes}
 
 \subsection{Indice chromatique du graphe de Pétersen}
 Déterminez l'indice chromatique du graphe de Pétersen.
