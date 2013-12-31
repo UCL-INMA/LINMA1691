@@ -14,10 +14,6 @@ Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-o
 \subsection{Problème du cavalier}
 Le problème du cavalier était un problème en vogue au XVIIIème siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
 \begin{solution}
-\subsection{Solution de Nicolas Stevens}
-Chaque noeud représente une case de l'échiquier. Les arrêtes sont les déplacements possibles en partant d'une case. L'objectif est alors de trouver une cycle hamiltonien sur ce graphe. Pour le cas où $n$ est impair, on peut tirer parti d'une propriété de ce graphe : on remarque facilement que le graphe est biparti. Or si $n$ est impair, les deux partition des noeud sont de taille différentes. Dés lors il n'est pas possible de trouver un cycle qui parcourt tout les noeuds une et une seule fois et qui revient au point de départ.
-
-\subsection{Solution de Félicien Schiltz}
 Ce problème correspond à trouver un tour hamiltonien dans un graphe dans lequel les sommets sont les cases du graphe. Les sommets sont reliés entre eux lorsque le cavalier peut se déplacer d'un à l'autre directement.\\
 Comme le mouvement du cavalier lui permet de se déplacer uniquement d'une case blanche à une case noire et d'une case noire à une case blanche, ce graphe est biparti.
 Si $n$ est impair, le nombre de cases est impair également et le problème demande donc de trouver un cycle hamiltonien de longueur impaire dans un graphe biparti. Hors, un graphe est biparti si et seulement si il ne contient aucun cycle de longueur impaire. Il est donc impossible de résoudre ce problème si n est impair.
@@ -54,15 +50,15 @@ Il est très facile d'ajouter les noeuds par 2 en complétant les circuits hamil
 \end{solution}
 
 \subsection{Souris VS gruyère}
+\paragraph{solution 1 :}
 Une souris mange un gruyère de dimension $3 \times 3 \times 3$ par petits morceaux de taille $1 \times 1 \times 1$. Elle démarre en un coin du cube et se déplace de cube adjacent en cube adjacent. Peut-elle manger la totalité du gruyère en terminant par le cube central?
 \begin{solution}
 La justification est la même que pour le problème du cavalier. Modélisons le fromage comme un graphe dont chaque cube de dimension $1 \times 1 \times 1$ est un noeud et dont les noeuds représentant des cubes adjacents sont reliés par une arête.\\
 En effet, ce graphe est biparti. On peut imaginer peindre le noeud de départ en blanc, ceux qui y sont adjacents en noir, ceux adjacents à ceux-ci en blanc etc.\\
 Le nombre de noeuds peints en blanc sera donc 14 et ceux peints en noir 13. Il est évidemment impossible de trouver un chemin hamiltonien partant d'un coin (blanc) et se terminant au centre (noir) et ayant parcouru tous les noeuds.
-\end{solution}
-
-\begin{solution}
-Chaque noeud représente une part du cube (27 parts au totale). Les arrêtes sont verticales ou horizontales. Ce faisant on a construit un graphe biparti. Comme il y a 27 noeuds, la bi-partition comporte respectivement 14 et 13 noeuds. Il n'est alors pas possible de construire un cycle qui passe par tous les noeuds et qui revient au point de départ. Une autre manière de voir les choses est d'utiliser la condition nécessaire sur les graphe hamiltoniens: si on supprime les 13 noeuds, on obtient 14 composantes connexes. Or si un graphe est hamiltonien, supprimer $k$ noeuds crée au plus $k$ composantes connexes. On a une contradiction et donc le graphe n'est pas hamiltonien.
+En d'autre termes, il n'est alors possible de construire un cycle qui passe par tous les noeuds et qui revient au point de départ. 
+\paragraph{solution 2 :}
+Une autre manière de voir les choses est d'utiliser la condition nécessaire sur les graphe hamiltoniens: si on supprime les 13 noeuds, on obtient 14 composantes connexes. Or si un graphe est hamiltonien, supprimer $k$ noeuds crée au plus $k$ composantes connexes. On a une contradiction et donc le graphe n'est pas hamiltonien.
 \end{solution}
 
 \subsection{Borne d'un voyageur de commerce}
