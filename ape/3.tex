@@ -141,7 +141,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 		Dans le cas de notre exemple, l'algorithme procède comme suit :
 		\begin{enumerate}
-			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, distance[A] :$= +\infty$
+			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, predecessor[A] :$= +\infty$
 			\item On trouve B, on met sa distance à $1$ et son prédécesseur à A
 			\item On trouve C, on met sa distance à $5$ et son prédécesseur à A
 			\item On trouve B, comme on a que $1>5+(-10)$, on met sa distance à $-5$ et son prédécesseur à $C$
@@ -204,60 +204,110 @@ La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la 
 \subsection{Deux seaux} Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
 
 \begin{solution}
-Le problème peut être modélisé comme le plus court chemin entre le nœud (0,0) et (0,4) dans le graphe donné. Il suffit de suivre la chaîne, on obtient sept opérations nécessaires. Nous n'avons tracé que les arêtes permettant d'aller dans les deux sens, par exemple, nous n'avons pas tracer  l'arête entre (5;4) et (5;0) car on peut aller de (5;4) à (5;0) mais pas de (5;0) à (5;4). On peut constater que le chemin le plus court est de 7 opérations. Il est tracé en rouge.
+Le problème peut être modélisé comme le plus court chemin entre le noeud (0,0) et le noeud de 4 litre (vert) le plus proche dans le graphe donné. Il suffit de suivre la chaîne, on obtient six opérations nécessaires tracées en rouge.
+
 \begin{center}
-\begin{tikzpicture}[scale=0.75,transform shape]
-  \Vertex[x=-10,y=0]{0;0}
-  \Vertex[x=-8,y=2]{0;7}
-  \Vertex[x=-8,y=-2]{5;0}
-  \Vertex[x=-6,y=2]{5;2}
-  \Vertex[x=-6,y=-2]{0;5}
-  \Vertex[x=-4,y=2]{0;2}
-  \Vertex[x=-4,y=-2]{5;5}
-  \Vertex[x=-2,y=2]{2;0}
-  \Vertex[x=-2,y=-2]{3;7}
-  \Vertex[x=0,y=2]{2;7}
-  \Vertex[x=0,y=-2]{3;0}
-  \Vertex[x=2,y=2]{5;4}
-  \Vertex[x=2,y=-2]{0;3}
-  \Vertex[x=4,y=2]{0;4}
-  \Vertex[x=4,y=-2]{5;3}
-  \Vertex[x=6,y=2]{4;0}
-  \Vertex[x=6,y=-2]{1;7}
-  \Vertex[x=8,y=2]{4;7}
-  \Vertex[x=8,y=-2]{1;0}
-  \Vertex[x=10,y=2]{5;6}
-  \Vertex[x=10,y=-2]{0;1}
-   \Vertex[x=12,y=2]{0;6}
-  \Vertex[x=12,y=-2]{5;1}
-  \tikzset{LabelStyle/.style =   {draw}}
-  %\tikzstyle{LabelStyle}=[fill=white,sloped]
-  \tikzstyle{EdgeStyle}=[double = red]
-  \Edge(4;0)(0;4)
-  \Edge(0;4)(5;4)
-  \Edge(5;4)(2;7)
- \Edge(2;7)(2;0)
-  \Edge(2;0)(0;2)
-  \Edge(0;2)(5;2)
- \Edge(5;2)(0;7)
-  \Edge(0;7)(0;0)
+\begin{tikzpicture}
+  \Vertex[x=0,y=0]{0;0}
+  \Vertex[x=0,y=1]{0;1}
+  \Vertex[x=0,y=2]{0;2}
+  \Vertex[x=0,y=3]{0;3}
+  {\renewcommand{\VertexLightFillColor}{green}
+    \Vertex[x=0,y=4,style=green]{0;4}}
+  \Vertex[x=0,y=5]{0;5}
+  \Vertex[x=1,y=5]{1;5}
+  \Vertex[x=2,y=5]{2;5}
+  \Vertex[x=3,y=5]{3;5}
+  {\renewcommand{\VertexLightFillColor}{green}
+    \Vertex[x=4,y=5,style=green]{4;5}}
+  \Vertex[x=5,y=5]{5;5}
+  \Vertex[x=6,y=5]{6;5}
+  \Vertex[x=7,y=5]{7;5}
+  {\renewcommand{\VertexLightFillColor}{green}
+    \Vertex[x=7,y=4,style=green]{7;4}}
+  \Vertex[x=7,y=3]{7;3}
+  \Vertex[x=7,y=2]{7;2}
+  \Vertex[x=7,y=1]{7;1}
+  \Vertex[x=7,y=0]{7;0}
+  \Vertex[x=6,y=0]{6;0}
+  \Vertex[x=5,y=0]{5;0}
+  {\renewcommand{\VertexLightFillColor}{green}
+    \Vertex[x=4,y=0,style=green]{4;0}}
+  \Vertex[x=3,y=0]{3;0}
+  \Vertex[x=2,y=0]{2;0}
+  \Vertex[x=1,y=0]{1;0}
+  
+  \SetUpEdge[style={<->}]
   \tikzstyle{EdgeStyle}=[]
-    \Edge(0;0)(5;0)
-  \Edge(5;0)(0;5)
-  \Edge(0;5)(5;5)
- \Edge(5;5)(3;7)
-  \Edge(3;7)(3;0)
-  \Edge(3;0)(0;3)
-  \Edge(0;3)(5;3)
-  \Edge(5;3)(1;7)
- \Edge(1;7)(1;0)
-  \Edge(1;0)(0;1)
-  \Edge(0;1)(5;1)
-  \Edge(5;1)(0;6)
-  \Edge(0;6)(5;6)
- \Edge(5;6)(4;7)
-  \Edge(4;7)(4;0)
+  \Edge(0;1)(7;1)
+  \Edge(0;2)(7;2)
+  \Edge(0;3)(7;3)
+  \Edge(0;4)(7;4)
+  \Edge(1;0)(1;5)
+  \Edge(2;0)(2;5)
+  \Edge(3;0)(3;5)
+  \Edge(4;0)(4;5)
+  \Edge(5;0)(5;5)
+  \Edge(6;0)(6;5)
+  
+  \Edge(0;1)(1;0)
+  \Edge(0;2)(2;0)
+  \Edge(0;3)(3;0)
+  \Edge(0;4)(4;0)
+  \Edge(0;5)(5;0)
+  \Edge(1;5)(6;0)
+  \Edge(2;5)(7;0)
+  \Edge(3;5)(7;1)
+  \Edge(4;5)(7;2)
+  \Edge(5;5)(7;3)
+  \Edge(6;5)(7;4)
+  
+  \tikzstyle{EdgeStyle}=[bend left]
+  \Edge(0;5)(7;5)
+  \Edge(0;0)(0;5)
+  \tikzstyle{EdgeStyle}=[bend right]
+  %\Edge(0;0)(7;0)
+  \Edge(7;0)(7;5)
+  
+  \SetUpEdge[style={->}]
+  \tikzstyle{EdgeStyle}=[bend left]
+  \Edge(1;0)(0;0)
+  \Edge(2;0)(0;0)
+  \Edge(3;0)(0;0)
+  \Edge(4;0)(0;0)
+  \Edge(5;0)(0;0)
+  \Edge(6;0)(0;0)
+  
+  \Edge(7;1)(7;0)
+  \Edge(7;2)(7;0)
+  \Edge(7;3)(7;0)
+  \Edge(7;4)(7;0)
+  \tikzstyle{EdgeStyle}=[bend right]
+  \Edge(0;1)(0;0)
+  \Edge(0;2)(0;0)
+  \Edge(0;3)(0;0)
+  \Edge(0;4)(0;0)
+
+  \Edge(1;5)(0;5)
+  \Edge(2;5)(0;5)
+  \Edge(3;5)(0;5)
+  \Edge(4;5)(0;5)
+  \Edge(5;5)(0;5)
+  \Edge(6;5)(0;5)
+  
+  \SetUpEdge[style={->}]
+  \tikzstyle{EdgeStyle}=[double = red]
+  \tikzset{EdgeStyle/.append style = {bend right}}
+  \Edge(0;0)(7;0)
+  \tikzstyle{EdgeStyle}=[double = red]
+  \Edge(7;0)(2;5)
+  \Edge(2;5)(2;0)
+  \Edge(2;0)(0;2)
+  \Edge(0;2)(7;2)
+  \Edge(7;2)(4;5)
+
 \end{tikzpicture}
+
 \end{center}
 \end{solution}
 
