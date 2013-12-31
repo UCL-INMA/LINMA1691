@@ -230,6 +230,25 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 
 \begin{mycorr}[du théorème de Hall]
   Tout graphe biparti k-régulier (pour $k > 0$) possède un couplage parfait.
+  \begin{proof}
+  Soit $(X,Y)$ la bipartition, le nombre d'arêtes = $\frac{(|X| + |Y|) k}{2} = |X| k = |Y| k$ avec ($k$ le dégré de couplage). $\Rightarrow |X| = |Y|$
+  
+  Soit $S \subseteq X$:
+  \begin{itemize}
+   \item $E_{1} = \lbrace \ arêtes\ incidentes\ à S \rbrace$
+   \item $E_{2} = \lbrace \ arêtes\ incidentes\ Voisin(S) \rbrace$
+   \end{itemize} 
+   
+  On remarque:
+  \begin{itemize}
+  \item $E_{1} \subseteq E_{2}$ 
+  \item $|E_{1}| = |S| k$
+  \item $|E_{2}| = |Voisin(S)| k$
+  \end{itemize}
+  $\Rightarrow |S| \leq |Voisin(S)|$
+  
+  Donc le théorème de Hall s'applique car il existe un couplage incident à $X$ et il existe un couplage parfait car $|X|=|Y|$
+  \end{proof}
 \end{mycorr}
 
 \subsection{Couverture}
