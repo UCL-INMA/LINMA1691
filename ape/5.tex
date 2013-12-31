@@ -14,10 +14,6 @@ Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-o
 \subsection{Problème du cavalier}
 Le problème du cavalier était un problème en vogue au XVIIIème siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
 \begin{solution}
-\subsection{Solution de Nicolas Stevens}
-Chaque noeud représente une case de l'échiquier. Les arrêtes sont les déplacements possibles en partant d'une case. L'objectif est alors de trouver une cycle hamiltonien sur ce graphe. Pour le cas où $n$ est impair, on peut tirer parti d'une propriété de ce graphe : on remarque facilement que le graphe est biparti. Or si $n$ est impair, les deux partition des noeud sont de taille différentes. Dés lors il n'est pas possible de trouver un cycle qui parcourt tout les noeuds une et une seule fois et qui revient au point de départ.
-
-\subsection{Solution de Félicien Schiltz}
 Ce problème correspond à trouver un tour hamiltonien dans un graphe dans lequel les sommets sont les cases du graphe. Les sommets sont reliés entre eux lorsque le cavalier peut se déplacer d'un à l'autre directement.\\
 Comme le mouvement du cavalier lui permet de se déplacer uniquement d'une case blanche à une case noire et d'une case noire à une case blanche, ce graphe est biparti.
 Si $n$ est impair, le nombre de cases est impair également et le problème demande donc de trouver un cycle hamiltonien de longueur impaire dans un graphe biparti. Hors, un graphe est biparti si et seulement si il ne contient aucun cycle de longueur impaire. Il est donc impossible de résoudre ce problème si n est impair.
