@@ -141,7 +141,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 		Dans le cas de notre exemple, l'algorithme procède comme suit :
 		\begin{enumerate}
-			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, distance[A] :$= +\infty$
+			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, predecessor[A] :$= +\infty$
 			\item On trouve B, on met sa distance à $1$ et son prédécesseur à A
 			\item On trouve C, on met sa distance à $5$ et son prédécesseur à A
 			\item On trouve B, comme on a que $1>5+(-10)$, on met sa distance à $-5$ et son prédécesseur à $C$
