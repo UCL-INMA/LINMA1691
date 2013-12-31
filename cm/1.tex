@@ -118,9 +118,9 @@
     \newline
     \noindent
     Notons aussi que plusieurs résultats sont possibles :
-    \begin{figure}[h!]
+    \begin{figure}[!h]
       \centering
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {1};
@@ -137,7 +137,7 @@
         \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
@@ -147,13 +147,13 @@
           \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
           \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
-          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[anchor = north] {$d'$} (5);
           \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
-          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$b'$} (5);
           \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
         \end{tikzpicture}
       }
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
