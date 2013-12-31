@@ -26,7 +26,7 @@
   \begin{proof}
     Par induction sur le nombre de noeuds $n$.
     Trivial pour $n = 1$.
-    Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\geq d$.
+    Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\leq d$.
 
     Par hypothère d'induction, il existe un coloriage propre de $G-\{x\}$.
     On rétablis $x$ et ses arêtes. $x$ a au plus $d $ voisins.
