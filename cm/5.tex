@@ -33,8 +33,8 @@
   Un couplage $M$ est maximum si et seulement s’il n’y a pas de chemin $M$-augmenté.
   \begin{proof}
      Preuve:
-$ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-dessous, et un chemin $M$-augmenté en vert que nous noterons $P$. 
-     
+$ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-dessous, et un chemin $M$-augmenté en vert que nous noterons $P$.
+
 \begin{center}
     \begin{tikzpicture}[scale=1]
       \SetGraphUnit{1}
@@ -58,8 +58,8 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
       \SetUpEdge[color=blue]
       \Edges(D,E)
     \end{tikzpicture}
-\end{center}        
-     
+\end{center}
+
      On construit le couplage $ M' = M \Delta P$ où $\Delta$ indique une différence symétrique entre $M$ et $P$ ($ M \Delta P = ( M \backslash P) \cup ( P \backslash M)$ ). Ce nouveau couplage est représenté en rouge.
      $ |M'| = |M| + 1 $. On voit bien que M n'est pas maximal.
 
@@ -84,9 +84,9 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
       \Edges(A,B)
       \Edges(D,E)
     \end{tikzpicture}
-\end{center} 
+\end{center}
 
-     $\Longleftarrow$ Soit $M'$ le couplage maximum représenté ci-dessous tel que $ |M'| > |M| $. 
+     $\Longleftarrow$ Soit $M'$ le couplage maximum représenté ci-dessous tel que $ |M'| > |M| $.
 
 \begin{center}
 \begin{tikzpicture}
@@ -119,10 +119,10 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \tikzset{EdgeStyle/.style={color=blue,thick,double=red,double distance = 1.2pt}}
 \Edges(A,D)
 \end{tikzpicture}
-\end{center}     
-     
-     Regardons $ M \Delta M'$. 
-     
+\end{center}
+
+     Regardons $ M \Delta M'$.
+
 \begin{center}
 \begin{tikzpicture}
 \SetVertexNoLabel
@@ -150,7 +150,7 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \Edges(E,H)
 \end{tikzpicture}
 \end{center}
-     
+
      On observe que les noeuds dans $ M \Delta M'$ dont de degrés $0,1$ ou $2$. Les noeuds de degrés $2$ ont une arête dans $M$ et une arête dans $M'$. $\Rightarrow$ $ M \Delta M'$ est une union de noeuds isolés, chemins et cycles. Or, dans un cycle de longueur paire, il y a autant d'arêtes dans $M$ que dans $M'$. Comme  $ |M'| > |M| $, il faut qu'il existe un chemin de longueur impaire qui commence et termine par une arête de $M'$. On voit facilement que ce chemin est un chemin $M$-augmenté.
 
   \end{proof}
@@ -160,64 +160,75 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \end{myexem}
 
 \begin{mytheo} [Théorème du mariage ou de Hall]
-  Un graphe biparti avec bipartition $(X , Y)$ possède un couplage incident à tous les noeuds de $X$ si et seulement si pour tout ensemble $S \subseteq X$ , le nombre de voisins de $S$ est au moins $|S|$.
+  Un graphe biparti avec bipartition $(X , Y)$ possède un couplage incident à tous les noeuds de $X$
+  si et seulement si pour tout ensemble $S \subseteq X$, le nombre de voisins de $S$ est au moins $|S|$.
   \begin{proof}
-    \noindent
-    \newline
-    $\Longrightarrow$\\
-    Un couplage M incident à tout X crée une fonction injective: $X\mapsto Y$ donc $\forall\ S \subseteq X: Voisin (S) \geq M(S) $. On a donc que $ |Voisin (S)| \geq |M(S)| = |S| $.\\
-    \\
-    $\Longleftarrow$\\
-    On veut montrer qu'il n'existe pas de couplage incident à tout X et donc qu'il existe un $ S \subseteq X: |Voisin (S)| < |S|$. \\
-    Soit $M*$ le couplage maximal et $ u \in X$ non incident à $M*$. Prenons les chemins $M*$ alternés partant de u: Soit z l'ensemble des noeuds ainsi rencontrés. $ S = X\cap Z$, $T= Y \cap Z$.\\
-    \textit{Preuve,} On remarque : 
+    Montrons les deux sens, l'un après l'autre.
     \begin{itemize}
-      \item Voisins (S)= T ( par constriuction)
-      \item	$M*$ est incident à tout T (sinon on aurait un chemin M-augmenté car un chemin alterné qui part de u et qui arrive dans T peut toujours poursuivre par une arête de $M*$)
-      \item $M*$ est incident à tout $S\backslash\lbrace u\rbrace$ par construction
-      \item $M*$ crée une bijection entre $S\backslash\lbrace u\rbrace$ et T ( car $M* (S\backslash\lbrace u\rbrace) \subseteq T$ et $M*(T) \subseteq S\backslash\lbrace u\rbrace$.
+      \item[$\Longrightarrow$]
+        Un couplage $M$ incident à tout $x \in X$ crée une fonction injective
+        $f_M : x \to Y: x \mapsto y$ où $y$ est le noeud associé à $x$ dans le couplage $M$.
+        On a $\forall S \subseteq X$, $f_M(S) \subseteq \voisin(S)$.
+        Dès lors, $|\voisin(S)| \geq |f_M(S)| = |S|$.
+      \item[$\Longleftarrow$]
+        On veut montrer qu'il n'existe pas de couplage incident à tout $X$
+        et donc qu'il existe un $S \subseteq X : |\voisin(S)| < |S|$.
+
+        Soit $M^*$ le couplage maximal et $u \in X$ non incident à $M^*$.
+        Prenons les chemins $M^*$ alternés partant de $u$:
+        Soit $Z$ l'ensemble des noeuds ainsi rencontrés.
+        $S = X \cap Z$, $T = Y \cap Z$.
+
+        On remarque que
+        \begin{itemize}
+          \item $\voisin(S) = T$ (par construction);
+          \item	$M^*$ est incident à tout $T$ (sinon on aurait un chemin $M$-augmenté car un chemin alterné qui part de $u$ et qui arrive dans $T$ peut toujours poursuivre par une arête de $M^*$);
+          \item $M^*$ est incident à tout $S\backslash\lbrace u\rbrace$ par construction;
+          \item $M^*$ crée une bijection entre $S\backslash\lbrace u\rbrace$ et $T$
+            (car $f_{M^*} (S\setminus \lbrace u\rbrace) \subseteq T$ et
+            $f_{M^*}(T) \subseteq S\setminus\lbrace u\rbrace$.
+        \end{itemize}
+        On a dès lors $\voisin(S) = T$ d'où $|\voisin(S)| = |S| - 1 < |S|$.
+
+        \begin{center}
+          \begin{tikzpicture}
+            \SetVertexNoLabel
+            \tikzset{
+              decoration={brace},
+              tuborg/.style={decorate},
+              tubnoderight/.style={midway, right=2pt},
+              tubnodeleft/.style={midway, left=2pt},
+            }
+            \GraphInit[vstyle=Normal]
+            \SetGraphUnit{1.5}
+            \Vertex[NoLabel=false,L=$u$]{u}
+            \SO(u){A1}
+            \SO(A1){B1}
+            \SO(B1){C1}
+            \SO(C1){D1}
+            %\begin{scope}[shift={(0,1.5)}]
+            \EA(A1){A2}
+            \SO(A2){B2}
+            \SO(B2){C2}
+            \SO(C2){D2}
+            \SO(D2){E2}
+            %\end{scope}
+            \Edges(u,A2,C1)
+            \Edges(C2,A1,B2)
+            \Edges(D1,E2)
+            \SetUpEdge[color=green]
+            \Edges(A1,A2)
+            \Edges(B1,B2)
+            \Edges(C1,C2)
+            \Edges(D1,D2)
+
+            \draw[tuborg, decoration={brace}] let \p1=(u.north), \p2=(C1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$S$};
+            \draw[tuborg, decoration={brace}] let \p1=(D1.north), \p2=(D1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$X\setminus S$};
+            \draw[tuborg, decoration={brace}] let \p1=(A2.north), \p2=(C2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$T$};
+            \draw[tuborg, decoration={brace}] let \p1=(D2.north), \p2=(E2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$Y\setminus T$};
+          \end{tikzpicture}
+        \end{center}
     \end{itemize}
-     $ \Rightarrow  Voisin (S)= T \Longleftrightarrow  |Voisin(s)| = |s|-1 < |s|$
-
-\begin{center}
-\begin{tikzpicture}
-\SetVertexNoLabel
-\tikzset{
-  decoration={brace},
-  tuborg/.style={decorate},
-  tubnoderight/.style={midway, right=2pt},
-  tubnodeleft/.style={midway, left=2pt},
-}
-\GraphInit[vstyle=Normal]
-\SetGraphUnit{1.5}
-    \Vertex[NoLabel=false]{u}
-    \SO(u){A1}  
-    \SO(A1){B1} 
-    \SO(B1){C1} 
-    \SO(C1){D1}
-%\begin{scope}[shift={(0,1.5)}]    
-    \EA(A1){A2}
-    \SO(A2){B2}
-    \SO(B2){C2}
-    \SO(C2){D2}
-    \SO(D2){E2} 
-%\end{scope}   
-\Edges(u,A2,C1)
-\Edges(C2,A1,B2)
-\Edges(D1,E2)
-\SetUpEdge[color=green]
-\Edges(A1,A2)
-\Edges(B1,B2)
-\Edges(C1,C2)
-\Edges(D1,D2)
-
-\draw[tuborg, decoration={brace}] let \p1=(u.north), \p2=(C1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$S$};
-\draw[tuborg, decoration={brace}] let \p1=(D1.north), \p2=(D1.south) in ($(-0.5, \y2)$) -- ($(-0.5, \y1)$) node[tubnodeleft] {$X\setminus S$};
-\draw[tuborg, decoration={brace}] let \p1=(A2.north), \p2=(C2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$T$};
-\draw[tuborg, decoration={brace}] let \p1=(D2.north), \p2=(E2.south) in ($(2.0, \y1)$) -- ($(2.0, \y2)$) node[tubnoderight] {$Y\setminus T$};
-\end{tikzpicture}
-\end{center}
-
   \end{proof}
 \end{mytheo}
 \begin{myexem}
@@ -232,21 +243,21 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
   Tout graphe biparti k-régulier (pour $k > 0$) possède un couplage parfait.
   \begin{proof}
   Soit $(X,Y)$ la bipartition, le nombre d'arêtes = $\frac{(|X| + |Y|) k}{2} = |X| k = |Y| k$ avec ($k$ le dégré de couplage). $\Rightarrow |X| = |Y|$
-  
+
   Soit $S \subseteq X$:
   \begin{itemize}
    \item $E_{1} = \lbrace \ arêtes\ incidentes\ à S \rbrace$
    \item $E_{2} = \lbrace \ arêtes\ incidentes\ Voisin(S) \rbrace$
-   \end{itemize} 
-   
+   \end{itemize}
+
   On remarque:
   \begin{itemize}
-  \item $E_{1} \subseteq E_{2}$ 
+  \item $E_{1} \subseteq E_{2}$
   \item $|E_{1}| = |S| k$
   \item $|E_{2}| = |Voisin(S)| k$
   \end{itemize}
   $\Rightarrow |S| \leq |Voisin(S)|$
-  
+
   Donc le théorème de Hall s'applique car il existe un couplage incident à $X$ et il existe un couplage parfait car $|X|=|Y|$
   \end{proof}
 \end{mycorr}
@@ -280,10 +291,10 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 \begin{mytheo} [König]
   Dans un graphe biparti, si $K^*$ est une couverture de sommets minimum et $M^*$ un couplage maximum, alors $|M^*| = |K^*|$.
   \begin{proof} [Démonstration venant du cours de R. Lambiotte et L. Tabourier  (FUNDP)]
-    Soit un graphe biparti ($X$,$Y$) et $M^*$ un couplage maximum. 
+    Soit un graphe biparti ($X$,$Y$) et $M^*$ un couplage maximum.
     Soit $U$ les noeuds qui ne sont pas incidents à $M^*$ dans $X$.
     Soit $Z$ l'ensemble des noeuds atteints par tous les chemins $M^*$-alternés partant de $U$.\\
-    Soient : 
+    Soient :
     \begin{enumerate}
       \item $S = Z \cap X$
       \item $T = Z \cap Y$
@@ -313,7 +324,7 @@ $ \Longrightarrow $ Soit le couplage $M$, représenté en bleu sur la figure ci-
 			\node[vertex] at (0, -2) (h) {c};
 			\node[vertex, fill = red] at (1, -2) (i) {d};
 			\node[vertex] at (2, -2) (j) {e};
-			
+
       \draw[red] (a) edge node {} (g);
 			\draw[] (a) edge node {} (i);
 			\draw[] (b) edge node {} (g);
