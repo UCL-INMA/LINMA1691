@@ -161,6 +161,51 @@ Montrer que le premier joueur admet une stratégie gagnante si et seulement si l
 \subsection{Indice chromatique du graphe de Pétersen}
 Déterminez l'indice chromatique du graphe de Pétersen.
 
+
+\begin{solution}
+L'indice chromatique du graphe de Petersen est de 4 comme nous pouvons le voir sur le graphe suivant:
+
+\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=3]{1}
+      \Vertex[x=0 ,y=1]{2}
+      \Vertex[x=3,y=0]{3}
+      \Vertex[x=1 ,y=0]{4}
+      \Vertex[x=-3 ,y=0]{5}
+      \Vertex[x=-1 ,y=0]{6}
+      \Vertex[x=-2 ,y=-3]{7}
+      \Vertex[x=-1 ,y=-1]{8}
+      \Vertex[x=2 ,y=-3]{9}
+      \Vertex[x=1 ,y=-1]{10}
+
+
+      \path[every node/.style={font=\sffamily\small}]
+
+      (1) edge [color=blue] node [left] {} (3)
+      edge [color=black]  node [left] {} (5)
+      edge [color=red]  node [left] {} (2)
+      
+      (2) edge [color=blue] node [left] {} (8)
+      edge [color=black]  node [left] {} (10) 
+      
+      (3) edge [color=red] node [left] {} (4)
+      edge [color=blue]  node [left] {} (9)    
+
+	 (4) edge [color=blue] node [left] {} (6)
+      edge [color=green]  node [left] {} (8) 
+      
+      (5) edge [color=red] node [left] {} (6)
+      edge [color=blue]  node [left] {} (7)
+      
+      (6) edge [color=green]  node [left] {} (10)
+      
+      (7) edge [color=black]  node [left] {} (8)
+       edge [color=red]  node [left] {} (9)
+      
+      (9) edge [color=blue]  node [left] {} (10);    
+
+    \end{tikzpicture}
+\end{solution}
+
 \subsection{Tournoi d'échecs}
 Dans un tournoi d'échecs, chaque engagé doit rencontrer tous les autres. Chaque partie dure une heure. Déterminez la durée minimum du tournoi dans le cas où le nombre d'engagés est 3, 4, ou 5.
 
