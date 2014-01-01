@@ -212,5 +212,11 @@ L'indice chromatique du graphe de Petersen est de 4 comme nous pouvons le voir s
 \subsection{Tournoi d'échecs}
 Dans un tournoi d'échecs, chaque engagé doit rencontrer tous les autres. Chaque partie dure une heure. Déterminez la durée minimum du tournoi dans le cas où le nombre d'engagés est 3, 4, ou 5.
 
+\begin{solution}
+Dans le problème les noeuds sont les joueurs. Nous avons donc des graphes complet de 3, 4 et 5 car chaque joueurs doit rencontré tous les autres. Le problème se résume à trouver l'indice chromatique ce ceux-ci. En effet, la couleur représentera les "round" du tournoi et aussi le nombre d'heure.
+
+Pour $K_{3}$, $K_{4}$ et $K_{5}$, nous avons respectivement 3, 3 et 5 heures.
+\end{solution}
+
 \subsection{Carré latin}
 Un carré latin est une matrice $n \times n$ dans laquelle les entrées d'une colonne (ou d'une ligne) particulière sont toutes distinctes. Formulez ce problème comme un problème de coloriage d'arêtes et donnez le nombre minimum de symboles qui permettent de satisfaire cette contrainte.
