@@ -98,52 +98,55 @@ Pour l'aider dans sa tâche, Thibault dispose de la répartition de l'année der
 
 En partant de la répartition de l'année dernière, utilisez l'algorithme hongrois pour aider Thibault à trouver un couplage maximum. Ce couplage est-il parfait? Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
 
+\begin{solution}
+Dans le graphe graphe biparti ci-dessous, un couplage possible est indicé en vert (utilisez l'algorithme hongrois pour trouver un couplage maximum). Nous avons donc un couplage maximum de 5. Il n'est pas un couplage parfait car Benoit, Pierre et Arnaud ne peuvent avoir que Théorie des Matrices ou  Projet.
 
-%Dans le graphe graphe biparti ci-dessous, un couplage possible est $M = \left\lbrace  (1,5'), (2,2'),(3,6'),(5,4')  \right\rbrace$. En partant de ce couplage, utilisez l'algorithme hongrois pour trouver un couplage maximum. Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
+\begin{center}
+\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+   \Vertex[x=0 ,y=0]{P}
+   \Vertex[x=0 ,y=-1]{R}
+   \Vertex[x=0,y=-2]{Ar}
+   \Vertex[x=0 ,y=-3]{Ad}
+   \Vertex[x=0 ,y=-4]{B}
+   \Vertex[x=0, y=-5]{N}
+   \Vertex[x=3 ,y=-0]{Pr}
+   \Vertex[x=3 ,y=-1]{TM}
+   \Vertex[x=3 ,y=-2]{G}
+   \Vertex[x=3 ,y=-3]{MS}
+   \Vertex[x=3 ,y=-4]{O}
+   \Vertex[x=3, y=-5]{AN}
 
-%\begin{figure}[h!]
-%\begin{center}
-%\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
-%   \Vertex[x=0 ,y=0]{1}
-%   \Vertex[x=0 ,y=-1]{2}
-%   \Vertex[x=0,y=-2]{3}
-%   \Vertex[x=0 ,y=-3]{4}
-%   \Vertex[x=0 ,y=-4]{5}
-%   \Vertex[x=0, y=-5]{6}
-%   \Vertex[x=3 ,y=-0]{1'}
-%   \Vertex[x=3 ,y=-1]{2'}
-%   \Vertex[x=3 ,y=-2]{3'}
-%   \Vertex[x=3 ,y=-3]{4'}
-%   \Vertex[x=3 ,y=-4]{5'}
-%   \Vertex[x=3, y=-5]{6'}
-%
-%     \path[every node/.style={font=\sffamily\small}]
-%     (1) edge  node [left] {} (1')
-%        	edge [style=dashed]  node [left] {} (5')
-%
-%    (2) edge node [right] {} (1')
-%    	edge [style=dashed]  node [right] {} (2')
-%    	edge node [right] {} (3')
-%
-%    (3) edge node [right] {} (1')
-%     	edge  node [right] {} (2')
-%    	edge node [right] {} (3')
-%         edge  node [left] {} (5')
-%         edge [style=dashed]  node [left] {} (6')
-%
-%    (4) edge node [right] {} (6')
-%
-%     (5) edge [style=dashed] node [right] {} (4')
-%         edge node [left] {} (6')
-%
-%     (6) edge node [right] {} (4')
-%         edge  node [left] {} (6')
-%
-%
-%\end{tikzpicture}
-%\end{center}
-%\end{figure}
+     \path[every node/.style={font=\sffamily\small}]
+     (P) edge  node [left] {} (TM)
+        	edge [style=green]  node [left] {} (Pr)
+        	edge [style=dashed]  node [left] {} (Pr)
 
+    (R) edge node [right] {} (G)
+    		edge[style=green] node [right] {} (MS)
+    	edge [style=dashed]  node [right] {} (MS)
+
+    (N) edge node [right] {} (G)
+    		edge[style=green] node [right] {} (O)
+     	edge  node [right] {} (O)
+    		edge node [right] {} (AN)
+    		edge node [right] {} (MS)
+         edge [style=dashed]  node [left] {} (TM)
+
+    (Ar) edge[style=green] node [right] {} (TM)
+    		edge node [right] {} (TM)
+
+     (Ad) edge[style=green] node [right] {} (G)
+     	edge [style=dashed] node [right] {} (O)
+         edge node [left] {} (G)
+         edge node [left] {} (AN)
+
+     (B) edge node [right] {} (TM)
+         edge  node [left] {} (Pr);
+
+
+\end{tikzpicture}
+\end{center}
+\end{solution}
 
 \subsection{Gagner sans le couplage parfait}
 Deux personnes jouent à un jeu sur un graphe $G$ de la manière suivante:
@@ -160,6 +163,51 @@ Montrer que le premier joueur admet une stratégie gagnante si et seulement si l
 
 \subsection{Indice chromatique du graphe de Pétersen}
 Déterminez l'indice chromatique du graphe de Pétersen.
+
+
+\begin{solution}
+L'indice chromatique du graphe de Petersen est de 4 comme nous pouvons le voir sur le graphe suivant:
+
+\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      \Vertex[x=0 ,y=3]{1}
+      \Vertex[x=0 ,y=1]{2}
+      \Vertex[x=3,y=0]{3}
+      \Vertex[x=1 ,y=0]{4}
+      \Vertex[x=-3 ,y=0]{5}
+      \Vertex[x=-1 ,y=0]{6}
+      \Vertex[x=-2 ,y=-3]{7}
+      \Vertex[x=-1 ,y=-1]{8}
+      \Vertex[x=2 ,y=-3]{9}
+      \Vertex[x=1 ,y=-1]{10}
+
+
+      \path[every node/.style={font=\sffamily\small}]
+
+      (1) edge [color=blue] node [left] {} (3)
+      edge [color=black]  node [left] {} (5)
+      edge [color=red]  node [left] {} (2)
+      
+      (2) edge [color=blue] node [left] {} (8)
+      edge [color=black]  node [left] {} (10) 
+      
+      (3) edge [color=red] node [left] {} (4)
+      edge [color=blue]  node [left] {} (9)    
+
+	 (4) edge [color=blue] node [left] {} (6)
+      edge [color=green]  node [left] {} (8) 
+      
+      (5) edge [color=red] node [left] {} (6)
+      edge [color=blue]  node [left] {} (7)
+      
+      (6) edge [color=green]  node [left] {} (10)
+      
+      (7) edge [color=black]  node [left] {} (8)
+       edge [color=red]  node [left] {} (9)
+      
+      (9) edge [color=blue]  node [left] {} (10);    
+
+    \end{tikzpicture}
+\end{solution}
 
 \subsection{Tournoi d'échecs}
 Dans un tournoi d'échecs, chaque engagé doit rencontrer tous les autres. Chaque partie dure une heure. Déterminez la durée minimum du tournoi dans le cas où le nombre d'engagés est 3, 4, ou 5.
