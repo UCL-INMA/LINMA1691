@@ -26,7 +26,7 @@
   \begin{proof}
     Par induction sur le nombre de noeuds $n$.
     Trivial pour $n = 1$.
-    Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\geq d$.
+    Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\leq d$.
 
     Par hypothère d'induction, il existe un coloriage propre de $G-\{x\}$.
     On rétablis $x$ et ses arêtes. $x$ a au plus $d $ voisins.
@@ -45,7 +45,7 @@ Pour un graphe $G$, le nombre de coloriage propres à $k$ couleurs est noté $\p
   Soit $u$ et $v$ les deux extrémités de $e$.
 	\begin{itemize}
 	\item $\pi_k(G-e)$ est le nombre de coloriages des noeuds de $G$ à moins de $k$ couleurs qui sont propres sauf possiblement entre $u$ et $v$. On peut avoir $u$ et $v$ de même couleur.
-	\item $\pi_k(G.e)$ est le nombre de coloriages des noeuds de $G$ à moins de $k$ couleurs qui sont propres sauf entre $u$ et $v$. On peut avoir $u$ et $v$ de même couleur.
+	\item $\pi_k(G.e)$ est le nombre de coloriages des noeuds de $G$ à moins de $k$ couleurs qui sont propres sauf entre $u$ et $v$. On doit avoir $u$ et $v$ de même couleur.
 	\end{itemize}
 	On a donc finalement $\pi_k(G-e) - \pi_k(G.e)$ est le nombre de coloriages des noeuds de $G$ à moins de $k$ couleurs qui sont propres même entre $u$ et $v$ : on doit avoir $u$ et $v$ de couleurs différentes.
   \end{proof}
