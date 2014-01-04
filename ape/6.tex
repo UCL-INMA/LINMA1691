@@ -1,7 +1,7 @@
 \section{Séance 6}
 \textbf{Couplages}
 
-\paragraph{1. } Etant donné le couplage $M = \left\lbrace  (1,1'), (2,4'),(4,2'),(5,5')  \right\rbrace$ dans le graphe biparti ci-dessous, démontrez que $M$ est maximum.
+\paragraph{1. } Étant donné le couplage $M = \left\lbrace  (1,1'), (2,4'),(4,2'),(5,5')  \right\rbrace$ dans le graphe biparti ci-dessous, démontrez que $M$ est maximum.
 
 \begin{figure}[h!]
   \begin{center}
@@ -44,17 +44,66 @@
   \end{center}
 \end{figure}
 
+\begin{solution}
+	Un couplage est maximum si et seulement s’il n'existe pas de chemin M-augmenté. Pour rappel, un chemin M-augmenté est un chemin qui commence et fini par un noeud hors de $M$ et qui alterne entre arêtes appartenant à $M$ et arête n'appartenant pas à $M$.\\
+	
+	On constate qu'il n'existe pas de chemin M-augmenté partant ou finissant par $3$: $3\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow ...$ (idem en commençant par $3\rightarrow 5'$).
+	De la même manière, on constate qu'il n'existe pas non plus de chemin M-augmenté partant de $3'$.\\
+	
+	Vu que tous les noeuds hors de $M$ ne commencent pas de chemins M-augmentés, il n'en existe pas, d'où $M$ est maximum.
+\end{solution}
 
 \paragraph{2. } Vrai ou faux? \\
 \begin{itemize}
-  \item Un arbre possède un couplage parfait si et seulement si tous les chemin d'une feuille à une autre sont de longueur impaire.
+  \item Un arbre possède un couplage parfait si et seulement si tous les chemins d'une feuille à une autre sont de longueur impaire.
   \item Un arbre possède au plus un couplage parfait.
   \item Dans un arbre, si pour tout noeud $u$, il existe une feuille $v$ telle que $d(u,v)$ est impaire, alors cet arbre possède un couplage parfait.
   \item Soit $o(H)$, le nombre de composantes impaires du graphe $H$, c'est-à-dire le nombre de composantes connexes ayant un nombre impair de sommets. Un arbre $G$ admet un couplage parfait si $o(G-v)=1,  \ \ \forall v \in V$.
   \item Si un arbre $G$ admet un couplage parfait, alors $o(G-v)=1, \ \ \forall v \in V$.
 \end{itemize}
 
-
+\begin{solution}
+	\begin{itemize}
+		\item \textbf{Faux}. Considérer par exemple l'arbre ci-dessous, qui contient un chemin de taille paire entre $5$ et $6$ mais qui contient néanmoins un couplage parfait.
+			\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      			\Vertex[x=0 ,y=0]{5}
+      			\Vertex[x=1 ,y=0]{6}
+     			\Vertex[x=0 ,y=-1]{2}
+      			\Vertex[x=1 ,y=-1]{3}
+      			\Vertex[x=2 ,y=-1]{4}
+      			\Vertex[x=1 ,y=-2]{1}
+      			
+      			\path[every node/.style={font=\sffamily\small}]
+					(1) edge node [left] {} (2)
+					(1) edge node [left] {} (3)
+					(1) edge [style=dashed]  node [left] {} (4)
+					(2) edge [style=dashed]  node [left] {} (5)
+					(3) edge [style=dashed]  node [left] {} (6);
+      		\end{tikzpicture}
+		\item \textbf{Vrai}. Nous sommes forcés de prendre les arêtes qui relient les feuilles au reste de l'arbre. En considérant l'arbre dans lequel on a retiré les noeuds adjacents à ces arêtes, on est de nouveau forcé de prendre les arêtes des nouvelles feuilles, etc., et ce jusqu'à ce qu'au moment où il n’y aura plus de noeuds dans l'arbre. La sélection d'arêtes est donc fixe.
+		
+		\item \textbf{Faux}. Voir par exemple cet arbre, qui ne contient pas de couplage parfait, mais respecte la propriété.\\
+			\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+      			\Vertex[x=0 ,y=0]{7}
+      			\Vertex[x=0 ,y=-1]{4}
+      			\Vertex[x=1 ,y=-1]{5}
+      			\Vertex[x=2 ,y=-1]{6}
+     			\Vertex[x=1 ,y=-2]{2}
+      			\Vertex[x=2 ,y=-2]{3}
+      			\Vertex[x=1 ,y=-3]{1}
+      			
+      			\path[every node/.style={font=\sffamily\small}]
+					(1) edge node [left] {} (2)
+					(1) edge node [left] {} (3)
+					(2) edge node [left] {} (4)
+					(2) edge node [left] {} (5)
+					(3) edge node [left] {} (6)
+					(4) edge node [left] {} (7);
+      		\end{tikzpicture}
+      	\item TODO
+      	\item \textbf{Vrai}. Tout noeud $v$ est lié à un autre dans le couplage (car il est parfait). En enlevant le noeud $v$, on ne peut donc créer qu'une seule composante connexe impaire, qui contiendra le noeud auquel était lié $v$. Toutes les autres composantes sont forcément paires, car elles ont un couplage parfait.
+	\end{itemize}
+\end{solution}
 
 \paragraph{3. } Thibault a la responsabilité de répartir les séances d'exercices des cours de mathématiques appliquées entre les assistants du pôle INMA. Chacun des assistants donne pour cela à Thibault une liste de ses cours préférés, qui sont repris dans la table ci-dessous.
 
@@ -91,6 +140,75 @@ Pour l'aider dans sa tâche, Thibault dispose de la répartition de l'année der
 
 En partant de la répartition de l'année dernière, utilisez l'algorithme hongrois pour aider Thibault à trouver un couplage maximum. Ce couplage est-il parfait? Proposez un argument pour prouver que le couplage trouvé est effectivement maximum.
 
+\begin{solution}
+	En créant un graphe biparti avec nos assistants favoris à gauche et les cours à droite, on construit le graphe suivant(la répartition de l'année dernière est en pointillé):\\
+	\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+		\SetVertexNormal[Shape=rectangle]
+      	\Vertex[x=0,y=-0]{Pierre}
+      	\Vertex[x=0,y=-1]{Romain}
+      	\Vertex[x=0,y=-2]{Arnaud}
+      	\Vertex[x=0,y=-3]{Adeline}
+     	\Vertex[x=0,y=-4]{Benoit}
+      	\Vertex[x=0,y=-5]{Nicolas}
+      	\Vertex[x=10,y=-0]{Projet}
+      	\Vertex[x=10,y=-1,L=Théorie des matrices]{Matrices}
+      	\Vertex[x=10,y=-2]{Graphes}
+      	\Vertex[x=10,y=-3,L=Modélisation Stochastique]{MS}
+      	\Vertex[x=10,y=-4,L=Optimisation]{Opti}
+      	\Vertex[x=10,y=-5,L=Analyse numérique]{AnaNum}
+      			
+      	\path[every node/.style={font=\sffamily\small}]
+			(Pierre) edge[style=dashed] node [left] {} (Projet)
+			(Pierre) edge node [left] {} (Matrices)
+			(Romain) edge node [left] {} (Graphes)
+			(Romain) edge[style=dashed] node [left] {} (MS)
+			(Arnaud) edge node [left] {} (Matrices)
+			(Adeline) edge node [left] {} (Graphes)
+			(Adeline) edge[style=dashed] node [left] {} (Opti)
+			(Adeline) edge node [left] {} (AnaNum)
+			(Benoit) edge node [left] {} (Matrices)
+			(Benoit) edge node [left] {} (Projet)
+			(Nicolas) edge[style=dashed] node [left] {} (Matrices)
+			(Nicolas) edge node [left] {} (Graphes)
+			(Nicolas) edge node [left] {} (MS)
+			(Nicolas) edge node [left] {} (Opti)
+			(Nicolas) edge node [left] {} (AnaNum);
+    \end{tikzpicture}\\
+	Il suffit dès lors de trouver un couplage maximum. Exécutons l'algorithme hongrois. Seuls Arnaud et Benoit n'ont pas de cours assignés, et les cours de Graphes et d'Analyse Numérique n'ont pas d'assistants assignés. Cherchons un chemin M-augmenté: le chemin Arnaud$\rightarrow$Théorie des matrices$\rightarrow$Nicolas$\rightarrow$Analyse numérique est M-augmenté. On peut donc améliorer le couplage:\\
+	\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
+		\SetVertexNormal[Shape=rectangle]
+      	\Vertex[x=0,y=-0]{Pierre}
+      	\Vertex[x=0,y=-1]{Romain}
+      	\Vertex[x=0,y=-2]{Arnaud}
+      	\Vertex[x=0,y=-3]{Adeline}
+     	\Vertex[x=0,y=-4]{Benoit}
+      	\Vertex[x=0,y=-5]{Nicolas}
+      	\Vertex[x=10,y=-0]{Projet}
+      	\Vertex[x=10,y=-1,L=Théorie des matrices]{Matrices}
+      	\Vertex[x=10,y=-2]{Graphes}
+      	\Vertex[x=10,y=-3,L=Modélisation Stochastique]{MS}
+      	\Vertex[x=10,y=-4,L=Optimisation]{Opti}
+      	\Vertex[x=10,y=-5,L=Analyse numérique]{AnaNum}
+      			
+      	\path[every node/.style={font=\sffamily\small}]
+			(Pierre) edge[style=dashed] node [left] {} (Projet)
+			(Pierre) edge node [left] {} (Matrices)
+			(Romain) edge node [left] {} (Graphes)
+			(Romain) edge[style=dashed] node [left] {} (MS)
+			(Arnaud) edge[style=dashed] node [left] {} (Matrices)
+			(Adeline) edge node [left] {} (Graphes)
+			(Adeline) edge[style=dashed] node [left] {} (Opti)
+			(Adeline) edge node [left] {} (AnaNum)
+			(Benoit) edge node [left] {} (Matrices)
+			(Benoit) edge node [left] {} (Projet)
+			(Nicolas) edge node [left] {} (Matrices)
+			(Nicolas) edge node [left] {} (Graphes)
+			(Nicolas) edge node [left] {} (MS)
+			(Nicolas) edge node [left] {} (Opti)
+			(Nicolas) edge[style=dashed] node [left] {} (AnaNum);
+    \end{tikzpicture}\\
+	On constate rapidement qu'il n'existe pas de chemin M-augmenté dans ce graphe, et que donc le couplage obtenu est maximum. Un argument ad hoc prouvant ce fait est le suivant: on ne peut pas obtenir un couplage parfait, car s'il en existait un, Théorie des matrices devrait forcément être assigné à Arnaud, d'où Projet devrait forcément être assigné à Pierre (seul choix restant), d'où finalement Benoit n'aurait plus aucun choix, ce qui fait que c'est impossible. Le meilleur couplage ne peut donc contenir que 5 des 6 assistants.
+\end{solution}
 
 \paragraph{4. } Deux personnes jouent à un jeu sur un graphe $G$ de la manière suivante: \\
 
@@ -101,7 +219,11 @@ En partant de la répartition de l'année dernière, utilisez l'algorithme hongr
 \end{itemize}
 
 Montrer que le premier joueur admet une stratégie gagnante si et seulement si le graphe $G$ n'admet pas de couplage parfait.
-
+\begin{solution}
+Nous allons tout d'abord démontrer que s'il existe un couplage parfait, alors le premier joueur peut perdre même avec la meilleure stratégie (ce qui est la contraposée de: si le premier joueur gagne avec la meilleure stratégie, alors il n'existe pas de couplage parfait). Au premier tour, le premier joueur choisit un noeud $v_0$. Si après, à chaque tour du second joueur, ce dernier choisi le noeud couplé au noeud choisi par le premier joueur, on constate qu'on forme un chemin M-alterné commençant par une arête de $M$. Un tel chemin ne peut se terminer que sur une arête appartenant à $M$, donc une arête que le second joueur va choisir: il sera donc le dernier à jouer et gagnera.\\
+\\
+Prouvons maintenant que s'il n'existe pas de couplage parfait, alors le premier joueur peut gagner avec une stratégie optimale. En choisissant le premier noeud hors du couplage et puis en sélectionnant à chaque fois soit le noeud couplé au noeud choisi par le second joueur si ce noeud existe soit un noeud hors du couplage, on constate qu'on va former une série de chemin M-augmentés que le premier joueur finira forcément.
+\end{solution}
 \newpage
 
 \textbf{Coloriages d'arêtes}
