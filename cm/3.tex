@@ -84,8 +84,8 @@
     \item Ceux qui ne contiennent pas l'arête $e$
   \end{enumerate}
   \begin{itemize}
-    \item On voit que les arbres de $a)$ sont en bijection avec les arbres sous-tendants de $G.e$ (détails laissé au lecteur)
-    \item On voit que le nombre de $b)$ sont en bijection avec les arbres sous-tendants de $G-e$ (détails laissé au lecteur)
+    \item On voit que les arbres de $a)$ sont en bijection avec les arbres sous-tendants de $G.e$ (détails laissés au lecteur)
+    \item On voit que le nombre de $b)$ sont en bijection avec les arbres sous-tendants de $G-e$ (détails laissés au lecteur)
   \end{itemize}
   On a donc $T(G) = T(G − e) + T (G.e)$.
   \end{proof}
@@ -230,28 +230,28 @@
   L'algorithme de Kruskal est correct.
   \begin{proof}
     Soit $T$ l'arbre trouvé par Kruskal,
-    c'est bien un arbre sous-tendant car il a $n-1$ arêtes et qu'il n'a pas de cycle.
+    c'est bien un arbre sous-tendant, car il a $n-1$ arêtes et qu'il n'a pas de cycle.
     Démontrons qu'il est optimal par l'absurde.
 
     S'il ne l'est pas, c'est qu'il existe un arbre sous-tendant $T^*$ tel que $w(T^*) < w(T)$.
     Soit $e$ la plus petite arête telle que $T$ l'a et $T^*$ ne l'a pas ou le contraire.
     \begin{itemize}
       \item Si $T$ ne l'a pas et que $T^*$ l'a, ça veut dire qu'elle crée un cycle avec les
-        arête de poids strictement plus petit qui sont dans $T$.
+        arêtes de poids strictement plus petits qui sont dans $T$.
         Ces arêtes sont aussi dans $T^*$ car on a considéré que c'était la plus petite qui différait.
-        Pourtant $T^*$ n'a pas de cycle car c'est un arbre. On est donc pas dans ce cas là.
+        Pourtant $T^*$ n'a pas de cycle, car c'est un arbre. On n’est donc pas dans ce cas là.
       \item On sait donc que $T$ l'a et que $T^*$ ne l'a pas.
         Comme $T^*$ est un arbre, $T^* + e$ a un et un seul cycle.
-        Dans ce cycle, il y a nécessairement des arête que $T$ n'a pas car $T$ a $e$ et qu'il n'a pas de cycle.
+        Dans ce cycle, il y a nécessairement des arêtes que $T$ n'a pas, car $T$ a $e$ et qu'il n'a pas de cycle.
         Ces arêtes on un poids plus grand ou égal à $e$ car on a dit qu'on prenait $e$ avec le poids
-        le plus petit qui différait entre $T$ et $T^*$. Soit $e'$, l'une d'entre elle.
+        le plus petit qui différait entre $T$ et $T^*$. Soit $e'$, l'une d'entre elles.
         Comme $T^*+e$ a un et un seul cycle et que $e'$ est dedans, $T^*+e-e'$ est un arbre sous-tendant.
 
         Si $w(e) < w(e')$, on arrive à une contradiction.
         Si $w(e) = w(e')$, on prends ${T^*}'=T^*+e-e'$ qui est aussi
-        un graphe sous-tendant de poids minimum car $w({T^*}') = w(T^*+e-e') = w(T^*)+w(e)-w(e') = w(T^*)$.
+        un graphe sous-tendant de poids minimum, car $w({T^*}') = w(T^*+e-e') = w(T^*)+w(e)-w(e') = w(T^*)$.
         Si ${T^*}' = T$, on a notre contradiction, sinon on recommence le raisonnement.
-        On ne pourra pas le recommencer indéfiniment car il y a un nombre fini d'arête qui diffère entre $T^*$
+        On ne pourra pas le recommencer indéfiniment, car il y a un nombre fini d'arêtes qui diffère entre $T^*$
         et $T$ et à chaque fois, il y en a une de moins qui diffère.
     \end{itemize}
     $T$ est donc optimal.
@@ -261,9 +261,9 @@
 \begin{mytheo} [L'algorithme de Kruskal est efficace]
   L'algorithme de Kruskal requiert un temps de calcul de l'ordre de $\bigoh(m\log(m))$ sur un graphe à $m$ arêtes.
   \begin{proof}
-    On doit commencer par trier les arêtes du graphes ce qui se fait en $\bigoh(m\log(m))$ avec un algorithme efficace.
+    On doit commencer par trier les arêtes du graphe ce qui se fait en $\bigoh(m\log(m))$ avec un algorithme efficace.
     Savoir si ajouter une arête crée un cycle se fait en $\bigoh(\alpha(m))$ avec un Union-Find.
-    On retient pour chaque noeud dans quel composante connexe il est.
+    On retient pour chaque noeud dans quelle composante connexe il est.
     Une arête crée un cycle si et seulement si ses deux extrémités sont dans la même composante connexe,
     ce qui se fait à l'aide de deux \emph{find} en $\bigoh(\alpha(m))$.
     Lorsqu'on ajoute une arête, on fait l'union de deux composantes connexes,
@@ -332,13 +332,13 @@
   \begin{proof}
    \fbox{$\Longleftarrow$}
    \newline
-   Si je retire un noeud quelconque du graphe, $\forall u,v$ au plus 1 des 2 chemin est toujours connecté $\rightarrow$ G reste connexe. \\
+   Si je retire un noeud quelconque du graphe, $\forall u,v$ au plus 1 des 2 chemins est toujours connecté $\rightarrow$ G reste connexe. \\
    \fbox{$\Longrightarrow$}
      \newline
      Par récurrence sur $d(u,v)$ : 
      \begin{enumerate}
-     \item Cas de base : $d(u,v)=1$. Si G est 2-connexe alors G est 2-arête-connexe (cfr théorème précédent) donc retirer une arête laisse le graphe connexe. Soit l'arête e telle qu'il existe le chemin uev. Si on retire e, u et v sont toujours connecté donc existe donc un chemin P tel que uPv. $\rightarrow$ 2 chemins entre u et v.
-     \item Si c'est vrai pour toute paire de noeuds $x,y$ tels que $d(x,y) < d(u,v)$, prouvons que c'est également vrai pour $d(u,v)$. Soit $w$, le dernier noeud sur le chemin le plus court de u à v. Par hypothèse, $d(u,w) < d(u,v)$ et par récurrence, u et w sont reliés par au moins 2 chemins dont les noeuds internes sont distincts, nommons les $P_1$ et $P_2$. Si je retire w, il existe, par connexité, un chemin P de u à v qui ne passe pas par w. Soit x le dernier noeud de P qui appartient à $P_1$ ou à $P_2$ (éventuellement, x=u). Il existe donc 2 chemins de u à v : u \dots x\dots v, et u \dots w \dots v. Par construction, ces chemins sont disjoints. 
+     \item Cas de base : $d(u,v)=1$. Si G est 2-connexe alors G est 2-arête-connexe (cf. théorème précédent) donc retirer une arête laisse le graphe connexe. Soit l'arête e telle qu'il existe le chemin uev. Si on retire e, u et v sont toujours connecté donc existe donc un chemin P tel que uPv. $\rightarrow$ 2 chemins entre u et v.
+     \item Si c'est vrai pour toute paire de noeuds $x,y$ tels que $d(x,y) < d(u,v)$, prouvons que c'est également vrai pour $d(u,v)$. Soit $w$, le dernier noeud sur le chemin le plus court de u à v. Par hypothèse, $d(u,w) < d(u,v)$ et par récurrence, u et w sont reliés par au moins 2 chemins dont les noeuds internes sont distincts, nommons-les $P_1$ et $P_2$. Si je retire w, il existe, par connexité, un chemin P de u à v qui ne passe pas par w. Soit x le dernier noeud de P qui appartient à $P_1$ ou à $P_2$ (éventuellement, x=u). Il existe donc 2 chemins de u à v : u \dots x\dots v, et u \dots w \dots v. Par construction, ces chemins sont disjoints. 
      \end{enumerate}
   \end{proof}
 \end{mytheo}
@@ -346,9 +346,18 @@
 Ce théorème se généralise :
 
 \begin{mytheo} [Théorème de Menger]
-  Un graphe à au moins $k + 1$ noeuds est k-connexe ssi toute paire de noeuds distincts est reliée par au moins deux chemins dont les noeuds internes sont distincts.
-  \begin{proof}
-     Preuve \addTODO
+  	Un graphe à au moins $k + 1$ noeuds est k-connexe ssi toute paire de noeuds distincts est reliée par au moins $k$ chemins dont les noeuds internes sont distincts.
+	\begin{proof}
+  	\fbox{$\Longleftarrow$}
+   		\newline
+   		Si je retire $k-1$ noeuds quelconques du graphe, $\forall u,v$ on a supprimé au plus $k-1$ chemins entre ces deux noeuds. Il en reste donc au moins un $\rightarrow$ G reste connexe. \\
+   	\fbox{$\Longrightarrow$}
+   		\newline
+   		Par récurrence sur $k$.
+   		\begin{enumerate}
+   			\item Démontré précédemment pour $k=2$ (et trivial pour $k=1$)
+   			\item Si le théorème est bon pour $k-1$, prouvons le pour $k$. Soit un graphe $k$-connexe. Vu qu'il est dès lors $k-1$-connexe, il existe au moins $k-1$ chemins distincts entre toutes paires de noeuds. En supprimant $k-1$ noeuds distincts parmi ces chemins, on a supprimé tous ces chemins. Or le graphe reste connexe, car il est $k$-connexe. $\exists$ donc un $k$ième chemin entre toute paire de noeuds.
+   		\end{enumerate}
   \end{proof}
 \end{mytheo}
 
@@ -362,7 +371,7 @@ Ce théorème se généralise :
 \begin{mytheo} [Théorème de Harary]
   Le graphe de Harary $H_{k ,n}$ possède $kn/2$ arêtes et est k-connexe.
   \begin{proof}
-     Preuve \addTODO
+     Le graphe d'Harary se construit comme suit: il possède $n$ noeuds($v_1,...,v_n$). On relie le noeud $v_j$ à $v_{j+1},...,v_{j+k/2}$ et $v_{j-1},...,v_{j-k/2}$ (modulo $n$). Chaque noeud est donc de degré $k$ et donc $|E|=\frac{kn}{2}$. Il est de plus $k$-connexe: en supprimant $k-1$ noeuds au graphe, chaque noeud reste relié.
   \end{proof}
 \end{mytheo}
 
