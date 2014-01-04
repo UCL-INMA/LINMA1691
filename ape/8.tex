@@ -2,7 +2,9 @@
 
 \textbf{Coloriage de sommets et polynôme chromatique}
 
-\paragraph{1. } Quels sont les graphes de nombre chromatique égal à 1? et égal à 2?
+\subsection{Graphe mono/bi chromatique}
+Quels sont les graphes de nombre chromatique égal à 1? et égal à 2?
+
 \begin{solution}
   \begin{enumerate}
     \item Les graphes de nombre chromatique égal à 1 sont forcément les graphes sans arête car dès qu'il y a une arête, on a besoin d'au moins $2$ couleurs pour colorier le graphe (une pour chaque extrémité).
@@ -14,7 +16,9 @@
   \end{enumerate}
 \end{solution}
 
-\paragraph{2. } Trouvez le nombre chromatique du graphe de Pétersen, et du graphe biparti complet $K_{5,3}$.
+\subsection{Nombre chromatique}
+Trouvez le nombre chromatique du graphe de Pétersen, et du graphe biparti complet $K_{5,3}$.
+
 \begin{solution}
   \begin{enumerate}
     \item Nous savons que $3 \leq \mathcal{X}$ car le graphe n'est pas biparti et il existe effectivement un coloriage à  $3$ couleurs :
@@ -25,7 +29,8 @@
   \end{enumerate}
 \end{solution}
 
-\paragraph{3. } Vrai ou faux? \\
+\subsection{Vrai ou faux}
+
 \begin{enumerate}[(a)]
   \item Un graphe de degré maximum 3 peut être colorié avec 4 couleurs.
   \item Un graphe de degré maximum 4 peut être colorié avec 4 couleurs.
@@ -38,11 +43,13 @@
     \item Vrai car $\mathcal{X} \leq$ degré max $+ 1 = 4$. 
     \item  Pas toujours. Le graphe $K_5$ en nécessite $5$ par exemple.
     \item Vrai puisqu'on aura déjà besoin de $5$ pour colorier $K_n$.
-    \item Faux. Prenons par exemple un pentagone. Son nombre chromatique est égal à $3$ sans pour qu'il ne contienne de triangle. En fait, dès qu'on aura un cycle de longueur impaire, on va avoir $n \geq 3 $ sans pour autant que le graphe ne contienne $K_n$.
+    \item Faux. Prenons par exemple le graphe de Péterson. Son nombre chromatique est égal à $3$ sans pour qu'il ne contienne de triangle. En fait, dès qu'on aura un cycle de longueur impaire, on va avoir $n \geq 3 $ sans pour autant que le graphe ne contienne $K_n$.
   \end{enumerate}
 \end{solution}
 
-\paragraph{4. } L'algorithme glouton de coloration associé à un graphe $G$ fonctionne comme suit: on parcourt les sommets $v_1,v_2,…,v_n$ de $G$ dans un ordre fixé arbitrairement. Lorsqu'on rencontre le sommet $v_i$, on lui assigne la plus petite couleur qui n'est pas encore utilisée par un de ses voisins.
+\subsection{Algorithme glouton de coloration} 
+L'algorithme glouton de coloration associé à un graphe $G$ fonctionne comme suit: on parcourt les sommets $v_1,v_2,…,v_n$ de $G$ dans un ordre fixé arbitrairement. Lorsqu'on rencontre le sommet $v_i$, on lui assigne la plus petite couleur qui n'est pas encore utilisée par un de ses voisins.
+
 \begin{enumerate}[(a)]
   \item Montrez que tout graphe $G$ possède une séquence de sommets pour laquelle l'algorithme glouton utilise un nombre minimum de couleurs.
   \item Construisez pour tout $k \geq 1$ un arbre de degré maximum $k$ et une séquence de ses sommets pour laquelle l'algorithme glouton utilise $k+1$ couleurs.
@@ -59,8 +66,8 @@
 \end{solution}
 
 
-\paragraph{5. } Pour les deux graphes ci-dessous appliquez l'algorithme de coloration glouton, et trouvez $\chi(G)$.
-
+\subsection{Application de l'algorithme glouton de coloration}
+Pour les deux graphes ci-dessous appliquez l'algorithme de coloration glouton, et trouvez $\chi(G)$.
 
 \begin{figure}[h!]
   \centering
@@ -163,12 +170,16 @@
      \end{enumerate}
 \end{solution}
 
-\paragraph{6. } Sous quelle condition la somme des coefficients d'un polynôme chromatique est-elle nulle?
+\subsection{Somme des coefficients d'un polynôme chromatique}
+Sous quelle condition la somme des coefficients d'un polynôme chromatique est-elle nulle?
+
 \begin{solution}
   La somme des coefficients du polynôme $= \pi_G(1)$ et $\pi_G(1) = 0$ veut dire que G a au moins une arête.
 \end{solution}
 
-\paragraph{7. } Trouvez le polynôme chromatique du graphe biparti complet $K_{2,2}$, et donnez le nombre de colorations possibles du cycle $C_4$ avec 5 couleurs.
+\subsection{Polynôme chromatique}
+Trouvez le polynôme chromatique du graphe biparti complet $K_{2,2}$, et donnez le nombre de colorations possibles du cycle $C_4$ avec 5 couleurs.
+
 \begin{solution}
   \begin{enumerate}
   \item En utilisant le fait que $\pi_k(G) = \pi_k(G-e) - \pi_k(G.e)$, on trouve que $\pi_k(K_{2,2}) = k^2(k-1)^2 - k (k-1)^2 - k(k-1)(k-2) = k^4-4k^3+6k^2-3k$.
@@ -176,11 +187,12 @@
 \end{enumerate}
 \end{solution}
 
-\paragraph{8. }
+\subsection{Polynôme chromatique d'un chemin ou d'un cycle}
 \begin{enumerate}[(a)]
   \item Trouvez le polynôme chromatique d'un graphe chemin de longueur $n$
   \item Utilisez ce résultat pour trouver le polynôme chromatique d'un graphe circuit de longueur $n$.
 \end{enumerate}
+
 \begin{solution}
   \begin{enumerate}
   \item On démontre par récurrence que $p_k(P_n) = k(k-1)^n$.
@@ -195,7 +207,8 @@
 \end{enumerate}
 \end{solution}
 
-\paragraph{9. } Soit le graphe parallélépipède $3 \times 3 \times 2$.
+\subsection{graphe parallélépipède}
+Soit le graphe parallélépipède $3 \times 3 \times 2$.
 
 \begin{enumerate}[(a)]
   \item Chaque arête du graphe est de longueur 1. On souhaite décrire un chemin qui part du sommet $s$ et arrive au sommet $t$ en passant au moins une fois par chaque arête. Quelle est la longueur minimale d'un tel chemin?
@@ -203,8 +216,3 @@
   \item Soit $P_G(k)$ le polynôme chromatique de ce graphe. Quel est le degré de $P_G(k)$? Que vaut $P_G(2)$?
   \item Trouvez une expression aussi explicite que possible pour le nombre de chemins de longueur $k$ du sommet $s$ à lui-même.
 \end{enumerate}
-
-\begin{figure}[h!]
-  \centering
-  %\includegraphics[scale=0.7]{img_tp8.jpg}
-\end{figure}

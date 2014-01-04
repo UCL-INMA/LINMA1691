@@ -1,6 +1,7 @@
 \section{Séance 9}
 
-\paragraph{1. } Donnez une autre représentation planaire du graphe suivant où la face spécifiée (egf) devient la face extérieure.
+\subsection{Retourner un graphe planaire}
+Donnez une autre représentation planaire du graphe suivant où la face spécifiée (egf) devient la face extérieure.
 
 \begin{figure}[h!]
   \begin{center}
@@ -38,7 +39,8 @@
 \end{solution}
 
 
-\paragraph{2. } Un graphe planaire peut-il être représenté sur un cylindre bi-infini sans ses arêtes ne se croisent? La réciproque est-elle vraie?  Et pour un graphe sur un tore?
+\subsection{Cylindre bi-infini}
+Un graphe planaire peut-il être représenté sur un cylindre bi-infini sans ses arêtes ne se croisent? La réciproque est-elle vraie?  Et pour un graphe sur un tore?
 
 \begin{solution}
 Pour le cylindre bi-infini : 
@@ -54,7 +56,7 @@ Pour le tore :
 \end{itemize}
 \end{solution}
 
-\paragraph{3. } Les graphes suivants sont-ils planaires?
+\subsection{Graphes planaires ?} Les graphes suivants sont-ils planaires?
 
 \begin{figure}[h!]
   \begin{center}
@@ -125,7 +127,7 @@ Pour le tore :
   Le graphe c) n'est pas planaire.
   En effet, on observe que le graphe possède une clique de 4 noeuds $(a,b,g,f)$.
   On observe aussi que le noeud $c$ est adjacent à $b, g$ et $f$.
-  On prouve ensuite qu'il existe un chemin entre $c$ et $a$ qui ne passe pas par $b, g ou f$:
+  On prouve ensuite qu'il existe un chemin entre $c$ et $a$ qui ne passe pas par $b$, $g$ ou $f$:
   le chemin $c-d-e-a$. Cela signifie qu'il existe un sous-graphe $K_5$ ``caché'' dans le graphe. Or,
 
   \begin{quotation}
@@ -134,12 +136,14 @@ Pour le tore :
 
 \end{solution}
 
-\paragraph{4. } Supposez qu’un graphe connexe planaire a 6 sommets, chacun de degré 4. En combien de régions le plan est-il divisé par une représentation planaire de ce graphe?
+\subsection{Division en face}
+Supposez qu’un graphe connexe planaire a 6 sommets, chacun de degré 4. En combien de régions le plan est-il divisé par une représentation planaire de ce graphe?
 
 \begin{solution} Soit $n = 6$, $e = \frac{6 \cdot 4}{2}$. Par la formule d'Euler $ n - e + f = 2$, on a : $f = 2 - 6 + 12 = 8$.
 \end{solution}
 
-\paragraph{5. } Le complémentaire $\bar{G}$ d’un graphe $G = (V,E)$ de $n$ sommets est donné par $\bar{G} = (V, E(K_n) - E)$. Montrez que si $n \geq 11$, au moins un des deux graphes $G$ ou $\bar{G}$ n’est pas planaire.
+\subsection{Graphe ou complémentaire non planaire}
+Le complémentaire $\bar{G}$ d’un graphe $G = (V,E)$ de $n$ sommets est donné par $\bar{G} = (V, E(K_n) - E)$. Montrez que si $n \geq 11$, au moins un des deux graphes $G$ ou $\bar{G}$ n’est pas planaire.
 
 \begin{solution} Pour tout graphe planaire simple à $n$ sommets, le nombre d'arêtes $e$ est défini par la borne supérieure  $e \leq 3n - 6$. \\
 On sait que $|E(K_{n})| = \frac{n(n-1)}{2} = |E(G)| + |E(\bar{G})|$. \\
@@ -153,12 +157,14 @@ Pour qu'à la fois $G$ et $\bar{G}$ soient planaires, il faut que
  En résolvant l'équation du deuxième degré, on obtient les racines $10.7720$ et $2.2280$, ce qui signifie que pour que les deux graphes $G$ et $\bar{G}$ soient planaires, il faut que $2.2280 \leq n \leq 10.7720$.
  \end{solution}
 
-\paragraph{6. } Sous quelle condition est-il possible d’ajouter une arête à un graphe planaire en conservant la planarité? Déduisez le nombre total d’arêtes qu’il est possible d’ajouter à un graphe planaire de $n$ sommets et $m$ arêtes tout en conservant la planarité.
+\subsection{Conservation de la planarité}
+Sous quelle condition est-il possible d’ajouter une arête à un graphe planaire en conservant la planarité ? Déduisez le nombre total d’arêtes qu’il est possible d’ajouter à un graphe planaire de $n$ sommets et $m$ arêtes tout en conservant la planarité.
 
 \begin{solution} Le nombre maximal d'arêtes que l'on peut mettre dans un graphe planaire est $e = 3n - 6$ Soit $x$ le nombre d'arête que l'on peut ajouter à un graphe de $m$ arêtes tout en conversant la planarité. On a donc $e = m + x$, ce qui donne $x = 3n - 6 - m$. Notons que la formule d'Euler ($ n - e + f = 2$) nous dit que $x$ est aussi le nombre maximum de faces que l'on peut ajouter au graphe planaire de $n$ sommets et $m$ arêtes. 
 \end{solution}
 
-\paragraph{7. } Soit un graphe $G$ 3-régulier tel que tout sommet est incident à une face de degré 4, une face de degré 6 et une face de degré 8. Sans dessiner $G$, déterminez le nombre de faces de $G$.
+\subsection{Nombre de faces}
+Soit un graphe $G$ 3-régulier tel que tout sommet est incident à une face de degré 4, une face de degré 6 et une face de degré 8. Sans dessiner $G$, déterminez le nombre de faces de $G$.
 
 \begin{solution} Un noeud ne peut être incident qu'à une seule face de degré 4, une seule face de degré 6 et une seule face de degré 8. Si on désigne
 \begin{itemize}
@@ -180,13 +186,17 @@ Sachant que $e = \frac{3n}{2}$, on a, par la formule d'Euler, $$ n - \frac{3n}{2
 On trouve donc que $$ n = 48 \qquad e = 72 \qquad f = 26$$
 $$ f_4 = 12 \qquad f_6 = 8 \qquad f_8 = 6$$
 \end{solution}
-\paragraph{8. }Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
+
+\subsection{Coloriage des faces}
+Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
 
 \begin{solution}
-  \nosolution
+Si une coupe dans le graphe G comporte un nombre paire d'arêtes cela signifie que les cycles dans le graphe dual seront de longueurs paires également. En effet une coupe dans le graphe G est l'équivalent du cycle enfermant une face dans le graphe dual. On a effectivement que toutes les coupes dans G comportent un nombre paire d'arêtes car le nombre d'arête d'une coupe est le nombre d'arête d'une des parties déconnectées - le nombre d'arête interne à cette partie. Comme le nombre total des arêtes des noeuds d'une partie est paire car tous les nœuds sont de degré paire. On soustrait un nombre paire à un nombre paire et on a donc un nombre paire et donc bien un graphe dual avec uniquement des cycles de degrés paires. Si tous les cycles d'un graphe sont de degré paire il est biparti, si il est biparti il est coloriable en deux couleurs.
+
 \end{solution}
 
-\paragraph{9. } Un circuit électrique connecte des terminaux de deux types $A$ et $B$. Chaque terminal $A$ est connecté à chaque terminal $B$. Montrez qu’un tel circuit peut être imprimé sur les deux faces d’une seule feuille isolante si les terminaux traversent la feuille.
+\subsection{Impression de circuits électriques}
+Un circuit électrique connecte des terminaux de deux types $A$ et $B$. Chaque terminal $A$ est connecté à chaque terminal $B$. Montrez qu’un tel circuit peut être imprimé sur les deux faces d’une seule feuille isolante si les terminaux traversent la feuille.
 
 \begin{solution}
   \nosolution

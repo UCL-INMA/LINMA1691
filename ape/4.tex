@@ -1,6 +1,7 @@
 \section{Séance 4}
 
-\paragraph{1. } On considère un réseau de 5 villes. Le coût de la construction d'une route directe entre $i$ et $j$ est $A_{ij}$ avec $A$ donnée par~:
+\subsection{Réseau routier à moindre frais}
+On considère un réseau de 5 villes. Le coût de la construction d'une route directe entre $i$ et $j$ est $A_{ij}$ avec $A$ donnée par~:
 \[
   A = \begin{bmatrix}
     0 & 3 & 5 & 11 & 9 \\
@@ -28,12 +29,14 @@ Nous réalisons m itérations de kruskal avec $m=n-1=4$. Nous obtenons :
   \end{center}
 	Nous obtenons, par conséquent, un arbre de poids 21.
 	\end{solution}
-\paragraph{2. } Combien d'arbres différents à 5 sommets existe-t-il (avec ou sans symétrie)?
+\subsection{Arbres différents à 5 sommets}
+Combien d'arbres différents à 5 sommets existe-t-il (avec ou sans symétrie)?
 \begin{solution}
 Si les arêtes sont labélisées : $n^{n-2}=125$ possibilités
 Si les arêtes ne sont pas labélisées : $3$ possibilités 
 \end{solution}
-\paragraph{3. } Soit $T(G)$ le nombre d'arbres sous-tendants de $G$ et soit $e$ une arête du graphe $G$ qui n'est pas une boucle. La formule de Cayley établit la relation suivante~:
+\subsection{Arbre sous-tendants}
+Soit $T(G)$ le nombre d'arbres sous-tendants de $G$ et soit $e$ une arête du graphe $G$ qui n'est pas une boucle. La formule de Cayley établit la relation suivante~:
 \[
   T(G) = T(G \backslash e) + T(G.e)
 \]
@@ -159,7 +162,8 @@ Combien d'arbres sous-tendants ce graphe possède-t-il?
     & = 8.
   \end{align*}
 \end{solution}
-\paragraph{4. } Considérons le graphe connexe $G = (V, E, \psi)$. Etant donné une partition $\Pi = \{V_1, V_2\}$ de $V$, On définit la \emph{coupe} $C(\Pi)$ de $G$ relative à $\Pi$ comme l'ensemble des arêtes de $G$ suivant~:
+\subsection{Coupe et arbre sous-tendant}
+Considérons le graphe connexe $G = (V, E, \psi)$. Etant donné une partition $\Pi = \{V_1, V_2\}$ de $V$, On définit la \emph{coupe} $C(\Pi)$ de $G$ relative à $\Pi$ comme l'ensemble des arêtes de $G$ suivant~:
 \[
   C(\Pi) := \{ (v_1, v_2) \in E : v_1 \in V_1 \text{ et } v_2 \in V_2 \}.
 \]
@@ -167,14 +171,80 @@ Montrez qu'une coupe et un arbre sous-tendant de $G$ ont au moins une arête en 
 \begin{solution}
 Si ils n'ont rien en commun, cela signifie que l'arbre n'est pas connexe car il y a une partition. Il y a, par conséquent, une contradiction.
 \end{solution}
-\paragraph{5. } Montrez que si on veut trouver un arbre de recouvrement qui minimise l'arête la plus chère, il suffit de trouver l'arbre de poids minimum.
+\subsection{Arbre de coup minimum}
+Montrez que si on veut trouver un arbre de recouvrement qui minimise l'arête la plus chère, il suffit de trouver l'arbre de poids minimum.
 
-\paragraph{6. } Trouvez un graphe 3-connexe et 3-arête-connexe.
+\begin{solution}
+Prenons par l'absurde qu'il existe un arbre de recouvrement $G$ qui minimise l'arête de plus grand poids et un arbre de recouvrement minimum $Q$ mais qui ne minimise pas l'arête de poids minimum. Cela signifie que certaines arêtes de $Q$ n'ont pas la valeur minimal. Dans ce cas, comme tout les noeuds sont atteint, il suffit de prendre les arêtes de poids inférieur dans $G$ et de remplacé c.
+\end{solution}
 
-\paragraph{7. } L'identité suivante a été vue au cours~:
+\subsection{Graphe 3-connexe et 3-arête-connexe}
+Trouvez un graphe 3-connexe et 3-arête-connexe.
+
+\begin{solution}
+\begin{tikzpicture}
+  % Define the points of a regular pentagon
+  \path (0:1) node[draw,shape=circle,style={circle,fill=blue}] (P0) {};
+  \path (1*72:1) node[draw,shape=circle,style={circle,fill=blue}] (P1) {};
+  \path (2*72:1) node[draw,shape=circle] (P2) {};
+  \path (3*72:1) node[draw,shape=circle,style={circle,fill=blue}] (P3) {};
+  \path (4*72:1) node[draw,shape=circle] (P4) {};
+  % Draw the edges of the pentagon
+  \draw (P0) -- (P1) (P4) -- (P0) (P3) -- (P4) (P3) -- (P0) (P1) -- (P3) (P1) -- (P4);
+  \draw[green] (P1) -- (P2) (P2) -- (P3) (P2) -- (P0); 
+\end{tikzpicture}
+\end{solution}
+
+\subsection{$ \text{connectivité } \leq \text{ arête-connectivité } \leq \text{ degré minimum} $}
+L'identité suivante a été vue au cours~:
 \[
-  \text{connectivité } \leq \text{ arête-connectivité } \leq \text{ degré minimum}.
+  \text{connectivité } \leq \text{ arête-connectivité } \leq \text{ degré minimum}
 \]
 Trouvez un graphe pour lequel les inégalités sont des égalités. Trouvez ensuite un graphe pour lequel les inégalités sont strictes.
 
-\paragraph{8. } On définit $\delta$, $n$ et $k$ respectivement comme le degré minimum, le nombre de sommets et la connectivité d'un graphe simple $G$. Trouvez un graphe $G$ tel que $\delta = n-3$ et $k < \delta$.
+\begin{solution}
+Egalité : $3=3=3$
+\begin{tikzpicture}
+  % Define the points of a regular pentagon
+  \path (0:1) node[draw,shape=circle] (P0) {};
+  \path (1*72:1) node[draw,shape=circle] (P1) {};
+  \path (2*72:1) node[draw,shape=circle] (P2) {};
+  \path (3*72:1) node[draw,shape=circle] (P3) {};
+  \path (4*72:1) node[draw,shape=circle] (P4) {};
+  % Draw the edges of the pentagon
+  \draw (P0) -- (P1) (P4) -- (P0) (P3) -- (P4) (P3) -- (P0) (P1) -- (P3) (P1) -- (P4) (P1) -- (P2) (P2) -- (P3) (P2) -- (P0); 
+\end{tikzpicture}
+
+inégalité : $1<2<3$
+\begin{tikzpicture}
+  % Define the points of a regular pentagon
+  \path (0,0) node[draw,shape=circle] (P1) {};
+  \path (0,1) node[draw,shape=circle] (P2) {};
+  \path (1,0) node[draw,shape=circle] (P3) {};
+  \path (1,1) node[draw,shape=circle] (P4) {};
+  \path (2,0) node[draw,shape=circle] (P5) {};
+  \path (2,1) node[draw,shape=circle] (P6) {};
+  \path (3,0) node[draw,shape=circle] (P7) {};
+  \path (3,1) node[draw,shape=circle] (P8) {};
+  % Draw the edges of the pentagon
+  \draw (P1) -- (P2) (P1) -- (P3) (P1) -- (P4) (P2) -- (P3) (P2) -- (P4) (P3) -- (P6) (P4) -- (P6) (P5) -- (P6) (P5) -- (P7) (P5) -- (P8) (P6) -- (P7) (P6) -- (P8) (P7) -- (P8); 
+\end{tikzpicture}
+\end{solution}
+
+\subsection{Trouvez un graphe}
+On définit $\delta$, $n$ et $k$ respectivement comme le degré minimum, le nombre de sommets et la connectivité d'un graphe simple $G$. Trouvez un graphe $G$ tel que $\delta = n-3$ et $k < \delta$.
+
+\begin{solution}
+$n=3$, $k=2$ (bleu) et $\delta = 3$
+\begin{tikzpicture}
+  % Define the points of a regular pentagon
+  \path (0:1) node[draw,shape=circle,style={circle,fill=blue}] (P0) {};
+  \path (1*60:1) node[draw,shape=circle] (P1) {};
+  \path (2*60:1) node[draw,shape=circle] (P2) {};
+  \path (3*60:1) node[draw,shape=circle,style={circle,fill=blue}] (P3) {};
+  \path (4*60:1) node[draw,shape=circle] (P4) {};
+  \path (5*60:1) node[draw,shape=circle] (P5) {};
+  % Draw the edges of the pentagon
+  \draw (P0) -- (P1) (P0) -- (P2) (P0) -- (P3) (P0) -- (P4) (P0) -- (P5) (P1) -- (P5) (P1) -- (P3) (P2) -- (P3) (P2) -- (P4) (P4) -- (P3) (P5) -- (P3);
+\end{tikzpicture}
+\end{solution}

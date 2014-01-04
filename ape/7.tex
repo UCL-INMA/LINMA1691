@@ -11,8 +11,8 @@
 
 \section{Séance 7}
 
-\paragraph{1. } Lorsqu'on réalise un exposé oral, il faut choisir soigneusement ses notations afin d'éviter les confusions sonores entre lettres (comme entre $m$ et $n$ par exemple). Dans un alphabet de $N$ lettres, on a identifié toutes les paires de lettres qu'il est possible de confondre et on aimerait sélectionner un ensemble de lettres pour nos notations de sorte qu'aucune confusion ne soit possible.
-
+\subsection{confusion phonétique}
+Lorsqu'on réalise un exposé oral, il faut choisir soigneusement ses notations afin d'éviter les confusions sonores entre lettres (comme entre $m$ et $n$ par exemple). Dans un alphabet de $N$ lettres, on a identifié toutes les paires de lettres qu'il est possible de confondre et on aimerait sélectionner un ensemble de lettres pour nos notations de sorte qu'aucune confusion ne soit possible.
 
 \begin{enumerate}
   \item[a.] Modélisez cette situation comme un problème de graphes. Comment trouver le plus grand nombre de lettres non-confondables possible?
@@ -30,7 +30,8 @@ Dans le pire cas, $G$ est connexe. Pour pouvoir sélectionner un ensemble de nœ
 \end{enumerate}
 \end{solution}
 
-\paragraph{2. } Dans un groupe de 9 personnes, une personne connaît 2 autres personnes, ces 2 personnes connaissent chacune 4 personnes, 4 personnes connaissent chacune 5 personnes et les 2 dernières personnes connaissent chacune 6 personnes. Montrez qu'il existe 3 personnes qui se connaissent l'une l'autre.
+\subsection{Groupe d'amis}
+Dans un groupe de 9 personnes, une personne connaît 2 autres personnes, ces 2 personnes connaissent chacune 4 personnes, 4 personnes connaissent chacune 5 personnes et les 2 dernières personnes connaissent chacune 6 personnes. Montrez qu'il existe 3 personnes qui se connaissent l'une l'autre.
 
 \begin{solution}
 Nous commençons par calculer le nombre d'arêtes $m$ :
@@ -42,7 +43,8 @@ Le théorème de Turán nous permet de trouver une borne inférieure sur le nomb
 $$\left(1-\frac{1}{2}\right)\frac{9^2}{2}=20.25$$
 \end{solution}
 
-\paragraph{3. } Une fête regroupe $n$ personnes, chacune ayant au moins un ami présent (l'amitié étant réciproque). Dans tout groupe d'au moins 3 personnes, il n'y a jamais exactement 2 paires d'amis. Prouvez que chaque personne est amie avec toutes les autres.
+\subsection{Big amitié}
+Une fête regroupe $n$ personnes, chacune ayant au moins un ami présent (l'amitié étant réciproque). Dans tout groupe d'au moins 3 personnes, il n'y a jamais exactement 2 paires d'amis. Prouvez que chaque personne est amie avec toutes les autres.
 
 \begin{solution}
 Si l'on représente les amis par des nœuds et leurs amitiés par les arêtes, les seuls sous-graphes à 3 nœuds possibles (pour éviter d'avoir exactement deux paires d'amis dans un sous-graphe) sont les suivants:
@@ -123,7 +125,9 @@ Dans ce nouveau graphe, tout ensemble de trois nœuds contenant $a$ et $d$ poss�
 Cette preuve s'applique pour chaque nouvel ajout de nœuds au graphe. On en conclut que dans un graphe de $n$ nœuds, chaque personne est amie avec toutes les autres.
 \end{solution}
 
-\paragraph{4. } Montrez que le graphe $G$ est biparti si et seulement si $\alpha(H) \geq \frac{1}{2} \nu(H)$ pour tout sous-graphe $H$ de $G$.
+\subsection{Graphe biparti}
+Montrez que le graphe $G$ est biparti si et seulement si $\alpha(H) \geq \frac{1}{2} \nu(H)$ pour tout sous-graphe $H$ de $G$.
+
 \begin{enumerate}
   \item[$\bullet$] $\alpha(H)$ est le nombre de sommets dans un ensemble indépendant maximum de $H$;
   \item[$\bullet$] $\nu(H)$ est le nombre de sommets de $H$.
@@ -148,7 +152,8 @@ Cette inégalité n'est vérifiée que si $G$ est biparti. En effet, supposons q
 $$\alpha(H)=1\ngeqslant\frac{1}{2}\nu(H)=\frac{a}{2}$$
 \end{solution}
 
-\paragraph{5. } Sans utiliser le Théorème de Turán, montrez que si le graphe $G = (V, E)$ est simple et que $|E| > \frac{|V|^2}{4}$, alors $G$ contient un triangle.
+\subsection{Graphe contenant un triangle}
+Sans utiliser le Théorème de Turán, montrez que si le graphe $G = (V, E)$ est simple et que $|E| > \frac{|V|^2}{4}$, alors $G$ contient un triangle.
 
 \begin{solution}
 Le graphe, pour un nombre fixé de nœuds, possédant le plus d'arêtes tel qu'il n'existe pas de triangle formé par ses arêtes est un graphe biparti dont la taille des partitions diffère au maximum de 1 nœud.

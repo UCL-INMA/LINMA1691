@@ -3,11 +3,12 @@
 
 \index{graphe}
 \begin{mydef}
+  \label{def:graph}
   Un \emph{graphe} est un triplet ($V$, $E$, $\varphi$), où :
   \begin{itemize}
     \item $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds;
     \item $E$ est un ensemble dont les éléments sont appelés arêtes;
-    \item $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un sommet ou une paire de sommets.
+    \item $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un sommet ou une \emph{paire} de sommets.
   \end{itemize}
 \end{mydef}
 
@@ -118,9 +119,9 @@
     \newline
     \noindent
     Notons aussi que plusieurs résultats sont possibles :
-    \begin{figure}[h!]
+    \begin{figure}[!h]
       \centering
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {1};
@@ -137,7 +138,7 @@
         \end{tikzpicture}
       }
       % Cette ligne de commentaire semble être nécessaire pour que les figures soient affichées sur une ligne
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
@@ -147,13 +148,13 @@
           \node[draw, circle] at (-2, 0.5)  (5) {$5'$};
 
           \draw[-] (1) edge [bend left] node[pos=0.05, anchor = west] {$a'$} (3);
-          \draw[-] (2) edge node[anchor = north] {$b'$} (5);
+          \draw[-] (2) edge node[anchor = north] {$d'$} (5);
           \draw[-] (2) edge node[pos=0.5, anchor = west] {$c'$} (4);
-          \draw[-] (3) edge node[pos=0.5, anchor = east] {$d'$} (5);
+          \draw[-] (3) edge node[pos=0.5, anchor = east] {$b'$} (5);
           \draw[-] (1) edge [bend right] node[pos=0.05, anchor = east] {$e'$} (4);
         \end{tikzpicture}
       }
-      \subfigure[h!]
+      \subfigure[]
       {
         \begin{tikzpicture}[scale = 0.75]
           \node[draw, circle] at ( 0, 1.5)  (1) {$1'$};
@@ -222,7 +223,7 @@
       \item soit pour entrer dans $x$;
       \item soit pour en sortir.
     \end{itemize}
-    A chaque arête entrante correspond une arête sortante (celle qui suit dans le parcours sauf pour la dernière et la première).\\
+    À chaque arête entrante correspond une arête sortante (celle qui suit dans le parcours sauf pour la dernière et la première).\\
     Donc, il y a une bijection entre les arêtes entrantes et les arêtes sortantes.\\
     $\longrightarrow$ degré pair \\
 
@@ -233,7 +234,9 @@
     \begin{enumerate}
       \item On part d'un noeud arbitraire $x_0$.
       \item On prend une arête incidente à $x_0$, on arrive à un nouveau noeud.
-      \item Par parité, il y a au moins une arête non utilisée, on la prend, etc... Quand il n'y a plus d'arête disponible, on est forcément arrivé à $x_0$.
+      \item Par parité, il y a au moins une arête non utilisée, on la prend, etc...
+        Quand il n'y a plus d'arête disponible, on est forcément arrivé à $x_0$ car
+        pour tout autre noeud $y$, en arrivant à $y$, on a utilisé un nombre impair d'arêtes incidentes à $y$.
     \end{enumerate}
     \begin{center}
       \begin{tikzpicture}[scale = 0.75]
@@ -262,9 +265,9 @@
         \draw[-] (9) edge node {} (10);
       \end{tikzpicture}
     \end{center}
-    Pour tout autre noeud y, en arrivant à y, on a utilisé un nombre impair d'arêtes incidentes à y. On a un parcours fermé :
+    On a un parcours fermé :
     \begin{itemize}
-      \item Si toutes les arêtes incidentes aux x noeuds traversés par ce parcours sont utilisées, alors ce parcours est eulérien;
+      \item Si toutes les arêtes incidentes aux $x$ noeuds traversés par ce parcours sont utilisées, alors ce parcours est eulérien;
       \item Sinon, il y a $x_1 \in$ parcours avec au moins une arête non exploitée.
     \end{itemize}
     \begin{center}
@@ -294,8 +297,8 @@
         \draw[-, color=red] (9) edge node {} (10);
       \end{tikzpicture}
     \end{center}
-    On merge les deux parcours :\\
-    $P_{0+1} = x_0 \rightarrow x_1 \textcolor{red}{\rightarrow} x_1 \rightarrow x_0$\\
+    On merge les deux parcours :
+    $$P_{0+1} = x_0 \rightarrow x_1 \textcolor{red}{\rightarrow} x_1 \rightarrow x_0$$
     Et on fait ça en boucle jusqu'à avoir toutes les arêtes.
   \end{proof}
 \end{mytheo}
@@ -309,7 +312,7 @@
     \newline
     \begin{itemize}
       \item Si ce parcours eulérien est fermé, tous les degrés sont pairs;
-      \item Si ce parcours eulérien est ouvert, tous les degrés sont pairs, sauf $deg(u)$ et $deg(v)$ qui sont impairs.\\
+      \item Si ce parcours eulérien est ouvert, tous les degrés sont pairs, sauf $\deg(u)$ et $\deg(v)$ qui sont impairs.
     \end{itemize}
 
     \noindent
@@ -317,19 +320,22 @@
     \newline
     \begin{itemize}
       \item Si tous les degrés sont pairs alors il existe un parcours eulérien fermé;
-      \item Si deux degrés sont impairs et si on ajoute une arête $e$ entre $u$ et $v$ :\\
-      $\rightarrow$ Tous les degrés sont pairs.\\
-      $\rightarrow$ Il existe un parcours eulérien fermé.\\
-      En retirant $e$, on obtient un parcours eulérien ouvert $u \rightarrow v$
+      \item Si deux degrés sont impairs et si on ajoute une arête $e$ entre $u$ et $v$ :
+        \begin{itemize}
+          \item[$\rightarrow$] Tous les degrés sont pairs.
+          \item[$\rightarrow$] Il existe un parcours eulérien fermé.
+        \end{itemize}
+        En retirant $e$, on obtient un parcours eulérien ouvert $u \rightarrow v$.
     \end{itemize}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Théorème des poignées de mains]
-  La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.\\
-  $\sum_{v_i \in V}^{} deg(v_i) = 2|E|$
+  La somme des degrés des noeuds d’un graphe est deux fois le nombre d’arêtes.
+  $$\sum_{v_i \in V} \deg(v_i) = 2|E|$$
   \begin{proof}
-    En utilisant la matrice d'incidence $M$ (voir \ref{in_matrix}), on peut calculer $\sum_{i,j}^{} M_{i,j}$ de deux façon différentes :\\
+    En utilisant la matrice d'incidence $M$ (voir \ref{in_matrix}),
+    on peut calculer $\sum_{i,j}^{} M_{i,j}$ de deux façon différentes :\\
     \begin{tikzpicture}[decoration=brace]
       \matrix (m) [matrix of math nodes,left delimiter=[,right delimiter={]}] {
           0 & 1 & 1 & 0 & 1 & 0 \\
@@ -337,88 +343,101 @@
           1 & 0 & 0 & 1 & 0 & 1 \\
           0 & 0 & 1 & 0 & 1 & 0 \\
       };
-      \draw[decorate,transform canvas={xshift=1.3em},thick] (m-1-6.north east) -- node[right=2pt] {$\sum_i \sum_j M_{ij} = \sum_{v_i \in V} deg(v_i)$} (m-4-6.south east);
-      \draw[decorate,transform canvas={yshift=-1.7em},thick] (m-4-6.north east) -- node[below=2pt] {$\sum_i \sum_j M_{ij} = 2|E|$} (m-3-1.south west);
+      \draw[decorate,transform canvas={xshift=1.3em},thick] (m-1-6.north east) -- node[right=2pt] {$\sum_i \sum_j M_{ij} = \sum_{v_i \in V} \deg(v_i)$} (m-4-6.south east);
+      \draw[decorate,transform canvas={yshift=-1.7em},thick] (m-4-6.north east) -- node[below=2pt] {$\sum_j \sum_i M_{ij} = \sum_j 2 = 2|E|$} (m-3-1.south west);
     \end{tikzpicture}
-    \vspace*{5mm}
-    \begin{center}
-      $\sum_i \sum_j M_{ij} = \sum_i \sum_j M_{ij}$\\
-      \vspace*{2mm}
-      $2|E| = \sum_{v_i \in V} deg(v_i)$
-    \end{center}
+
+    \begin{align*}
+      \sum_i \sum_j M_{ij} & = \sum_j \sum_i M_{ij}\\
+      \sum_{v_i \in V} \deg(v_i) & = 2|E|.
+    \end{align*}
   \end{proof}
 \end{mytheo}
 
 \subsection{Représentation matricielle du graphe}
 \index{matrice d'adjacence}
 \begin{mydef}
-  La \emph{matrice d'adjacence} est une matrice carrée $n$x$n$ dont l'élément $ij$ est le nombre d'arêtes entre les sommets $v_i$ et $v_j$.
+  La \emph{matrice d'adjacence} est une matrice carrée $n \times n$ dont l'élément $ij$ est le nombre d'arêtes entre les sommets $v_i$ et $v_j$.
 \end{mydef}
 
 \index{matrice d'incidence}
 \begin{mydef}
   \label{in_matrix}
-  La \emph{matrice d'incidence} est une matrice rectangulaire $n$x$m$ dont l'élément $ij$ est le nombre de fois que le sommet $v_i$ est incident à l'arête $e_j$.
+  La \emph{matrice d'incidence} est une matrice rectangulaire $n \times m$ dont l'élément $ij$ est le nombre de fois que le sommet $v_i$ est incident à l'arête $e_j$.
 \end{mydef}
 
 \begin{myexem}
-  \noindent
-  \begin{center}
+  \label{exem:mat}
+  \begin{figure}[!h]
+    \centering
     \begin{tikzpicture}[scale = 0.75]
       \node[draw, circle] at ( 0, 4)  (1)  {$1$};
       \node[draw, circle] at ( 2, 0)  (2)  {$2$};
       \node[draw, circle] at (-2, 0)  (3)  {$3$};
 
-      \draw[-] (1) edge [loop above] node {a} (1);
-      \draw[-] (1) edge [bend left] node [anchor = north] {b} (2);
-      \draw[-] (1) edge [bend right] node [anchor = north] {c} (2);
-      \draw[-] (2) edge node [anchor = north] {d} (3);
-      \draw[-] (1) edge node [anchor = north] {e} (3);
+      \draw[-] (1) edge [loop above] node {$a$} (1);
+      \draw[-] (1) edge [bend left] node [anchor = north] {$b$} (2);
+      \draw[-] (1) edge [bend right] node [anchor = north] {$c$} (2);
+      \draw[-] (2) edge node [anchor = north] {$d$} (3);
+      \draw[-] (1) edge node [anchor = north] {$e$} (3);
     \end{tikzpicture}
+    \caption{Graphe de l'exemple~\ref{exem:mat}.}
+    \label{fig:matexem}
+  \end{figure}
 
-    $
-    Matrice\ d'adjacence\ :\ A\ = \bordermatrix{~ & 1 & 2 & 3 \cr
-                                                1 & 1 & 2 & 1 \cr
-                                                2 & 2 & 0 & 1 \cr
-                                                3 & 1 & 1 & 0 \cr}
-    $
+  Matrice d'adjacence de la figure~\ref{fig:matexem} est
+  \[ A = \bordermatrix{~ & 1 & 2 & 3 \cr
+                       1 & 1 & 2 & 1 \cr
+                       2 & 2 & 0 & 1 \cr
+                       3 & 1 & 1 & 0 \cr}
+  \]
+  et sa matrice d'incidence est
+  \[
+    M = \bordermatrix{~ & a & b & c & d & e\cr
+                      1 & 2 & 1 & 1 & 0 & 1\cr
+                      2 & 0 & 1 & 1 & 1 & 0\cr
+                      3 & 0 & 0 & 0 & 1 & 1\cr}.
+  \]
 
-    $
-    Matrice\ d'incidence\ :\ M\ = \bordermatrix{~ & a & b & c & d & e\cr
-                                                1 & 2 & 1 & 1 & 0 & 1\cr
-                                                2 & 0 & 1 & 1 & 1 & 0\cr
-                                                3 & 0 & 0 & 0 & 1 & 1\cr}
-    $
-  \end{center}
-  $(A^k)_{ij} =$ nombre de parcours $i \to j$ de longueur $k$.\\
-  $
-    A^0\ =\ I\ =  \begin{pmatrix} 1 & 0 & 0\\
-                                  0 & 1 & 0\\
-                                  0 & 0 & 1
-                  \end{pmatrix},\
-    A^1\ =\ A\ =\begin{pmatrix} 1 & 2 & 1\\
-                                2 & 0 & 1\\
-                                1 & 1 & 0
-                \end{pmatrix},\
-    A^2\ = \begin{pmatrix}  6 & 3 & 3\\
-                            3 & 5 & 2\\
-                            3 & 2 & 2
-            \end{pmatrix}
-  $
+  $(A^k)_{ij}$ est le nombre de parcours $i \to j$ de longueur $k$.
+  
+  \begin{align*}
+    A^0 = I & =
+    \begin{pmatrix} 1 & 0 & 0\\
+      0 & 1 & 0\\
+      0 & 0 & 1
+    \end{pmatrix},\\
+    A^1 = A & =
+    \begin{pmatrix} 1 & 2 & 1\\
+      2 & 0 & 1\\
+      1 & 1 & 0
+    \end{pmatrix},\\
+    A^2 & =
+    \begin{pmatrix}  6 & 3 & 3\\
+      3 & 5 & 2\\
+      3 & 2 & 2
+    \end{pmatrix}.
+  \end{align*}
 \end{myexem}
 
 \begin{mytheo} [Matrice d’adjacence et nombre de parcours]
   Soit $A$ la matrice d'adjacence d'un graphe. Alors l'élément $ij$ de $A^k$ ($k \geq 0$) est le nombre de parcours de longueur $k$ de $v_i$ vers $v_j$.
   \begin{proof}
-    Nous procédons par récurrence. Soit $A$ une matrice d'adjacence.\\
-    Pour $k=0$, $A^{0}=Id$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même. \\
-    Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1. \\
-    Supposons la propriété vérifiée pour $A^{k}$.
+    Nous procédons par récurrence. Soit $A$ une matrice d'adjacence.
+    \begin{description}
+      \item[Initialisation]
+        Pour $k=0$, $A^{0}=I$. La propriété est vérifiée par convention. Il existe un chemin de longueur 0 d'un point vers lui même.
 
-    Nombre de parcours de parcours de $i \to j$ de longueur $k+1 =$\\
-    $= \sum_{l \in E}$ (\# parcours de $i \to l$ de longueur $k$)$.$(\# arêtes $l \to j$)\\
-    $= \sum_{l \in E} A_{il}^{k}.A_{lj}$\\
-    $= A_{ij}^{k+1}$
+        Pour $k=1$, $A^{1}=A$ représente bien le nombre de parcours de longueur 1.
+      \item[Induction]
+        Supposons la propriété vérifiée pour $A^{k}$.
+        \begin{align*}
+          &\#\text{parcours $i \to j$ longueur }k+1\\
+          & = \sum_{l \in V} (\# \text{parcours }i \to l\text{ longueur }k) \cdot (\# \text{arêtes } l \to j)\\
+          & = \sum_{l \in V} A_{il}^{k}A_{lj}\\
+          & = A_{ij}^{k+1}.
+        \end{align*}
+    \end{description}
   \end{proof}
 \end{mytheo}
 
@@ -428,7 +447,8 @@
 \end{mydef}
 
 \begin{mylem}
-  Si $u...u'...v'...v$ est un parcours de longeur minimale de $u$ vers $v$, alors le sous-parcours $u'...v'$ est un parcours de longeur minimale de $u'$ vers $v'$.\\
+  Si $u...u'...v'...v$ est un parcours de longueur minimale de $u$ vers $v$, alors le sous-parcours $u'...v'$ est un parcours de longueur minimale de $u'$ vers $v'$.
+
   En particulier, un parcours de longueur minimale est toujours un chemin.
   \begin{proof}
     Si ce parcours entre $u'$ et $v'$ n'était pas le plus court, on utiliserait le parcours strictement plus court pour la construction du parcours entre $u$ et $v$.
@@ -503,11 +523,13 @@
     \noindent
     \fbox{$\Longleftarrow$}
     \newline
-    Partition d'un noeud $v_0$ au hasard.\\
-    $V_0\ =\ \{v|d(v,\ v_0)\ $paire$\}$\\
-    $V_1\ =\ \{v|d(v,\ v_0)\ $impaire$\}$\\
+    Partition d'un noeud $v_0$ au hasard.
+    \begin{align*}
+      V_0 & = \{v|d(v, v_0)\text{ paire}\}\\
+      V_1 & = \{v|d(v, v_0)\text{ impaire}\}
+    \end{align*}
     C'est une partition. Est-ce une bipartition?
-    Oui, sinon on aurait par exemple une arête $uv$ dans $V_0$.
+    Oui, sinon on aurait par exemple une arête $uv$ avec $u, v \in V_0$.
 
     \begin{center}
       \begin{tikzpicture}

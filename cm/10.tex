@@ -11,6 +11,7 @@
 \index{flot!valeur du flot}
 \index{flot!flot maximum}
 \begin{mydef}
+  \noindent
   \begin{itemize}
     \item Le \emph{flot net sortant d'un noeud} $u$ est défini comme
       $\sum_{\text{arêtes }a\text{ d'origine }u} f(a) − \sum_{\text{arêtes }b\text{ de destination }u} f(b)$.
@@ -169,7 +170,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   $\valeur(f') = \valeur(f) + 1$.
   Le flot est alors modifié le long de ce chemin comme montré
   à la figure~\ref{fig:fprime}.
-  \begin{figure}[h!]
+  \begin{figure}[!h]
     \centering
     \begin{tikzpicture}
       \SetGraphUnit{2}
@@ -191,7 +192,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
     \caption{Chemin $f$-augmentant}
     \label{fig:faug}
   \end{figure}
-  \begin{figure}[h!]
+  \begin{figure}[!h]
     \centering
     \begin{tikzpicture}
       \SetGraphUnit{2}
@@ -228,7 +229,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
         Soit une arête de $S \to \bar{S}$, elle est $f$-saturée par construction de $S$,
         sinon la destination de l'arête serait dans $S$.
         Soit une arête de $\bar{S} \to S$, elle doit être $f$-nulle pour la même raison.
-        \begin{figure}[h!]
+        \begin{figure}[!h]
           \centering
           \begin{tikzpicture}[x=2cm,y=1cm]
             \SetGraphUnit{1}
@@ -287,7 +288,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
     Si j'ai $k$ chemins disjoints $u \to v$,
     je crée un flot de valeur $k$ en saturant les arêtes
     des chemins.
-    \begin{figure}[h!]
+    \begin{figure}[!h]
       \centering
       \begin{tikzpicture}
         \SetGraphUnit{2}
@@ -333,7 +334,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
     je peux prolonger par $k$ chemins (disjoints par les arêtes)
     vers $v$.
 
-    \begin{figure}[h!]
+    \begin{figure}[!h]
       \centering
       \begin{tikzpicture}[x=2cm,y=1cm]
         \SetGraphUnit{1}
@@ -382,7 +383,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   \begin{proof}
     Pour se ramener au théorème~\ref{theo:kconnexe_chemin},
     on va ``tranformer les noeuds en arêtes''.
-    \begin{table}[h!]
+    \begin{table}[!h]
       \centering
       \begin{tabular}{cc}
         Graphe non dirigé $G$ & Graphe dirigé $G'$\\
@@ -451,7 +452,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
           \Edge(w1)(v0)
         \end{tikzpicture}\\
       \end{tabular}
-    \end{table}[h!]
+    \end{table}
     $k$ chemins $u \to v$ disjoints par les noeuds
     $\rightarrow$ en $k$ chemins $u_0 \to v_1$ disjoints
     par les arêtes.

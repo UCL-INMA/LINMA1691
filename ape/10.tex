@@ -1,6 +1,7 @@
 \section{Séance 10}
 
-\paragraph{1. } Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la solution proposée est bien optimale? 
+\subsection{Flot maximum}
+Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la solution proposée est bien optimale?
 
 \begin{figure}[h!]
   \centering
@@ -28,10 +29,10 @@
     \Edge[label=$4$](E)(T)
     \Edge[label=$1$](O)(D)
     \Edge[label=$8$](O)(E)
-    \tikzset{EdgeStyle/.append style = {bend left}}
+    \tikzset{EdgeStyle/.append style = {bend right}}
     \Edge[label=$2$](A)(B)
     \Edge[label=$1$](B)(A)
-    \tikzset{EdgeStyle/.append style = {bend right}}
+    \tikzset{EdgeStyle/.append style = {bend left}}
     \Edge[label=$2$](B)(C)
   \end{tikzpicture}
 \end{figure}
@@ -72,17 +73,18 @@
       \Edge[label=$4/4$](E)(T)
       \Edge[label=$1/1$](O)(D)
       \Edge[label=$7/8$](O)(E)
-      \tikzset{EdgeStyle/.append style = {bend left}}
+      \tikzset{EdgeStyle/.append style = {bend right}}
       \Edge[label=$2/2$](A)(B)
       \Edge[label=$0/1$](B)(A)
-      \tikzset{EdgeStyle/.append style = {bend right}}
+      \tikzset{EdgeStyle/.append style = {bend left}}
       \Edge[label=$2/2$](B)(C)
     \end{tikzpicture}
   \end{center}
 \end{solution}
 
 
-\paragraph{2. } Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau? 
+\subsection{Mon patron a tord}
+Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau?
 
 \begin{figure}[h!]
   \centering
@@ -201,23 +203,24 @@
   \end{center}
 \end{solution}
 
-\paragraph{3. } Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe. 
+\subsection{Entremetteuses de couples ardensais}
+Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe.
 
 \begin{solution}
   On peut modéliser ce problème comme un flot maximum dans un graphes de $2n + 2m + 2$ noeuds dont
   \begin{itemize}
-    \item Une source
-    \item Un puit
-    \item Les $n$ célibataires masculins
-    \item Les $n$ célibataires féminins
-    \item Les $m$ entremetteuses dupliquées,
+    \item une source,
+    \item un puits,
+    \item les $n$ célibataires masculins,
+    \item les $n$ célibataires féminins et
+    \item les $m$ entremetteuses dupliquées,
       c'est la façon standard modéliser une capacité sur un noeud et non sur une arête.
       On duplique le noeud en question, une première partie avec toutes les arêtes entrantes
       et une deuxième partie avec toutes les arêtes sortantes.
       Une arête avec la capacité du noeud comme capacité est alors ajoutée entre les deux parties.
   \end{itemize}
   Pour modéliser le fait qu'ils ne peuvent se marier qu'une seule fois, on relie tous les célibataires
-  masculins (resp. féminins) à une source (resp. un puit) avec une capacité 1.
+  masculins (resp. féminins) à une source (resp. un puits) avec une capacité 1.
   La capacité entre les célibataires et les entremetteuses n'a alors pas trop d'importance,
   elle doit juste être plus grande que 1.
 
@@ -269,14 +272,15 @@
   \end{center}
 \end{solution}
 
-\paragraph{4. } Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous. 
+\subsection{Processeur bicoeurs}
+Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous.
 
 \begin{multicols}{2}
 
 \begin{center}
 \begin{tabular}{||c||c|c|c|c||}
 \hline
-$i$ & 1 & 2 & 3 & 4 \\ 
+$i$ & 1 & 2 & 3 & 4 \\
 \hline
 $\alpha_i$ & 6 & 5 & 10 & 4 \\
 \hline
@@ -287,18 +291,17 @@ $\beta_i$ & 4 & 10 & 3 & 8 \\
 
 \columnbreak
 
-
 \begin{center}
 \begin{tabular}{||c||c|c|c|c||}
 \hline
-$c_{ij}$ & 1 & 2 & 3 & 4 \\ 
+$c_{ij}$ & 1 & 2 & 3 & 4 \\
 \hline
 1 & 0 & 5 & 0 & 0 \\
 \hline
 2 & 5 & 0 & 6 & 2 \\
 \hline
 3 & 0 & 6 & 0 & 1 \\
-\hline 
+\hline
 4 & 0 & 2 & 1 & 0 \\
 \hline
 \end{tabular}
@@ -306,8 +309,100 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 
 \end{multicols}
 
-\paragraph{5. } L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemin d'augmentation et d'augmenter le flot le long de ce chemin jusqu'à saturation. Montrez par un argument élémentaire que dans le cas où les capacités maximales sont entières cet algorithme s'arrête toujours après un nombre fini d'itérations. Pouvez-vous adapter votre argument à la situation pour laquelle les capacités sont rationnelles? \\
-\textbf{Challenge:} et pour des capacités réelles? 
+\begin{solution}
+  Ça peut se représenter comme un Min Cut qui peut également
+  être résolu par Ford-Fulkerson car $\coupemin = \flotmax$.
+
+  En effet, prenons le graphe avec 6 noeuds.
+  Une source $A$, un puits $B$ et 4 noeuds représentant les 4 processus.
+  On ajoute
+  \begin{itemize}
+    \item Une arête de capacité $c_{ij}$ du processus $i$ au processus $j$,
+      si $c_{ij} \neq 0$ (pour simplifier car les arêtes de poids 0 n'influencent pas $\flotmax$ et $\coupemin$).
+    \item Une arête de capacité $\alpha_i$ de $A$ au processus $i$.
+    \item Une arête de capacité $\beta_i$ du processus $i$ à $B$.
+  \end{itemize}
+  Si on veut couper le graphe en 2 avec d'un côté, $A$ et les processus $b$ qui sont assignés à $B$
+  et d'un autre $B$ et les processus $a$ qui sont assignés à $A$
+  On doit couper $\beta_a$, $\alpha_b$ et $c_{ba}$.
+  $\coupemin$ sur ce graphe nous donnera donc la valeur minimum de $\sum_a \beta_a + \sum_b \alpha_b + \sum_b \sum_a c_{ba}$.
+
+  Dans notre cas, le graphe est le suivant.
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1.5}
+      \GraphInit[vstyle=Dijkstra]
+      \SetVertexMath
+      \Vertex{A}
+      \EA(A){2}
+      \NO(2){1}
+      \SO(2){3}
+      \SO(3){4}
+      \EA(3){B}
+      \SetUpEdge[style={->}]
+      labelstyle = {draw}]
+      \Edge[label=$6$](A)(1)
+      \Edge[label=$5$](A)(2)
+      \Edge[label=$10$](A)(3)
+      \Edge[label=$4$](A)(4)
+      \Edge[label=$4$](1)(B)
+      \Edge[label=$10$](2)(B)
+      \Edge[label=$3$](3)(B)
+      \Edge[label=$8$](4)(B)
+      \SetUpEdge[style={<->}]
+      \tikzset{EdgeStyle/.append style = {bend right}}
+      \Edge[label=$5$](1)(2)
+      \Edge[label=$6$](2)(3)
+      \Edge[label=$1$](3)(4)
+      \tikzset{EdgeStyle/.append style = {bend left}}
+      \Edge[label=$2$](2)(4)
+    \end{tikzpicture}
+  \end{center}
+
+  En appliquant l'algorithme de Ford-Fulkerson, on trouve le graphe suivant
+  avec la coupe en rouge.
+  On observe donc qu'il faut assigner les processus 1, 2 et 3 à $B$
+  et le processus 4 à $A$ pour un coût de 22.
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{2}
+      \GraphInit[vstyle=Classic]
+      \SetVertexMath
+      \SetUpVertex[Lpos=90]
+      \Vertex{A}
+      \EA(A){2}
+      \NOEA(2){1}
+      \SOEA(2){3}
+      \SOWE(3){4}
+      \EA(3){B}
+      \SetUpEdge[style={->},
+      labelstyle = {draw}]
+      \Edge[label=$5/6$](A)(1)
+      \Edge[label=$5/5$](A)(2)
+      \Edge[label=$10/10$](A)(3)
+      \Edge[label=$4/4$,color=red](A)(4)
+      \Edge[label=$4/4$,color=red](1)(B)
+      \Edge[label=$10/10$,color=red](2)(B)
+      \Edge[label=$3/3$,color=red](3)(B)
+      \Edge[label=$7/8$](4)(B)
+      \Edge[label=$0/5$](2)(1)
+      \Edge[label=$0/6$](2)(3)
+      \tikzset{EdgeStyle/.append style = {bend right}}
+      \Edge[label=$1/1$,color=red](3)(4)
+      \Edge[label=$1/5$](1)(2)
+      \Edge[label=$2/2$](2)(4)
+      \Edge[label=$6/6$](3)(2)
+      \Edge[label=$0/1$](4)(3)
+      \Edge[label=$0/2$](4)(2)
+      \AddVertexColor{blue}{A,1,2,3}
+      \AddVertexColor{green}{4,B}
+    \end{tikzpicture}
+  \end{center}
+\end{solution}
+
+\subsection{Algorithme de Ford-Fulkerson}
+L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemin d'augmentation et d'augmenter le flot le long de ce chemin jusqu'à saturation. Montrez par un argument élémentaire que dans le cas où les capacités maximales sont entières cet algorithme s'arrête toujours après un nombre fini d'itérations. Pouvez-vous adapter votre argument à la situation pour laquelle les capacités sont rationnelles? \\
+\textbf{Challenge:} et pour des capacités réelles?
 
 \begin{solution}
   \begin{itemize}
@@ -413,12 +508,22 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
   \end{itemize}
 \end{solution}
 
-\paragraph{6. } Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
+\subsection{Profit d'un laboratoire}
+Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
 
-\newpage
-\textbf{Exercices supplémentaires}
+\begin{solution}
+  On peut résoudre ce problème avec un MaxFlow comportant des coûts négatifs.
+  Il faudra alors trouver le chemins $f$-augmentants à l'aide un algorithme de plus court chemin insensible
+  aux cycles de poids négatifs tel Belmann-Ford ou SPFA (Shortest Path Fast Algorithm).
 
-\paragraph{7. } Un producteur désire envoyer au départ des sommets $D_1$ et $D_2$ un produit aux destinations $M_1, M_2$, et $M_3$ à travers le réseau. Les capacités des arêtes sont limitées. Il y a des demandes respectives de 10, 8 et 8 unités aux destinations $M_1, M_2,$ et $M_3$. Ces demandes peuvent-elles être satisfaites? 
+  Il existe cependant une solution plus élégante à ce problème ne comportant pas d'arête
+  de poids négatif.
+\end{solution}
+
+\paragraph{Exercices supplémentaires}
+
+\subsection{Acheminer des produits}
+Un producteur désire envoyer au départ des sommets $D_1$ et $D_2$ un produit aux destinations $M_1, M_2$, et $M_3$ à travers le réseau. Les capacités des arêtes sont limitées. Il y a des demandes respectives de 10, 8 et 8 unités aux destinations $M_1, M_2,$ et $M_3$. Ces demandes peuvent-elles être satisfaites?
 
 \begin{figure}[h!]
   \centering
@@ -455,7 +560,7 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 \end{figure}
 
 \begin{solution}
-  Il nous suffit d'ajouter un puit relié à M1, M2 et M3 avec les demandes respectives.
+  Il nous suffit d'ajouter un puits relié à M1, M2 et M3 avec les demandes respectives.
   Si $\flotmax = 10+8+8=26$, les demandes peuvent être satisfaites,
   sinon elles ne le peuvent pas.
   Ça donne le réseau suivant
@@ -537,11 +642,176 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 
 \end{solution}
 
-\paragraph{8. } On considère un groupe de six personnes $\left\lbrace A, B, … , F \right\rbrace$ qui sont toutes membres d'un certain nombre de clubs de sport $\left\lbrace 1, 2, 3, 4, 5, 6 \right\rbrace$. Ci-dessous nous donnons la liste des membres de chaque club. \\
-Club 1: A, C \\
-Club 2: C, E \\
-Club 3: A, B, C, D, E, F \\
-Club 4: A, C, E \\
-Club 5: A, B, D, E, F \\
-Club 6: A, E\\
-On souhaite choisir un représentant pour chaque club. Pour être représentant d'un club, il faut en être membre. Par ailleurs, une même personne ne peut représenter qu'un seul club. Est-il possible de trouver des représentants pour tous les clubs? Justifiez votre réponse. Proposez une solution dans le cas d'un ensemble $M$ de personnes, avec $S_j \subseteq M$ la liste des membres du club $j$. 
+\subsection{Représentant de clubs de sport}
+On considère un groupe de six personnes $\left\lbrace A, B, \ldots, F \right\rbrace$ qui sont toutes membres d'un certain nombre de clubs de sport $\left\lbrace 1, 2, 3, 4, 5, 6 \right\rbrace$. Ci-dessous nous donnons la liste des membres de chaque club.
+\begin{description}
+  \item [Club 1] $A, C$
+  \item [Club 2] $C, E$
+  \item [Club 3] $A, B, C, D, E, F$
+  \item [Club 4] $A, C, E$
+  \item [Club 5] $A, B, D, E, F$
+  \item [Club 6] $A, E$
+\end{description}
+On souhaite choisir un représentant pour chaque club.
+Pour être représentant d'un club, il faut en être membre.
+Par ailleurs, une même personne ne peut représenter qu'un seul club.
+Est-il possible de trouver des représentants pour tous les clubs ?
+Justifiez votre réponse.
+Proposez une solution dans le cas d'un ensemble $M$ de personnes
+et un ensemble $C$ de clubs, avec $S_c \subseteq M$ la liste des membres du club $c \in C$.
+
+\begin{solution}
+  C'est un problème de couplage maximum dans un graphe biparti (Maximum Cardinality Bipartite Matching (MCBM)).
+  Si le nombre d'arête du couplage est égal au nombre de club,
+  on pourra trouver un représentant pour chaque club.
+
+  On pourrait utiliser le théorème de Hall et prendre tous les sous-ensembles $E \subseteq C$
+  et vérifier que $\voisin(E) \geq |E|$.
+  Mais ça fait $2^6 = 64$ ensembles donc il vaut mieux utiliser Ford-Fulkerson.
+
+  Dans le cas particulier du MCBM,
+  l'algorithme de Fork-Fulkerson se simplifie grandement mais contentons-nous d'appliquer l'algorithme
+  général pour le Max Flow.
+
+  On a $|M|$ noeuds représentant les personnes,
+  $|C|$ noeuds représentant les clubs, une source $s$ et un puits $t$.
+  Il y a
+  \begin{itemize}
+    \item une arête de $m \in M$ à $c \in C$ si $m \in S_c$ car il faut être membre pour être représentant d'un club,
+    \item une arête de $s$ à $m \in M$ de capacité 1 car chaque personne ne peut être représentant d'un seul club,
+    \item une arête de $c \in C$ à $t$ de capacité 1 car chaque club n'a au maximum qu'un seul représentant.
+  \end{itemize}
+  La capacité des arêtes de $m \in M$ à $c \in C$ n'importe pas tant qu'il est plus grand que 1
+  car on a déjà limité la capacité avec la source et le poids.
+  Donnons une capacité unitaire également pour faire simple.
+
+  Dans notre cas, ça forme le graphe suivant,
+  comme les arêtes sont toutes de capacité unitaire,
+  on a omis le poids pour plus de clarté.
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1.5}
+      \GraphInit[vstyle=Classic]
+      \SetVertexMath
+      \SetUpVertex[Lpos=90]
+      \Vertex{1}
+      \SO(1){2}
+      \SO(2){3}
+      \SO(3){4}
+      \SO(4){5}
+      \SO(5){6}
+      \begin{scope}
+        \SetGraphUnit{3} \EA(1){A}
+      \end{scope}
+      \SO(A){B}
+      \SO(B){C}
+      \SO(C){D}
+      \SO(D){E}
+      \SO(E){F}
+      \WE(3){s}
+      \EA(D){t}
+      \SetUpEdge[style={->}]
+      \Edge(s)(1)
+      \Edge(s)(2)
+      \Edge(s)(3)
+      \Edge(s)(4)
+      \Edge(s)(5)
+      \Edge(s)(6)
+      \Edge(1)(A)
+      \Edge(1)(C)
+      \Edge(2)(C)
+      \Edge(2)(E)
+      \Edge(3)(A)
+      \Edge(3)(B)
+      \Edge(3)(C)
+      \Edge(3)(D)
+      \Edge(3)(E)
+      \Edge(3)(F)
+      \Edge(4)(A)
+      \Edge(4)(C)
+      \Edge(4)(E)
+      \Edge(5)(A)
+      \Edge(5)(B)
+      \Edge(5)(D)
+      \Edge(5)(E)
+      \Edge(5)(F)
+      \Edge(6)(A)
+      \Edge(6)(E)
+      \Edge(A)(t)
+      \Edge(B)(t)
+      \Edge(C)(t)
+      \Edge(D)(t)
+      \Edge(E)(t)
+      \Edge(F)(t)
+    \end{tikzpicture}
+  \end{center}
+
+  En appliquant Ford-Fulkerson, on remarque qu'on
+  ne peut pas trouver un représentant pour chaque club.
+  Le couplage maximum a seulement 5 arêtes.
+
+  Le flot maximum $f$ est représenté par le graphe suivant dans lequel les arêtes rouges sont
+  les arêtes utilisées et donc $f$-saturées car leur capacité est 1.
+  On remarque que si on cherche un chemin $f$-augmenté,
+  c'est à dire qu'on part de $s$ et qu'on ne peut prendre que les arêtes noires
+  dans le bon sens ou les arêtes brunes dans le sens inverse,
+  on sait explorer les noeuds $s,1,2,4,6,A,C,E$ mais pas les noeuds $3,5,B,D,F,t$.
+  \begin{center}
+    \begin{tikzpicture}[x=2cm,y=1cm]
+      \SetGraphUnit{1.5}
+      \GraphInit[vstyle=Classic]
+      \SetVertexMath
+      \SetUpVertex[Lpos=90]
+      \Vertex{1}
+      \SO(1){2}
+      \SO(2){3}
+      \SO(3){4}
+      \SO(4){5}
+      \SO(5){6}
+      \begin{scope}
+        \SetGraphUnit{3} \EA(1){A}
+      \end{scope}
+      \SO(A){B}
+      \SO(B){C}
+      \SO(C){D}
+      \SO(D){E}
+      \SO(E){F}
+      \WE(3){s}
+      \EA(D){t}
+      \SetUpEdge[style={->}]
+      \Edge(s)(4)
+      \Edge(1)(C)
+      \Edge(2)(E)
+      \Edge(3)(A)
+      \Edge(3)(C)
+      \Edge(3)(D)
+      \Edge(3)(E)
+      \Edge(3)(F)
+      \Edge(4)(A)
+      \Edge(4)(C)
+      \Edge(4)(E)
+      \Edge(5)(A)
+      \Edge(5)(B)
+      \Edge(5)(E)
+      \Edge(5)(F)
+      \Edge(6)(A)
+      \Edge(F)(t)
+      \SetUpEdge[style={->},color=brown]
+      \Edge(s)(1)
+      \Edge(s)(2)
+      \Edge(s)(3)
+      \Edge(s)(5)
+      \Edge(s)(6)
+      \Edge(1)(A)
+      \Edge(2)(C)
+      \Edge(3)(B)
+      \Edge(5)(D)
+      \Edge(6)(E)
+      \Edge(A)(t)
+      \Edge(B)(t)
+      \Edge(C)(t)
+      \Edge(D)(t)
+      \Edge(E)(t)
+    \end{tikzpicture}
+  \end{center}
+\end{solution}

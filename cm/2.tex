@@ -86,10 +86,18 @@
 
 \index{graphe!graphe dirigé}
 \begin{mydef}
-  Un \emph{graphe dirigé} est un triplet ($V$, $E$, $\varphi$), où :\\
-  - $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds; \\
-  - $E$ est un ensemble dont les éléments sont appelés arêtes; \\
-  - $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un couple de sommets. \\
+  Un \emph{graphe dirigé} est un triplet ($V$, $E$, $\varphi$), où :
+  \begin{itemize}
+    \item $V$ est un ensemble dont les éléments sont appelés sommets ou noeuds;
+    \item $E$ est un ensemble dont les éléments sont appelés arêtes;
+    \item $\varphi$ est une fonction, dîte fonction d'incidence, qui associe à chaque arête un \emph{couple}
+      \footnote{Dans la définition~\ref{def:graph} on a parlé de paire et ici de couple car une paire est
+        un ensemble de 2 éléments alors qu'un couple est un $n$-uplet avec $n = 2$.
+        Dans un ensemble, il n'y a pas de relation d'ordre alors que dans un $n$-uplet,
+        chaque élément a un indice bien définit.
+        Une arête est donc à sens unique dans un graphe dirigé.}
+      de sommets.
+  \end{itemize}
 \end{mydef}
 
 \begin{myexem}
