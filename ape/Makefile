@@ -7,7 +7,7 @@
 PDFVIEWER=xdg-open # Default pdf viewer - GNU/Linux
 #PDFVIEWER=open # Default pdf viewer - Mac OS
 MAIN_NAME=LINMA1691-exercices
-MAIN_NAME_SOL=LINMA1691-exercices-Sol
+MAIN_NAME_SOL=$(MAIN_NAME)-Sol
 PDF_NAME=$(MAIN_NAME).pdf
 PDF_NAME_SOL=$(MAIN_NAME_SOL).pdf
 
