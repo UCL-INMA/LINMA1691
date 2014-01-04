@@ -94,7 +94,7 @@ Rappel : Un graphe simple est un graphe
       la somme des degrés des noeuds doit être pair, ce qui n'est pas le cas ici.
     \item Faux, le nœud de degré 6 est relié à tous les autres,
       donc le nœud de degré 4 et les 3 noeuds de degré 1 ne peuvent pas exister dans ce graphe,
-      au moins un des noeuds de degré 1 doit être connecté au degré 4 ce qui est impossible car déjà connecté au degré 6.
+      au moins un des noeuds de degré 1 doit être connecté au degré 4 ce qui est impossible, car déjà connecté au degré 6.
   \end{enumerate}
 \end{solution}
 
@@ -111,7 +111,7 @@ Rappel : Un graphe simple est un graphe
     \item Soit le sous-graphe composé par la composante connexe du graphe contenant le noeud.
       Par le théorème des poignées de mains, $\sum_{u \in N} \deg(u) = 2|E|$.
       Dès lors, si le graphe possède un sommet de degré impair, il en possède forcément un autre.
-      Et comme le graphe est connexe, toute paire de nœuds peuvent être reliés par un chemin,
+      Et comme le graphe est connexe, toute paire de nœuds peut être reliée par un chemin,
       en particulier nos deux nœuds de degré impair peuvent être reliés par un chemin.
     \item
       \begin{itemize}
@@ -126,18 +126,18 @@ Rappel : Un graphe simple est un graphe
               le graphe de $k$ arêtes a donc au minimum $k-1$ arêts.
           \end{description}
         \item Le graphe étant simple, le degré d'un noeud vaut au maximum $n-1$.
-          Par le lemme des poignée de main, on a alors
+          Par le lemme des poignées de main, on a alors
           \begin{align*}
             2|E| & = \sum_{u \in N} \deg(u)\\
             2|E| & \leq \sum_{u \in N} n-1.
           \end{align*}
           L'égalité ayant lieu pour le graphe complet.
       \end{itemize}
-    \item Essayons de construire le graphe non-connexe avec le plus d'arêtes possibles.
+    \item Essayons de construire le graphe non connexe avec le plus d'arêtes possible.
       Ce faisant on construit le graphe composé de $K_{n-1}$ et d'un nœud isolé $u$.
       On a bien $\frac{(n-1)(n-2)}{2}$ arêtes.
       Si on ajoute une arête de plus, c'est forcément entre $u$ et $K_{n-1}$.
-    \item Pour construire le graphe avec le moins de composantes connexes possible, il faut construire un arbre : on contruit une chaîne de noeuds. Avec $k$ arêtes on peut relier $k+1$ noeuds. Cela nous donne $(n-k-1)+1=n-k$ composantes connexes.
+    \item Pour construire le graphe avec le moins de composantes connexes possible, il faut construire un arbre : on construit une chaîne de noeuds. Avec $k$ arêtes on peut relier $k+1$ noeuds. Cela nous donne $(n-k-1)+1=n-k$ composantes connexes.
   \end{enumerate}
 \end{solution}
 
@@ -155,10 +155,10 @@ Montrez que le graphe est biparti, $k$-régulier et donnez son nombre arêtes.
   \begin{minipage}{0.65\textwidth}
     \begin{flushright}
       \begin{itemize}
-        \item Le graphe est $k$-régulier car tout les nœuds sont de degré $k$.
+        \item Le graphe est $k$-régulier, car tous les nœuds sont de degré $k$.
         \item Le nombre d'arêtes est donc $|E| = \frac{2^{k} k}{2} = 12$
-        \item Le graphe est biparti car comme un seul chiffre du $k$-tuple change entre deux noeuds adjacents,
-          si la somme des chiffres du $k$-tuple d'un noeud est paire, alors la sommes des chiffres des $k$-tuples de ses noeuds adjacents sera impaire, et vice versa.
+        \item Le graphe est biparti, car comme un seul chiffre du $k$-tuple change entre deux noeuds adjacents,
+          si la somme des chiffres du $k$-tuple d'un noeud est paire, alors la somme des chiffres des $k$-tuples de ses noeuds adjacents sera impaire, et vice versa.
       \end{itemize}
     \end{flushright}
   \end{minipage}
@@ -167,8 +167,8 @@ Montrez que le graphe est biparti, $k$-régulier et donnez son nombre arêtes.
 \subsection{Parcours fermés}
 Formule : $\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})$
 \begin{enumerate}
-\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n}$ (L'ensemble des graphes complets avec $n$ nœuds)}
-\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n,n}$ (L'ensemble des graphes bipartis avec $n$ nœuds dans chacune des partitions)}
+\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n}$ (l’ensemble des graphes complets avec $n$ nœuds)}
+\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n,n}$ (l’ensemble des graphes bipartis avec $n$ nœuds dans chacune des partitions)}
 \end{enumerate}
 
 \begin{solution}
@@ -221,7 +221,7 @@ Formule : $\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})$
 \subsection{Démonstration - Les rois du graphe}
 Un tournoi de $n$ joueurs est un graphe complet $K_{n}$ dans lequel on a choisi une direction pour chaque arête.
 $\exists$ une arête $(u,v)$ lorsque $u$ a remporté sa partie contre $v$.
-Un sommet $u$ d'un tournoi est un roi si quel que soit le sommet $v$ du graphe,
+Un sommet $u$ d'un tournoi est un roi si, quel que soit le sommet $v$ du graphe,
 il y a une arête $(u,v)$ où il a une arête intermédiaire $w$ et des arêtes $(u,w)$ et $(w,v)$.
 
 Prouvez qu'il existe toujours au moins un roi.
@@ -234,7 +234,7 @@ Utiliser ce résultat pour montrer que dans le cas où aucun sommet n'a un degr�
 
 Dans la deuxième partie, on est dans le cas d'un cycle.
 
-Ce graph est un exemple où il y a 3 rois.
+Ce graphe est un exemple où il y a 3 rois.
 %\includegraphics[scale=0.5]{graph_ape1_ex6}
 
 \end{solution}

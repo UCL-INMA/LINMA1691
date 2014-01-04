@@ -1,6 +1,6 @@
 \section{Séance 4}
 
-\subsection{Réseau routier à moindre frais}
+\subsection{Réseau routier à moindres frais}
 On considère un réseau de 5 villes. Le coût de la construction d'une route directe entre $i$ et $j$ est $A_{ij}$ avec $A$ donnée par~:
 \[
   A = \begin{bmatrix}
@@ -35,7 +35,7 @@ Combien d'arbres différents à 5 sommets existe-t-il (avec ou sans symétrie)?
 Si les arêtes sont labélisées : $n^{n-2}=125$ possibilités
 Si les arêtes ne sont pas labélisées : $3$ possibilités 
 \end{solution}
-\subsection{Arbre sous-tendants}
+\subsection{Arbres sous-tendants}
 Soit $T(G)$ le nombre d'arbres sous-tendants de $G$ et soit $e$ une arête du graphe $G$ qui n'est pas une boucle. La formule de Cayley établit la relation suivante~:
 \[
   T(G) = T(G \backslash e) + T(G.e)
@@ -163,19 +163,19 @@ Combien d'arbres sous-tendants ce graphe possède-t-il?
   \end{align*}
 \end{solution}
 \subsection{Coupe et arbre sous-tendant}
-Considérons le graphe connexe $G = (V, E, \psi)$. Etant donné une partition $\Pi = \{V_1, V_2\}$ de $V$, On définit la \emph{coupe} $C(\Pi)$ de $G$ relative à $\Pi$ comme l'ensemble des arêtes de $G$ suivant~:
+Considérons le graphe connexe $G = (V, E, \psi)$. Étant donné une partition $\Pi = \{V_1, V_2\}$ de $V$, on définit la \emph{coupe} $C(\Pi)$ de $G$ relative à $\Pi$ comme l'ensemble des arêtes de $G$ suivant~:
 \[
   C(\Pi) := \{ (v_1, v_2) \in E : v_1 \in V_1 \text{ et } v_2 \in V_2 \}.
 \]
 Montrez qu'une coupe et un arbre sous-tendant de $G$ ont au moins une arête en commun.
 \begin{solution}
-Si ils n'ont rien en commun, cela signifie que l'arbre n'est pas connexe car il y a une partition. Il y a, par conséquent, une contradiction.
+S’ils n'ont rien en commun, cela signifie que l'arbre n'est pas connexe, car il y a une partition. Il y a, par conséquent, une contradiction.
 \end{solution}
 \subsection{Arbre de coup minimum}
 Montrez que si on veut trouver un arbre de recouvrement qui minimise l'arête la plus chère, il suffit de trouver l'arbre de poids minimum.
 
 \begin{solution}
-Prenons par l'absurde qu'il existe un arbre de recouvrement $G$ qui minimise l'arête de plus grand poids et un arbre de recouvrement minimum $Q$ mais qui ne minimise pas l'arête de poids minimum. Cela signifie que certaines arêtes de $Q$ n'ont pas la valeur minimal. Dans ce cas, comme tout les noeuds sont atteint, il suffit de prendre les arêtes de poids inférieur dans $G$ et de remplacé c.
+Prenons par l'absurde qu'il existe un arbre de recouvrement $G$ qui minimise l'arête de plus grand poids et un arbre de recouvrement minimum $Q$ mais qui ne minimise pas l'arête de poids minimum. Cela signifie que certaines arêtes de $Q$ n'ont pas la valeur minimale. Dans ce cas, comme tous les noeuds sont atteints, il suffit de prendre les arêtes de poids inférieur dans $G$ et de remplacé c.
 \end{solution}
 
 \subsection{Graphe 3-connexe et 3-arête-connexe}
@@ -203,7 +203,7 @@ L'identité suivante a été vue au cours~:
 Trouvez un graphe pour lequel les inégalités sont des égalités. Trouvez ensuite un graphe pour lequel les inégalités sont strictes.
 
 \begin{solution}
-Egalité : $3=3=3$
+Égalité : $3=3=3$
 \begin{tikzpicture}
   % Define the points of a regular pentagon
   \path (0:1) node[draw,shape=circle] (P0) {};

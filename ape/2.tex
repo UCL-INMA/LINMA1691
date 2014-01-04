@@ -79,7 +79,7 @@ A^{k}=\left(\begin{array}{cc}
 \]
 
 
-Comme on cherche des parcours fermé de A vers A, on s'intéresse uniquement
+Comme on cherche des parcours fermés de A vers A, on s'intéresse uniquement
 aux éléments diagonaux qui sont, dans le cas où $k$ est impair, tous
 nuls. Par conséquent, le nombre de parcours fermé de longueur $k$
 vaut 0.
@@ -250,7 +250,7 @@ eulérien.
 Le principe de l’algorithme est simple:
 \begin{itemize}
 \item on prend un nœud non parcouru encore;
-\item on prend les arêtes non parcourue encore jusqu'à revenir sur le noeud de départ;
+\item on prend les arêtes non parcourues encore jusqu'à revenir sur le noeud de départ;
 \item on merge ce parcours avec ceux déjà trouver;
 \item si il n'y a plus de nœud non exploré, on a fini. Sinon on reprend au point 1.
 \end{itemize}
@@ -271,7 +271,7 @@ chaîne utilisera toutes les sous-séquences.
 3.
 \end{solution}
 \pagebreak
-\subsection{Parcourt fermé de poid minimum} On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
+\subsection{Parcourt fermé de poids minimum} On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
 \begin{figure}[h!]
   \begin{center}
     \begin{tikzpicture}[scale=1,auto,line width=.4mm]
@@ -330,15 +330,15 @@ chaîne utilisera toutes les sous-séquences.
 \begin{solution}
 Il faut trouver un parcours fermé de poids minimum passant au moins
 une fois par chaque arête. Le cas idéal est celui où tous les noeuds
-sont pairs car dans ce cas il existe un parcours fermé passant une
+sont pairs, car dans ce cas il existe un parcours fermé passant une
 et une seule fois par chaque arête (Théorème d'Euler). Dans notre
 cas, tous les noeuds sur le bord (L, E, F, G, H, I, J et K) ont degré
 3. Afin de nous ramener au cas idéal (noeuds pairs), nous allons rajouter
 des arêtes au graphe entre les noeuds de degré impair. Nous avons
 huit noeuds de degré impair, nous les regroupons par paire de façon
 à avoir le plus court chemin possible entre chaque paire de noeuds.
-On a les 4 paires suivante : LE, FG, HI, KJ. Ensuite on rajoute une
-arête entre chaque paire de noeud, le poids de cette nouvelle arête
+On a les 4 paires suivantes : LE, FG, HI, KJ. Ensuite on rajoute une
+arête entre chaque paire de noeuds, le poids de cette nouvelle arête
 correspond au poids du plus court chemin entre les noeuds incidents
 à cette arête. On obtient le graphe ci-dessous :
 
@@ -384,7 +384,7 @@ correspond au poids du plus court chemin entre les noeuds incidents
   \end{tikzpicture}
 \end{center}
 
-A présent, nous avons un graphe composé uniquement de noeuds de degré
+À présent, nous avons un graphe composé uniquement de noeuds de degré
 pair. Nous savons par le théorème d'Euler, qu'il existe un parcours
 fermé passant une seule fois par chaque arête. Ce parcours est le
 parcours de poids minimum passant au moins une fois par chaque arête
@@ -453,17 +453,17 @@ Le sommet 1 est bien de degré impair,
 par contre le sommet 7 est de degré pair, il faudra donc ajouter une
 arête incidente à ce sommet. De plus, tous les autres sommets doivent
 avoir un degré pair. Par conséquent, il faut ajouter une arête aux
-sommets 2, 6 \& 4. Nous avons 4 sommets (2, 4, 6 \& 7) auquel il faut
+sommets 2, 6 \& 4. Nous avons 4 sommets (2, 4, 6 \& 7) auxquels il faut
 ajouter une arête. 
 
 Nous les regroupons par paire afin d'avoir le plus
 court chemin possible entre chaque paire. Ce qui nous donne 4 avec
-7 et 2 avec 6. A présent, il ne nous reste plus qu'à ajouter une arête
+7 et 2 avec 6. À présent, il ne nous reste plus qu'à ajouter une arête
 entre chaque paire de sommets, le poids de la nouvelle arête correspond
 aux poids du parcours minimum entre les 2 sommets. L'arête entre 4
 et 7 aura un poids 1, l'arête entre 2 et 6 aura un poids 6. 
 
-A présent, notre graphe a 2 sommets de degré impair, il existe donc un parcours
+À présent, notre graphe a 2 sommets de degré impair, il existe donc un parcours
 eulérien entre ces 2 sommets. Ce parcours est le parcours de poids
 minimum du sommet 1 au sommet 7 passant au moins une fois par chaque
 arête dans le graphe de départ, sont poids vaut 79.
