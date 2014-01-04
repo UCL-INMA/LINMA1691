@@ -8,7 +8,13 @@
 \begin{mytheo} [Plus court chemin et plus court parcours]
   Pour un graphe avec une fonction de poids $\geq 0$, si le plus court parcours entre $u$ et $v$ est de longueur $d$, alors le plus court chemin entre $u$ et $v$ est aussi de longueur $d$.
   \begin{proof}
-     Cette démonstration n'a pas été vue au cours.
+    Soit $d'$ la longueur du plus court chemin.
+    Comme un chemin est un parcours, on a nécessairement $d' \geq d$ car $d$ est la longueur du plus court parcours.
+    Supposons par l'absurde qu'elle soit différente et donc que $d' > d$.
+    Prenons le plus cours parcours et tant qu'il contient des cycles $v_0 \ldots v_i \ldots v_i \ldots v_n$,
+    retirons $v_i \ldots v_i$ pour avoir $v_0 \ldots v_i \ldots v_n$.
+    Une fois qu'il n'y aura plus de cycle, ce sera un chemin de longueur $d'' \leq d$.
+    Comme $d'$ est la longueur du plus cours chemin, $d'' \geq d'$ ce qui est absurde car $d'' \leq d < d'$.
   \end{proof}
 \end{mytheo}
 
