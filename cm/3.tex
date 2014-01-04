@@ -35,7 +35,7 @@
     \item $G$ est sans cycle et ajouter une arête quelconque crée un et un seul cycle;
     \item Deux noeuds de $G$ sont toujours reliés par un seul chemin.
   \end{enumerate}
-  La dernière condition implique que G est sans boucle (pour deux noeuds identiques).
+  La dernière condition implique que $G$ est sans boucle (pour deux noeuds identiques).
   \begin{proof}
   Nous allons démontrer que chaque condition implique la suivante et qu'elles sont ainsi toutes équivalentes.
   \begin{itemize}
@@ -284,9 +284,9 @@
   Pour un graphe connexe, une \emph{coupe d'arêtes} est un ensemble d'arêtes qui déconnecte le graphe quand on l'en retire.
 \end{mydef}
 
-\index{graphe!graphe k-connexe}
+\index{graphe!graphe $k$-connexe}
 \begin{mydef}
-  Un graphe est dit \emph{k-connexe} si retirer $k − 1$ noeuds quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes de sommets sont de taille au moins $k$.
+  Un graphe est dit \emph{$k$-connexe} si retirer $k − 1$ noeuds quelconques laisse le graphe connexe. Autrement dit, si toutes les coupes de sommets sont de taille au moins $k$.
 \end{mydef}
 
 \index{connectivité}
@@ -305,73 +305,109 @@
 \end{mydef}
 
 \begin{mytheo} [Lien entre les connectivités]
-  $$ \text{connectivité} \leq \text{arête-connectivité} \leq \text{degré minimum}$$
+  $$\vconn \leq \econn \leq \text{degré minimum}$$
   \begin{proof}
     \noindent
-    $$\text{arête-connectivité} \leq \text{degré minimum}$$
+    $$\econn \leq \text{degré minimum}$$
     Est une façon de déconnecter un graphe est de retirer les arêtes incidentes au noeud de degré minimum
-    
-    $$\text{connectivité} \leq \text{arête-connectivité}$$
-    Par récurrence (le cas arête-connectivité = 0 est trivial). On prend une coupe de k arêtes (avec e qui est une arête quelconque de cette coupe). G-e a, par conséquent, une arête-connexité k-1. 
+
+    $$\vconn \leq \econn$$
+    Par récurrence (le cas $\econn = 0$ est trivial).
+    On prend une coupe de $k$ arêtes
+    (avec $e$ qui est une arête quelconque de cette coupe).
+    $G-e$ a, par conséquent, une arête-connexité de $k-1$.
     \begin{itemize}
-      \item Cas extrême : G-e a tous les noeuds adjacents (graphe complet avec, éventuellement, répétition d'arêtes). Alors : $\text{connectivité(G)}=\text{connectivité(G-e)} \leq k-1$.
-      \item Sinon, il existe une coupe de sommets S de G-e telle que G-e-S est déconnecté.
-        Si G-S est déjà déconnecté, alors $\text{connectivité(G)} \leq |S| \leq k - 1 \leq k$.
+      \item Cas extrême : $G-e$ a tous les noeuds adjacents
+        (graphe complet avec, éventuellement, répétition d'arêtes).
+        Alors : $\vconn(G) = \vconn(G-e) \leq k-1$.
+      \item Sinon, il existe une coupe de sommets $S$ de $G-e$ telle que $G-e-S$ est déconnecté.
+        Si $G-S$ est déjà déconnecté,
+        alors $\vconn(G) \leq |S| \leq k - 1 \leq k$.
 
-        Si G-S est connecté, alors e est une coupe d'arête puisque G-S-e est déconnecté.
+        Si $G-S$ est connecté, alors $e$ est une coupe d'arête puisque $G-S-e$ est déconnecté.
 
-        Si il y a au moins 3 noeuds x,u,v dans G-S: alors en retirant u ou v, on déconnecte x de v ou de u.
+        Si il y a au moins 3 noeuds $x,u,v$ dans $G-S$: alors en retirant $u$ ou $v$, on déconnecte $x$ de $v$ ou de $u$.
         Donc,
-        $S \cup \{u \text{ou} v\}$ est une coupe de G et $\text{connectivité}(G) \leq |S| + 1  \leq k$
+        $S \cup \{u \text{ ou } v\}$ est une coupe de $G$ et $\vconn(G) \leq |S| + 1  \leq k$
     \end{itemize}
  \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Théorème de Whitney]
   Un graphe à au moins trois noeuds est 2-connexe ssi toute paire de noeuds distincts est reliée par au moins deux chemins dont les noeuds internes sont distincts.
-  \begin{proof}
-   \fbox{$\Longleftarrow$}
-   \newline
-   Si je retire un noeud quelconque du graphe, $\forall u,v$ au plus 1 des 2 chemins est toujours connecté $\rightarrow$ G reste connexe. \\
-   \fbox{$\Longrightarrow$}
-     \newline
-     Par récurrence sur $d(u,v)$ : 
-     \begin{enumerate}
-     \item Cas de base : $d(u,v)=1$. Si G est 2-connexe alors G est 2-arête-connexe (cf. théorème précédent) donc retirer une arête laisse le graphe connexe. Soit l'arête e telle qu'il existe le chemin uev. Si on retire e, u et v sont toujours connecté donc existe donc un chemin P tel que uPv. $\rightarrow$ 2 chemins entre u et v.
-     \item Si c'est vrai pour toute paire de noeuds $x,y$ tels que $d(x,y) < d(u,v)$, prouvons que c'est également vrai pour $d(u,v)$. Soit $w$, le dernier noeud sur le chemin le plus court de u à v. Par hypothèse, $d(u,w) < d(u,v)$ et par récurrence, u et w sont reliés par au moins 2 chemins dont les noeuds internes sont distincts, nommons-les $P_1$ et $P_2$. Si je retire w, il existe, par connexité, un chemin P de u à v qui ne passe pas par w. Soit x le dernier noeud de P qui appartient à $P_1$ ou à $P_2$ (éventuellement, x=u). Il existe donc 2 chemins de u à v : u \dots x\dots v, et u \dots w \dots v. Par construction, ces chemins sont disjoints. 
-     \end{enumerate}
+  \begin{proof} Démontrons le, un sens à la fois,
+    \begin{itemize}
+      \item[\fbox{$\Longleftarrow$}]
+        Si je retire un noeud quelconque du graphe, $\forall u,v$ au plus 1 des 2 chemins est toujours connecté $\rightarrow$ $G$ reste connexe. \\
+      \item[\fbox{$\Longrightarrow$}]
+        Par récurrence sur $d(u,v)$ :
+        \begin{enumerate}
+          \item Cas de base : $d(u,v)=1$.
+            Si $G$ est 2-connexe alors $G$ est 2-arête-connexe (cf. théorème précédent) donc retirer une arête laisse le graphe connexe.
+            Soit l'arête $e$ telle qu'il existe le chemin $uev$.
+            Si on retire $e$, $u$ et $v$ sont toujours connecté donc existe donc un chemin $P$ tel que $uPv$.
+            $\rightarrow$ 2 chemins entre $u$ et $v$.
+          \item Si c'est vrai pour toute paire de noeuds $x,y$ tels que $d(x,y) < d(u,v)$,
+            prouvons que c'est également vrai pour $d(u,v)$.
+            Soit $w$, le dernier noeud sur le chemin le plus court de $u$ à $v$.
+            Par hypothèse, $d(u,w) < d(u,v)$ et par récurrence, $u$ et $w$ sont reliés par au moins 2 chemins dont les noeuds internes sont distincts,
+            nommons-les $P_1$ et $P_2$.
+            Si je retire $w$,
+            il existe, par connexité, un chemin $P$ de $u$ à $v$ qui ne passe pas par $w$.
+            Soit $x$ le dernier noeud de $P$ qui appartient à $P_1$ ou à $P_2$ (éventuellement, $x=u$).
+            Il existe donc 2 chemins de $u$ à $v$ : $u \dots x\dots v$, et $u \dots w \dots v$.
+            Par construction, ces chemins sont disjoints.
+        \end{enumerate}
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
 Ce théorème se généralise :
 
 \begin{mytheo} [Théorème de Menger]
-  	Un graphe à au moins $k + 1$ noeuds est k-connexe ssi toute paire de noeuds distincts est reliée par au moins $k$ chemins dont les noeuds internes sont distincts.
+  	Un graphe à au moins $k + 1$ noeuds est $k$-connexe ssi toute paire de noeuds distincts est reliée par au moins
+    $k$ chemins dont les noeuds internes sont distincts.
 	\begin{proof}
   	\fbox{$\Longleftarrow$}
    		\newline
-   		Si je retire $k-1$ noeuds quelconques du graphe, $\forall u,v$ on a supprimé au plus $k-1$ chemins entre ces deux noeuds. Il en reste donc au moins un $\rightarrow$ G reste connexe. \\
+   		Si je retire $k-1$ noeuds quelconques du graphe,
+        $\forall u,v$ on a supprimé au plus $k-1$ chemins entre ces deux noeuds.
+        Il en reste donc au moins un $\rightarrow$ $G$ reste connexe.
    	\fbox{$\Longrightarrow$}
    		\newline
    		Par récurrence sur $k$.
    		\begin{enumerate}
    			\item Démontré précédemment pour $k=2$ (et trivial pour $k=1$)
-   			\item Si le théorème est bon pour $k-1$, prouvons le pour $k$. Soit un graphe $k$-connexe. Vu qu'il est dès lors $k-1$-connexe, il existe au moins $k-1$ chemins distincts entre toutes paires de noeuds. En supprimant $k-1$ noeuds distincts parmi ces chemins, on a supprimé tous ces chemins. Or le graphe reste connexe, car il est $k$-connexe. $\exists$ donc un $k$ième chemin entre toute paire de noeuds.
+   			\item Si le théorème est bon pour $k-1$, prouvons le pour $k$.
+              Soit un graphe $k$-connexe. Vu qu'il est dès lors $k-1$-connexe,
+              il existe au moins $k-1$ chemins distincts entre toutes paires de noeuds.
+              En supprimant $k-1$ noeuds distincts parmi ces chemins, on a supprimé tous ces chemins.
+              Or le graphe reste connexe, car il est $k$-connexe. $\exists$ donc un $k$ième chemin entre toute paire de noeuds.
    		\end{enumerate}
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo} [Nombre d'arêtes dans un graphe k-connexe]
-  Tout graphe k-connexe à $n$ noeuds possède $kn/2$ arêtes au moins (condition nécessaire).
+\begin{mytheo} [Nombre d'arêtes dans un graphe $k$-connexe]
+  Tout graphe $k$-connexe à $n$ noeuds possède $kn/2$ arêtes au moins (condition nécessaire).
   \begin{proof}
-     k-connexe $\rightarrow$ degré min $\geq$ k $\rightarrow$ $\sum \text{degrés} \geq kn \ \rightarrow \ |E| \geq kn/2$.
+     $k$-connexe $\rightarrow$ degré min $\geq k$ $\rightarrow$ $\sum \text{degrés} \geq kn \ \rightarrow \ |E| \geq kn/2$.
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Théorème de Harary]
-  Le graphe de Harary $H_{k ,n}$ possède $kn/2$ arêtes et est k-connexe.
+  Le graphe de Harary $H_{k ,n}$ possède $kn/2$ arêtes et est $k$-connexe.
   \begin{proof}
-     Le graphe d'Harary se construit comme suit: il possède $n$ noeuds($v_1,...,v_n$). On relie le noeud $v_j$ à $v_{j+1},...,v_{j+k/2}$ et $v_{j-1},...,v_{j-k/2}$ (modulo $n$). Chaque noeud est donc de degré $k$ et donc $|E|=\frac{kn}{2}$. Il est de plus $k$-connexe: en supprimant $k-1$ noeuds au graphe, chaque noeud reste relié.
+     Soit $a = \lfloor k/2 \rfloor$ et $b = \lceil k/2 \rceil$.
+     Le graphe d'Harary se construit comme suit: il possède $n$ noeuds ($v_1,...,v_n$).
+     On relie le noeud $v_j$ à $v_{j+1},...,v_{j+a}$ et $v_{j-1},...,v_{j-b}$ (modulo $n$).
+     Chaque noeud est donc de degré $k$ et donc $|E|=\frac{kn}{2}$.
+     Il est de plus $k$-connexe: en supprimant $k-1$ noeuds au graphe, chaque noeud reste relié.
+     En effet, on remarque qu'on peut toujours partir d'un noeud et parcourir tous les autre noeud dans le
+     sens positif (resp. négatif) jusqu'à revenir au point de départ tant qu'on ne supprime pas, pour un noeud $v_j$,
+     les noeuds $v_{j+1}, \ldots, v_{j+a}$ (resp. $v_{j-1},...,v_{j-b}$).
+     Pour retirer la connexité, il faut empêcher de savoir tourner dans chaque sens donc retirer les noeuds
+     $v_{j+1}, \ldots, v_{j+a}$ pour un certain $j$ et les noeuds
+     $v_{j-1},...,v_{j-b}$ pour un certain $j$ donc il faut au moins retirer $k$ arêtes.
   \end{proof}
 \end{mytheo}
 
