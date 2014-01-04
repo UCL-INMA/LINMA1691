@@ -21,12 +21,17 @@
 \subsection{Algorithme de Dijkstra}
 \index{algorithme!algorithme de Dijkstra}
 \begin{myalgo}[Algorithme de Dijkstra]
-\noindent
-\begin{enumerate}
-  \item Initialement, $i=0$, l'ensemble $S={u_{0}}$ (il contient notre noeud de départ) et l'ensemble \={S}$_{0}$ contient tous les autres noeuds. $l(u_{0})=0$ et $l(v)=\infty$ pour $v\ne u_{0}$ ($l(v)$ est une borne supérieure de $d(u_{0},v)$).
-	\item Pour chaque $v \in$ \=S$_{i}$, on remplace $l(v)$ par min $({l(v),l(u_{i}+w{u_{i}v)}})$. On calcule le minimum pour $v \in$\=S$_{i}$ de $l(v)$ et on nomme $u_{i+1}$ le sommet pour qui ce minimum est atteind. Ensuite, on fixe $S_{i+1}=S_{i} \cup {u_{i+1}}$ et on retire ce sommet de \=S$_{i+1}$.
-	\item si $i=v-1$, on arrête. Si $i < v-1$, on remplace i par $i+1$ et on refait l'étape 2.
-	\end{enumerate}
+  L'algorithme de Dijkstra donne la distance la plus courte entre un noeud $u_0$ et tous les autres
+  noeuds du graphe dans un graphe connexe dont toutes les arêtes sont de poids positif.
+  \begin{enumerate}
+    \item Initialement, $i=0$, l'ensemble $S={u_{0}}$ (il contient notre noeud de départ) et
+      l'ensemble $\bar{S}_{0} = V \setminus S$.
+      $\ell(u_{0})=0$ et $\ell(v)=\infty$ pour $v\ne u_{0}$ ($\ell(v)$ est une borne supérieure de $d(u_{0},v)$).
+    \item Pour chaque $v \in \bar{S}_{i}$, on remplace $\ell(v)$ par $\min(\ell(v),\ell(u_{i})+w(u_{i}v))$.
+      On calcule le minimum pour $v \in \bar{S}_{i}$ de $\ell(v)$ et on nomme $u_{i+1}$ le sommet pour qui ce minimum est atteint.
+      Ensuite, on fixe $S_{i+1}=S_{i} \cup \{u_{i+1}\}$ et on retire ce sommet de $\bar{S}_{i+1}$.
+    \item Si $i = |V| - 1$, on arrête. Si $i < |V| - 1$, on remplace $i$ par $i+1$ et on refait l'étape 2.
+  \end{enumerate}
 \end{myalgo}
 
 \begin{myexem}
@@ -64,13 +69,57 @@
 \end{myexem}
 
 \begin{mytheo} [L'algorithme de Dijkstra fonctionne]
-  Après chaque MISE A JOUR DE $\ell$ dans l’algorithme, les deux propriétés suivantes sont vérifiées :
+  Après chaque MISE À JOUR DE $\ell$ dans l'algorithme, les deux propriétés suivantes sont vérifiées :
   \begin{itemize}
     \item pour $v \in S$, $\ell(v) = d(u_0, v)$ et le chemin le plus court de $u_0$ à $v$ reste dans $S$;
     \item pour $v \notin S$, $\ell(v) \geq d(u_0, v)$, et $\ell(v)$ est la longueur du plus court chemin de $u_0$ vers $v$ dont tous les noeuds internes sont dans $S$.
   \end{itemize}
   \begin{proof}
-     Cette démonstration n'a pas été vue au cours.
+    Montrons le par induction
+    \begin{description}
+      \item[Initialisation]
+        Au début, $\ell(u_0) = 0 = d(u_0, u_0)$ et $\ell(v) = \infty > d(u_0, v)$
+        car on considère le graphe connexe.
+      \item[Induction]
+        Montrons les deux items, l'un après l'autre,
+        \begin{itemize}
+          \item
+            Montrons par l'absurde qu'après avoir ajouté un noeud $u_i$ dans $S$, on sait que $\ell(u_i) = d(u_0, u_i)$.
+            Supposons que $\ell(u_i) > d(u_0, u_i)$.
+            Comme $\ell(u_i)$ est la longueur du plus court chemin où tous les
+            noeuds intermédiaires sont dans $S_{i-1}$,
+            la seule possibilité pour que $\ell(u_i) \neq d(u_0, u_i)$,
+            c'est qu'il existe un plus court chemin passant par un noeuds de $\bar{S}_{i-1}$.
+            Soit $v$, le premier noeud de $\bar{S}_{i-1}$ de ce chemin.
+            Le sous-chemin de $u_0$ à $v$ est le plus court chemin de $u_0$ à $v$ par
+            le lemme~\ref{lem:sub}.
+            Par la définition de $v$, ce chemin ne passe que par des noeuds de
+            $S_{i-1}$.
+            Du coup, on sait que $d(u_0, v) = \ell(v)$.
+            Comme les arêtes sont de poids positifs, on a $\ell(v) = d(u_0, v) \leq d(u_0, u_i)$.
+            Mais comme on a pris $u_i$ tel que $\ell(u_i) = \min_{u \in \bar{S}_{i-1}} \ell(u)$,
+            on a $\ell(u_i) \leq \ell(v)$.
+            Dès lors $\ell(u_i) \leq d(u_0, u_i)$, ce qui est absurde car on a supposé le contraire.
+          \item
+            Commençons par montrer que $\ell(v) \geq d(u_0, v)$.
+            Les seuls, $\ell(v)$ qui changent changent en $\ell(u_i) + w(u_i, v)$.
+            On remarque que c'est la longueur du chemin composé du plus court
+            chemin de $u_0$ à $u_i$ et de l'arête de $u_i$ à $v$.
+            Par la définition de $d(u_0, v)$, on a donc nécessairement l'inégalité voulue.
+
+            Pour le dernier point,
+            par l'hypothèse de récurrence, on sait que $\ell(v)$ est la longueur du plus court
+            chemin de $u_0$ vers $v$ pour tout noeud de $S_{i-1}$.
+            Pour que ce soit vrai pour tout noeud de $S_i$, il faut considérer les chemin passant
+            par $u_i$.
+            Il y a un de ces chemins ayant comme avant dernier noeud $u_i$ et pas de $u_i$ avant
+            car l'avant avant dernier noeud était dans $S$ avant $u_i$ donc il a une chemin
+            le plus court sans passer par $u_i$.
+            Donc le seul chemin qu'il faut encore considérer est le chemin le plus court
+            allant de $u_0$ à $u_i$ suivit ensuite par $v$.
+            Comme on fait $\ell(v) = \min(\ell(v), \ell(u_i) + w(u_i, v))$, on en prend compte.
+        \end{itemize}
+    \end{description}
   \end{proof}
 \end{mytheo}
 
