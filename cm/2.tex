@@ -132,10 +132,12 @@
   \begin{proof}
     \noindent
     \begin{itemize}
-		\item A chaque passage de boucle $\left\lbrace v \in S \right\rbrace $ décroit de 1. Ce qui implique $n$ passages de boucles.
-		\item A chaque boucle, "$\forall v \in S$" fait $O(n-|S|)$ opérations; et "trouver $v_{min}$" fait $O(n-|S|)$ opérations également.
-		\item Cela implique un temps total $O(n + (n-1) + (n-2) + ... + 1) = O\left( \frac{n(n-1)}{2} \right) = O(n^2)$ puisqu'on considère le temps à une constante près.
-		\end{itemize}
+      \item A chaque passage de boucle $|\bar{S}|$ décroit de 1. Ce qui implique $n$ passages de boucles.
+      \item A chaque boucle, ``$\forall v \in \bar{S}$'' fait $\bigoh(n-|S|)$ opérations;
+        et ``trouver $v_{min}$`` fait $\bigoh(n-|S|)$ opérations également.
+      \item Cela implique un temps total $\bigoh(n + (n-1) + (n-2) + ... + 1) = \bigoh\left( \frac{n(n-1)}{2} \right) = \bigoh(n^2)$
+        puisqu'on considère le temps à une constante près.
+    \end{itemize}
   \end{proof}
 \end{mytheo}
 
@@ -175,17 +177,18 @@ Pour le graphe dirigé suivant :
   	\end{tikzpicture}
   \end{center}
 	Nous avons :
-	$V=\left\{a,b,c,d,e\right\}$\\
-	$E=\left\{1,2,3,4,5,6,7,8\right\}$\\
-	$\varphi(1)=\left\{a,b\right\}$\\
-	$\varphi(2)=\left\{c,b\right\}$\\
-	$\varphi(3)=\left\{c,d\right\}$\\
-	$\varphi(4)=\left\{e,d\right\}$\\
-	$\varphi(5)=\left\{a,e\right\}$\\
-	$\varphi(6)=\left\{d,a\right\}$\\
-	$\varphi(7)=\left\{a,c\right\}$\\
-	$\varphi(8)=\left\{d,b\right\}$\\
-
+    \begin{align*}
+      V & = \left\{a,b,c,d,e\right\}\\
+      E & = \left\{1,2,3,4,5,6,7,8\right\}\\
+      \varphi(1) & = (a,b)\\
+      \varphi(2) & = (c,b)\\
+      \varphi(3) & = (c,d)\\
+      \varphi(4) & = (e,d)\\
+      \varphi(5) & = (a,e)\\
+      \varphi(6) & = (d,a)\\
+      \varphi(7) & = (a,c)\\
+      \varphi(8) & = (d,b)
+    \end{align*}
 \end{myexem}
 
 \subsection{Anneaux et Semi-anneaux}
@@ -210,13 +213,28 @@ On peut par exemple définir des matrices avec un semi-anneau :
   A \oplus B &=& (a_{ij} \oplus b_{ij})_{ij}\\
   A \otimes B &=& (\sum_k a_{ik} \otimes b_{kj})_{ij}
 \end{eqnarray}
-Le $\oplus$ définit la somme matricielle et le $\otimes$ le produit matriciel.\\
-Pour calculer le plus court chemin, on peut définir l'itération :
+Le $\oplus$ définit la somme matricielle et le $\otimes$ le produit matriciel.
+
+Prenons $\oplus = \min$ et $\otimes = +$.
+Le neutre de $\min$ est $\infty$ et celui de $+$ est $0$ donc
+\[ I =
+  \begin{pmatrix}
+    0 & \infty & \ldots & \infty\\
+    \infty & \ddots & \ddots & \vdots\\
+    \vdots & \ddots & \ddots & \infty\\
+    \infty & \ldots & \infty & 0
+  \end{pmatrix}.
+\]
+
+En prenant $A$ tel que $a_{ij} = w(i, j)$, la matrice des plus court parcourt est
+\[ I \oplus A \oplus \ldots \oplus A^{\otimes n} \]
+
+Pour calculer le plus court chemin, on peut définir alors l'itération:
 \begin{eqnarray}
   M_0 &=& I\\
   M_1 &=& I \oplus (M_0 \otimes A)\\
   M_2 &=& I \oplus (M_1 \otimes A)\\
-   &\vdots &\\
+   & \vdots &\\
   M_{k+1} &=& I \oplus (M_k \otimes A)
 \end{eqnarray}
 On a fini de converger quand $M_k = M_{k+1}$. Dijkstra peut être vu comme une manière efficace d'implémenter cette itération.
