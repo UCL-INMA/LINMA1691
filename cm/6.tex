@@ -12,7 +12,8 @@ un horaire sur le plus petit nombre de période possible
 \index{coloriage!coloriage d'arêtes}
 \index{coloriage!coloriage d'arêtes propre}
 \begin{mydef}
-  Un \emph{coloriage} des arêtes d’un graphe en k couleurs est l’assignation à chaque arête d’une couleur 1; 2; ..., ou $k$. Ce coloriage est dit \emph{propre} si deux arêtes adjacentes sont toujours de couleurs différentes.
+  Un \emph{coloriage} des arêtes d’un graphe en $k$ couleurs est l’assignation à chaque arête d’une couleur $1, 2, \ldots,$ ou $k$.
+  Ce coloriage est dit \emph{propre} si deux arêtes adjacentes sont toujours de couleurs différentes.
 \end{mydef}
 
 \index{chromatique!indice chromatique}
@@ -22,28 +23,28 @@ un horaire sur le plus petit nombre de période possible
 
 
 \begin{mytheo}[König]
-  Pour tout graphe biparti: $\chi '= degré\ max$
+  Pour tout graphe biparti: $\chi '= \degmax$
   \begin{proof}
-    On va utiliser le théorème de Hall pour les graphes bipartis réguliers (qui ont toujours un couplage parfait).
+    On va utiliser le corrolaire~\ref{corr:hall} du théorème~\ref{theo:hall} de Hall
+    pour les graphes bipartis réguliers (qui ont toujours un couplage parfait).
     \begin{enumerate}
-
-
-    \item Soit un graphe biparti $k$-régulier. Par le théorème de Hall, il existe un couplage parfait. On le colorie en couleur $c_{1}$. On considère ensuite les arêtes restantes non encore coloriées: elles forment un graphe $k-1$ régulier. On recommence pour la couleur $c_{2}$ avec un autre couplage. On continue jusqu'à épuisement, on obtient alors $\chi '=k$
-    \item Pour un graphe biparti quelconque de degré $k$.
-    \begin{itemize}
-    \item Ajouter des nœuds d'un côté si nécessaire pour avoir le même nombre de nœuds de chaque côté.
-    \item Si tous les nœuds ne sont pas de degré $k$, alors il y a au moins 1 nœuds de degré $<k$ de chaque côté. On ajoute alors une arête entre eux. On recommence jusqu'à $k$-régularité.
-    \end{itemize}
-    Par le point 1. , il existe un coloriage propre à $k$ couleurs. On supprime ensuite les arêtes et nœuds ajoutés: on obtient un coloriage propre pour le graphe de départ.
-    $$\Rightarrow deg max \le \chi ' \le k=deg max$$
-    $$\Rightarrow \chi ' = k$$
+      \item Soit un graphe biparti $k$-régulier. Par le théorème de Hall, il existe un couplage parfait. On le colorie en couleur $c_{1}$. On considère ensuite les arêtes restantes non encore coloriées: elles forment un graphe $k-1$ régulier. On recommence pour la couleur $c_{2}$ avec un autre couplage. On continue jusqu'à épuisement, on obtient alors $\chi '=k$
+      \item Pour un graphe biparti quelconque de degré maximum $k$.
+        \begin{itemize}
+          \item Ajouter des nœuds d'un côté si nécessaire pour avoir le même nombre de nœuds de chaque côté.
+          \item Si tous les nœuds ne sont pas de degré $k$, alors il y a au moins 1 nœuds de degré $<k$ de chaque côté.
+            On ajoute alors une arête entre eux. On recommence jusqu'à $k$-régularité.
+        \end{itemize}
+        Par le point 1. , il existe un coloriage propre à $k$ couleurs. On supprime ensuite les arêtes et nœuds ajoutés: on obtient un coloriage propre pour le graphe de départ.
+        $$\Rightarrow \degmax \le \chi ' \le k = \degmax$$
+        $$\Rightarrow \chi ' = k$$
     \end{enumerate}
   \end{proof}
 \end{mytheo}
 
 \begin{mytheo} [Vizing]
-Pour tout graphe simple: $\chi ' = deg max$ ou  $\chi ' = deg max + 1$
-  \begin{proof} On sait que $\chi' \ge deg max$, il faut donc prouver que $\chi ' \le deg max + 1$.
+Pour tout graphe simple: $\chi ' = \degmax$ ou  $\chi ' = \degmax + 1$
+  \begin{proof} On sait que $\chi' \ge \degmax$, il faut donc prouver que $\chi ' \le \degmax + 1$.
   \\On le prouve par induction sur le nombre d'arêtes du graphe.
   \\ \textbf{Pas inductif:} Vrai pour $m$ arêtes. Soit un graphe à  $m+1$ arêtes, de degré max $k$. Je retire une de ces arêtes: il existe un coloriage propre à $\le k+1$ couleurs.
   \begin{itemize}
@@ -179,3 +180,5 @@ Pour tout graphe simple: $\chi ' = deg max$ ou  $\chi ' = deg max + 1$
   \end{figure}
   $c_{1}$ libre $\Rightarrow$ même cas que: \ref{exemple1}
 \end{myexem}
+
+% FIXME L'argument ne suffit pas, il faut considérer le cas y'' = y !!
