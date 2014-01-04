@@ -2,7 +2,7 @@
 
 \textbf{Graphes Hamiltoniens}
 
-\subsection{Cycle hamiltonien et eulerien}
+\subsection{Cycle hamiltonien et eulérien}
 Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-on en déduire une caractérisation des graphes qui sont à la fois eulériens et hamiltoniens?
 \begin{solution}
 \begin{itemize}
@@ -12,11 +12,11 @@ Pour quelle classe de graphes un tour eulérien est-il aussi hamiltonien? Peut-o
 \end{solution}
 
 \subsection{Problème du cavalier}
-Le problème du cavalier était un problème en vogue au XVIIIème siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
+Le problème du cavalier était un problème en vogue au XVIIIe siècle. Le problème est de déterminer s'il est possible de faire parcourir toutes les cases d'un échiquier de taille $n \times n$ à un cavalier en ne passant qu'une seule fois par chaque case et en revenant à son point de départ. Formulez cela comme un tour hamiltonien dans un graphe et montrez que la réponse est négative pour $n$ impair.
 \begin{solution}
 Ce problème correspond à trouver un tour hamiltonien dans un graphe dans lequel les sommets sont les cases du graphe. Les sommets sont reliés entre eux lorsque le cavalier peut se déplacer d'un à l'autre directement.\\
 Comme le mouvement du cavalier lui permet de se déplacer uniquement d'une case blanche à une case noire et d'une case noire à une case blanche, ce graphe est biparti.
-Si $n$ est impair, le nombre de cases est impair également et le problème demande donc de trouver un cycle hamiltonien de longueur impaire dans un graphe biparti. Hors, un graphe est biparti si et seulement si il ne contient aucun cycle de longueur impaire. Il est donc impossible de résoudre ce problème si n est impair.
+Si $n$ est impair, le nombre de cases est impair également et le problème demande donc de trouver un cycle hamiltonien de longueur impaire dans un graphe biparti. Hors, un graphe est biparti si et seulement s’il ne contient aucun cycle de longueur impaire. Il est donc impossible de résoudre ce problème si n est impair.
 \textit{\textsc{En bref: }Dans un graphe biparti, si le nombre de noeuds n'est pas le même des deux côtés, le graphe n'est pas hamiltonien.}
 \end{solution}
 
@@ -39,11 +39,11 @@ Placez $n$ sommets sur un cercle et liez un sommet à ses deux plus proches vois
 Pour $n$ impair, ce résultat est évident. On a le circuit hamiltonien intérieur (en vert) et celui extérieur (en rouge).\\
 \includegraphics[scale=0.5]{nimpair.jpg}
 \\
-Pour $n$ pair, on propose une méthode de construction des 2 circuits hamiltoniens qui fonctionne pour tout $n$ pair. On commence par construire, pour $n=6$ le graphe suivant, avec le circuit hamiltonien intéreur (en vert) et celui extérieur (en rouge).
+Pour $n$ pair, on propose une méthode de construction des 2 circuits hamiltoniens qui fonctionne pour tout $n$ pair. On commence par construire, pour $n=6$ le graphe suivant, avec le circuit hamiltonien intérieur (en vert) et celui extérieur (en rouge).
 \\
 \includegraphics[scale=0.5]{npair1.jpg}
 \\
-Il est très facile d'ajouter les noeuds par 2 en complétant les circuits hamiltoniens. On construit d'abord le circuit extérieur (en rouge) en gardant toujours la même façon de procéder, et ensuite celui intérieur, qui comprend les arêtes non-utilisées par le circuit rouge. Voici le graphe pour $n=8$.
+Il est très facile d'ajouter les noeuds par 2 en complétant les circuits hamiltoniens. On construit d'abord le circuit extérieur (en rouge) en gardant toujours la même façon de procéder, et ensuite celui intérieur, qui comprend les arêtes non utilisées par le circuit rouge. Voici le graphe pour $n=8$.
 \\
 \includegraphics[scale=0.5]{npair2.jpg}
 \\
@@ -54,11 +54,11 @@ Il est très facile d'ajouter les noeuds par 2 en complétant les circuits hamil
 Une souris mange un gruyère de dimension $3 \times 3 \times 3$ par petits morceaux de taille $1 \times 1 \times 1$. Elle démarre en un coin du cube et se déplace de cube adjacent en cube adjacent. Peut-elle manger la totalité du gruyère en terminant par le cube central?
 \begin{solution}
 La justification est la même que pour le problème du cavalier. Modélisons le fromage comme un graphe dont chaque cube de dimension $1 \times 1 \times 1$ est un noeud et dont les noeuds représentant des cubes adjacents sont reliés par une arête.\\
-En effet, ce graphe est biparti. On peut imaginer peindre le noeud de départ en blanc, ceux qui y sont adjacents en noir, ceux adjacents à ceux-ci en blanc etc.\\
+En effet, ce graphe est biparti. On peut imaginer peindre le noeud de départ en blanc, ceux qui y sont adjacents en noir, ceux adjacents à ceux-ci en blanc, etc.\\
 Le nombre de noeuds peints en blanc sera donc 14 et ceux peints en noir 13. Il est évidemment impossible de trouver un chemin hamiltonien partant d'un coin (blanc) et se terminant au centre (noir) et ayant parcouru tous les noeuds.
-En d'autre termes, il n'est alors possible de construire un cycle qui passe par tous les noeuds et qui revient au point de départ. 
+En d'autres termes, il n'est alors possible de construire un cycle qui passe par tous les noeuds et qui revient au point de départ. 
 \paragraph{solution 2 :}
-Une autre manière de voir les choses est d'utiliser la condition nécessaire sur les graphe hamiltoniens: si on supprime les 13 noeuds, on obtient 14 composantes connexes. Or si un graphe est hamiltonien, supprimer $k$ noeuds crée au plus $k$ composantes connexes. On a une contradiction et donc le graphe n'est pas hamiltonien.
+Une autre manière de voir les choses est d'utiliser la condition nécessaire sur les graphes hamiltoniens: si on supprime les 13 noeuds, on obtient 14 composantes connexes. Or si un graphe est hamiltonien, supprimer $k$ noeuds crée au plus $k$ composantes connexes. On a une contradiction et donc le graphe n'est pas hamiltonien.
 \end{solution}
 
 \subsection{Borne d'un voyageur de commerce}
@@ -77,7 +77,7 @@ Une borne supérieure de la solution optimale est obtenue en faisant par exemple
 Une borne inférieure peut être obtenue en additionnant les 4 plus petites distances entre les villes: $3+3+4+4=12$\\
 \end{solution}
 
-\subsection{Ordonancement de taches sur une machine spécialisée}
+\subsection{Ordonnancement de taches sur une machine spécialisée}
 Formulez le problème suivant comme le problème du voyageur de commerce. Cinq opérations $j=1,…,5$ doivent avoir lieu sur une machine spécialisée. Les temps de transition $c_{ij}$ entre deux opérations sont importants, et sont donnés dans la table suivante:
 \begin{equation}
   \left( \begin{matrix}
@@ -95,8 +95,8 @@ Ce problème peut être modélisé comme le problème du voyageur de commerce da
 \begin{itemize}
 \item Les opérations (par lesquelles il faut toutes passer) représentent les villes et sont modélisées comme des noeuds. 
 \item Les arêtes sont les temps de transitions entre les opérations et relient ces opérations en étant dirigées de l'opération de départ  celle d'arrivée. Leur poids est le temps de transition. Elles représentent les routes dans le problème du voyageur de commerce.
-\item On ajoute un noeud de départ, qui est relié à toutes les opérations par des arêtes qui ont des poids valant les temps de préparations respectifs des opérations et en étant dirigées vers les opérations. 
-\item On ajoute également un noeud d'arrivée, auquel sont reliées toutes les opérations à l'aide d'arêtes de poids nuls en étant dirigée vers ce noeud.
+\item On ajoute un noeud de départ, qui est relié à toutes les opérations par des arêtes qui ont des poids valant les temps de préparation respectifs des opérations et en étant dirigées vers les opérations. 
+\item On ajoute également un noeud d'arrivée, auquel sont reliées toutes les opérations à l'aide d'arêtes de poids nuls en étant dirigées vers ce noeud.
 \item Afin de modéliser la condition ``L'opération 3 ne peut pas précéder directement l'opération 1'', on supprime l'arête partant de l'opération 3 et allant vers l'opération 1.
 \item Afin de modéliser la condition ``les opérations 4 et 5 ne peuvent pas avoir lieu en dernière position'', on supprime les arêtes qui partent des opérations 4 et 5 sont dirigées vers le noeud d'arrivée
 \end{itemize}
@@ -144,3 +144,6 @@ Un groupe de huit personnes se retrouve pour diner. Le graphe ci-dessous précis
 \begin{solution}
 Afin de trouver un plan de table qui conviendrait, il faut d'abord créer le complémentaire du graphe précédent. Dans celui-ci, les arêtes relient deux personnes qui s'entendent bien. Il faut ensuite trouver un cycle hamiltonien dans ce graphe, et l'ordre dans lequel les noeuds sont parcourus sera celui dans lequel les gens sont placés autour de la table. Une solution possible est la suivante:$1-3-6-4-2-7-5-8$
 \end{solution}
+
+\textbf{Couplages}
+Les exercices 9 à 12 de la séance 5 sur les couplages sont identiques aux exercices 1 à 4 de la séance 6.

@@ -27,16 +27,16 @@
   La complexité est donc $\bigoh(n^2)$, avec $n$ le nombre de nœuds dans le graphe.
 \end{solution}
 
-\subsection{la plus courte chaîne VS le plus court chemin} Lorsque certaines longueurs dans un digraphe sont négatives il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
+\subsection{la plus courte chaîne VS le plus court chemin} Lorsque certaines longueurs dans un digraphe sont négatives, il peut être nécessaire de devoir faire la distinction entre la plus courte chaîne et le plus court chemin. Donnez l'exemple d'un graphe pour lequel cette distinction est nécessaire. Cette distinction est-elle nécessaire si tous les circuits sont de longueur positive?
 \begin{solution}
 Une chaîne \footnote{même chose qu'un parcours} est une suite $v_0e_1v_1e_2...e_nv_n $ où $v_1,v_2,...$ sont des sommets et $e_1,e_2,...$ sont des arêtes.  Un chemin est une chaîne dont les sommets sont tous distincts.
 
-Un digraphe est graphe dirigé, ce qui est important ici car si le graphe n'était pas dirigé et qu'un poids
+Un digraphe est graphe dirigé, ce qui est important ici, car si le graphe n'était pas dirigé et qu'un poids
 était négatif, il suffirait de faire cette arête en aller-retour suffisamment de fois pour avoir un poids aussi petit que l'on veut.
 Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de longueur négative ne signifie pas spécialement que la plus courte chaîne sera différente que le plus court chemin.
 
   Dans le graphe suivant, si on veut trouver le chemin de poids minimum de $A$ à $E$, on a $ABDE$ de poids $8$.
-  Par contre, il n'y a pas de plus courte chaîne car $w(AB(DCBD)^nE) = 8 - 18n$ peut être aussi petit que l'on veut.
+  Par contre, il n'y a pas de plus courte chaîne, car $w(AB(DCBD)^nE) = 8 - 18n$ peut-être aussi petit que l'on veut.
 
   \begin{center}
     \begin{tikzpicture}[transform shape]
@@ -58,11 +58,11 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
   Cependant, cette distinction n'est seulement nécessaire lorsqu'il y a
   un circuit de longueur négative comme ici avec $DCBD$.
-  Démontrons le par l'absurde.
+  Démontrons-le par l'absurde.
 
   Supposons que la plus courte chaîne et le plus court chemin sont différents. Il y a deux possibilités :
   \begin{itemize}
-    \item Soit le plus court chemin est plus court ou égal à la plus courte chaîne. Dans ce cas, il existe une plus courte chaîne que celle trouvée précédemment, c'est à dire le plus court chemin.
+    \item Soit le plus court chemin est plus court ou égal à la plus courte chaîne. Dans ce cas, il existe une plus courte chaîne que celle trouvée précédemment, c'est-à-dire le plus court chemin.
     \item Soit la plus courte chaîne est plus courte que le plus court chemin.
       Nous savons que pour qu'une chaîne soit la plus courte entre $u$ et $v$,
       il faut qu'elle soit aussi la plus courte entre deux nœuds intermédiaires du graphe,
@@ -71,7 +71,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
       or le cycle a une longueur strictement positive,
       on peut donc trouver un chemin plus court entre $w$ et $w$ de taille 0 (ne pas faire le cycle).
       La chaîne trouvée précédemment n'est donc pas optimale, on obtient donc une contradiction,
-      on utilise le même argument pour tout les cycles du graphes.
+      on utilise le même argument pour tous les cycles du graphe.
   \end{itemize}
 \end{solution}
 
@@ -150,12 +150,12 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 		\end{enumerate}
 \end{solution}
 
-\subsection{Récurence sur le plus court chemin} Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
+\subsection{Récurrence sur le plus court chemin} Soit $d_k(j)$ la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes. Trouvez une récurrence pour $d_k(j)$. Démontrez que $d_{n-1}(j)$ est la plus courte distance de $s$ à $j$.
 
 \begin{solution}
 On écrit que la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes est égal au minimum entre le plus court chemin de $s$ à $j$ de longueur $k-1$ et le chemin minimum de $s$ à $i$ de longueur $k-1$ + l'arête de $i$ à $j$.
 $$d_k(j) = min (d_{k-1}(j) , min_i(d_{k-1}(i)+w(i, j))$$
-La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arète supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
+La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arête supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
 \end{solution}
 
 \subsection{Application de Dijkstra} Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
@@ -204,7 +204,7 @@ La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la 
 \subsection{Deux seaux} Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
 
 \begin{solution}
-Le problème peut être modélisé comme le plus court chemin entre le noeud (0,0) et le noeud de 4 litre (vert) le plus proche dans le graphe donné. Il suffit de suivre la chaîne, on obtient six opérations nécessaires tracées en rouge.
+Le problème peut être modélisé comme le plus court chemin entre le noeud (0,0) et le noeud de 4 litres (vert) le plus proche dans le graphe donné. Il suffit de suivre la chaîne, on obtient six opérations nécessaires tracées en rouge.
 
 \begin{center}
 \begin{tikzpicture}
@@ -314,7 +314,7 @@ Le problème peut être modélisé comme le plus court chemin entre le noeud (0,
 \subsection{Échange de monnaies}
 	Vous possédez un billet de $p$ euros et vous souhaitez le changer en pièces de $a_1, a_2, ..., a_k$ euros (tous les montants étant entiers). Est-ce possible? Si oui, avec quel nombre de pièces? Formulez ce problème comme un problème de plus court chemin dans un graphe.
 \begin{solution}
-Créons un digraphe de la manière suivante : $p+1$ nœuds numéroté de $0$ à $p$ et des arêtes telles qu'une arête associée à une pièce de valeur $a_k$ relie un nœud $i$ à un nœud $i+a_k$(à condition de ces deux nœuds à relier soient bien compris entre $0$ et $p$). Il suffit ensuite d'appliquer l'algorithme de Dijkstra au graphe créé pour chercher le plus petit chemin entre les nœuds $0$ et $p$. Si l'algorithme ne trouve pas de chemin, il est alors impossible d'échanger le montant $p$ avec les pièces disponibles. Vous pouvez regarder quelques exemples ci-dessous.
+Créons un digraphe de la manière suivante : $p+1$ nœuds numérotés de $0$ à $p$ et des arêtes telles qu'une arête associée à une pièce de valeur $a_k$ relie un nœud $i$ à un nœud $i+a_k$(à condition de ces deux nœuds à relier soient bien compris entre $0$ et $p$). Il suffit ensuite d'appliquer l'algorithme de Dijkstra au graphe créé pour chercher le plus petit chemin entre les nœuds $0$ et $p$. Si l'algorithme ne trouve pas de chemin, il est alors impossible d'échanger le montant $p$ avec les pièces disponibles. Vous pouvez regarder quelques exemples ci-dessous.
 \begin{center}
 	\begin{tikzpicture}[scale=0.75,transform shape]
 		\Vertex[x=-10,y=0]{0}

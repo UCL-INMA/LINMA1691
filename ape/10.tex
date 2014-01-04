@@ -46,7 +46,7 @@ Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la s
     \item Soit les arêtes telles qu'il y ait une arête dans l'autre
       sens non $f$-nulles (back edges),
   \end{itemize}
-  on part de $S$ mais on arrive jamais à $T$.
+  on part de $S$ mais on n’arrive jamais à $T$.
   On a donc $f_\mathrm{max} = 17$.
   \begin{center}
     \begin{tikzpicture}
@@ -83,7 +83,7 @@ Déterminez le flot maximum pour le réseau ci-dessous. Comment montrer que la s
 \end{solution}
 
 
-\subsection{Mon patron a tord}
+\subsection{Mon patron a tort}
 Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est possible de faire passer 138 unités de flots de $s$ à $t$ et il vous reproche de ne pas être capable d'exhiber un tel flot. Convainquez votre patron par un argument simple qu'un tel flot n'existe pas. Quelle est la valeur maximale d'un flot dans ce réseau?
 
 \begin{figure}[h!]
@@ -124,8 +124,8 @@ Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est poss
   On sait par la dualité que pour toute coupe $S \to \bar{S}$,
   $\flotmax \leq \coupe(S\to\bar{S})$.
   En prenant dans $S$ les noeuds bleus et dans $\bar{S}$ les
-  noeuds verts, $\coupe(S\to\bar{S})$ vaut la somme
-  des capacités des arêtes rouges, c'est à dire 136.
+  noeuds verts, $\coupe(S\to\bar{S})$ vaux la somme
+  des capacités des arêtes rouges, c'est-à-dire 136.
   On a donc $\flotmax \leq 136$.
   \begin{center}
     \centering
@@ -203,11 +203,11 @@ Soit le réseau représenté plus bas. Votre patron est convaincu qu'il est poss
   \end{center}
 \end{solution}
 
-\subsection{Entremetteuses de couples ardensais}
+\subsection{Entremetteuses de couples ardennais}
 Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célibataires féminins et $m$ entremetteuses. Chaque entremetteuse connait certains des célibataires masculins ainsi que certains des célibataires féminins. De plus, l'entremetteuse $i$ ne peut arranger qu'au plus $b_i$ mariages entre les célibataires qu'elle connait. On suppose que seuls les mariages hétérosexuels sont acceptés et que les célibataires ne se marient qu'une fois. On souhaite déterminer le nombre maximum de mariages qui peuvent être arrangés. Montrez comment ce problème peut être formulé comme un problème de flot maximum dans un graphe.
 
 \begin{solution}
-  On peut modéliser ce problème comme un flot maximum dans un graphes de $2n + 2m + 2$ noeuds dont
+  On peut modéliser ce problème comme un flot maximum dans un graphe de $2n + 2m + 2$ noeuds donc
   \begin{itemize}
     \item une source,
     \item un puits,
@@ -224,7 +224,7 @@ Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célib
   La capacité entre les célibataires et les entremetteuses n'a alors pas trop d'importance,
   elle doit juste être plus grande que 1.
 
-  Le flot maximum du graphe est alors le nombre de mariage maximum.
+  Le flot maximum du graphe est alors le nombre de mariages maximum.
   Un exemple est illustré ci-dessous avec $n = 4$, $m = 3$ et des connaissances quelconques.
   \begin{center}
     \begin{tikzpicture}[x=2cm,y=1cm]
@@ -272,7 +272,7 @@ Dans un petit village en Ardenne, il y a $n$ célibataires masculins, $n$ célib
   \end{center}
 \end{solution}
 
-\subsection{Processeur bicoeurs}
+\subsection{Processeurs bicoeurs}
 Vous disposez d'une machine parallèle de deux processeurs A et B de types différents sur laquelle vous devez faire tourner une série de $n$ processus. Chaque processus doit être attribué à un processeur. Si vous choisissez d'assigner le processus $i$ au processeur A, cela induit un coût $\alpha_i$, alors que si vous choisissez le B, le coût est $\beta_i$. De plus, il est avantageux de faire tourner certains processus sur le même processeur parce que les transferts de données entre les deux sont élevés. Le coût d'assigner les processus $i$ et $j$ à des processeurs différents est égal à $c_{ij}$. Déterminez l'attribution optimale pour les données ci-dessous.
 
 \begin{multicols}{2}
@@ -311,14 +311,14 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
 
 \begin{solution}
   Ça peut se représenter comme un Min Cut qui peut également
-  être résolu par Ford-Fulkerson car $\coupemin = \flotmax$.
+  être résolu par Ford-Fulkerson, car $\coupemin = \flotmax$.
 
   En effet, prenons le graphe avec 6 noeuds.
   Une source $A$, un puits $B$ et 4 noeuds représentant les 4 processus.
   On ajoute
   \begin{itemize}
     \item Une arête de capacité $c_{ij}$ du processus $i$ au processus $j$,
-      si $c_{ij} \neq 0$ (pour simplifier car les arêtes de poids 0 n'influencent pas $\flotmax$ et $\coupemin$).
+      si $c_{ij} \neq 0$ (pour simplifier, car les arêtes de poids 0 n'influencent pas $\flotmax$ et $\coupemin$).
     \item Une arête de capacité $\alpha_i$ de $A$ au processus $i$.
     \item Une arête de capacité $\beta_i$ du processus $i$ à $B$.
   \end{itemize}
@@ -409,16 +409,16 @@ L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemi
     \item
       Considérons $\fnet(S)$, le flot net sortant des sources.
       À chaque itération, il augmente de la capacité du chemin d'augmentation.
-      Comme les capacités sont entières et que la capacité d'un chemin d'augmentation est strictement positif,
-      elle est au moins égal à 1.
+      Comme les capacités sont entières et que la capacité d'un chemin d'augmentation est strictement positive,
+      elle est au moins égale à 1.
       Après $n$ itérations, on a donc $\fnet(S) \geq n$.
-      On sait que ce flot net est au maximum la somme des capacités des arêtes sortant des sources, notons la $\mathcal{C}$,
+      On sait que ce flot net est au maximum la somme des capacités des arêtes sortant des sources, notons-la $\mathcal{C}$,
       c'est à dire $\fnet(S) \leq \mathcal{C}$.
       On a donc $n \leq \mathcal{C}$. Comme $\mathcal{C}$ est fini, l'algorithme va s'arrêter après un nombre fini d'itérations.
     \item
       Si elles sont rationnelles, on peut les écrire sous forme d'une fraction d'entiers.
-      Soit $p$, le ppcm des dénominateurs de ces fractions.
-      Si on multiplie toutes la capacités par $p$, ça ne change pas le nombre d'itérations
+      Soit $p$, le PPCM des dénominateurs de ces fractions.
+      Si on multiplie toutes les capacités par $p$, ça ne change pas le nombre d'itérations
       et on arrive à un cas avec que des capacités entières.
       L'algorithme va donc aussi s'arrêter après un nombre fini d'opérations.
     \item
@@ -448,7 +448,7 @@ L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemi
 
       Il se peut que Ford-Fulkerson
       trouve les chemins augmentant dans l'ordre suivant,
-      rappelons nous que $r^2 = 1 - r$ et donc aussi $r^{n+2} = r^n - r^{n+1}$.
+      rappelons-nous que $r^2 = 1 - r$ et donc aussi $r^{n+2} = r^n - r^{n+1}$.
       \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
           \hline
@@ -509,11 +509,11 @@ L'algorithme de Ford-Fulkerson consiste à trouver à chaque itération un chemi
 \end{solution}
 
 \subsection{Profit d'un laboratoire}
-Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Etant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
+Un laboratoire a la possibilité de réaliser 6 projets. La réalisation du projet $i$ génère un revenu $q_i$. Pour réaliser le projet $i$, le laboratoire a besoin d'une présence de l'ensemble des chercheurs $T_i$. Engager le chercheur $j$ coûte $p_j$. Étant donné les revenus $q= (8,7,4,5,3,9)$, les coûts $p=(2,10,7,3,5)$ et $T_1 = \left\lbrace 1, 4 \right\rbrace$, $T_2 = \left\lbrace 1,2,3,4 \right\rbrace$, $T_3 = \left\lbrace 1,3,5 \right\rbrace$, $T_4 = \left\lbrace 4,5 \right\rbrace$, $T_5 = \left\lbrace 3,4,5 \right\rbrace$, $T_6 = \left\lbrace 1, 4,5 \right\rbrace$, trouvez l'ensemble des projets qui maximise le profit total (revenus moins coûts).
 
 \begin{solution}
   On peut résoudre ce problème avec un MaxFlow comportant des coûts négatifs.
-  Il faudra alors trouver le chemins $f$-augmentants à l'aide un algorithme de plus court chemin insensible
+  Il faudra alors trouver les chemins $f$-augmentants à l'aide un algorithme de plus court chemin insensible
   aux cycles de poids négatifs tel Belmann-Ford ou SPFA (Shortest Path Fast Algorithm).
 
   Il existe cependant une solution plus élégante à ce problème ne comportant pas d'arête
@@ -662,15 +662,15 @@ et un ensemble $C$ de clubs, avec $S_c \subseteq M$ la liste des membres du club
 
 \begin{solution}
   C'est un problème de couplage maximum dans un graphe biparti (Maximum Cardinality Bipartite Matching (MCBM)).
-  Si le nombre d'arête du couplage est égal au nombre de club,
+  Si le nombre d'arêtes du couplage est égal au nombre de club,
   on pourra trouver un représentant pour chaque club.
 
   On pourrait utiliser le théorème de Hall et prendre tous les sous-ensembles $E \subseteq C$
   et vérifier que $\voisin(E) \geq |E|$.
-  Mais ça fait $2^6 = 64$ ensembles donc il vaut mieux utiliser Ford-Fulkerson.
+  Mais ça fait $2^6 = 64$ ensembles et donc il vaut mieux utiliser Ford-Fulkerson.
 
   Dans le cas particulier du MCBM,
-  l'algorithme de Fork-Fulkerson se simplifie grandement mais contentons-nous d'appliquer l'algorithme
+  l'algorithme de Fork-Fulkerson se simplifie grandement, mais contentons-nous d'appliquer l'algorithme
   général pour le Max Flow.
 
   On a $|M|$ noeuds représentant les personnes,
@@ -678,10 +678,10 @@ et un ensemble $C$ de clubs, avec $S_c \subseteq M$ la liste des membres du club
   Il y a
   \begin{itemize}
     \item une arête de $m \in M$ à $c \in C$ si $m \in S_c$ car il faut être membre pour être représentant d'un club,
-    \item une arête de $s$ à $m \in M$ de capacité 1 car chaque personne ne peut être représentant d'un seul club,
-    \item une arête de $c \in C$ à $t$ de capacité 1 car chaque club n'a au maximum qu'un seul représentant.
+    \item une arête de $s$ à $m \in M$ de capacité 1, car chaque personne ne peut être représentant d'un seul club,
+    \item une arête de $c \in C$ à $t$ de capacité 1, car chaque club n'a au maximum qu'un seul représentant.
   \end{itemize}
-  La capacité des arêtes de $m \in M$ à $c \in C$ n'importe pas tant qu'il est plus grand que 1
+  La capacité des arêtes de $m \in M$ à $c \in C$ n'importe pas tant qu'il est plus grand que 1,
   car on a déjà limité la capacité avec la source et le poids.
   Donnons une capacité unitaire également pour faire simple.
 
@@ -753,7 +753,7 @@ et un ensemble $C$ de clubs, avec $S_c \subseteq M$ la liste des membres du club
   Le flot maximum $f$ est représenté par le graphe suivant dans lequel les arêtes rouges sont
   les arêtes utilisées et donc $f$-saturées car leur capacité est 1.
   On remarque que si on cherche un chemin $f$-augmenté,
-  c'est à dire qu'on part de $s$ et qu'on ne peut prendre que les arêtes noires
+  c'est-à-dire qu'on part de $s$ et qu'on ne peut prendre que les arêtes noires
   dans le bon sens ou les arêtes brunes dans le sens inverse,
   on sait explorer les noeuds $s,1,2,4,6,A,C,E$ mais pas les noeuds $3,5,B,D,F,t$.
   \begin{center}

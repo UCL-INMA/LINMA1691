@@ -12,17 +12,17 @@
 \section{Séance 7}
 
 \subsection{confusion phonétique}
-Lorsqu'on réalise un exposé oral, il faut choisir soigneusement ses notations afin d'éviter les confusions sonores entre lettres (comme entre $m$ et $n$ par exemple). Dans un alphabet de $N$ lettres, on a identifié toutes les paires de lettres qu'il est possible de confondre et on aimerait sélectionner un ensemble de lettres pour nos notations de sorte qu'aucune confusion ne soit possible.
+Lorsqu'on réalise un exposé oral, il faut choisir soigneusement ses notations afin d'éviter les confusions sonores entre lettres (comme entre $m$ et $n$ par exemples). Dans un alphabet de $N$ lettres, on a identifié toutes les paires de lettres qu'il est possible de confondre et on aimerait sélectionner un ensemble de lettres pour nos notations de sorte qu'aucune confusion ne soit possible.
 
 \begin{enumerate}
-  \item[a.] Modélisez cette situation comme un problème de graphes. Comment trouver le plus grand nombre de lettres non-confondables possible?
-  \item[b.] On a besoin de $r+1$ symboles pour notre présentation. A partir de combien de couples de lettres confondables risque-t-on de devoir utiliser des symboles pouvant prêter à confusion?
+  \item[a.] Modélisez cette situation comme un problème de graphes. Comment trouver le plus grand nombre de lettres non confondables possible?
+  \item[b.] On a besoin de $r+1$ symboles pour notre présentation. À partir de combien de couples de lettres confondables risque-t-on de devoir utiliser des symboles pouvant prêter à confusion?
 \end{enumerate}
 
 \begin{solution}
 \begin{enumerate}
 \item[a.]
-Nous construisons un graphe $G$ dont les nœuds représentent les lettres et dont les arêtes représentent les confusions possibles. Pour trouver le plus grand nombre de lettres non-confondables, les nœuds isolés sont sélectionnés et dans chaque composante connexe, nous sélectionnons les nœuds formant un ensemble indépendant.
+Nous construisons un graphe $G$ dont les nœuds représentent les lettres et dont les arêtes représentent les confusions possibles. Pour trouver le plus grand nombre de lettres non confondables, les nœuds isolés sont sélectionnés et dans chaque composante connexe, nous sélectionnons les nœuds formant un ensemble indépendant.
 
 \item[b.]
 Dans le pire cas, $G$ est connexe. Pour pouvoir sélectionner un ensemble de nœuds dans $G$, il faut que ces nœuds forment une clique dans le graphe complémentaire de $G$, que nous notons $\bar{G}$. Le théorème de Turán nous indique que si $\bar{G}$ a moins de $\left(1-\frac{1}{r}\right)\frac{N^2}{2}$ arêtes, alors $\bar{G}$ ne contient pas de clique. Ceci est vérifié lorsque $G$ a plus de $\frac{N(N-1)}{2}-\left(1-\frac{1}{r}\right)\frac{N^2}{2}$ arêtes.
@@ -105,7 +105,7 @@ Ajoutons un nœud $d$, il doit forcément être connecté à un des nœuds exist
 \end{tikzpicture}
 \end{center}
 
-Dans ce nouveau graphe, tout ensemble de trois nœuds contenant $a$ et $d$ possède 2 arêtes puisque le troisième nœud est connecté à $a$. Ceci contredit l'hypothèse selon laquelle dans tout graphe d'au moins 3 personnes, il n'y a jamais exactement 2 paires d'amis, ce qui signifie qu'il faut relier $d$ au troisième nœud. Le même raisonnement s'applique à tout ensemble de 3 nœuds du graphe contenant $a$ et $d$. Par conséquent, $d$ doit être relié à tous les nœuds du graphe.
+Dans ce nouveau graphe, tout ensemble de trois nœuds contenant $a$ et $d$ possède 2 arêtes puisque le troisième nœud est connecté à $a$. Ceci contredit l'hypothèse selon laquelle dans tout graphe d'au moins 3 personnes, il n'y a jamais exactement 2 paires d'amis, ce qui signifie qu'il faut relier $d$ au troisième nœud. Le même raisonnement s'applique à tout ensemble de 3 nœuds du graphe contenant $a$ et $d$. Par conséquent, $d$ dois être relié à tous les nœuds du graphe.
 
 \begin{center}
 \begin{tikzpicture}
@@ -134,7 +134,7 @@ Montrez que le graphe $G$ est biparti si et seulement si $\alpha(H) \geq \frac{1
 \end{enumerate}
 
 \begin{solution}
-Considérons un sous graphe $H$ connexe de $G$ biparti. $H$ est lui même biparti (sinon $H$ perd sa connexité).
+Considérons un sous-graphe $H$ connexe de $G$ biparti. $H$ est lui même biparti (sinon $H$ perds sa connexité).
 Chaque partition forme un ensemble indépendant de nœuds. Si les deux partitions de $H$ sont de tailles égales, le nombre de nœuds d'une partition est la moitié du nombre de nœuds de $H$, soit
 
 $$\alpha(H)=\frac{1}{2}\nu(H)$$
