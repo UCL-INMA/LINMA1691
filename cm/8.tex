@@ -27,25 +27,29 @@
 \end{mytheo}
 
 \begin{mytheo}
-  $\chi \leq $ degré max +1
+  $\chi \leq \degmax + 1$
   \begin{proof}
     Par induction sur le nombre de noeuds $n$.
-    Trivial pour $n = 1$.
-    Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\leq d$.
+    \begin{description}
+      \item[Initialisation]
+        Trivial pour $n = 1$.
+      \item[Induction]
+        Soit $G$ graphe de degré max $d$ de $n$ noeuds. On enlève un noeuds $x$. $G-\{x\}$ est un graphe de $n-1$ noeuds de degré max $\leq d$.
 
-    Par hypothère d'induction, il existe un coloriage propre de $G-\{x\}$.
-    On rétablis $x$ et ses arêtes. $x$ a au plus $d $ voisins.
+        Par hypothère d'induction, il existe un coloriage propre de $G-\{x\}$.
+        On rétablis $x$ et ses arêtes. $x$ a au plus $d $ voisins.
 
-    \begin{itemize}
-    \item Si  $G-\{x\}$ a $\leq d$ couleurs, alors ont peut utiliser une $d$ème couleur pour $x$.
-    \item  Si $G-\{x\}$ a $\leq d+1$ couleurs, alors $x$ a au plus $d$ voisins. Il existe donc une couleur non-utilisée, libre pour $x$.
-    \end{itemize}
+        \begin{itemize}
+          \item Si  $G-\{x\}$ a $\leq d$ couleurs, alors ont peut utiliser une $d$ème couleur pour $x$.
+          \item  Si $G-\{x\}$ a $\leq d+1$ couleurs, alors $x$ a au plus $d$ voisins. Il existe donc une couleur non-utilisée, libre pour $x$.
+        \end{itemize}
+    \end{description}
   \end{proof}
 \end{mytheo}
 \subsection{Polynôme chromatique}
 Pour un graphe $G$, le nombre de coloriage propres à $k$ couleurs est noté $\pi_k(G)$.
 \begin{mytheo}
-  Pour toute arête $e$ du graphe $G$, $\pi_k(G) = \pi_k(G-e) - \pi_k(G.e)$ où $G.e$ est le graphe obtenu en contracant l'arête $e$.
+  Pour toute arête $e$ du graphe $G$, $\pi_k(G) = \pi_k(G-e) - \pi_k(G.e)$ où $G.e$ est le graphe obtenu en contractant l'arête $e$.
   \begin{proof}
   Soit $u$ et $v$ les deux extrémités de $e$.
 	\begin{itemize}
