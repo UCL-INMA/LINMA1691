@@ -5,7 +5,10 @@
 \begin{mytheo} [Théorème de l'amitié 1] \label{ami1}
   Parmi six personnes, on en trouve toujours trois qui se connaissent l'une l'autre, ou trois qui sont étrangers l'un à l'autre.
   \begin{proof}
-     Considérons le graphe complet $K_6$ pour représenter le problème. Les nœuds symbolisent les personnes et les arêtes symbolisent les relations entre elles. Deux personnes sont reliées par une arêtes bleue si elles se connaissent, et par une arête rouge sinon. On veut montrer que le graphe contient un triangle bleu ou un triangle rouge.
+     Considérons le graphe complet $K_6$ pour représenter le problème.
+     Les nœuds symbolisent les personnes et les arêtes symbolisent les relations entre elles.
+     Deux personnes sont reliées par une arêtes bleue si elles se connaissent, et par une arête rouge sinon.
+     On veut montrer que le graphe contient un triangle bleu ou un triangle rouge.
 
      Chaque nœud $x$ a cinq voisins. On peut donc définir une couleur majoritaire en chaque nœud comme la couleur du plus grand nombre d'arêtes incidentes. Prenons le cas où la couleur majoritaire pour $x$ est le bleu. Il existe donc au moins trois arêtes bleues incidentes à $x$.
 
@@ -33,9 +36,14 @@
         \end{tikzpicture}
 	\end{figure}
 
-     Considérons trois nœuds $a$, $b$ et $c$ reliés à $x$ par une arête bleue. Si ces trois nœuds forment un triangle rouge, alors le graphe contient un triangle rouge. Sinon, le triangle $abc$ contient au moins une arête bleue. Prenons par exemple l'arête $ab$ bleue. Le triangle $abx$ est alors bleu. Le graphe contient donc dans ce cas-ci un triangle bleu.
+     Considérons trois nœuds $a$, $b$ et $c$ reliés à $x$ par une arête bleue.
+     Si ces trois nœuds forment un triangle rouge, alors le graphe contient un triangle rouge.
+     Sinon, le triangle $abc$ contient au moins une arête bleue.
+     Prenons par exemple l'arête $ab$ bleue. Le triangle $abx$ est alors bleu.
+     Le graphe contient donc dans ce cas-ci un triangle bleu.
 
-     La preuve reste évidemment valable si l'on prend l'arête $bc$ ou l'arête $ac$ bleue, de même que si l'on prend le rouge comme couleur majoritaire du nœud $x$.
+     La preuve reste évidemment valable si l'on prend l'arête $bc$ ou l'arête $ac$ bleue,
+     de même que si l'on prend le rouge comme couleur majoritaire du nœud $x$.
   \end{proof}
 \end{mytheo}
 
@@ -61,10 +69,12 @@ Un ensemble de nœuds est indépendant si et seulement si son complémentaire es
 \begin{proof}
 Soit S un ensemble de nœuds indépendant.
 
-S est un ensemble de nœuds indépendant. \\
-$\Leftrightarrow$ Il n'existe pas d'arête rejoignant 2 nœuds de S. \\
-$\Leftrightarrow$ Toute arête a au moins une extrémité qui n'est pas incluse dans S. \\
-$\Leftrightarrow$ Le complémentaire de S est une couverture de sommets.
+S est un ensemble de nœuds indépendant.
+\begin{itemize}
+  \item[$\Leftrightarrow$] Il n'existe pas d'arête rejoignant 2 nœuds de S.
+  \item[$\Leftrightarrow$] Toute arête a au moins une extrémité qui n'est pas incluse dans S.
+  \item[$\Leftrightarrow$] Le complémentaire de S est une couverture de sommets.
+\end{itemize}
 \end{proof}
 \end{mytheo}
 
@@ -117,10 +127,12 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
   \begin{proof}
      Soit S un ensemble indépendant dans un graphe simple G.
 
-     S est un ensemble indépendant de G \\
-     $\Leftrightarrow$ Deux nœuds quelconques de S sont non-adjacents dans G. \\
-     $\Leftrightarrow$ Deux nœuds quelconques de S sont adjacents dans le complémentaire de G. \\
-     $\Leftrightarrow$ S est une clique dans le complémentaire de G.\\
+     S est un ensemble indépendant de G
+     \begin{itemize}
+       \item[$\Leftrightarrow$] Deux nœuds quelconques de S sont non-adjacents dans G.
+       \item[$\Leftrightarrow$] Deux nœuds quelconques de S sont adjacents dans le complémentaire de G.
+       \item[$\Leftrightarrow$] S est une clique dans le complémentaire de G.
+     \end{itemize}
   \end{proof}
 \end{mytheo}
 
@@ -145,13 +157,14 @@ Une \emph{clique maximum} est une clique dont le nombre de nœuds est maximal.
 \begin{mytheo} [Théorème de l'amitié 3]
   Tout graphe simple à six nœuds contient une clique de trois nœuds ou un ensemble indépendant de trois nœuds.
   \begin{proof}
-     Soit $G$ un graphe simple. Si l'on colorie toutes les arêtes de $G$ en bleu et que l'on relie tous les nœuds non-adjacents de $G$ avec des arêtes rouges, par le théorème \ref{ami2}, il existe un triangle bleu ou un triangle rouge. On a donc montré qu'il existe une clique de trois nœuds (triangle bleu) ou un ensemble indépendant de trois nœuds (triangle rouge).
+     Soit $G$ un graphe simple. Si l'on colorie toutes les arêtes de $G$ en bleu et que l'on relie tous les nœuds non-adjacents de $G$ avec des arêtes rouges, par le théorème \ref{ami2}, il existe un triangle bleu ou un triangle rouge.
+     On a donc montré qu'il existe une clique de trois nœuds (triangle bleu) ou un ensemble indépendant de trois nœuds (triangle rouge).
   \end{proof}
 \end{mytheo}
 
 
 \begin{mydef} [Nombre de Ramsey]
-Le \emph{nombre de Ramsey} $R(n_1 , ..., n_k)$ est le plus petit naturel $r$ tel que tout coloriage du graphe complet de $r$ nœuds en $k$ couleurs $c_1$ , ..., $c_k$ crée une clique de $n_1$ nœuds de couleur $c_1$, ou une clique de $n_2$ nœuds de couleur $c_2$, ..., ou une clique de $n_k$ nœuds de couleur $c_k$.
+Le \emph{nombre de Ramsey} $R(n_1 , ..., n_k)$ est le plus petit naturel $r$ tel que tout coloriage du graphe complet de $r$ nœuds en $k$ couleurs $c_1, \ldots, c_k$ crée une clique de $n_1$ nœuds de couleur $c_1$, ou une clique de $n_2$ nœuds de couleur $c_2, ...,$ ou une clique de $n_k$ nœuds de couleur $c_k$.
 \end{mydef}
 
 \begin{mytheo} [Théorème de Ramsey]
@@ -162,9 +175,11 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
   Pour $m, n \geq 2: R(m, n) \leq R(m, n-1) + R(m-1, n)$.
   \begin{proof}
      Prenons un noeud quelconque u dans un graphe complet à $R(m,n-1) + R(m-1,n)$
-      avec des arêtes coloriées en bleu ou en rouge. Soit M et N définis tels que
-     $$M = \{ \text{voisins de u reliés par des arêtes bleues}\}$$
-     $$N = \{ \text{voisins de u reliés par des arêtes rouges}\}.$$
+     avec des arêtes coloriées en bleu ou en rouge. Soit M et N définis tels que
+     \begin{align*}
+       M & = \{\text{voisins de }u\text{ reliés par des arêtes bleues}\}\\
+       N & = \{\text{voisins de }u\text{ reliés par des arêtes rouges}\}.
+     \end{align*}
 
 \begin{figure} [!h]
 \centering
@@ -204,32 +219,37 @@ Le nombre de Ramsey $R(n_1,...,n_k)$ existe.
 
  Donc on a que
  \begin{equation} \label{cm7:RM}
- |M| \geq R(m-1,n)
-\end{equation}
-ou bien
-\begin{equation} \label{cm7:RN}
- |N| \geq R(m,n-1)
-\end{equation}
+   |M| \geq R(m-1,n)
+ \end{equation}
+ ou bien
+ \begin{equation} \label{cm7:RN}
+   |N| \geq R(m,n-1)
+ \end{equation}
 
-Si on est dans le cas de figure de l'inégalité \ref{cm7:RM}, il y a deux possibilités. Soit il existe une clique rouge de $n$ nœuds dans $M$ ce qui implique qu'il existe une clique rouge de $n$ nœuds dans le graphe. Soit il existe une clique bleue de $m-1$ nœuds dans $M$ ce qui en incluant $u$ fait une clique bleue de $m$ nœuds dans le graphe.
+Si on est dans le cas de figure de l'inégalité \ref{cm7:RM}, il y a deux possibilités.
+Soit il existe une clique rouge de $n$ nœuds dans $M$ ce qui implique qu'il existe une clique rouge de $n$ nœuds dans le graphe.
+Soit il existe une clique bleue de $m-1$ nœuds dans $M$ ce qui en incluant $u$ fait une clique bleue de $m$ nœuds dans le graphe.
 
 Si on est dans le cas de figure de l'inégalité \ref{cm7:RN}, idem mutatis mutandis.
   \end{proof}
 \end{mytheo}
 
-\begin{mycorr} R(m,n) $\leq \begin{pmatrix}
+\begin{mycorr}
+  $R(m,n) \leq \begin{pmatrix}
 m+n-2\\
 m-1
-\end{pmatrix}$\\
+\end{pmatrix}$.
 \end{mycorr}
 
 \begin{mytheo}
-$R(n_1,...,n_k) \leq R \left( n_1,...,n_{k-2},R(n_{k-1},n_k) \right)$
+$R(n_1,...,n_k) \leq R \left( n_1,...,n_{k-2},R(n_{k-1},n_k) \right)$.
 
 \begin{proof}
   Prenons un graphe complet à $R(n_1, ..., n_{k-2}, R(n_{k-1}, n_k))$ nœuds et leurs arêtes coloriées en $k$ couleurs. Soit $c_i $ la couleur $i$.
 
-  Faisons semblant que $c_{k-1}$ et $c_{k}$ sont une seule couleur. Cela implique qu'il n'y a plus que $k-1$ couleurs. Il existe donc une clique à $n_1$ nœuds de couleur $c_1$ ou bien une clique à $n_2$ nœuds de couleur $c_2$ et ainsi de suite jusqu'à la possibilité d'une clique de $R(n_{k-1}, n_k)$ nœuds de couleur $c_{k-1}$ ou $c_{k}$.
+  Faisons semblant que $c_{k-1}$ et $c_{k}$ sont une seule couleur.
+  Cela implique qu'il n'y a plus que $k-1$ couleurs.
+  Il existe donc une clique à $n_1$ nœuds de couleur $c_1$ ou bien une clique à $n_2$ nœuds de couleur $c_2$ et ainsi de suite jusqu'à la possibilité d'une clique de $R(n_{k-1}, n_k)$ nœuds de couleur $c_{k-1}$ ou $c_{k}$.
 
   Or par définition de $R(n_{k-1}, n_k)$, cette dernière possibilité revient à dire qu'il existe une clique de $n_{k-1}$ nœuds de couleur $c_{k-1}$ ou une clique de $n_{k}$ nœuds de couleur $c_{k}$.
 \end{proof}
@@ -258,7 +278,7 @@ Cette borne est atteinte par le graphe de Turán $T(n,r)$.  Selon wiki un graphe
 \textbf{Notes :}
 \begin{enumerate}
 \item
-Pendant les séances d'exercices, le tuteur a complété le théorème \ref{turan} en ajoutant "et il existe un graphe possédant $\left( 1-\dfrac{1}{r} \right) \dfrac{n^2}{2}$ qui ne contient aucune clique de taille $r+1$" (ce que Wikipédia semble confirmer).
+Pendant les séances d'exercices, le tuteur a complété le théorème \ref{turan} en ajoutant ``et il existe un graphe possédant $\left( 1-\dfrac{1}{r} \right) \dfrac{n^2}{2}$ qui ne contient aucune clique de taille $r+1$'' (ce que Wikipédia semble confirmer).
 \item
 On a  $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} > \left( 1-\dfrac{1}{n-1} \right) \dfrac{n^2}{2}$ donc si on prend $r=n-1$ alors on aura une clique à $(n-1)+1=n$ nœuds. Or on a bien : $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} = \dfrac{n(n-1)}{2}$.
 \end{enumerate}
@@ -268,11 +288,11 @@ On a  $\left( 1-\dfrac{1}{n} \right) \dfrac{n^2}{2} > \left( 1-\dfrac{1}{n-1} \r
 Beaucoup de théorèmes existent qui imitent le théorème de Ramsey et prouvent quelque chose du genre:
 \begin{itemize}
 \item
-"Dans un machin suffisamment grand, il y a toujours des sous-machins avec une certaine propriété."
+``Dans un machin suffisamment grand, il y a toujours des sous-machins avec une certaine propriété.''
 \item
-"Dans un grand machin, m\^eme tout-à-fait quelconque, un certain ordre est inévitable."
+``Dans un grand machin, m\^eme tout-à-fait quelconque, un certain ordre est inévitable.''
 \item
-"Le désordre complet est impossible."
+``Le désordre complet est impossible.''
 \end{itemize}
 
 
@@ -317,7 +337,7 @@ Donc il y a $i$, $j$ et $l$ tels que:
 \item
 $i < j < l$
 \item
-$j-i, l-j, l-i$ sont dans le m\^eme classe.\\
+$j-i, l-j, l-i$ sont dans le m\^eme classe.
 \end{itemize}
 
 On prend alors:\\
