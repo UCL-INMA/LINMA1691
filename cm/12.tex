@@ -1,14 +1,14 @@
 \section{Grands et très grands graphes}
 \subsection{PageRank}
 CETTE SECTION N'A PAS ETE VUE AU COURS. On la présente de manière informative...
-En 1998, deux étudiants de Stanford décident d’utiliser le graphe dirigé des pages web reliées par des hyperliens.\\
-Idée: Une page est ‘bonne’ si les pages qui pointent vers elles sont ‘bonnes’.\\
-Ils aboutissent à un classement global de qualité des pages. Les pages qui contiennent les mots clefs sont donnés à l’utilisateur par ordre de qualité.\\
-Ils nomment leur algorithme ‘PageRank’ et fondent une start-up nommée Google. \\
-Un surfeur part d’une page quelconque, clique sur un hyperlien de cette page au hasard (chacune avec la même probabilité). Arrivé sur une nouvelle page, il recommence, et ainsi de suite.\\
+En 1998, deux étudiants de Stanford décident d'utiliser le graphe dirigé des pages web reliées par des hyperliens.\\
+Idée: Une page est `bonne' si les pages qui pointent vers elles sont `bonnes'.\\
+Ils aboutissent à un classement global de qualité des pages. Les pages qui contiennent les mots clefs sont donnés à l'utilisateur par ordre de qualité.\\
+Ils nomment leur algorithme `PageRank' et fondent une start-up nommée Google. \\
+Un surfeur part d'une page quelconque, clique sur un hyperlien de cette page au hasard (chacune avec la même probabilité). Arrivé sur une nouvelle page, il recommence, et ainsi de suite.\\
 \index{fréquence}
 \begin{mydef}
-  La \emph{fréquence} $f_T(i)$ d’une page $i$ après $t$ étape est la fraction du temps passée par le surfeur sur une page donnée.
+  La \emph{fréquence} $f_T(i)$ d'une page $i$ après $t$ étape est la fraction du temps passée par le surfeur sur une page donnée.
 \end{mydef}
 
 \begin{mytheo}
@@ -18,12 +18,12 @@ Un surfeur part d’une page quelconque, clique sur un hyperlien de cette page a
   \end{proof}
 \end{mytheo}
 
-Cette limite est nommée le PageRank de la page i.\\
+Cette limite est nommée le PageRank de la page $i$.\\
 Une page avec un haut PageRank est considérée comme de haute qualité.\\
-Le PR d’une page i dépend du PR des pages qui pointent vers i et du nombre d’hyperliens sur ces pages.\\
-Pour avoir un PR élevé, il faut que des pages aux PR élevés pointent vers ma page (et vers peu d’autres pages).\\
+Le PR d'une page $i$ dépend du PR des pages qui pointent vers i et du nombre d'hyperliens sur ces pages.\\
+Pour avoir un PR élevé, il faut que des pages aux PR élevés pointent vers ma page (et vers peu d'autres pages).\\
 \newline
-Problème: Le graphe du web n’est pas connexe!\\
-Le surfeur, s’il ne trouve pas d’hyperlien sur une page, se téléporte vers une autre page aléatoirement (avec distribution uniforme).\\
-S’il trouve des liens, il se téléporte avec une probabilité $\alpha$ et suit un des hyperliens avec une probabilité $1 − \alpha$.\\
+Problème: Le graphe du web n'est pas connexe!\\
+Le surfeur, s'il ne trouve pas d'hyperlien sur une page, se téléporte vers une autre page aléatoirement (avec distribution uniforme).\\
+S'il trouve des liens, il se téléporte avec une probabilité $\alpha$ et suit un des hyperliens avec une probabilité $1 − \alpha$.\\
 Google: $\alpha ≈ 0.15$ (?)
