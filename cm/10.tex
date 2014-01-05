@@ -58,91 +58,70 @@
 \index{coupe}
 \index{coupe!coupe minimum}
 \begin{mydef}
-  Une \emph{coupe} est un ensemble d'arêtes tel qu'il n'ait plus aucun chemin d'un noeud source vers un noeud puits quand on retire cet ensemble du graphe.\\
+  Une \emph{coupe} est un ensemble d'arêtes tel qu'il n'y ait plus aucun chemin d'un noeud source vers un noeud puits quand on retire cet ensemble du graphe.\\
   On désire trouver une \emph{coupe minimum}, c'est-à-dire une coupe dont la capacité (i.e., la somme des capacités de ses arêtes) est minimale.
 \end{mydef}
 
-\begin{center}
-  \begin{tikzpicture}
-    \node[vertex] at (0, 0) (s) {\tiny $s$};
-    \node[vertex] at (2, 1) (a) {\tiny $a$};
-    \node[vertex] at (2, -1) (b) {\tiny $b$};
-    \node[vertex] at (4, 1) (c) {\tiny $c$};
-    \node[vertex] at (4, -1) (d) {\tiny $d$};
-    \node[vertex] at (6, 0) (t) {\tiny $t$};
-    \draw[->] (s) edge node[anchor = south] {\tiny $0 / 3$} (a);
-    \draw[->] (s) edge node[anchor = north] {\tiny $0 / 2$} (b);
-    \draw[->] (a) edge node[anchor = south] {\tiny $0 / 2$} (c);
-    \draw[->] (a) edge node[anchor = south] {\tiny $0 / 3$} (d);
-    \draw[->] (b) edge node[anchor = north] {\tiny $0 / 2$} (d);
-    \draw[->] (c) edge node[anchor = south] {\tiny $0 / 2$} (t);
-    \draw[->] (d) edge node[anchor = north] {\tiny $0 / 2$} (t);
-  \end{tikzpicture}
-\end{center}
-
-\begin{center}
-  \begin{tikzpicture}
-    \node[draw, circle] at (-2,0) (S) {S};
-    \node[draw, circle] at (-1,1) (A) {};
-    \node[draw, circle] at (-1,-1) (B) {};
-    \node[draw, circle] at (1,1) (C) {};
-    \node[draw, circle] at (1,-1) (D) {};
-    \node[draw, circle] at (2,0) (P) {P};
-
-    \draw[->] (S) edge node[anchor = south] {$3/6$} (A);
-    \draw[->] (S) edge node[anchor = south] {$1/4$} (B);
-    \draw[->] (A) edge node[anchor = south] {$2/4$} (C);
-    \draw[->] (A) edge node[anchor = south] {$1/1$} (D);
-    \draw[->] (B) edge node[anchor = north] {$1/1$} (C);
-    \draw[->] (B) edge node[anchor = north] {$2/2$} (D);
-    \draw[->] (C) edge node[anchor = south] {$1/3$} (P);
-    \draw[->] (D) edge node[anchor = south] {$3/3$} (P);
-  \end{tikzpicture}
-\end{center}
-
 \paragraph{Observation}
-Se donner une coupe, on se donne un ensemble $S$ de noeuds atteignables à partir des sources,
-c'est la même chose.
+Se donner une coupe ou on se donne un ensemble $S$ de noeuds atteignables à partir des sources, c'est la même chose.
 Lorsqu'on a une coupe, $S$ est la composante connexe comprenant les sources lorsqu'on enlève la coupe.
 Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et de $\bar{S}$.
 
+On note alors la coupe $S \to \bar{S}$ et le flot net à travers la coupe est le flot net de $S$
+$$\fnet(S \to \bar{S}) = \fnet(S).$$
+
 \begin{mylem}
+  \label{lem:valeurflot}
   Pour un flot donné, toutes les coupes ont le même flot net, qui est la valeur du flot.
   \begin{proof}
-    Flot net de la coupe = Flot net(sources) + Flot net (s$\setminus$sources)
-    =$f(S \to \bar{S}) - f(\bar{S} \to S)$
-    taille de la coupe = capacité totale de la coupe
-    \begin{center}
-      \begin{tikzpicture}
-        \node[draw, circle] at (-2,0) (S1) {S};
-        \node[draw, circle] at (-2,-1) (S2) {S};
-        \node[draw, circle] at (-1,1) (A1) {};
-        \node[draw, circle] at (-1,0) (A2) {};
-        \node[draw, circle] at (-1,-1) (A3) {};
-        \node[draw, circle] at (0,2) (B1) {};
-        \node[draw, circle] at (0,1) (B2) {};
-        \node[draw, circle] at (0,0) (B3) {};
-        \node[draw, circle] at (0,-1) (B4) {};
-        \node[draw, circle] at (1,2) (P1) {P};
-        \node[draw, circle] at (1,1) (P2) {P};
-        \node[draw, circle] at (1,0) (P3) {P};
-        \node[draw, circle] at (1,-1) (P4) {P};
+    Soit une coupe $S \to \bar{S}$ et $s$ l'ensemble des sources,
+    \begin{align*}
+      \fnet(S \to \bar{S}) & = \fnet(S)\\
+                           & = \fnet(s) + \fnet(S \setminus s)\\
+                           & = \fnet(s)\\
+                           & = \valeur(f).
+    \end{align*}
+    car le flot net d'un noeud intermédiaire est nul.
+    \begin{figure}[!h]
+      \centering
+      \begin{tikzpicture}[x=2cm,y=1cm]
+        \SetVertexMath
+        \SetVertexNoLabel
+        \Vertex[NoLabel=false]{s_1}
+        \SO[NoLabel=false](s_1){s_2}
+        \NOEA(s_1){b}
+        \EA(s_1){c}
+        \EA(s_2){d}
+        \NOEA(b){A}
+        \EA(b){B}
+        \EA(c){C}
+        \EA(d){D}
+        \EA[NoLabel=false](A){t_1}
+        \EA[NoLabel=false](B){t_2}
+        \EA[NoLabel=false](C){t_3}
+        \EA[NoLabel=false](D){t_4}
 
-        \draw[->] (S1) edge (A1);
-        \draw[->] (S1) edge (A2);
-        \draw[->] (S1) edge (A3);
-        \draw[->] (S2) edge (A3);
-        \draw[->] (A1) edge (B1);
-        \draw[->] (A1) edge (B2);
-        \draw[->] (A2) edge (B2);
-        \draw[->] (A2) edge (B3);
-        \draw[->] (A3) edge (B4);
-        \draw[->] (B1) edge (P1);
-        \draw[->] (B2) edge (P2);
-        \draw[->] (B3) edge (P3);
-        \draw[->] (B4) edge (P4);
+        \SetUpEdge[style={->}]
+        \Edge(s_1)(c)
+        \Edge(s_1)(d)
+        \Edge(s_2)(d)
+        \Edge(b)(s_1)
+        \Edge(c)(b)
+        \Edge(D)(c)
+        \Edge(A)(t_1)
+        \Edge(B)(t_2)
+        \Edge(C)(t_3)
+        \Edge(D)(t_4)
+        \SetUpEdge[style={->},color={red}]
+        \Edge(b)(A)
+        \Edge(b)(B)
+        \Edge(c)(B)
+        \Edge(c)(C)
+        \Edge(d)(D)
       \end{tikzpicture}
-    \end{center}
+      \caption{Exemple pour le lemme~\ref{lem:valeurflot} avec les arêtes de la coupe en rouge.}
+      \label{fig:valeurflot}
+    \end{figure}
   \end{proof}
 \end{mylem}
 
@@ -155,7 +134,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   \begin{proof}
     \begin{align*}
       \valeur(f) & = \text{flot sur la coupe}\\
-             & = \sum \fnet(S \to \bar{S})\\
+             & = \fnet(S \to \bar{S})\\
              & = \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f(ij) - \sum_{i \in S \atop {j \in \bar{S} \atop ji \in E}} f(ij)\\
              & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} f(ij)\\
              & \leq \sum_{i \in S \atop {j \in \bar{S} \atop ij \in E}} c(ij)\\
@@ -172,8 +151,8 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   Si un flot $f$ et une coupe $S\to\bar{S}$ sont tels que $\valeur(f) = \coupe(S\to\bar{S})$,
   alors ce flot est maximum et cette coupe minimum.
   \begin{proof}
-    On vient de voir que dans le cas d'égalité, les arêtes étaient saturées et il n'y a aucun flot qui va de $\bar{S}$ à $S$
-    Et donc ne peut plus faire passer de flot de $S$ à $\bar{S}$ ni par des arêtes directes (elles sont saturées),
+    On vient de voir que dans le cas d'égalité, les arêtes étaient saturées et il n'y a aucun flot qui va de $\bar{S}$ à $S$.
+    Il ne peut donc plus faire passer de flot de $S$ à $\bar{S}$ ni par des arêtes directes (elles sont saturées),
     ni par des ``back edges'' (elles sont nulles car il n'y a pas de flot de $\bar{S}$ à $S$).
 
     Le fait que le flot est maximum et que la coupe est minimum est en fait simplement montré par la dualité.
@@ -223,7 +202,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
       \Edge[label=$2/2$](D)(C)
       \Edge[label=$0/4$](D)(T)
     \end{tikzpicture}
-    \caption{Chemin $f$-augmentant}
+    \caption{Chemin $f$-augmentant.}
     \label{fig:faug}
   \end{figure}
   \begin{figure}[!h]
@@ -245,7 +224,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
       \Edge[label=$1/2$](D)(C)
       \Edge[label=$1/4$](D)(T)
     \end{tikzpicture}
-    \caption{Chemin avec $f'$}
+    \caption{Chemin avec $f'$.}
     \label{fig:fprime}
   \end{figure}
 \end{myexem}
@@ -253,6 +232,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \begin{mytheo}
   Un flot est maximum si et seulement s'il ne contient pas de chemin $f$-augmentant.
   \begin{proof}
+    Montrons un sens à la fois
     \begin{itemize}
       \item[$\Rightarrow$] Si il existe un chemin augmentant, alors on peut améliorer strictement le flot.
       \item[$\Leftarrow$]
@@ -289,7 +269,9 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
                               & = \valeur(f)
         \end{align*}
         Cette coupe est la coupe mininum et ce flot est le flot maximum.
-        La preuve prouve aussi que du flot max on déduit une coupe min de même valeur.\\ D'où  $\rightarrow$ Max Flow = Min cut.
+        La preuve prouve aussi que du flot max on déduit une coupe min de même valeur.
+
+        D'où $\flotmax = \coupemin$, qui se prononce souvent ``Max Flow = Min Cut''.
     \end{itemize}
   \end{proof}
 \end{mytheo}
@@ -304,20 +286,21 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
 \subsection{L'algorithme de Ford-Fulkerson}
 \index{algorithme!algorithme de Ford-Fulkerson}
 \begin{myalgo}[Algorithme de Ford-Fulkerson]
-  L'algorithme de Ford-Fulkerson permet de determiné le flot maximum d'un graphe.
+  L'algorithme de Ford-Fulkerson permet de determiner le flot maximum d'un graphe.
   On initialise un flot arbitraire.
-  On décris ensuite le graphe de "retour", où chaque arrête est substitué par une arrête dirigé dans le même sens avec la 
-  capacité encore disponible. Et une arrête inverse de flot identique à l'initiale (qui se trouve maintenant dans le sens opposé).
-  Dans ce graphe on essaye de trouver un chemin reliant la source et le puit, et on identifie l'arrête limitante (qui a la capacité la plus faible
-  et qui restreint donc l'augmentation du flot). On augmente le flot de ce que l'arrête limitante nous permet.
+  On décris ensuite le graphe de ``retour'', où chaque arête est substitué par une arête dirigé dans le même sens avec la
+  capacité encore disponible. Et une arête inverse de flot identique à l'initiale (qui se trouve maintenant dans le sens opposé).
+  Dans ce graphe on essaye de trouver un chemin reliant la source et le puit, et on identifie l'arête limitante (qui a la capacité la plus faible
+  et qui restreint donc l'augmentation du flot). On augmente le flot de ce que l'arête limitante nous permet.
   Avec ce nouveau flot on revient à notre graphe de départ, ou peux incrémenter notre flot arbitraire de la quantité précédente.\\
-  On repète le processus itératif jusque a ce que on ne puisse plus augmenter le flot. Le dernier obtenu est donc le flot max.
+  On repète le processus itératif jusqu'à ce que on ne puisse plus augmenter le flot. Le dernier obtenu est donc le flot max.
 \end{myalgo}
 
 
 \begin{mylem}
   \label{lem:flot_chemin}
-  Dans tout graphe dirigé avec un noeud source $u$ et un noeud puits $v$ et chaque arête de capacité un, le nombre maximum de chemins dirigés de u vers v disjoints deux à deux par les arêtes est la valeur du flot maximum.
+  Dans tout graphe dirigé avec un noeud source $u$ et un noeud puits $v$ et chaque arête de capacité un,
+  le nombre maximum de chemins dirigés de $u$ vers $v$ disjoints deux à deux par les arêtes est la valeur du flot maximum.
   \begin{proof}
     Si j'ai $k$ chemins disjoints $u \to v$,
     je crée un flot de valeur $k$ en saturant les arêtes
@@ -394,6 +377,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   \label{theo:kconnexe_chemin}
   Un graphe (non-dirigé) est $k$-arête-connexe si et seulement si entre toutes paires de noeuds il y a au moins $k$ chemins disjoints deux à deux par les arêtes.
   \begin{proof}
+    Prouvons un sens après l'autre
     \begin{itemize}
       \item[$\Leftarrow$]
         Si j'enlève $k-1$ arêtes quelconques
@@ -412,9 +396,12 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo} [Menger]
+\begin{mytheo} [Théorème de Menger]
   Un graphe (non-dirigé) est $k$-connexe si et seulement si entre chaque paire de noeuds il y a au moins $k$ chemins disjoints deux à deux par les noeuds.
   \begin{proof}
+    On va proposer une autre preuve preuve que celle proposée
+    pour la première occurence de ce théorème,
+    le théorème~\ref{theo:menger1}.
     Pour se ramener au théorème~\ref{theo:kconnexe_chemin},
     on va ``tranformer les noeuds en arêtes''.
     \begin{table}[!h]
@@ -494,8 +481,7 @@ Lorsqu'on a $S$, la coupe est l'ensemble des arêtes reliant un noeud de $S$ et 
     de même valeur.
 
     $k$-connexe $\leftrightarrow$ en $k$-arête connexe.
-    On applique le théorème~\ref{theo:kconnexe_chemin} sur $v'$,
-    on en déduit le théorème de Menger sur $v$.
+    On applique le théorème~\ref{theo:kconnexe_chemin} sur $G'$,
+    on en déduit le théorème de Menger sur $G$.
   \end{proof}
 \end{mytheo}
-
