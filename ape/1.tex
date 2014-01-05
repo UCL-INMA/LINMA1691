@@ -143,7 +143,7 @@ Rappel : Un graphe simple est un graphe
 
 \subsection{Graphe de l'hypercube}
 Soit $G_{i}$ le graphe dont les sommets sont des $k$-tuples de 0 et 1.
-Deux sommets de G sont adjacents si leurs k-tuples ne diffèrent qu'en une seule position.
+Deux sommets de $G$ sont adjacents si leurs $k$-tuples ne diffèrent qu'en une seule position.
 Montrez que le graphe est biparti, $k$-régulier et donnez son nombre arêtes.
 
 \begin{solution}
@@ -167,8 +167,8 @@ Montrez que le graphe est biparti, $k$-régulier et donnez son nombre arêtes.
 \subsection{Parcours fermés}
 Formule : $\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})$
 \begin{enumerate}
-\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n}$ (l’ensemble des graphes complets avec $n$ nœuds)}
-\item{Comptez le nombre de parcours fermés de longueur k dans $K_{n,n}$ (l’ensemble des graphes bipartis avec $n$ nœuds dans chacune des partitions)}
+\item{Comptez le nombre de parcours fermés de longueur $k$ dans $K_{n}$ (l'ensemble des graphes complets avec $n$ nœuds)}
+\item{Comptez le nombre de parcours fermés de longueur $k$ dans $K_{n,n}$ (l'ensemble des graphes bipartis avec $n$ nœuds dans chacune des partitions)}
 \end{enumerate}
 
 \begin{solution}
@@ -188,10 +188,10 @@ Formule : $\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})$
 	 1&1&1&0&0&0\\
 	 \end{pmatrix}$
 
-	\item $|E| = \frac{n^{2}}{2}$
+	\item $|E| = n^{2}$
 
 	\item $A^{k} $ donne le nombre de parcours.
-	\item Si k est pair :
+	\item Si $k$ est pair :
 	 $A^{k} =  \left(
 	 \begin{array}{c|c}
 	 n^{k-1} & 0\\
@@ -200,7 +200,7 @@ Formule : $\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})$
 	 \end{array}
 	 \right)
 	 $
-	\item Si k est impair :
+	\item Si $k$ est impair :
 	 $A^{k} =  \left(
 	 \begin{array}{c|c}
 	 0 & n^{k-1}\\
