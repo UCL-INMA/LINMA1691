@@ -288,16 +288,16 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 
 \subsection{Formule d'Euler}
 \begin{mytheo} [Formule d'Euler]
-  Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:\\
-  $n−e+f =2$
+  Dans un graphe planaire connexe à $n$ sommets, $e$ arêtes et $f$ faces:
+  $$n − e + f = 2$$
   \begin{proof}
-    On démontre cette égalité par récurrence sur sur le nombre d'arêtes.
+    On démontre cette égalité par récurrence sur le nombre de faces
     \begin{description}
-      \item[initialisation]
+      \item[Initialisation]
         S'il y a une seule face, alors le graphe est sans cycle car chaque cycle créé au moins 2 faces, la face intérieure au cycle
         et la face extérieure au cycle.
         C'est donc un arbre d'où $e = n-1$, c'est à dire $n - e + f = 2$ car $f = 1$.
-      \item[induction]
+      \item[Induction]
         Soit un graphe $G$ avec $f > 1$ faces.
         Comme les arbres ont une seule face, $G$ possède un cycle et donc deux faces adjacentes.
         Soit $G'$ obtenu en supprimant une arête entre les deux faces.
@@ -376,17 +376,16 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
   $K_{3,3}$ est non planaire.
   \begin{proof}
     $K_{3,3}$ a 6 noeuds et 9 arêtes.
-    C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.\\
-    Donc toutes les faces ont un degré $\geq 4$.\\
-    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) = 2|E| = 18$.\\
-    Donc $|F| \leq \frac{18}{4} = 4.5$.\\
-    \noindent
+    C'est un graphe biparti donc les cycles sont de longueur pair de plus il est simple donc tous les cycles ont une longueur $\geq 4$.
+    Donc toutes les faces ont un degré $\geq 4$.
+    On a alors $\sum_{f \in F} \deg(f) \geq 4|F|$ et par le théorème des poignées de main dual, $\sum_{f \in F} \deg(f) = 2|E| = 18$.
+    Donc $|F| \leq \frac{18}{4} = 4.5$.
+
     Par la formule d'Euler, il faut que :
-    \begin{center}
-      $|F| - |E| + |V| = 2$.\\
-      Or $|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5$.\\
-    \end{center}
-    $K_{3,3}$ ne peut donc pas être planaire.\\
+    $$|F| - |E| + |V| = 2$$
+    or
+    $$|F| - |E| + |V| \leq 4.5 - 9 + 6 = 1.5.$$
+    $K_{3,3}$ ne peut donc pas être planaire.
   \end{proof}
 \end{mycorr}
 
@@ -436,11 +435,11 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 
 \begin{mytheo} [Kempe]
   Tout graphe planaire possède un coloriage propre à cinq couleurs.
-  ``Toute carte peut être coloriée avec 5 couleurs''.\\
+  ``Toute carte peut être coloriée avec 5 couleurs''.
   Nombre chromatique $\chi$ (graphe planaire) $\leq 5$.
   \begin{proof}
     Par récurrence: ``on enlève un noeud, on colorie par hyp. de récurrence, on remet le noeud.''
-    On peut supposer le graphe \emph{simple} (car arêtesmultiples n'affectent pas $\chi$).
+    On peut supposer le graphe \emph{simple} (car arêtes multiples n'affectent pas $\chi$).
     Il existe un noeud $u$ de degré $\leq 5$.
     On enlève $u$, on a encore un graphe planaire, on le colorie.
     On rétablit $u$:
