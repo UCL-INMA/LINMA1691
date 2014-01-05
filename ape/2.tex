@@ -26,7 +26,7 @@
 \end{figure}
 
 \begin{solution}
-On cherche le nombre de parcours fermé partant de A de longueur $k$.
+On cherche le nombre de parcours fermé partant de $A$ de longueur $k$.
 Pour cela, on utilise le théorème suivant :
 
 $\,$
@@ -79,7 +79,7 @@ A^{k}=\left(\begin{array}{cc}
 \]
 
 
-Comme on cherche des parcours fermés de A vers A, on s'intéresse uniquement
+Comme on cherche des parcours fermés de $A$ vers $A$, on s'intéresse uniquement
 aux éléments diagonaux qui sont, dans le cas où $k$ est impair, tous
 nuls. Par conséquent, le nombre de parcours fermé de longueur $k$
 vaut 0.
@@ -122,7 +122,7 @@ une formule pour calculer une entrée de la diagonale de cette matrice
 :
 
 \[
-\#\, parcours\, ferm\acute{e}\, de\, longueur\, k\, de\, A\rightarrow A=\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})
+\#\{\text{parcours fermé de longueur }k\text{ de }A\rightarrow A\}=\frac{(n-1)}{n}((n-1)^{k-1}+(-1)^{k})
 \]
 
 
@@ -130,7 +130,7 @@ Ici $k$ est pair, donc $(-1)^{k}=1$ et $n=3$ (sous-blocs), on obtient
 :
 
 \[
-\#\, parcours\, ferm\acute{e}\, de\, longueur\, k\, de\, A\rightarrow A=\frac{2}{3}(2{}^{k-1}+1)
+\#\{\text{parcours fermé de longueur }k\text{ de }A\rightarrow A\}=\frac{2}{3}(2{}^{k-1}+1)
 \]
 \end{solution}
 
@@ -255,6 +255,7 @@ Le principe de l’algorithme est simple:
 \item si il n'y a plus de nœud non exploré, on a fini. Sinon on reprend au point 1.
 \end{itemize}
 \end{solution}
+
 \subsection{Séquences de de Bruijn.} Le problème suivant apparaît sous de nombreuses formes. On demande de construire la plus longue séquence circulaire de lettres d'un alphabet de $k$ lettres sans qu'aucune sous-séquence de longueur $n$ ne soit répétée.
 \begin{enumerate}
   \item Donnez une borne supérieure sur la longueur de la séquence circulaire en question.
@@ -262,13 +263,14 @@ Le principe de l’algorithme est simple:
   \item Pour l'alphabet $\mathcal{A} = \{0, 1, 2\}$ de $k = 3$ lettres et pour $n = 3$, répondez à la question précédente en construisant la plus longue séquence circulaire.
 \end{enumerate}
 \begin{solution}
-1. $k^{n}$ est une borne supérieure sur le nombre de sous-séquences
-de longueur $n$. Puisqu'on ne peut pas les répéter, la plus longue
-chaîne utilisera toutes les sous-séquences.
+  \begin{enumerate}
+    \item $k^{n}$ est une borne supérieure sur le nombre de sous-séquences
+      de longueur $n$. Puisqu'on ne peut pas les répéter, la plus longue
+      chaîne utilisera toutes les sous-séquences.
 
-2.oui
-
-3.
+    \item oui
+    \item
+  \end{enumerate}
 \end{solution}
 \pagebreak
 \subsection{Parcourt fermé de poids minimum} On souhaite trouver un parcours fermé de poids minimum passant au moins une fois par chaque arête du graphe suivant~:
