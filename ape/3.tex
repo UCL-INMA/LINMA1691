@@ -95,7 +95,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 		Ce digraphe, qui ne possède pas de cycle, ne gère pas bien Dijkstra. En effet, l'algorithme va parcourir l'arête de poids $1$ et ignorer l'arête de poids $5$ car cette dernière est plus lourde et on trouve directement la destination en parcourant celle de poids $1$. En résumé, l'algorithme nous renvoie un chemin de longueur $1$ alors que le chemin de plus petit poids est de poids $-5$.\\
 
-		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode "simple" est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $\bigoh(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.
+		Proposons maintenant des alternatives à l'algorithme de Dijkstra. La méthode ``simple'' est de remettre à jour les nœuds précédents si l'on repasse par une arête de poids négatif. En revanche, cette technique est exponentielle en complexité. Une alternative plus intéressante est l'algorithme de Bellman-Ford, qui fonctionne sur les graphes sans cycle de poids négatif et est de complexité $\bigoh(nm)$, avec $n$ le nombre de nœuds dans le graphe et $m$ le nombre d'arêtes.
 
 		Un exemple de pseudo-code pour l'algorithme de Bellman-Ford :
 
@@ -130,12 +130,12 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 				\STATE \textit{//Vérification pour les cycles de poids négatif}
 				\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
 					\IF{$distance[v] > distance[u] + w$}
-						\STATE \textbf{return} "il y a un cycle négatif"
+						\STATE \textbf{return} ``il y a un cycle négatif''
 					\ENDIF
 				\ENDFOR
 				\medskip
 
-				\STATE \textbf{return} les tableaux "predecessor" et "distance"
+				\STATE \textbf{return} les tableaux ``predecessor'' et ``distance''
 			\end{algorithmic}
 		\end{algorithm}
 
@@ -154,8 +154,8 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 \begin{solution}
 On écrit que la longueur du plus court chemin de $s$ à $j$ avec au plus $k$ arêtes est égal au minimum entre le plus court chemin de $s$ à $j$ de longueur $k-1$ et le chemin minimum de $s$ à $i$ de longueur $k-1$ + l'arête de $i$ à $j$.
-$$d_k(j) = min (d_{k-1}(j) , min_i(d_{k-1}(i)+w(i, j))$$
-La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arête supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
+$$d_k(j) = \min (d_{k-1}(j) , \min_i(d_{k-1}(i)+w(i, j))$$
+La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la distance minimale entre $s$ et $j$. Il est évident que $d_k(j)\ge d_{n-1}(j)\ \forall k \le n-1$ (par la simple définition de la récurrence qui prend toujours le minimum du pas précédent). De plus, $d_k(j) = d_{n-1}(j)\ \forall k \ge n-1$ car le fait de prendre une $n$ième arête supplémentaire provoque l'apparition d'un cycle(par les propriétés des arbres). L'apparition de ce cycle provoque un allongement superflu du chemin, d'où $\min_i(d_{k-1}(i)+w(i, j)) \ge d_{k-1}(j)$ et donc $d_k = d_{k-1}\ \forall k \ge n-1$.
 \end{solution}
 
 \subsection{Application de Dijkstra} Le graphe dirigé ci-dessous est acyclique. Utilisez l'algorithme de Dijkstra pour trouver le plus court chemin du noeud $1$ à chaque autre noeud du graphe.
@@ -204,7 +204,8 @@ La récurrence ainsi établie nous permet de démontrer que $d_{n-1}(j)$ est la 
 \subsection{Deux seaux} Vous avez deux seaux d'une contenance de 7 et 5 litres. Vous avez besoin de 4 litres. Les opérations permises sont les suivantes : remplir un seau, vider un seau, verser le contenu d'un seau dans l'autre jusqu'à ce que le seau soit rempli ou l'autre vide. Vous souhaitez effectuer un nombre minimum d'opérations et obtenir un seau contenant 4 litres. Formulez ce problème comme un problème de plus court chemin, et trouvez-en la solution.
 
 \begin{solution}
-Le problème peut être modélisé comme le plus court chemin entre le noeud (0,0) et le noeud de 4 litres (vert) le plus proche dans le graphe donné. Il suffit de suivre la chaîne, on obtient six opérations nécessaires tracées en rouge.
+Le problème peut être modélisé comme le plus court chemin entre le noeud $(0,0)$ et le noeud de 4 litres (vert) le plus proche dans le graphe donné.
+Il suffit de suivre la chaîne, on obtient six opérations nécessaires tracées en rouge.
 
 \begin{center}
 \begin{tikzpicture}
