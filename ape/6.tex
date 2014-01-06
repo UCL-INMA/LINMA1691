@@ -46,22 +46,13 @@
   \end{center}
 \end{figure}
 \begin{solution}
-Un couplage dans un graphe est un ensemble $M$ d’arêtes tel que
-M ne contient pas de boucles et deux arêtes de $M$ n’ont jamais
-d’extrémité en commun.
-Hors, les seuls noeuds qui ne sont pas encore des extrémités dans ce couplage $M$ sont les noeuds $3$ et $3'$.
-Si $M$ est maximum, on ne peut pas lui ajouter d'arête.
-Hors la seule arête qu'on pourrait lui ajouter serait une qui relie les noeuds $3$ et $3'$.
-Cette arête n'existant pas dans ce graphe, $M$ est bien maximum.
-\end{solution}
-\begin{solution}
-	\textbf{Solution alternative}.
-	Un couplage est maximum si et seulement s’il n'existe pas de chemin M-augmenté. Pour rappel, un chemin M-augmenté est un chemin qui commence et fini par un noeud hors de $M$ et qui alterne entre arêtes appartenant à $M$ et arête n'appartenant pas à $M$.\\
+	Un couplage est maximum si et seulement s’il n'existe pas de chemin $M$-augmenté.
+    Pour rappel, un chemin $M$-augmenté est un chemin qui commence et fini par un noeud hors de $M$ et qui alterne entre arêtes appartenant à $M$ et arête n'appartenant pas à $M$.
 	
-	On constate qu'il n'existe pas de chemin M-augmenté partant ou finissant par $3$: $3\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow ...$ (idem en commençant par $3\rightarrow 5'$).
-	De la même manière, on constate qu'il n'existe pas non plus de chemin M-augmenté partant de $3'$.\\
+	On constate qu'il n'existe pas de chemin $M$-augmenté partant ou finissant par $3$: $3\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow 1\rightarrow 5'\rightarrow 5\rightarrow 1'\rightarrow ...$ (idem en commençant par $3\rightarrow 5'$).
+	De la même manière, on constate qu'il n'existe pas non plus de chemin $M$-augmenté partant de $3'$.
 	
-	Vu que tous les noeuds hors de $M$ ne commencent pas de chemins M-augmentés, il n'en existe pas, d'où $M$ est maximum.
+	Vu que tous les noeuds hors de $M$ ne commencent pas de chemins $M$-augmentés, il n'en existe pas, d'où $M$ est maximum.
 \end{solution}
 
 \subsection{Vrai ou faux}
@@ -186,7 +177,7 @@ En partant de la répartition de l'année dernière, utilisez l'algorithme hongr
 			(Nicolas) edge node [left] {} (Opti)
 			(Nicolas) edge node [left] {} (AnaNum);
     \end{tikzpicture}\\
-	Il suffit dès lors de trouver un couplage maximum. Exécutons l'algorithme hongrois. Seuls Arnaud et Benoit n'ont pas de cours assignés, et les cours de Graphes et d'Analyse Numérique n'ont pas d'assistants assignés. Cherchons un chemin M-augmenté: le chemin Arnaud$\rightarrow$Théorie des matrices$\rightarrow$Nicolas$\rightarrow$Analyse numérique est M-augmenté. On peut donc améliorer le couplage:\\
+	Il suffit dès lors de trouver un couplage maximum. Exécutons l'algorithme hongrois. Seuls Arnaud et Benoit n'ont pas de cours assignés, et les cours de Graphes et d'Analyse Numérique n'ont pas d'assistants assignés. Cherchons un chemin $M$-augmenté: le chemin Arnaud$\rightarrow$Théorie des matrices$\rightarrow$Nicolas$\rightarrow$Analyse numérique est $M$-augmenté. On peut donc améliorer le couplage:\\
 	\begin{tikzpicture}[-,>=stealth',shorten >=1pt,auto]
 		\SetVertexNormal[Shape=rectangle]
       	\Vertex[x=0,y=-0]{Pierre}
@@ -219,7 +210,7 @@ En partant de la répartition de l'année dernière, utilisez l'algorithme hongr
 			(Nicolas) edge node [left] {} (Opti)
 			(Nicolas) edge[style=dashed] node [left] {} (AnaNum);
     \end{tikzpicture}\\
-	On constate rapidement qu'il n'existe pas de chemin M-augmenté dans ce graphe, et que donc le couplage obtenu est maximum. Un argument ad hoc prouvant ce fait est le suivant: on ne peut pas obtenir un couplage parfait, car s'il en existait un, Théorie des matrices devrait forcément être assigné à Arnaud, d'où Projet devrait forcément être assigné à Pierre (seul choix restant), d'où finalement Benoit n'aurait plus aucun choix, ce qui fait que c'est impossible. Le meilleur couplage ne peut donc contenir que 5 des 6 assistants.
+	On constate rapidement qu'il n'existe pas de chemin $M$-augmenté dans ce graphe, et que donc le couplage obtenu est maximum. Un argument ad hoc prouvant ce fait est le suivant: on ne peut pas obtenir un couplage parfait, car s'il en existait un, Théorie des matrices devrait forcément être assigné à Arnaud, d'où Projet devrait forcément être assigné à Pierre (seul choix restant), d'où finalement Benoit n'aurait plus aucun choix, ce qui fait que c'est impossible. Le meilleur couplage ne peut donc contenir que 5 des 6 assistants.
 \end{solution}
 
 \subsection{Gagner sans le couplage parfait}
@@ -234,9 +225,9 @@ Deux personnes jouent à un jeu sur un graphe $G$ de la manière suivante:
 Montrer que le premier joueur admet une stratégie gagnante si et seulement si le graphe $G$ n'admet pas de couplage parfait.
 
 \begin{solution}
-Nous allons tout d'abord démontrer que s'il existe un couplage parfait, alors le premier joueur peut perdre même avec la meilleure stratégie (ce qui est la contraposée de: si le premier joueur gagne avec la meilleure stratégie, alors il n'existe pas de couplage parfait). Au premier tour, le premier joueur choisit un noeud $v_0$. Si après, à chaque tour du second joueur, ce dernier choisi le noeud couplé au noeud choisi par le premier joueur, on constate qu'on forme un chemin M-alterné commençant par une arête de $M$. Un tel chemin ne peut se terminer que sur une arête appartenant à $M$, donc une arête que le second joueur va choisir: il sera donc le dernier à jouer et gagnera.\\
+Nous allons tout d'abord démontrer que s'il existe un couplage parfait, alors le premier joueur peut perdre même avec la meilleure stratégie (ce qui est la contraposée de: si le premier joueur gagne avec la meilleure stratégie, alors il n'existe pas de couplage parfait). Au premier tour, le premier joueur choisit un noeud $v_0$. Si après, à chaque tour du second joueur, ce dernier choisi le noeud couplé au noeud choisi par le premier joueur, on constate qu'on forme un chemin $M$-alterné commençant par une arête de $M$. Un tel chemin ne peut se terminer que sur une arête appartenant à $M$, donc une arête que le second joueur va choisir: il sera donc le dernier à jouer et gagnera.\\
 \\
-Prouvons maintenant que s'il n'existe pas de couplage parfait, alors le premier joueur peut gagner avec une stratégie optimale. En choisissant le premier noeud hors du couplage et puis en sélectionnant à chaque fois soit le noeud couplé au noeud choisi par le second joueur si ce noeud existe soit un noeud hors du couplage, on constate qu'on va former une série de chemin M-augmentés que le premier joueur finira forcément.
+Prouvons maintenant que s'il n'existe pas de couplage parfait, alors le premier joueur peut gagner avec une stratégie optimale. En choisissant le premier noeud hors du couplage et puis en sélectionnant à chaque fois soit le noeud couplé au noeud choisi par le second joueur si ce noeud existe soit un noeud hors du couplage, on constate qu'on va former une série de chemin $M$-augmentés que le premier joueur finira forcément.
 \end{solution}
 
 \paragraph{Coloriages d'arêtes}
