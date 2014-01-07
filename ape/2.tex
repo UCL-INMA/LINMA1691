@@ -251,8 +251,8 @@ Le principe de l’algorithme est simple:
 \begin{itemize}
 \item on prend un nœud non parcouru encore;
 \item on prend les arêtes non parcourues encore jusqu'à revenir sur le noeud de départ;
-\item on merge ce parcours avec ceux déjà trouver;
-\item si il n'y a plus de nœud non exploré, on a fini. Sinon on reprend au point 1.
+\item on merge ce parcours avec ceux déjà trouvés;
+\item si il n'y a plus de nœuds non explorés, on a fini. Sinon on reprend au point 1.
 \end{itemize}
 \end{solution}
 
@@ -270,6 +270,49 @@ Le principe de l’algorithme est simple:
 
     \item oui
     \item
+      Pour $k=3, n=2$: $\{01, 11, 12, 22, 20, 00, 02, 21, 10\} \Rightarrow 011220210$ \\
+      \begin{tikzpicture}
+        \Vertices{circle}{0,1,2}
+        \tikzstyle{EdgeStyle}=[->,bend left=20]
+        \Edges(0,1,2,0)
+        \Edges(0,2,1,0)
+        \tikzstyle{EdgeStyle}=[]
+        \Loop[dist=1cm,dir=EA](0)
+        \Loop[dist=1cm,dir=NOWE](1)
+        \Loop[dist=1cm,dir=SOWE](2)
+      \end{tikzpicture}
+
+      Pour $k=3, n=3$: $\{001, 012, 121, \ldots\} \Rightarrow 001210111020100222120211220$\\
+      (cycle eulérien de longueur 27) \\
+      \begin{tikzpicture}
+        \SetGraphUnit{3}
+        \Vertices{circle}{00,01,11,12,22,20,02,21,10}
+        \tikzstyle{EdgeStyle}=[->,bend right=15]
+        \Edges(00,01,11,12,22,20,02,21,10,00)
+        \tikzstyle{EdgeStyle}=[->]
+
+        \Edge(00)(02)
+        \Edge(01)(12)
+        \Edge[style={bend right=8}](01)(10)
+        \Edge[style={bend right=15}](02)(20)
+        \Edge(02)(22)
+
+        \Edge[style={bend right=8}](10)(01)
+        \Edge(10)(02)
+        \Edge(11)(10)
+        \Edge(12)(20)
+        \Edge[style={bend right=8}](12)(21)
+
+        \Edge(20)(00)
+        \Edge(20)(01)
+        \Edge(21)(11)
+        \Edge[style={bend right=8}](21)(12)
+        \Edge(22)(21)
+
+        \Loop[dist=2cm,dir=EA](00)
+        \Loop[dist=2cm,dir=NO](11)
+        \Loop[dist=2cm,dir=WE](22)
+      \end{tikzpicture}
   \end{enumerate}
 \end{solution}
 \pagebreak
