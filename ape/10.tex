@@ -364,17 +364,17 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
   On observe donc qu'il faut assigner les processus 1, 2 et 3 à $B$
   et le processus 4 à $A$ pour un coût de 24.
   \begin{center}
-    \begin{tikzpicture}[x=2cm,y=1cm]
-      \SetGraphUnit{2}
+    \begin{tikzpicture}
+      \SetGraphUnit{3}
       \GraphInit[vstyle=Classic]
       \SetVertexMath
       \SetUpVertex[Lpos=90]
-      \Vertex{A}
-      \EA(A){2}
-      \NOEA(2){1}
-      \SOEA(2){3}
-      \SOWE(3){4}
-      \EA(3){B}
+      \Vertex[x=-6,y=0]{A}
+      \Vertex[x=0,y=4.5]{1}
+      \SO(1){2}
+      \SO(2){3}
+      \SO(3){4}
+      \Vertex[x=6,y=0]{B}
       \SetUpEdge[style={->},
       labelstyle = {draw}]
       \Edge[label=$5/6$](A)(1)
@@ -385,14 +385,15 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
       \Edge[label=$10/10$,color=red](2)(B)
       \Edge[label=$3/3$,color=red](3)(B)
       \Edge[label=$7/8$](4)(B)
+      \tikzset{EdgeStyle/.append style = {bend left}}
       \Edge[label=$0/5$](2)(1)
       \Edge[label=$0/6$](2)(3)
-      \tikzset{EdgeStyle/.append style = {bend right}}
       \Edge[label=$1/1$,color=red](3)(4)
       \Edge[label=$1/5$](1)(2)
-      \Edge[label=$2/2$,color=red](2)(4)
       \Edge[label=$6/6$](3)(2)
       \Edge[label=$0/1$](4)(3)
+      \tikzset{EdgeStyle/.append style = {bend left=50}}
+      \Edge[label=$2/2$,color=red](2)(4)
       \Edge[label=$0/2$](4)(2)
       \AddVertexColor{blue}{A,1,2,3}
       \AddVertexColor{green}{4,B}
