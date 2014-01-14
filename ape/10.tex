@@ -362,7 +362,7 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
   En appliquant l'algorithme de Ford-Fulkerson, on trouve le graphe suivant
   avec la coupe en rouge.
   On observe donc qu'il faut assigner les processus 1, 2 et 3 à $B$
-  et le processus 4 à $A$ pour un coût de 22.
+  et le processus 4 à $A$ pour un coût de 24.
   \begin{center}
     \begin{tikzpicture}[x=2cm,y=1cm]
       \SetGraphUnit{2}
@@ -390,7 +390,7 @@ $c_{ij}$ & 1 & 2 & 3 & 4 \\
       \tikzset{EdgeStyle/.append style = {bend right}}
       \Edge[label=$1/1$,color=red](3)(4)
       \Edge[label=$1/5$](1)(2)
-      \Edge[label=$2/2$](2)(4)
+      \Edge[label=$2/2$,color=red](2)(4)
       \Edge[label=$6/6$](3)(2)
       \Edge[label=$0/1$](4)(3)
       \Edge[label=$0/2$](4)(2)
