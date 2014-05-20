@@ -4,7 +4,7 @@ Description
 Pour apprendre Git, je vous conseille
 [ce tutoriel](http://sites.uclouvain.be/SystInfo/notes/Outils/html/git.html)
 écrit par Benoît Legat
-(lisez juste la première partie *Utilisation linéaire de Git*)
+(lisez juste la première partie *Utilisation linéaire de Git*).
 
 Notes, énoncés et solutions des APEs du cours INMA1691 à l'EPL.
 
