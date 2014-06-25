@@ -7,6 +7,7 @@ Pour apprendre Git, je vous conseille
 (lisez juste la première partie *Utilisation linéaire de Git*).
 
 Notes, énoncés et solutions des APEs du cours INMA1691 à l'EPL.
+Les pdf sont disponibles [ici](https://www.dropbox.com/sh/5a1dfg8e17bbgkw/bgVWq1icjf).
 
 Plus de détail dans le [wiki](https://github.com/blegat/LINMA1691/wiki).
 Pour utilisez certaines fonctionnalitées du Makefile, il vous faut installer [smartcp](https://github.com/blegat/smartcp).
