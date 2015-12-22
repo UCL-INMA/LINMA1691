@@ -102,7 +102,11 @@
 					(3) edge node [left] {} (6)
 					(4) edge node [left] {} (7);
       		\end{tikzpicture}
-      	\item TODO
+      	\item \textbf{Vrai}. La preuve s'effectue en construisant le couplage : l'idée étant de montrer qu'il existe une fonction $f(v)$ qui associe à chaque noeud $v$ exactement une de ses arêtes, et que pour toute arête $e$ du couplage, $f(u) = f(v) = e$, où $u$ et $v$ sont les deux extrémités de cette arête. $f(V)$ décrit alors un couplage parfait, car tout noeud doit être adjacent à une arête dans le couplage, et deux arêtes $e$ et $f$ adjacentes entre $u$, $v$ et $w$ ne peuvent pas être en même temps dans le couplage, car sinon on aurait $f(u) = f(v) = f(w)$ et donc $e = f$.
+      	
+      	Commençons par définir $f$. Lorsqu'on retire un noeud $v$ quelconque du graphe, une seule composante impaire est crée. Soit $e$ l'arête qui joint $v$ à cette composante. On pose $f(v) = e$ ; comme il n'y a qu'une seule composante impaire pour chaque noeud, $f(v)$ est unique.
+      	
+      	Montrons ensuite que $f(v) = f(u) = e$. Soit une arête quelconque $e$ joignant $u$ et $v$ ; nous allons compter les noeuds de chaque côté de $e$. L'hypothèse $o(G-v) = 1$ implique que le graphe possède un nombre pair de noeuds. On a donc deux cas possibles : $e$ divise l'arbre en deux composantes paires ou $e$ divise l'arbre en deux composantes impaires. Dans le premier cas, retirer $u$ laisse un nombre pair de noeuds du côté de $v$, et un nombre impair du côté de $u$. La composante impair se trouve donc nécessairement du côté de $u$, et on a $f(u) \neq e$. De manière similaire, on montre que $f(v) \neq e$. Dans le deuxième cas, retirer $u$ laisse un nombre impair de noeuds du côté de $v$ et un nombre pair de noeuds du côté de $u$. La composante impair se trouve donc nécessairement du côté de $v$, et on a $f(u) = e$. De manière similaire, on montre que $f(v) = e$. Nous avons donc bien, pour $e \in f(V)$, $f(u) = f(v) = e$.
       	\item \textbf{Vrai}. Tout noeud $v$ est lié à un autre dans le couplage (car il est parfait). En enlevant le noeud $v$, on ne peut donc créer qu'une seule composante connexe impaire, qui contiendra le noeud auquel était lié $v$. Toutes les autres composantes sont forcément paires, car elles ont un couplage parfait.
 	\end{itemize}
 \end{solution}
