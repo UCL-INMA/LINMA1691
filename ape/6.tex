@@ -102,7 +102,11 @@
 					(3) edge node [left] {} (6)
 					(4) edge node [left] {} (7);
       		\end{tikzpicture}
-      	\item TODO
+      	\item \textbf{Vrai}. La preuve s'effectue en construisant le couplage : l'idée étant de montrer qu'il existe une fonction $f(v)$ qui associe à chaque noeud $v$ exactement une de ses arêtes, et que pour toute arête $e$ du couplage, $f(u) = f(v) = e$, où $u$ et $v$ sont les deux extrémités de cette arête. $f(V)$ décrit alors un couplage parfait, car tout noeud doit être adjacent à une arête dans le couplage, et deux arêtes $e$ et $f$ adjacentes entre $u$, $v$ et $w$ ne peuvent pas être en même temps dans le couplage, car sinon on aurait $f(u) = f(v) = f(w)$ et donc $e = f$.
+      	
+      	Commençons par définir $f$. Lorsqu'on retire un noeud $v$ quelconque du graphe, une seule composante impaire est crée. Soit $e$ l'arête qui joint $v$ à cette composante. On pose $f(v) = e$ ; comme il n'y a qu'une seule composante impaire pour chaque noeud, $f(v)$ est unique.
+      	
+      	Montrons ensuite que $f(v) = f(u) = e$. Soit une arête quelconque $e$ joignant $u$ et $v$ ; nous allons compter les noeuds de chaque côté de $e$. L'hypothèse $o(G-v) = 1$ implique que le graphe possède un nombre pair de noeuds. On a donc deux cas possibles : $e$ divise l'arbre en deux composantes paires ou $e$ divise l'arbre en deux composantes impaires. Dans le premier cas, retirer $u$ laisse un nombre pair de noeuds du côté de $v$, et un nombre impair du côté de $u$. La composante impair se trouve donc nécessairement du côté de $u$, et on a $f(u) \neq e$. De manière similaire, on montre que $f(v) \neq e$. Dans le deuxième cas, retirer $u$ laisse un nombre impair de noeuds du côté de $v$ et un nombre pair de noeuds du côté de $u$. La composante impair se trouve donc nécessairement du côté de $v$, et on a $f(u) = e$. De manière similaire, on montre que $f(v) = e$. Nous avons donc bien, pour $e \in f(V)$, $f(u) = f(v) = e$.
       	\item \textbf{Vrai}. Tout noeud $v$ est lié à un autre dans le couplage (car il est parfait). En enlevant le noeud $v$, on ne peut donc créer qu'une seule composante connexe impaire, qui contiendra le noeud auquel était lié $v$. Toutes les autres composantes sont forcément paires, car elles ont un couplage parfait.
 	\end{itemize}
 \end{solution}
@@ -227,7 +231,8 @@ Montrer que le premier joueur admet une stratégie gagnante si et seulement si l
 \begin{solution}
 Nous allons tout d'abord démontrer que s'il existe un couplage parfait, alors le premier joueur peut perdre même avec la meilleure stratégie (ce qui est la contraposée de: si le premier joueur gagne avec la meilleure stratégie, alors il n'existe pas de couplage parfait). Au premier tour, le premier joueur choisit un noeud $v_0$. Si après, à chaque tour du second joueur, ce dernier choisi le noeud couplé au noeud choisi par le premier joueur, on constate qu'on forme un chemin $M$-alterné commençant par une arête de $M$. Un tel chemin ne peut se terminer que sur une arête appartenant à $M$, donc une arête que le second joueur va choisir: il sera donc le dernier à jouer et gagnera.\\
 \\
-Prouvons maintenant que s'il n'existe pas de couplage parfait, alors le premier joueur peut gagner avec une stratégie optimale. En choisissant le premier noeud hors du couplage et puis en sélectionnant à chaque fois soit le noeud couplé au noeud choisi par le second joueur si ce noeud existe soit un noeud hors du couplage, on constate qu'on va former une série de chemin $M$-augmentés que le premier joueur finira forcément.
+Prouvons maintenant que s'il n'existe pas de couplage parfait, alors le premier joueur peut gagner avec une stratégie optimale.
+Soit un couplage $M$ maximum mais qui n'est pas parfait. Étant maximum, $M$ n'admet pas de chemin $M$-augmenté ; étant non-parfait, le graphe admet un noeud qui n'est pas dans $M$. La stratégie est la suivante : le premier joueur commence avec un noeud hors de $M$, puis choisit à chaque fois le noeud couplé à celui du deuxième joueur. Comme le graphe n'admet pas de chemin $M$-augmenté et qu'on a commencé sur un noeud hors du couplage, le chemin ne peut pas se terminer sur un autre noeud hors de $M$, et donc le premier joueur pourra toujours jouer.
 \end{solution}
 
 \paragraph{Coloriages d'arêtes}
