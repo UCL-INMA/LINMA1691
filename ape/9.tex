@@ -191,8 +191,15 @@ $$ f_4 = 12 \qquad f_6 = 8 \qquad f_8 = 6$$
 Montrez que si tous les sommets d’un graphe planaire $G$ sont de degré pair, alors toutes les faces de $G$ peuvent être coloriées en deux couleurs de telle sorte que deux faces adjacentes n’aient jamais la même couleur.
 
 \begin{solution}
-Si une coupe dans le graphe G comporte un nombre pair d'arêtes, cela signifie que les cycles dans le graphe dual seront de longueurs paires également. En effet une coupe dans le graphe G est l'équivalent du cycle enfermant une face dans le graphe dual. On a effectivement que toutes les coupes dans G comportent un nombre pair d'arêtes, car le nombre d'arêtes d'une coupe est le nombre d'arêtes d'une des parties déconnectées - le nombre d'arêtes interne à cette partie. Comme le nombre total des arêtes des noeuds d'une partie est pair, car tous les nœuds sont de degré pair. On soustrait un nombre pair à un nombre pair et on a donc un nombre pair et donc bien un graphe dual avec uniquement des cycles de degrés pairs. Si tous les cycles d'un graphe sont de degré pair, il est biparti, s’ il est biparti il est colorable en deux couleurs.
+Si toutes les coupes dans le graphe $G$ comportent un nombre pair d'arêtes, cela signifie que les cycles dans le graphe dual seront de longueurs paires également.
+En effet, une coupe dans le graphe $G$ est l'équivalent du cycle enfermant une face dans le graphe dual.
+Nous allons montrer que toutes les coupes dans $G$ comportent un nombre pair d'arêtes.
 
+Tous les sommets de $G$ étant de degré pair, il existe un parcours Eulerien fermé dans $G$.
+Comme le parcours couvre toutes les arêtes du graphe et retourne à son point de départ, une coupe le traverse toujours un nombre pair de fois: pour toute arête qui passe de l'autre côté de la coupe, il doit en exister une complémentaire qui revient dans l'autre sens pour fermer le parcours.
+
+Ceci implique que tous les cycles du dual de $G$ sont pairs, et donc que le dual de $G$ est biparti.
+S'il est biparti, on peut le colorier avec deux couleurs.
 \end{solution}
 
 \subsection{Impression de circuits électriques}
