@@ -122,13 +122,13 @@
     \item[Instance] Formule logique
     \item[Question] Existe-t-il des valeurs de vérité pour les variables telles que la formule est vraie.
   \end{description}
-  Par exemple, l'instance $\lnot(P \lor Q) \land (R \lor \lnot Q)$ est une instanc epositive car
+  Par exemple, l'instance $\lnot(P \lor Q) \land (R \lor \lnot Q)$ est une instance positive car
   $(R, P, Q) = (\text{VRAI}, \text{FAUX}, \text{FAUX})$ vérifie la formule.
 \end{myexem}
 
 \begin{mytheo} [Karp]
   Déterminer si un graphe est hamiltonien est $\mathcal{NP}$-complet.
-  \begin{proof}
+  \begin{proof}\hfill
     \begin{itemize}
       \item HAMILTONIEN $\in \mathcal{NP}$: trivial.
       \item Il existe une réduction de SAT vers HAMILTONIEN (partie difficile de la preuve) donc
@@ -139,14 +139,14 @@
   \end{proof}
 \end{mytheo}
 
-\begin{mytheo} [Comment prouver qu'un problème $P$ est $\mathcal{NP}$-complet?]
-\begin{proof}
+\begin{mytheo}
+Comment prouver qu'un problème $P$ est $\mathcal{NP}$-complet?
+\begin{proof}\hfill
   \begin{enumerate}
     \item Prouver $P \in \mathcal{NP}$;
     \item Choisir un problème $Q$ connu comme $\mathcal{NP}-complet$;
     \item Prouver $Q \leq P$ en exhibant une réduction efficace.
   \end{enumerate}
-  
   \end{proof}
 \end{mytheo}
 

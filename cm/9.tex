@@ -336,6 +336,7 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \end{mytheo}
 
 \begin{mytheo}
+  \label{theo:deg5orless}
   Pour tout graphe planaire \emph{simple}, il y a un noeud de degré $\leq 5$.
   \begin{proof}
     On va montrer que le degré moyen est $< 6$.
@@ -434,26 +435,32 @@ Le graphe complet biparti $K_{3,3}$ à $3+3$ noeuds n'est pas planaire.
 \end{mytheo}
 
 \begin{mytheo} [Kempe]
-  Tout graphe planaire possède un coloriage propre à cinq couleurs.
+  Tout graphe planaire $G$ possède un coloriage propre à cinq couleurs.
   ``Toute carte peut être coloriée avec 5 couleurs''.
   Nombre chromatique $\chi$ (graphe planaire) $\leq 5$.
   \begin{proof}
-    Par récurrence: ``on enlève un noeud, on colorie par hyp. de récurrence, on remet le noeud.''
-    On peut supposer le graphe \emph{simple} (car arêtes multiples n'affectent pas $\chi$).
-    Il existe un noeud $u$ de degré $\leq 5$.
-    On enlève $u$, on a encore un graphe planaire, on le colorie.
-    On rétablit $u$:
-    \begin{itemize}
-      \item si $\deg(u) < 5$: facile, on utilise une couleur non utilisée par les voisins pour $u$.
-      \item Si $\deg(u) = 5$: Si ces 5 voisins utilisent $< 5$ couleurs: facile aussi.
-        Si 5 couleurs utilisées $c_1, c_2, c_3, c_4, c_5$.
-        Regardons $v_1$ et $v_3$. Si $v_1$ et $v_3$ sont sur des composantes connexes différentes: on échange $c_1$ et $c_3$ sur
-        la composante connexe ($c_1-c_3$) de $v_3$, et on colorie $u$ en $c_1$ (sur le graphe des noeuds de couleur $c_1$ et $c_3$.
-        Si $v_1$ et $v_3$ sont dans la même composante connexe ($c_1-c_3$):
-        Maintenant $v_2$ et $v_4$ sont dans des composantes connexes
-        différentes (dans le graphe de couleurs $c_2-c_4$).
-        Même raisonnement: échanger $c_2$ et $c_4$ sur composante connexe ($v_2$).
-    \end{itemize}
+    La démonstration se fait par récurrence : on enlève un noeud, on colorie le graphe résultant par hypothèse de récurrence, on rajoute le noeud et on prouve que le graphe est toujours coloriable.
+    
+    On peut supposer le graphe \emph{simple}, car les arêtes multiples n'affectent pas $\chi$ ; le théorème \ref{theo:deg5orless} nous dit alors qu'il existe un noeud $u$ de degré $\leq 5$.
+    On enlève donc ce noeud, on colorie $G-u$ par hypothèse de récurrence, puis on le rétablit.
+    
+    Le noeud $u$ possédant jusqu'à 5 voisins, un maximum de 5 couleurs peuvent être employées pour colorier ceux-ci.
+    S'ils n'en utilisent que 4 ou moins, on colorie $u$ avec une couleur non utilisée.
+    
+    Sinon, soient $v_1, \dots, v_5$ les voisins de $u$ dans l'ordre horlogique, et soient $c_1, \dots, c_5$ les couleurs qui y sont associées.
+      
+    Considérons le sous-graphe $G_{13}$ de $G$ formé des noeuds de couleur $c_1$ et $c_3$.
+    Si $v_1$ et $v_3$ sont sur des composantes connexes différentes de $G_{13}$, on peut inverser la coloration de la composante contenant $v_1$ et donc assigner $c_1$ à $u$.
+    Sinon, $v_1$ et $v_3$ sont sur une même composante connexe et il existe un chemin dans $G_{13}$ joignant les deux.
+    
+    Considérons maintenant le sous-graphe $G_{24}$ de $G$ formé des noeuds de couleur $c_2$ et $c_4$.
+    Si $v_2$ et $v_4$ sont sur des composantes connexes différentes de $G_{24}$, on peut inverser la coloration de la composante contenant $v_2$ et donc assigner $c_2$ à $u$.
+    Sinon, $v_2$ et $v_4$ sont sur une même composante connexe et il existe un chemin dans $G_{24}$ joignant les deux.
+    
+    Dans ce dernier cas, nous avons donc construit deux chemins, l'un de couleurs $c_1$ et $c_3$, l'autre de couleurs $c_2$ et $c_4$, joignant respectivement $v_1$ à $v_3$ et $v_2$ à $v_4$.
+    De tels chemins doivent nécessairement se croiser, de part la façon dont on a défini $v_1, \dots, v_5$ (faites un dessin pour vous en convaincre), ce qui contredit l'hypothèse comme quoi le graphe est planaire.
+    
+    Il est donc toujours possible d'assigner une couleur à $u$, et donc de colorier un graphe planaire avec 5 couleurs.
   \end{proof}
 \end{mytheo}
 
