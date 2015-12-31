@@ -117,7 +117,7 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 				\medskip
 				\STATE \textit{//Mise à jour des distances et des prédécesseurs}
-				\FORALL{$u$ in $vertices$}
+				\FOR{$i$ from 1 to $size(vertices)-1$}
 					\FORALL{$edge(u,v)$ with weight $w$ in $edges$}
 						\IF{$distance[v] > distance[u] + w$}
 							\STATE $distance[v] \leftarrow distance[u] + w$
@@ -141,10 +141,11 @@ Pour un digraphe, ce n'est pas aussi simple, le fait qu'il y ait des arêtes de 
 
 		Dans le cas de notre exemple, l'algorithme procède comme suit :
 		\begin{enumerate}
-			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, predecessor[A] :$= +\infty$
-			\item On trouve B, on met sa distance à $1$ et son prédécesseur à A
-			\item On trouve C, on met sa distance à $5$ et son prédécesseur à A
-			\item On trouve B, comme on a que $1>5+(-10)$, on met sa distance à $-5$ et son prédécesseur à $C$
+			\item Initialisation : distance[A] :$= 0$, distance[B] :$= +\infty$, distance[C] :$= +\infty$, predecessor[A] :$= null$, predecessor[B] :$= null$, predecessor[C] :$= null$
+			\item On considère l'arête A$\rightarrow$B de poids $1$ ; $0 + 1 = 1 < $distance[B] $= +\infty$, on met donc distance[B] à $1$ et predecessor[B] à A
+			\item On considère l'arête A$\rightarrow$C de poids $5$ ; $0 + 5 = 5 < $distance[C] $= +\infty$, on met donc distance[C] à $5$ et predecessor[C] à A
+			\item On considère l'arête C$\rightarrow$B de poids $-10$ ; $5 - 10 = -5 < $distance[B] $= 1$, on met donc distance[B] à $-5$ et predecessor[B] à C
+			\item On répète une nouvelle fois pour chaque arête, mais les poids ne changent pas
 			\item Il n'y a pas de cycle de poids négatif.
 			\item Le poids du plus petit chemin entre A et B est la distance de B. Pour trouver les nœuds intermédiaires du chemin, il suffit de regarder les prédécesseurs.
 		\end{enumerate}
