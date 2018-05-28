@@ -2,15 +2,21 @@ Description
 ===========
 
 Notes, énoncés et solutions des APEs du cours INMA1691 à l'EPL.
-Les pdf sont disponibles [ici](https://www.dropbox.com/sh/5a1dfg8e17bbgkw/bgVWq1icjf).
 
-Vous pouvez aussi compiler from source.
-Pour cela, clonez le repo et faites
+Pour compiler les exercices, faites
+```
+cd exercises
+make release
+```
+Ça générera un fichier `LINMA1691-exercises-YYYY-MM-DD.pdf` avec les énoncés
+et un fichier `LINMA1691-exercises-Sol-YYYY-MM-DD.pdf` avec les énoncés et solutions.
 
-    make all
-`make release` nécessite
-[`smartcp`](https://github.com/blegat/smartcp)
-mais n'est pas essentiel.
+Pour compiler les notes, faites
+```
+cd notes
+make release
+```
+Ça générera un fichier `LINMA1691-notes-YYYY-MM-DD.pdf`
 
 Si vous ne connaissez pas Git,
 lisez la partie *Utilisation linéaire de Git* de
